@@ -12,7 +12,7 @@
 
 ## Dove sono le cose
 - Repository: https://github.com/samuelepreite/sdc (ramo `main`). Clonare con `git clone --depth 1`.
-- Infografica di stato: sorgente `docs/stato-sdc.html`, artifact **stesso URL ogni volta**: https://claude.ai/code/artifact/4f6f0a8c-0000-0000-0000-000000000000 (aggiornare se diverso)
+- Infografica di stato: sorgente `docs/stato-sdc.html`, artifact **stesso URL ogni volta**: https://claude.ai/artifact/TQhQFzSG6QsnVv4chE4GcW (ripubblicare passando questo URL come `url`)
 - App: non ancora pubblicata (Fase 1).
 - Copia di sicurezza nel progetto Claude: `claude/codice.tar.gz.b64` (ripristino: `base64 -d codice.tar.gz.b64 | tar xz`), più `claude/RIPARTENZA.md`, `claude/ANALISI.md`, `claude/NOTE_FONTI.md`.
 - Dispensa: nel progetto Claude come «Dispensa SDC.pdf» (il tool del progetto restituisce solo testo).
