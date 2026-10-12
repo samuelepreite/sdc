@@ -1,0 +1,774 @@
+[
+ {
+  "id": "c1.1",
+  "modulo": "m1",
+  "titolo": "Vettori, tensori del II ordine e componenti",
+  "par": "1.1–1.2.3",
+  "rif": "Def 1.1.1, 1.2.1, 1.2.2",
+  "pagine": "1–3",
+  "prereq": [],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c1.2",
+  "modulo": "m1",
+  "titolo": "Diade, base di Lin, proiettori, composizione",
+  "par": "1.2.4–1.2.6",
+  "rif": "Def 1.2.3, Prop 1.2.4, Def 1.2.5–1.2.7",
+  "pagine": "3–4",
+  "prereq": [
+   "c1.1"
+  ],
+  "derivazioni": "componenti della diade; base di Lin",
+  "flag": ""
+ },
+ {
+  "id": "c1.3",
+  "modulo": "m1",
+  "titolo": "Trasposto, Sym/Skw, decomposizione, vettore assiale",
+  "par": "1.3",
+  "rif": "Def 1.3.1–1.3.2, Teo 1.3.3–1.3.4",
+  "pagine": "5–6",
+  "prereq": [
+   "c1.2"
+  ],
+  "derivazioni": "I teorema di decomposizione (esistenza e unicità)",
+  "flag": ""
+ },
+ {
+  "id": "c1.4",
+  "modulo": "m1",
+  "titolo": "Determinante, inverso, ortogonali, formula di Eulero",
+  "par": "1.4–1.5",
+  "rif": "Def 1.4.1–1.4.2, 1.5.1, Prop 1.5.2, Teo 1.5.3, eq (1.1)",
+  "pagine": "6–8",
+  "prereq": [
+   "c1.3"
+  ],
+  "derivazioni": "proprietà degli ortogonali; rotazioni infinitesime",
+  "flag": ""
+ },
+ {
+  "id": "c1.5",
+  "modulo": "m1",
+  "titolo": "Traccia, prodotto scalare, Sym ⊥ Skw",
+  "par": "1.6",
+  "rif": "Def 1.6.1–1.6.2, Prop 1.6.3",
+  "pagine": "8–9",
+  "prereq": [
+   "c1.3"
+  ],
+  "derivazioni": "tr W = 0; E·W = 0",
+  "flag": ""
+ },
+ {
+  "id": "c1.6",
+  "modulo": "m1",
+  "titolo": "Tensori del IV ordine: simmetrie e definita positività",
+  "par": "1.7",
+  "rif": "Def 1.7.1–1.7.7",
+  "pagine": "9–11",
+  "prereq": [
+   "c1.5"
+  ],
+  "derivazioni": "conteggio 81/36/21; Pos+ ⇒ invertibile",
+  "flag": ""
+ },
+ {
+  "id": "c1.7",
+  "modulo": "m1",
+  "titolo": "Gradiente, divergenza, rotore, teorema della divergenza",
+  "par": "1.8",
+  "rif": "Def 1.8.1–1.8.6, Teo 1.8.4",
+  "pagine": "11–13",
+  "prereq": [
+   "c1.5"
+  ],
+  "derivazioni": "componenti della divergenza tensoriale",
+  "flag": ""
+ },
+ {
+  "id": "c2.1",
+  "modulo": "m2",
+  "titolo": "Corpo, configurazioni, deformazione e spostamento",
+  "par": "2.1",
+  "rif": "Def 2.1.1–2.1.2",
+  "pagine": "15–16",
+  "prereq": [
+   "c1.1"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c2.2",
+  "modulo": "m2",
+  "titolo": "Plausibilità fisica, F e H, deformazioni rigide",
+  "par": "2.2–2.3",
+  "rif": "Def 2.2.1–2.2.4, 2.3.1, Teo 2.3.2, Def 2.3.3, Teo 2.3.4",
+  "pagine": "17–19",
+  "prereq": [
+   "c2.1",
+   "c1.4",
+   "c1.7"
+  ],
+  "derivazioni": "identità cinematica fondamentale",
+  "flag": ""
+ },
+ {
+  "id": "c2.3",
+  "modulo": "m2",
+  "titolo": "Studio locale: deformazione omogenea tangente",
+  "par": "2.4",
+  "rif": "eq (2.1)",
+  "pagine": "20",
+  "prereq": [
+   "c2.2"
+  ],
+  "derivazioni": "Taylor → dx = F dX",
+  "flag": ""
+ },
+ {
+  "id": "c2.4",
+  "modulo": "m2",
+  "titolo": "Parametri di misura e tensore di deformazione finita",
+  "par": "2.5",
+  "rif": "Def 2.5.1–2.5.8, Prop 2.5.2–2.5.9",
+  "pagine": "20–23",
+  "prereq": [
+   "c2.3"
+  ],
+  "derivazioni": "ε_n, sin γ, ΔS, Θ = det F − 1",
+  "flag": ""
+ },
+ {
+  "id": "c2.5",
+  "modulo": "m2",
+  "titolo": "Piccole deformazioni, piccoli spostamenti, equilibrio referenziale",
+  "par": "2.6.1–2.6.2",
+  "rif": "Def 2.6.1–2.6.2",
+  "pagine": "23–24",
+  "prereq": [
+   "c2.4"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c2.6",
+  "modulo": "m2",
+  "titolo": "Tensore E, rotazione W, parametri linearizzati",
+  "par": "2.6.3–2.6.6",
+  "rif": "Prop 2.6.3, Def 2.6.4, Teo 2.6.5, Prop 2.6.6",
+  "pagine": "24–26",
+  "prereq": [
+   "c2.5",
+   "c1.3"
+  ],
+  "derivazioni": "linearizzazione di D; parametri linearizzati",
+  "flag": ""
+ },
+ {
+  "id": "c2.7",
+  "modulo": "m2",
+  "titolo": "Formula di rappresentazione e compatibilità",
+  "par": "2.7–2.8",
+  "rif": "Teo 2.7.1, eq (2.2)–(2.3), Teo 2.8.1–2.8.2",
+  "pagine": "27–29",
+  "prereq": [
+   "c2.6"
+  ],
+  "derivazioni": "formula di rappresentazione",
+  "flag": ""
+ },
+ {
+  "id": "c2.8",
+  "modulo": "m2",
+  "titolo": "Dilatazioni e direzioni principali",
+  "par": "2.9–2.10",
+  "rif": "Def 2.9.1, Teo 2.9.2–2.9.3, Prop 2.9.4",
+  "pagine": "29–33",
+  "prereq": [
+   "c2.6"
+  ],
+  "derivazioni": "spettrale (b); estremo; lettura dagli invarianti",
+  "flag": ""
+ },
+ {
+  "id": "c3.1",
+  "modulo": "m3",
+  "titolo": "Forze, principi di Eulero e Cauchy, componenti speciali",
+  "par": "3.1–3.3",
+  "rif": "Def 3.2.1–3.2.2, Teo 3.3.1",
+  "pagine": "36–40",
+  "prereq": [
+   "c1.2"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c3.2",
+  "modulo": "m3",
+  "titolo": "Assiomi di Eulero, ECS e lemma di Cauchy",
+  "par": "3.4–3.5",
+  "rif": "Def 3.4.1, Teo 3.4.2, Teo 3.5.1",
+  "pagine": "40–42",
+  "prereq": [
+   "c3.1"
+  ],
+  "derivazioni": "lemma di Cauchy",
+  "flag": ""
+ },
+ {
+  "id": "c3.3",
+  "modulo": "m3",
+  "titolo": "Teorema di Cauchy–Poisson e tetraedro",
+  "par": "3.6–3.7.1",
+  "rif": "Teo 3.6.1",
+  "pagine": "42–45",
+  "prereq": [
+   "c3.2"
+  ],
+  "derivazioni": "tetraedro di Cauchy",
+  "flag": ""
+ },
+ {
+  "id": "c3.4",
+  "modulo": "m3",
+  "titolo": "Equazioni indefinite di equilibrio e simmetria di T",
+  "par": "3.7.2–3.8",
+  "rif": "Teo 3.7.1",
+  "pagine": "45–48",
+  "prereq": [
+   "c3.3",
+   "c1.7"
+  ],
+  "derivazioni": "div T + b = 0; T23 = T32",
+  "flag": ""
+ },
+ {
+  "id": "c3.5",
+  "modulo": "m3",
+  "titolo": "Rappresentazione ingegneristica; σ_n, τ_nν, τ_n",
+  "par": "3.9–3.10",
+  "rif": "—",
+  "pagine": "48–49",
+  "prereq": [
+   "c3.4"
+  ],
+  "derivazioni": "σ_n come forma quadratica",
+  "flag": ""
+ },
+ {
+  "id": "c3.6",
+  "modulo": "m3",
+  "titolo": "Tensioni principali e classificazione",
+  "par": "3.11–3.12",
+  "rif": "Def 3.11.1",
+  "pagine": "49–52",
+  "prereq": [
+   "c3.5",
+   "c2.8"
+  ],
+  "derivazioni": "lettura dagli invarianti",
+  "flag": ""
+ },
+ {
+  "id": "c3.7",
+  "modulo": "m3",
+  "titolo": "Tensioni estreme ed esercizio svolto",
+  "par": "3.13–3.14",
+  "rif": "Prop 3.13.1–3.13.2",
+  "pagine": "53–56",
+  "prereq": [
+   "c3.6"
+  ],
+  "derivazioni": "s3 ≤ σ_m ≤ s1 (euristica); τ_max solo enunciata",
+  "flag": ""
+ },
+ {
+  "id": "c3.8",
+  "modulo": "m3",
+  "titolo": "Cerchio di Mohr: equazione, costruzione, impiego",
+  "par": "3.15",
+  "rif": "Prop 3.15.1",
+  "pagine": "56–60",
+  "prereq": [
+   "c3.5"
+  ],
+  "derivazioni": "equazione del cerchio; correttezza della costruzione",
+  "flag": ""
+ },
+ {
+  "id": "c3.9",
+  "modulo": "m3",
+  "titolo": "Mohr: esempi, arbelo, esempio numerico",
+  "par": "3.16–3.17",
+  "rif": "Teo 3.17.1",
+  "pagine": "60–63",
+  "prereq": [
+   "c3.8",
+   "c3.7"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c4.0",
+  "modulo": "m4",
+  "titolo": "Linee isostatiche",
+  "par": "4.1",
+  "rif": "—",
+  "pagine": "66",
+  "prereq": [
+   "c3.6"
+  ],
+  "derivazioni": "—",
+  "flag": "facoltativo: la dispensa dice «non richiesto all'orale»"
+ },
+ {
+  "id": "c4.1",
+  "modulo": "m4",
+  "titolo": "Lemma fondamentale e teorema dei lavori virtuali",
+  "par": "4.2–4.3",
+  "rif": "Teo 4.2.1, Def 4.3.1–4.3.3, Teo 4.3.4",
+  "pagine": "67–69",
+  "prereq": [
+   "c3.4",
+   "c2.6",
+   "c1.7"
+  ],
+  "derivazioni": "lemma; TLV",
+  "flag": ""
+ },
+ {
+  "id": "c4.2",
+  "modulo": "m4",
+  "titolo": "Legami costitutivi e classificazione dei comportamenti",
+  "par": "4.4",
+  "rif": "Def 4.4.1–4.4.5",
+  "pagine": "69–73",
+  "prereq": [
+   "c3.6"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c4.3",
+  "modulo": "m4",
+  "titolo": "Prove su acciaio e calcestruzzo",
+  "par": "4.5–4.7",
+  "rif": "—",
+  "pagine": "73–77",
+  "prereq": [
+   "c4.2",
+   "c3.9"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c4.4",
+  "modulo": "m4",
+  "titolo": "Elasticità lineare e simmetrie minori",
+  "par": "4.8",
+  "rif": "Def 4.8.1",
+  "pagine": "77–78",
+  "prereq": [
+   "c4.2",
+   "c1.6",
+   "c2.6"
+  ],
+  "derivazioni": "81 → 36",
+  "flag": ""
+ },
+ {
+  "id": "c4.5",
+  "modulo": "m4",
+  "titolo": "Iperelasticità e teorema sull'energia specifica",
+  "par": "4.9",
+  "rif": "Def 4.9.1, Teo 4.9.2",
+  "pagine": "79–82",
+  "prereq": [
+   "c4.4",
+   "c4.1"
+  ],
+  "derivazioni": "lavoro indipendente dal cammino; a ⇒ b ⇒ c",
+  "flag": ""
+ },
+ {
+  "id": "c4.6",
+  "modulo": "m4",
+  "titolo": "Simmetrie materiali e notazione di Voigt",
+  "par": "4.10–4.11",
+  "rif": "Def 4.10.1",
+  "pagine": "82–86",
+  "prereq": [
+   "c4.5",
+   "c1.4"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c5.1",
+  "modulo": "m5",
+  "titolo": "Lamé, isotropia ⇒ iperelasticità, legame inverso, coassialità",
+  "par": "4.12",
+  "rif": "Teo 4.12.1–4.12.2, Prop 4.12.3, Teo 4.12.4",
+  "pagine": "86–88",
+  "prereq": [
+   "c4.6",
+   "c3.6"
+  ],
+  "derivazioni": "isotropo ⇒ A = Aᵀ; legame inverso; coassialità",
+  "flag": ""
+ },
+ {
+  "id": "c5.2",
+  "modulo": "m5",
+  "titolo": "Moduli tecnici",
+  "par": "4.13",
+  "rif": "—",
+  "pagine": "88–90",
+  "prereq": [
+   "c5.1"
+  ],
+  "derivazioni": "E, ν da monoassiale; G da scorrimento; E = 2G(1+ν)",
+  "flag": ""
+ },
+ {
+  "id": "c5.3",
+  "modulo": "m5",
+  "titolo": "Energia per isotropi e restrizioni di plausibilità",
+  "par": "4.14–4.15",
+  "rif": "Prop 4.14.1",
+  "pagine": "91–94",
+  "prereq": [
+   "c5.2",
+   "c4.5"
+  ],
+  "derivazioni": "espressioni di φ; Sylvester",
+  "flag": ""
+ },
+ {
+  "id": "c5.4",
+  "modulo": "m5",
+  "titolo": "Problema elastico: posizione e buona posizione",
+  "par": "4.16.1–4.16.3",
+  "rif": "Def 4.16.1",
+  "pagine": "94–96",
+  "prereq": [
+   "c5.1",
+   "c3.4",
+   "c2.7"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c5.5",
+  "modulo": "m5",
+  "titolo": "Sovrapposizione e non linearità dell'energia",
+  "par": "4.16.4–4.16.5",
+  "rif": "Teo 4.16.2–4.16.3",
+  "pagine": "96–97",
+  "prereq": [
+   "c5.4",
+   "c5.3"
+  ],
+  "derivazioni": "termine di accoppiamento",
+  "flag": ""
+ },
+ {
+  "id": "c6.1",
+  "modulo": "m6",
+  "titolo": "Teorema di unicità di Kirchhoff",
+  "par": "5.1",
+  "rif": "Teo 5.1.1",
+  "pagine": "99–100",
+  "prereq": [
+   "c5.5",
+   "c4.1"
+  ],
+  "derivazioni": "dimostrazione per assurdo",
+  "flag": ""
+ },
+ {
+  "id": "c6.2",
+  "modulo": "m6",
+  "titolo": "Problema di Saint-Venant: formulazione, ipotesi, semi-inverso",
+  "par": "5.2.1–5.2.4",
+  "rif": "Def 5.2.1",
+  "pagine": "100–104",
+  "prereq": [
+   "c6.1",
+   "c5.4"
+  ],
+  "derivazioni": "T_zz = C z + D",
+  "flag": ""
+ },
+ {
+  "id": "c6.3",
+  "modulo": "m6",
+  "titolo": "Equilibrio globale, CdS, problema indebolito, postulato",
+  "par": "5.2.5–5.2.8",
+  "rif": "eq (5.1), Def 5.2.2, Teo 5.2.3–5.2.4",
+  "pagine": "104–108",
+  "prereq": [
+   "c6.2"
+  ],
+  "derivazioni": "leggi di variazione delle CdS",
+  "flag": ""
+ },
+ {
+  "id": "c6.4",
+  "modulo": "m6",
+  "titolo": "Sforzo normale",
+  "par": "5.3–5.4",
+  "rif": "Def 5.4.1, Teo 5.4.2",
+  "pagine": "109–113",
+  "prereq": [
+   "c6.3",
+   "c5.2"
+  ],
+  "derivazioni": "soluzione completa; Clapeyron",
+  "flag": ""
+ },
+ {
+  "id": "c6.5",
+  "modulo": "m6",
+  "titolo": "Assi principali centrali ed ellisse d'inerzia",
+  "par": "5.5.1–5.5.2",
+  "rif": "Def 5.5.2",
+  "pagine": "113–115",
+  "prereq": [
+   "c6.3"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c6.6",
+  "modulo": "m6",
+  "titolo": "Flessione semplice retta (Navier)",
+  "par": "5.5.3–5.5.4",
+  "rif": "—",
+  "pagine": "115–120",
+  "prereq": [
+   "c6.4",
+   "c6.5"
+  ],
+  "derivazioni": "Navier; spostamenti; anticlastica",
+  "flag": ""
+ },
+ {
+  "id": "c6.7",
+  "modulo": "m6",
+  "titolo": "Flessione deviata e teoremi della flessione",
+  "par": "5.5.5",
+  "rif": "Teo 5.5.3–5.5.4",
+  "pagine": "120–122",
+  "prereq": [
+   "c6.6"
+  ],
+  "derivazioni": "I e II teorema",
+  "flag": ""
+ },
+ {
+  "id": "c6.8",
+  "modulo": "m6",
+  "titolo": "Sforzo normale eccentrico, nocciolo, parzializzazione",
+  "par": "5.6",
+  "rif": "Def 5.6.1–5.6.2",
+  "pagine": "122–125",
+  "prereq": [
+   "c6.7"
+  ],
+  "derivazioni": "trinomia; regola delle 3u",
+  "flag": "facoltativo: la dispensa dice «non trattato a lezione»"
+ },
+ {
+  "id": "c7.1",
+  "modulo": "m7",
+  "titolo": "Flessione composta: formula di Jourawski",
+  "par": "5.7.1–5.7.2",
+  "rif": "Def 5.7.1, Teo 5.7.2, Prop 5.7.3",
+  "pagine": "125–129",
+  "prereq": [
+   "c6.6"
+  ],
+  "derivazioni": "formula di Jourawski",
+  "flag": ""
+ },
+ {
+  "id": "c7.2",
+  "modulo": "m7",
+  "titolo": "τ_zx e regola delle tangenti",
+  "par": "5.7.3–5.7.4",
+  "rif": "—",
+  "pagine": "129–131",
+  "prereq": [
+   "c7.1",
+   "c3.4"
+  ],
+  "derivazioni": "linearità di τ_zx sulla corda",
+  "flag": ""
+ },
+ {
+  "id": "c7.3",
+  "modulo": "m7",
+  "titolo": "Torsione: congettura di Clebsch e problema di Neumann",
+  "par": "5.8.1–5.8.2",
+  "rif": "Def 5.8.1–5.8.2, Teo 5.8.3",
+  "pagine": "131–133",
+  "prereq": [
+   "c6.3",
+   "c5.2"
+  ],
+  "derivazioni": "equazioni dalla congettura",
+  "flag": ""
+ },
+ {
+  "id": "c7.4",
+  "modulo": "m7",
+  "titolo": "Funzione di Prandtl e fattore di torsione",
+  "par": "5.8.3–5.8.4",
+  "rif": "Def 5.8.4, Teo 5.8.5, Def 5.8.6",
+  "pagine": "133–135",
+  "prereq": [
+   "c7.3",
+   "c1.7"
+  ],
+  "derivazioni": "∇²F = 2; M_z = Gγ∫(−2F)",
+  "flag": ""
+ },
+ {
+  "id": "c7.5",
+  "modulo": "m7",
+  "titolo": "Sezioni esatte, analogia idrodinamica, chiusa vs aperta",
+  "par": "5.8.5–5.8.8",
+  "rif": "—",
+  "pagine": "135–138",
+  "prereq": [
+   "c7.4"
+  ],
+  "derivazioni": "sezione circolare; confronto chiusa/aperta",
+  "flag": ""
+ },
+ {
+  "id": "c7.6",
+  "modulo": "m7",
+  "titolo": "Sezioni sottili aperte e teoria di Bredt",
+  "par": "5.8.9–5.8.10",
+  "rif": "Teo 5.8.7",
+  "pagine": "139–141",
+  "prereq": [
+   "c7.5"
+  ],
+  "derivazioni": "formula di Bredt",
+  "flag": ""
+ },
+ {
+  "id": "c8.1",
+  "modulo": "m8",
+  "titolo": "Verifica di resistenza e di sicurezza monoassiale",
+  "par": "6.1–6.2",
+  "rif": "Def 6.2.1",
+  "pagine": "144–146",
+  "prereq": [
+   "c4.3"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c8.2",
+  "modulo": "m8",
+  "titolo": "Criteri di resistenza e tensione ideale",
+  "par": "6.3",
+  "rif": "Def 6.3.1",
+  "pagine": "147–148",
+  "prereq": [
+   "c8.1",
+   "c3.7"
+  ],
+  "derivazioni": "—",
+  "flag": ""
+ },
+ {
+  "id": "c8.3",
+  "modulo": "m8",
+  "titolo": "Criteri di Galileo, Tresca, Grashof",
+  "par": "6.4.1–6.4.3",
+  "rif": "—",
+  "pagine": "148–150",
+  "prereq": [
+   "c8.2",
+   "c3.9",
+   "c5.2"
+  ],
+  "derivazioni": "tensioni ideali",
+  "flag": ""
+ },
+ {
+  "id": "c8.4",
+  "modulo": "m8",
+  "titolo": "Beltrami e confutazione di Huber",
+  "par": "6.4.4–6.4.5",
+  "rif": "—",
+  "pagine": "150–151",
+  "prereq": [
+   "c8.3",
+   "c5.3"
+  ],
+  "derivazioni": "σ_id di Beltrami; h_L",
+  "flag": ""
+ },
+ {
+  "id": "c8.5",
+  "modulo": "m8",
+  "titolo": "Secondo teorema di decomposizione e von Mises",
+  "par": "6.5",
+  "rif": "Teo 6.5.1, Def 6.5.2, Teo 6.5.3",
+  "pagine": "151–154",
+  "prereq": [
+   "c8.4"
+  ],
+  "derivazioni": "φ_d; σ_id di von Mises",
+  "flag": ""
+ },
+ {
+  "id": "c8.6",
+  "modulo": "m8",
+  "titolo": "Criterio di Mohr–Coulomb",
+  "par": "6.6",
+  "rif": "—",
+  "pagine": "154–155",
+  "prereq": [
+   "c8.2",
+   "c3.9"
+  ],
+  "derivazioni": "verifica con il cerchio massimo",
+  "flag": ""
+ },
+ {
+  "id": "c8.7",
+  "modulo": "m8",
+  "titolo": "Tensioni ideali alla Saint-Venant, travature, verifica e progetto",
+  "par": "6.7–6.9",
+  "rif": "—",
+  "pagine": "155–158",
+  "prereq": [
+   "c8.5",
+   "c8.3",
+   "c7.1",
+   "c6.7"
+  ],
+  "derivazioni": "σ_id alla Saint-Venant",
+  "flag": ""
+ }
+]
