@@ -1,7 +1,7 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**FINITA alle 19:30 del 12/10/2026** (sessione 1, Fase 0).
+**IN CORSO dalle 18:40 del 12/10/2026** (sessione 2, Fase 1). Precedente: sessione 1 FINITA alle 18:35 (Fase 0).
 - Fatto: trascrizione completa della dispensa (6 capitoli, `tools/testi/`), `ANALISI.md` (8 moduli, 57 concetti, grafo dei prerequisiti verificato, convenzioni, 8 modelli visivi), `NOTE_FONTI.md` (NF-01…NF-13, 2 da chiedere al docente), infografica di stato pubblicata.
 - **Prossimo passo preciso:** Fase 1. (1) leggere le risposte dello studente alle 3 domande (data dell'orale, domande degli anni passati/argomenti esclusi, PDF allegato); se ha allegato il PDF, rivedere le figure (NF-12) e NF-03/NF-10 con `pdftoppm -r 100 -gray` solo sulle pagine con figure; (2) aggiungere `samuelepreite/seimafi` in lettura, clonarlo in `/home/claude/seimafi` e **copiare** l'infrastruttura (vedi «Riusare SEIMAFI» nel prompt di partenza); (3) modulo M1: motore + test + lezioni guidate di c1.1…c1.7 + modello V1 (rotazione di Eulero); (4) build, Playwright, pubblicazione dell'app, infografica aggiornata.
 
