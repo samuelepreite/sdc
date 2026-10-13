@@ -50,9 +50,9 @@ code{font-family:var(--mono);font-size:.88em}
 </style>
 <div class="wrap">
   <header>
-    <div class="eyebrow">App per l'orale di Scienza delle Costruzioni · aggiornato 13/10/2026, M2 completato</div>
-    <h1>Secondo modulo nell'app: l'analisi della deformazione</h1>
-    <p class="lede">M2 ha 8 lezioni guidate, 15 domande d'orale (le 13 della dispensa più 2 dedotte) e un nuovo modello 3D: l'intorno che si deforma, la sfera che diventa ellissoide, la formula di rappresentazione. <b>Lavoro in automatico: si prosegue con M3 (tensione).</b></p>
+    <div class="eyebrow">App per l'orale di Scienza delle Costruzioni · aggiornato 13/10/2026, M3 completato</div>
+    <h1>Terzo modulo nell'app: l'analisi della tensione</h1>
+    <p class="lede">M3 ha 9 lezioni guidate, 16 domande d'orale (le 14 della dispensa più 2 dedotte), il modello 3D della tensione in un punto (piano di taglio, tetraedro di Cauchy, reciprocità, direzioni principali) e i diagrammi interattivi del cerchio di Mohr e dell'arbelo. <b>Si prosegue con M4 (legami costitutivi), già scritto in parte.</b></p>
   </header>
 
   <section>
@@ -66,7 +66,7 @@ code{font-family:var(--mono);font-size:.88em}
     <div class="phases">
       <div class="ph ok"><b>0 · Analisi</b><span>fatta il 12/10</span></div>
       <div class="ph ok"><b>1 · Impianto + M1</b><span>fatta il 13/10</span></div>
-      <div class="ph next"><b>2 · M2–M8</b><span>M2 fatto; prossimo M3, tensione</span></div>
+      <div class="ph next"><b>2 · M2–M8</b><span>M2, M3 fatti; prossimo M4</span></div>
       <div class="ph "><b>3 · Orale</b><span>simulatore, mappa</span></div>
       <div class="ph "><b>4 · Rifinitura</b><span>piano fino all'esame</span></div>
     </div>
@@ -75,11 +75,11 @@ code{font-family:var(--mono);font-size:.88em}
   <section>
     <h2>Numeri</h2>
     <div class="nums">
-      <div class="n"><strong>15/57</strong><span>concetti nell'app (M1, M2)</span></div>
-      <div class="n"><strong>28</strong><span>domande d'orale (24 dalla dispensa)</span></div>
-      <div class="n"><strong>132</strong><span>test verdi</span></div>
+      <div class="n"><strong>24/57</strong><span>concetti nell'app (M1–M3)</span></div>
+      <div class="n"><strong>44</strong><span>domande d'orale (38 dalla dispensa)</span></div>
+      <div class="n"><strong>185</strong><span>test verdi</span></div>
       <div class="n"><strong>0</strong><span>problemi nella prova del browser</span></div>
-      <div class="n"><strong>3/13</strong><span>note sulla fonte risolte o confermate</span></div>
+      <div class="n"><strong>4/13</strong><span>note sulla fonte risolte o confermate</span></div>
       <div class="n warn"><strong>2</strong><span>punti da chiedere al docente</span></div>
     </div>
   </section>
@@ -88,19 +88,19 @@ code{font-family:var(--mono);font-size:.88em}
     <section>
       <h2>Fatto</h2>
       <ul>
-        <li>Motore della deformazione: parametri di misura finiti e linearizzati, rappresentazione, direzioni principali (metodo di Jacobi), residuo di Saint-Venant; 11 test con verifiche geometriche indipendenti.</li>
-        <li>M2: 8 lezioni guidate con 9 derivazioni ricalcolate su 25 casi casuali (identità cinematica, dx = F dX, ε_n, sin γ, Θ = det F − 1, linearizzazione di D, ε_n in componenti, formula di rappresentazione, spettrale b, estremo).</li>
-        <li>Modello 3D V2 con tre modalità e la scelta della parte disegnata (H, solo E, solo W); tabella finita contro linearizzata.</li>
-        <li>Diagramma delle tessere per la compatibilità (campo compatibile e non compatibile).</li>
-        <li>Figure del Cap. 2 controllate sul PDF (pp. 16, 18, 27, 29, 32): corrispondono al testo.</li>
+        <li>Motore della tensione: vettore tensione e componenti speciali, principali, τ_max, Mohr, arbelo; l'esercizio di §3.14 e l'esempio di §3.17.2 tornano con tutti i numeri della dispensa.</li>
+        <li>M3: 9 lezioni con 12 derivazioni ricalcolate (tetraedro, σ_n come forma quadratica, euristica degli estremi, equazione del cerchio, correttezza della costruzione con il polo).</li>
+        <li>Modello 3D V3 (piano di taglio, tetraedro di Cauchy, parallelepipedo, principali) e diagrammi di Mohr (costruzione con il polo, principali, τ estreme) e dell'arbelo con 300 giaciture casuali.</li>
+        <li>Elenchi puntati e numerati ora resi come elenchi in tutte le lezioni (anche M1, prima apparivano in riga).</li>
+        <li>Figura di Mohr di p. 58 controllata sul PDF: asse τ verso il basso, polo P(σ₁, −τ₁₂).</li>
       </ul>
     </section>
     <section>
       <h2>Prossimo passo e scelte fatte da solo</h2>
       <ul>
-        <li>M3, analisi della tensione (Cap. 3): piano di taglio, tetraedro di Cauchy, cerchio di Mohr e arbelo.</li>
-        <li>Scelta fatta da solo: NF-02 resta aperta (la p. 32 non ha figure): nell'app la sfera diventa un ellissoide con un semiasse invariato, e lo diciamo.</li>
-        <li>Scelta fatta da solo: data dell'orale non nota, piano su 8 settimane; isostatiche e sforzo normale eccentrico restano facoltativi.</li>
+        <li>M4, legami costitutivi (motore, lezioni, domande e diagrammi già scritti; da registrare e verificare), poi M5.</li>
+        <li>Scelta fatta da solo: NF-05 risolta (verifica di §3.14 ricalcolata).</li>
+        <li>Scelta fatta da solo: data dell'orale non nota, piano su 8 settimane; facoltativi esclusi.</li>
       </ul>
     </section>
   </div>
@@ -116,7 +116,7 @@ code{font-family:var(--mono);font-size:.88em}
 </div>
 <script>
 const M=[["M1","Algebra tensoriale",14,7],["M2","Deformazione",21,8],["M3","Tensione",30,9],["M4","Legami costitutivi",21,7],["M5","Elasticità isotropa",12,5],["M6","Saint-Venant I",27,8],["M7","Taglio e torsione",17,6],["M8","Criteri di resistenza",16,7]];
-const DONE=["M1", "M2"];
+const DONE=["M1", "M2", "M3"];
 const t=document.getElementById('tube');
 for(const [id,n,p,c] of M){const d=document.createElement('div');d.className='seg';d.style.flex=p+' 1 0';
 d.innerHTML=`<div class="bar"><div class="a"></div><div class="b" style="width:${DONE.includes(id)?100:0}%"></div></div><div class="lab">${id}</div><div class="sub">${n}<br>${c} concetti · ${p} pp.</div>`;t.appendChild(d);}

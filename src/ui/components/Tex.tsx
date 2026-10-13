@@ -19,12 +19,28 @@ export function Tex({ tex, display = false }: { tex: string; display?: boolean }
  */
 export function RichText({ text, className }: { text: string; className?: string }) {
   const paras = text.split(/\n\s*\n/);
+  return <div className={className}>{paras.map((p, i) => block(p, i))}</div>;
+}
+
+/** un blocco: paragrafo, oppure righe «- …» (elenco puntato) o «1. …» (elenco numerato), con eventuale testo prima */
+function block(p: string, key: number) {
+  const lines = p.split('\n');
+  const isItem = (l: string) => /^\s*(- |\d+\. )/.test(l);
+  const first = lines.findIndex(isItem);
+  if (first < 0) return <p key={key}>{inline(p)}</p>;
+  const head = lines.slice(0, first).join('\n');
+  const items: string[] = [];
+  for (const l of lines.slice(first)) {
+    if (isItem(l)) items.push(l.replace(/^\s*(- |\d+\. )/, ''));
+    else if (items.length) items[items.length - 1] += ' ' + l.trim();
+  }
+  const ordered = /^\s*\d+\. /.test(lines[first]);
+  const list = items.map((it, j) => <li key={j}>{inline(it)}</li>);
   return (
-    <div className={className}>
-      {paras.map((p, i) => (
-        <p key={i}>{inline(p)}</p>
-      ))}
-    </div>
+    <Fragment key={key}>
+      {head.trim() && <p>{inline(head)}</p>}
+      {ordered ? <ol>{list}</ol> : <ul>{list}</ul>}
+    </Fragment>
   );
 }
 

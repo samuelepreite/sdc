@@ -88,6 +88,7 @@ Perché «principi»? Sono **assiomi**: non si dimostrano, valgono perché ciò 
         md: `Conta solo la giacitura: superfici diverse, anche curve, con la stessa normale in $x$ danno lo stesso $\\vet t_n$ (§3.2.3).
 
 Le **componenti speciali** si prendono con un asse lungo $\\hat n$ e due nel piano del taglio (§3.3):
+
 - **tensione normale** $\\boldsymbol\\sigma_n=\\sigma_n\\hat n$, $\\sigma_n=\\vet t_n\\cdot\\hat n$: tende a lacerare le facce del taglio se $\\sigma_n>0$ (trazione), a farle compenetrare se $\\sigma_n<0$ (compressione);
 - **tensione tangenziale** $\\boldsymbol\\tau_n=\\tau_n\\hat\\mu$, nel piano: tende a far scivolare una faccia sull'altra.
 
@@ -217,6 +218,7 @@ Le ECS bastano solo per un corpo rigido: se si salda la cerniera, il compasso re
         md: `È considerato il risultato principale della meccanica dei solidi: la condizione necessaria è di Cauchy (1823), la sufficiente di Poisson (1829).
 
 **Teo 3.6.1.** Dato un corpo continuo $\\mathcal B$ sotto $\\vet b$ e $\\hat{\\vet s}$, condizione necessaria e sufficiente per l'equilibrio è che:
+
 1. in ogni punto esista $\\tens T(x)\\in\\mathrm{Lin}$ con $\\vet t_n(x)=\\tens T(x)\\hat n$ per ogni $\\hat n$ (**tensore di tensione di Cauchy**);
 2. $\\operatorname{div}\\tens T+\\vet b=\\vet 0$ in ogni punto interno (**equazioni indefinite di equilibrio**);
 3. $\\tens T=\\tens T^T$ (**simmetria**).
@@ -228,6 +230,7 @@ Per la sufficienza serve anche l'equilibrio al contorno $\\tens T\\hat n=\\hat{\
         kind: 'spiega',
         title: 'Il tetraedro di Cauchy',
         md: `Si dimostra la condizione necessaria, partendo dagli assiomi di Eulero. Per il punto 1 si sceglie come parte un **tetraedro** con un vertice in $x$:
+
 - tre facce sui piani coordinati, con normali esterne $-\\hat e_1,-\\hat e_2,-\\hat e_3$ e aree $A_1,A_2,A_3$;
 - una faccia inclinata di area $A$ e normale $\\hat n$.
 
@@ -272,6 +275,7 @@ Il tetraedro è una parte interna: sulle facce agiscono solo tensioni.`,
         kind: 'spiega',
         title: 'Perché è un risultato operativo',
         md: `Il punto 1 contiene un doppio risultato (riquadro di p. 43):
+
 - **esistenza**: c'è un tensore che manda ogni giacitura nel suo vettore tensione;
 - **operatività**: in un punto ci sono $\\infty^2$ vettori tensione, uno per giacitura. Senza il teorema servirebbero $\\infty^2$ informazioni per ciascuno degli infiniti punti; con il teorema bastano i vettori tensione su **tre** giaciture mutuamente ortogonali.
 
@@ -466,6 +470,11 @@ Il segno di $\\tau$ è inessenziale: la tangenziale fa scorrere le facce del tag
 - controllo: $|\\vet t_n|^2=${f(T.dotv(TR314.t, TR314.t))}=25+20$.`,
         values: { sigma: TR314.sigma, tau: TR314.tau },
         visual: ST({ mode: 'taglio', preset: 'esercizio', presets: ['esercizio'], dir: [-54.7356, -45] }),
+      },
+      {
+        id: 'l35-5b',
+        kind: 'domanda',
+        q: { id: 'l35-q1', kind: 'scelta', q: 'Su una giacitura $|\\vet t_n|=5$ e $\\sigma_n=3$. Quanto vale $\\tau_n$?', options: ['4', '2', '8', '$\\sqrt{34}$'], correct: 0, why: '$|\\vet t_n|^2=\\sigma_n^2+\\tau_n^2$: $\\tau_n=\\sqrt{25-9}=4$ (§3.10).' },
       },
       {
         id: 'l35-6',
@@ -793,6 +802,7 @@ $$s_{1,2}=\\frac{\\sigma_1+\\sigma_2}2\\pm\\sqrt{\\Big(\\frac{\\sigma_1-\\sigma_
         md: `Solo $\\tau_{12}=\\tau>0$ (§3.16.1). Il piano di normale $\\hat e_3$ è principale e scarico; $III=0$, $II=-\\tau^2\\ne0$: biassiale.
 
 Costruzione: $A=B=C=(0,0)$, polo $P=(0,-\\tau)$, cerchio centrato nell'origine di raggio $\\tau$.
+
 - Principali $s_1=\\tau$ (trazione), $s_2=-\\tau$ (compressione), sulle **bisettrici** degli assi.
 - $\\tau_{\\max}=\\tau$, sui piani coordinati.
 

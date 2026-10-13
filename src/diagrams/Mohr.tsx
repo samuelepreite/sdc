@@ -65,7 +65,7 @@ export function Mohr({ params }: { params?: Record<string, number | string | boo
           <Lbl x={X(M.C)} y={Y(0) - 8} anchor="middle" color={MUTED}>C</Lbl>
           <line x1={X(v.s1)} y1={Y(-v.t12)} x2={X(v.s1)} y2={Y(v.t12)} stroke={MUTED} strokeDasharray="3 3" />
           <circle cx={P.x} cy={P.y} r={5} fill={OUT} />
-          <Lbl x={P.x + 8} y={P.y - 6} color={OUT}>P (polo)</Lbl>
+          <Lbl x={P.x - 8} y={P.y - 8} color={OUT} anchor="end">P (polo)</Lbl>
           <circle cx={X(v.s1)} cy={Y(v.t12)} r={3.5} fill={MUTED} />
           <Lbl x={X(v.s1) + 6} y={Y(v.t12) + 14} color={MUTED}>Q₀</Lbl>
           {/* traccia del piano per il polo e punto Q_m */}
@@ -117,23 +117,23 @@ export function Mohr({ params }: { params?: Record<string, number | string | boo
             </td>
             <td>C, R</td>
             <td>
-              {fmt(M.C, 4)} ; {fmt(M.R, 4)} {u}
+              {fmt(M.C, 4)} ; {fmt(M.R, 5)} {u}
             </td>
           </tr>
           <tr>
             <td>σₘ, τₘᵥ (α = {alphaDeg}°)</td>
             <td>
-              {fmt(q.sigma, 4)} ; {fmt(q.tau, 4)} {u}
+              {fmt(q.sigma, 5)} ; {fmt(q.tau, 5)} {u}
             </td>
             <td>σᵥ (faccia ortogonale)</td>
             <td>
-              {fmt(qo.sigma, 4)} {u}
+              {fmt(qo.sigma, 5)} {u}
             </td>
           </tr>
           <tr>
             <td>s₁, s₂ = C ± R</td>
             <td>
-              {fmt(M.sMax, 4)} ; {fmt(M.sMin, 4)} {u}
+              {fmt(M.sMax, 5)} ; {fmt(M.sMin, 5)} {u}
             </td>
             <td>γ (tan 2γ = 2τ₁₂/(σ₁ − σ₂))</td>
             <td>{fmt((M.gamma * 180) / Math.PI, 4)}°</td>

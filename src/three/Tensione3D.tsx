@@ -15,7 +15,7 @@ const MODE_LABEL = { taglio: 'Piano di taglio e vettore tensione (§3.2–3.3)',
 
 function configOf(s: StressScene): StressConfig {
   const key = s.preset ?? s.presets?.[0] ?? 'esercizio';
-  return { mode: s.mode, T: T_PRESETS[key].T, dir: s.dir ?? [30, 35] };
+  return { mode: s.mode, T: T_PRESETS[key].T, dir: s.dir ?? [-40, -50] };
 }
 
 export function Tensione3D({ scene, height = 440 }: { scene: StressScene; height?: number }) {

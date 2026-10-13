@@ -1,12 +1,12 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**Sessione 3 (13/10/2026, lavoro automatico): M2 FATTO e pubblicato.** Precedenti: sessione 2 (Fase 1 + M1), sessione 1 (Fase 0).
-- M2: motore `src/engine/deformazione.ts` + `src/engine/spettro.ts` (Jacobi, classificazione dagli invarianti), 11 test; 8 concetti, 8 lezioni, 15 domande d'orale (13 + 2 dedotte); modello V2 `src/three/deformRenderer.ts` + `Deforma3D.tsx` (modalità intorno / ellissoide / rappresentazione); diagramma `src/diagrams/Compatibilita.tsx`.
-- Infrastruttura nuova (da riusare): `src/visual/VisualHost.tsx` smista ogni visual (aggiungere un `kind` in `content/types.ts` e un ramo qui); `src/three/Stage.tsx` guscio 3D comune (Stage, Range, Chips, matTex, vecTex); `src/diagrams/svgkit.tsx` per i diagrammi SVG; `tools/stato.py` genera l'infografica da `docs/stato.json`; `tools/foto.py` fotografa una rotta della build; `tools/verifica_ui.py --lezioni=m3` percorre tutte le lezioni solo dei moduli indicati (le altre: solo la prima).
-- **M3 già iniziato (non registrato nell'app):** motore `src/engine/tensione.ts` + 10 test verdi; `src/three/stressRenderer.ts` + `Tensione3D.tsx`; diagrammi `Mohr.tsx`, `Arbelo.tsx`; contenuti scritti in `src/content/m3/` (concetti, lezioni, orale) ma **non ancora importati** in `content/index.ts`, `orale.ts`, `lezioni.ts`.
-- Scelte fatte da solo: NF-02 resta aperta (p. 32 senza figure); data dell'orale non nota → 8 settimane; facoltativi esclusi.
-- **Prossimo passo preciso:** registrare M3 (import in index/orale/lezioni), `tsc`, suite, correggere, build, `verifica_ui.py --lezioni=m3`, foto del modello V3 e di Mohr, pubblicazione, infografica (`docs/stato.json` → `python3 tools/stato.py`), commit, RIPARTENZA, copia nel progetto. Poi M4.
+**Sessione 3 (13/10/2026, lavoro automatico): M2 e M3 FATTI e pubblicati.**
+- M2 (deformazione) e M3 (tensione: `engine/tensione.ts`, `three/stressRenderer.ts` + `Tensione3D.tsx`, `diagrams/Mohr.tsx`, `Arbelo.tsx`) completi: 185 test verdi, `verifica_ui.py --lezioni=m3` 0 problemi.
+- `RichText` (ui/components/Tex.tsx) ora rende gli elenchi «- …» e «1. …» (prima uscivano in riga, anche in M1). Le tabelle markdown NON sono supportate: usare elenchi.
+- Infrastruttura: `visual/VisualHost.tsx`, `three/Stage.tsx`, `diagrams/svgkit.tsx`, `tools/stato.py` (+ `docs/stato.json`), `tools/foto.py`, `tools/fine_modulo.sh "msg"` (commit, push, archivio `.backup.b64` da caricare nel progetto come `claude/codice.tar.gz.b64`).
+- **M4 e M5 già scritti ma non registrati:** motore `engine/elastico.ts` (+ `tests/elastico.test.ts`, 8 verdi), diagrammi `Prove.tsx`, `Voigt.tsx`, `Cammino.tsx`, `Isotropia.tsx`, `Problema.tsx`; contenuti M4 in `src/content/m4/` (concetti, lezioni, orale con `P4`). M5: da scrivere i contenuti (`src/content/m5/`), domande 11–14 del Cap. 4 (usare `P4` da m4/orale).
+- **Prossimo passo preciso:** registrare M4 → `tsc`, suite, build, `verifica_ui.py --lezioni=m4`, foto dei diagrammi, pubblicazione, infografica, `fine_modulo.sh`, copia nel progetto. Poi M5, M6 (V6 trave 3D), M7, M8, Fase 3, Fase 4.
 
 ## §0c Lavoro automatico (dalla sessione 3)
 Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
@@ -38,7 +38,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 |---|---|---|
 | 0 Analisi | ✅ fatta | trascrizione, ANALISI, NOTE_FONTI, grafo (`tools/grafo.py` → `tools/grafo.json`) |
 | 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
-| 2 Moduli M2–M8 | in corso | M2 fatto (13/10); M3 iniziato |
+| 2 Moduli M2–M8 | in corso | M2, M3 fatti (13/10) |
 | 3 Orale | — | banca domande (74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore |
 | 4 Rifinitura | — | piano fino alla data dell'orale |
 

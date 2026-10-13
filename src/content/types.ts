@@ -71,7 +71,7 @@ export interface StressScene {
   view?: 'prospettiva' | 'alto' | 'normale';
 }
 
-export type SvgId = 'matrici' | 'simmetrie4' | 'divergenza' | 'compatibilita' | 'mohr' | 'arbelo';
+export type SvgId = 'matrici' | 'simmetrie4' | 'divergenza' | 'compatibilita' | 'mohr' | 'arbelo' | 'prove' | 'voigt' | 'cammino' | 'isotropia' | 'problema';
 
 export type LessonVisual =
   | { kind: 'tensori3d'; scene: TensorScene }

@@ -150,6 +150,7 @@ Serve la regolarità di $f$: senza bicontinuità non si potrebbe nemmeno dire ch
     explanation: `$\\tens H$ è adimensionale (derivate di lunghezze rispetto a lunghezze), quindi la sua norma si confronta con 1. Se è piccola, $\\tens F$ è vicino all'identità, cioè all'assenza di deformazione.
 
 Le due ipotesi non vanno confuse:
+
 - grandi spostamenti **non** implicano grandi deformazioni (un foglio piegato: il segmento tracciato resta lungo 10 cm);
 - grandi deformazioni implicano grandi spostamenti (gli spostamenti si ottengono integrando le deformazioni);
 - piccole deformazioni e grandi spostamenti: la vela; piccole e piccoli: le travi comuni; grandi deformazioni e piccoli spostamenti: impossibile.

@@ -31,6 +31,13 @@ export class StressRenderer extends BaseRenderer<StressConfig> {
   }
 
   setView(v: string) {
+    if (this.cfg.mode === 'tetraedro') {
+      const c: V3 = [0.35, 0.35, 0.35];
+      if (v === 'alto') this.setCamera([0.35, 0.34, 4.6], c);
+      else if (v === 'normale') this.setCamera(T.addv(c, T.scalev(this.normal(), 4.4)) as V3, c);
+      else this.setCamera([3.4, -2.4, 2.6], c);
+      return;
+    }
     if (v === 'alto') this.setCamera([0.001, 0.001, 5]);
     else if (v === 'normale') {
       const n = this.normal();
