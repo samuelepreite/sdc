@@ -1,9 +1,12 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**IN CORSO dalle 18:40 del 12/10/2026** (sessione 2, Fase 1). Precedente: sessione 1 FINITA alle 18:35 (Fase 0).
-- Fatto: trascrizione completa della dispensa (6 capitoli, `tools/testi/`), `ANALISI.md` (8 moduli, 57 concetti, grafo dei prerequisiti verificato, convenzioni, 8 modelli visivi), `NOTE_FONTI.md` (NF-01…NF-13, 2 da chiedere al docente), infografica di stato pubblicata.
-- **Prossimo passo preciso:** Fase 1. (1) leggere le risposte dello studente alle 3 domande (data dell'orale, domande degli anni passati/argomenti esclusi, PDF allegato); se ha allegato il PDF, rivedere le figure (NF-12) e NF-03/NF-10 con `pdftoppm -r 100 -gray` solo sulle pagine con figure; (2) aggiungere `samuelepreite/seimafi` in lettura, clonarlo in `/home/claude/seimafi` e **copiare** l'infrastruttura (vedi «Riusare SEIMAFI» nel prompt di partenza); (3) modulo M1: motore + test + lezioni guidate di c1.1…c1.7 + modello V1 (rotazione di Eulero); (4) build, Playwright, pubblicazione dell'app, infografica aggiornata.
+**FINITA alle 08:30 del 13/10/2026** (sessione 2, Fase 1). Precedente: sessione 1 FINITA il 12/10 (Fase 0).
+- Fatto: impianto ripreso da SEIMAFI e adattato all'orale (stato `sdc:v1`, FSRS con schede `q:` richiamo e `o:` orale, padronanza, sessione, piano, sincronizzazione `core`/`rec-i`/`ora-i`); **M1 completo**: 7 concetti, 7 lezioni guidate con derivazioni verificate, 13 domande d'orale (11 dalla dispensa + 2 dedotte), modello 3D dei tensori (trasforma, proiettori, assiale, Eulero) e 3 diagrammi SVG (matrici, simmetrie IV ordine, divergenza); pagine Oggi, Studia, Moduli, Orale («spiegalo a voce» con cronometro, scaletta, lavagna, figura), Progressi, Piano, Fonti, Impostazioni.
+- Verifiche: `tsc` pulito, 89 test verdi, `python3 tools/verifica_ui.py` (Chromium: tutte le pagine in chiaro/scuro e a 820 px, tutte le 7 lezioni percorse fino in fondo, 3D che disegna anche con shader PBR rotti) → 0 problemi.
+- Lo studente ha allegato il PDF della dispensa in due parti (13/10): **pagina PDF = pagina dispensa + 4** (parte 1 pp. 1–99 della numerazione PDF, parte 2 pp. 100–163). Figure del Cap. 1 controllate; NF-03 risolta. I PDF stanno solo nella chat: se il contenitore si perde, chiederli di nuovo.
+- Le 3 domande della sessione 1 (data dell'orale, domande degli anni passati, PDF) hanno ricevuto risposta solo per il PDF: data e argomenti esclusi restano da chiedere; nel frattempo facoltativi esclusi, piano su 8 settimane.
+- **Prossimo passo preciso:** M2 (analisi della deformazione, Cap. 2, pp. 15–35). (1) controllare sul PDF le figure del Cap. 2 (PDF pp. 19–39) e NF-02 (p. 32, PDF 36); (2) motore della deformazione in `src/engine/` + test; (3) concetti, lezioni (derivazioni elencate in ANALISI §4), domande d'orale del Cap. 2 (riquadro «Per l'orale»); (4) modello V2: intorno che si deforma, sfera → ellissoide, nuova modalità in `src/three/`; (5) suite, build, `tools/verifica_ui.py` (aggiungere i concetti m2 alla lista), pubblicazione, infografica, commit.
 
 ## §0b Economia di token
 - La dispensa **non si rilegge**: si leggono `tools/testi/cap-XX.md` (solo il capitolo del modulo in lavorazione). Il testo grezzo è in `tools/fonte/dispensa.txt` solo per emergenze.
@@ -13,7 +16,7 @@
 ## Dove sono le cose
 - Repository: https://github.com/samuelepreite/sdc (ramo `main`). Clonare con `git clone --depth 1`.
 - Infografica di stato: sorgente `docs/stato-sdc.html`, artifact **stesso URL ogni volta**: https://claude.ai/artifact/TQhQFzSG6QsnVv4chE4GcW (ripubblicare passando questo URL come `url`)
-- App: non ancora pubblicata (Fase 1).
+- App: https://claude.ai/artifact/M9zqUrr9t4zY2Fgqos87EJ — ripubblicare `dist-artifact/sdc.html` passando questo URL come `url`, **senza** `capabilities` (restano `db`, `user`, `downloads`). Build: `npm run build:artifact`.
 - Copia di sicurezza nel progetto Claude: `claude/codice.tar.gz.b64` (ripristino: `base64 -d codice.tar.gz.b64 | tar xz`), più `claude/RIPARTENZA.md`, `claude/ANALISI.md`, `claude/NOTE_FONTI.md`.
 - Dispensa: nel progetto Claude come «Dispensa SDC.pdf» (il tool del progetto restituisce solo testo).
 
@@ -21,16 +24,15 @@
 | Fase | Stato | Note |
 |---|---|---|
 | 0 Analisi | ✅ fatta | trascrizione, ANALISI, NOTE_FONTI, grafo (`tools/grafo.py` → `tools/grafo.json`) |
-| 1 Impianto + M1 | ⏳ prossima | |
+| 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
 | 2 Moduli M2–M8 | — | uno per sessione, sempre uno avanti allo studente |
 | 3 Orale | — | banca domande (74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore |
 | 4 Rifinitura | — | piano fino alla data dell'orale |
 
 ## Prossimi passi in ordine
-1. Fase 1 come in §0.
-2. M2 (deformazione) con il modello V2 (intorno che si deforma, sfera → ellissoide).
-3. M3 (tensione) con V3 e V4 (piano di taglio, Mohr, arbelo).
-4. M4, M5, M6 (V6 trave 3D), M7 (V7 taglio/torsione), M8 (V8 criteri).
+1. M2 (deformazione) con il modello V2 (intorno che si deforma, sfera → ellissoide).
+2. M3 (tensione) con V3 e V4 (piano di taglio, Mohr, arbelo).
+3. M4, M5, M6 (V6 trave 3D), M7 (V7 taglio/torsione), M8 (V8 criteri).
 
 ## Regole dello studente (vincolanti)
 1. Unica fonte: la dispensa (notazione, segni, ordine; ogni contenuto cita §, Def/Teo/eq., pagina).
@@ -50,7 +52,9 @@
 5. `npx tsc --noEmit -p .`, suite, build, Playwright; infografica; commit, push, pubblicazione.
 
 ## Trappole già incontrate (in questo progetto)
-- Il tool del progetto restituisce il PDF come **testo estratto**, non come PDF: niente immagini delle pagine. Chiedere allo studente di allegare il PDF in chat se servono le figure.
+- Il tool del progetto restituisce il PDF come **testo estratto**: per le figure usare i PDF allegati in chat (Read con `pages`, pagina PDF = pagina + 4).
+- Playwright sui passi delle lezioni: aspettare il ridisegno di React prima di dichiarare un passo bloccato; le domande di richiamo sono di tre tipi (scelta, vero/falso, aperta).
+- I font Google non si caricano dal contenitore (ERR_TUNNEL): errore di console da ignorare nella verifica.
 - Il primo `git push` dopo il clone di un repository vuoto può fallire con «expected 'acknowledgments'»: rilanciare `git push -u origin main`.
 - Nel testo estratto le matrici sono spezzate da caratteri `\f`: i numeri di pagina si riconoscono come riga con solo il numero seguita da «Scienza delle Costruzioni …» o da «Capitolo N».
 - Vedi anche la tabella «Trappole già incontrate» del prompt di partenza (3D, formule lunghe, FSRS, prompt notturni).
