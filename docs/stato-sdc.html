@@ -50,9 +50,9 @@ code{font-family:var(--mono);font-size:.88em}
 </style>
 <div class="wrap">
   <header>
-    <div class="eyebrow">App per l'orale di Scienza delle Costruzioni · aggiornato 13/10/2026, M4 completato</div>
-    <h1>Quarto modulo nell'app: i legami costitutivi</h1>
-    <p class="lede">M4 ha 7 lezioni guidate (una facoltativa, le isostatiche), 12 domande d'orale (le 10 della dispensa per §4.1–4.11 più 2 dedotte) e cinque diagrammi nuovi: prove di laboratorio su acciaio e calcestruzzo, creep e rilassamento, notazione di Voigt con le classi di simmetria, cammino di deformazione, provino isotropo. <b>Si prosegue con M5 (elasticità isotropa), già scritto.</b></p>
+    <div class="eyebrow">App per l'orale di Scienza delle Costruzioni · aggiornato 13/10/2026, M5 completato</div>
+    <h1>Quinto modulo nell'app: elasticità isotropa e problema elastico</h1>
+    <p class="lede">M5 ha 5 lezioni guidate con 14 derivazioni ricalcolate (isotropo ⇒ iperelastico, legame inverso, coassialità, moduli tecnici, E = 2G(1+ν), φ in E e in T, Sylvester, sovrapposizione e termine di accoppiamento) e 7 domande d'orale (le 4 restanti del Cap. 4 più 3 dedotte). <b>Si prosegue con M6 (Saint-Venant, prima parte): motore delle sezioni e modello 3D del solido già pronti.</b></p>
   </header>
 
   <section>
@@ -66,7 +66,7 @@ code{font-family:var(--mono);font-size:.88em}
     <div class="phases">
       <div class="ph ok"><b>0 · Analisi</b><span>fatta il 12/10</span></div>
       <div class="ph ok"><b>1 · Impianto + M1</b><span>fatta il 13/10</span></div>
-      <div class="ph next"><b>2 · M2–M8</b><span>M2–M4 fatti; prossimo M5</span></div>
+      <div class="ph next"><b>2 · M2–M8</b><span>M2–M5 fatti; prossimo M6</span></div>
       <div class="ph "><b>3 · Orale</b><span>simulatore, mappa</span></div>
       <div class="ph "><b>4 · Rifinitura</b><span>piano fino all'esame</span></div>
     </div>
@@ -75,9 +75,9 @@ code{font-family:var(--mono);font-size:.88em}
   <section>
     <h2>Numeri</h2>
     <div class="nums">
-      <div class="n"><strong>31/57</strong><span>concetti nell'app (M1–M4)</span></div>
-      <div class="n"><strong>56</strong><span>domande d'orale (48 dalla dispensa)</span></div>
-      <div class="n"><strong>213</strong><span>test verdi</span></div>
+      <div class="n"><strong>36/57</strong><span>concetti nell'app (M1–M5)</span></div>
+      <div class="n"><strong>63</strong><span>domande d'orale (52 dalla dispensa)</span></div>
+      <div class="n"><strong>233</strong><span>test verdi</span></div>
       <div class="n"><strong>0</strong><span>problemi nella prova del browser</span></div>
       <div class="n"><strong>4/13</strong><span>note sulla fonte risolte o confermate</span></div>
       <div class="n warn"><strong>2</strong><span>punti da chiedere al docente</span></div>
@@ -88,17 +88,18 @@ code{font-family:var(--mono);font-size:.88em}
     <section>
       <h2>Fatto</h2>
       <ul>
-        <li>Motore dei legami: lemma fondamentale con integrali veri (quadratura di Gauss), tensore elastico e simmetrie, Voigt, gruppi di simmetria, lavoro lungo un cammino, Lamé e moduli tecnici, Sylvester.</li>
-        <li>M4: 7 lezioni; lemma fondamentale e TLV, classificazione dei comportamenti, prove su acciaio e calcestruzzo, elasticità lineare (81 → 36 → 21 contati dal motore), teorema sull'energia, simmetrie materiali.</li>
-        <li>Diagrammi: curva F–ΔL dell'acciaio con scarico, calcestruzzo a controllo di carico e di deformazione, creep e rilassamento, matrice di Voigt per classe di simmetria, tre cammini a confronto (iperelastico e no).</li>
-        <li>M5 (Lamé, moduli tecnici, plausibilità, problema elastico) è già scritto: 5 lezioni e 7 domande.</li>
+        <li>M5: teorema di Lamé, isotropo sempre iperelastico, legame inverso e modulo di comprimibilità, coassialità (verificata sugli autovettori del motore).</li>
+        <li>Moduli tecnici dalle prove monoassiale e di scorrimento, E = 2G(1+ν), legami diretto e inverso; esempio numerico sull'acciaio.</li>
+        <li>Energia per isotropi in E e in T, restrizioni di plausibilità con Sylvester (minori controllati), auxetici e incomprimibilità.</li>
+        <li>Problema elastico (dati, equazioni, tipi, analogia con la trave, Hadamard), sovrapposizione e non linearità dell'energia.</li>
+        <li>Domande del Cap. 4 ora complete: 14 su 14.</li>
       </ul>
     </section>
     <section>
       <h2>Prossimo passo e scelte fatte da solo</h2>
       <ul>
-        <li>M5, elasticità isotropa: registrazione, verifica e pubblicazione; poi M6 (Saint-Venant, prima parte).</li>
-        <li>Scelta fatta da solo: le domande 11–14 del riquadro del Cap. 4 vanno in M5, che copre §4.12–4.16.</li>
+        <li>M6, Saint-Venant prima parte: Kirchhoff, formulazione, CdS, sforzo normale, flessione retta e deviata; modello 3D del solido con sezione a scelta.</li>
+        <li>Scelta fatta da solo: le figure delle pp. 117 e 121 confermano x verso sinistra e y verso il basso nei disegni della sezione (NF-10 chiusa).</li>
         <li>Scelta fatta da solo: data dell'orale non nota, piano su 8 settimane; facoltativi esclusi.</li>
       </ul>
     </section>
@@ -115,7 +116,7 @@ code{font-family:var(--mono);font-size:.88em}
 </div>
 <script>
 const M=[["M1","Algebra tensoriale",14,7],["M2","Deformazione",21,8],["M3","Tensione",30,9],["M4","Legami costitutivi",21,7],["M5","Elasticità isotropa",12,5],["M6","Saint-Venant I",27,8],["M7","Taglio e torsione",17,6],["M8","Criteri di resistenza",16,7]];
-const DONE=["M1", "M2", "M3", "M4"];
+const DONE=["M1", "M2", "M3", "M4", "M5"];
 const t=document.getElementById('tube');
 for(const [id,n,p,c] of M){const d=document.createElement('div');d.className='seg';d.style.flex=p+' 1 0';
 d.innerHTML=`<div class="bar"><div class="a"></div><div class="b" style="width:${DONE.includes(id)?100:0}%"></div></div><div class="lab">${id}</div><div class="sub">${n}<br>${c} concetti · ${p} pp.</div>`;t.appendChild(d);}

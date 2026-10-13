@@ -71,12 +71,26 @@ export interface StressScene {
   view?: 'prospettiva' | 'alto' | 'normale';
 }
 
-export type SvgId = 'matrici' | 'simmetrie4' | 'divergenza' | 'compatibilita' | 'mohr' | 'arbelo' | 'prove' | 'voigt' | 'cammino' | 'isotropia' | 'problema';
+/** Modello V6 (Cap. 5): il solido di Saint-Venant. */
+export interface BeamScene {
+  mode: 'fibre' | 'normale' | 'flessione' | 'anticlastica';
+  /** chiave di SEZIONI in engine/sezioni */
+  section?: string;
+  sections?: string[];
+  /** inclinazione di M sull'asse x, in gradi */
+  alpha?: number;
+  amp?: number;
+  controls?: ('section' | 'alpha' | 'amp')[];
+  view?: 'prospettiva' | 'lato' | 'sezione';
+}
+
+export type SvgId = 'matrici' | 'simmetrie4' | 'divergenza' | 'compatibilita' | 'mohr' | 'arbelo' | 'prove' | 'voigt' | 'cammino' | 'isotropia' | 'problema' | 'sezione' | 'cds';
 
 export type LessonVisual =
   | { kind: 'tensori3d'; scene: TensorScene }
   | { kind: 'deforma3d'; scene: DeformScene }
   | { kind: 'tensione3d'; scene: StressScene }
+  | { kind: 'trave3d'; scene: BeamScene }
   | { kind: 'svg'; id: SvgId; params?: Record<string, number | string | boolean> };
 
 /** Formula della scheda: LaTeX + etichetta + riferimento della dispensa. */

@@ -19,6 +19,7 @@ const MODES: Record<string, string[]> = {
   tensori3d: ['trasforma', 'proiettori', 'assiale', 'eulero'],
   deforma3d: ['intorno', 'ellissoide', 'rappresentazione'],
   tensione3d: ['taglio', 'tetraedro', 'parallelepipedo', 'principali'],
+  trave3d: ['fibre', 'normale', 'flessione', 'anticlastica'],
 };
 const grafo = grafoJson as { id: string; modulo: string; titolo: string; prereq: string[]; flag: string }[];
 const byId = new Map(grafo.map((g) => [g.id, g]));

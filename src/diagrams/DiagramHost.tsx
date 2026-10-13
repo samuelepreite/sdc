@@ -10,9 +10,11 @@ import { Prove } from './Prove';
 import { Voigt } from './Voigt';
 import { Cammino } from './Cammino';
 import { Isotropia } from './Isotropia';
+import { Sezione } from './Sezione';
+import { Cds } from './Cds';
 import { Problema } from './Problema';
 
-export const SVG_IDS: SvgId[] = ['matrici', 'simmetrie4', 'divergenza', 'compatibilita', 'mohr', 'arbelo', 'prove', 'voigt', 'cammino', 'isotropia', 'problema'];
+export const SVG_IDS: SvgId[] = ['matrici', 'simmetrie4', 'divergenza', 'compatibilita', 'mohr', 'arbelo', 'prove', 'voigt', 'cammino', 'isotropia', 'problema', 'sezione', 'cds'];
 
 export function DiagramHost({ id, params }: { id: SvgId; params?: Record<string, number | string | boolean> }) {
   if (id === 'matrici') return <MatrixLab params={params} />;
@@ -20,6 +22,8 @@ export function DiagramHost({ id, params }: { id: SvgId; params?: Record<string,
   if (id === 'prove') return <Prove params={params} />;
   if (id === 'problema') return <Problema />;
   if (id === 'isotropia') return <Isotropia params={params} />;
+  if (id === 'sezione') return <Sezione params={params} />;
+  if (id === 'cds') return <Cds params={params} />;
   if (id === 'cammino') return <Cammino />;
   if (id === 'voigt') return <Voigt params={params} />;
   if (id === 'mohr') return <Mohr params={params} />;

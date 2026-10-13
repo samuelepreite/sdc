@@ -1,12 +1,12 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**Sessione 3 (13/10/2026, lavoro automatico): M2, M3, M4 FATTI e pubblicati.**
-- M4 (legami costitutivi: `engine/elastico.ts`, diagrammi `Prove`, `Voigt`, `Cammino`, `Isotropia`, `Problema`; contenuti `src/content/m4/`, `P4` in m4/orale) completo: 213 test verdi, `verifica_ui.py --lezioni=m4` 0 problemi.
-- `RichText` (ui/components/Tex.tsx) rende gli elenchi «- …» e «1. …». Le tabelle markdown NON sono supportate: usare elenchi.
-- Infrastruttura: `visual/VisualHost.tsx`, `three/Stage.tsx`, `diagrams/svgkit.tsx`, `tools/stato.py` (+ `docs/stato.json`), `tools/foto.py`, `tools/registra.py N`, `tools/fine_modulo.sh "msg"` (commit, push, archivio `.backup.b64` da caricare nel progetto come `claude/codice.tar.gz.b64`).
-- **M5 scritto ma non registrato:** `src/content/m5/` (concetti c5.1–c5.5, lezioni, orale o5.1–o5.7 con le domande 11–14 del Cap. 4).
-- **Prossimo passo preciso:** `python3 tools/registra.py 5` → `tsc`, suite (il test conta 14 domande del Cap. 4), build, `verifica_ui.py --lezioni=m5`, pubblicazione, infografica, `fine_modulo.sh`, copia nel progetto. Poi M6 (V6 trave 3D), M7, M8, Fase 3, Fase 4.
+**Sessione 3 (13/10/2026, lavoro automatico): M2–M5 FATTI e pubblicati.**
+- M5 (elasticità isotropa, problema elastico: `src/content/m5/`, domande 11–14 del Cap. 4 con `P4`) completo: 233 test verdi, `verifica_ui.py --lezioni=m5` 0 problemi.
+- `RichText` rende gli elenchi «- …» e «1. …»; tabelle markdown NON supportate. Testi dei capitoli in `tools/testi/cap-XX.md` (usare quelli, non il PDF).
+- Infrastruttura: `visual/VisualHost.tsx`, `three/Stage.tsx`, `diagrams/svgkit.tsx`, `tools/stato.py` (+ `docs/stato.json`), `tools/foto.py`, `tools/registra.py N`, `tools/fine_modulo.sh "msg"`.
+- **M6 scritto ma non registrato:** motore `engine/sezioni.ts` (+ `tests/sezioni.test.ts`, 17 verdi), modello V6 `three/beamRenderer.ts` + `Trave3D.tsx` (kind `trave3d`, modi fibre/normale/flessione/anticlastica), diagrammi `Sezione.tsx` (schede ecdi/deviata/nocciolo) e `Cds.tsx`; contenuti `src/content/m6/` (c6.1–c6.8, lezioni, orale o6.1–o6.12 con `P5`). NF-10 chiusa (x a sinistra, y in basso, pp. 117 e 121).
+- **Prossimo passo preciso:** `python3 tools/registra.py 6` → `tsc`, suite, build, foto del modello 3D (`tools/foto.py`), `verifica_ui.py --lezioni=m6`, pubblicazione, infografica, `fine_modulo.sh`, copia nel progetto. Poi M7 (domande 10–12 del Cap. 5 con `P5` da m6/orale; il test conta 12 domande del Cap. 5 quando ci sono m6 e m7), M8, Fase 3, Fase 4.
 
 ## §0c Lavoro automatico (dalla sessione 3)
 Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
@@ -38,7 +38,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 |---|---|---|
 | 0 Analisi | ✅ fatta | trascrizione, ANALISI, NOTE_FONTI, grafo (`tools/grafo.py` → `tools/grafo.json`) |
 | 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
-| 2 Moduli M2–M8 | in corso | M2, M3, M4 fatti (13/10) |
+| 2 Moduli M2–M8 | in corso | M2–M5 fatti (13/10) |
 | 3 Orale | — | banca domande (74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore |
 | 4 Rifinitura | — | piano fino alla data dell'orale |
 

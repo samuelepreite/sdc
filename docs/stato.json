@@ -1,12 +1,13 @@
 {
-  "quando": "13/10/2026, M4 completato",
-  "titolo": "Quarto modulo nell'app: i legami costitutivi",
-  "lede": "M4 ha 7 lezioni guidate (una facoltativa, le isostatiche), 12 domande d'orale (le 10 della dispensa per §4.1–4.11 più 2 dedotte) e cinque diagrammi nuovi: prove di laboratorio su acciaio e calcestruzzo, creep e rilassamento, notazione di Voigt con le classi di simmetria, cammino di deformazione, provino isotropo. <b>Si prosegue con M5 (elasticità isotropa), già scritto.</b>",
+  "quando": "13/10/2026, M5 completato",
+  "titolo": "Quinto modulo nell'app: elasticità isotropa e problema elastico",
+  "lede": "M5 ha 5 lezioni guidate con 14 derivazioni ricalcolate (isotropo ⇒ iperelastico, legame inverso, coassialità, moduli tecnici, E = 2G(1+ν), φ in E e in T, Sylvester, sovrapposizione e termine di accoppiamento) e 7 domande d'orale (le 4 restanti del Cap. 4 più 3 dedotte). <b>Si prosegue con M6 (Saint-Venant, prima parte): motore delle sezioni e modello 3D del solido già pronti.</b>",
   "moduli_fatti": [
     "M1",
     "M2",
     "M3",
-    "M4"
+    "M4",
+    "M5"
   ],
   "fasi": [
     {
@@ -21,7 +22,7 @@
     },
     {
       "t": "2 · M2–M8",
-      "s": "M2–M4 fatti; prossimo M5",
+      "s": "M2–M5 fatti; prossimo M6",
       "cls": "next"
     },
     {
@@ -35,15 +36,15 @@
   ],
   "numeri": [
     {
-      "v": "31/57",
-      "l": "concetti nell'app (M1–M4)"
+      "v": "36/57",
+      "l": "concetti nell'app (M1–M5)"
     },
     {
-      "v": "56",
-      "l": "domande d'orale (48 dalla dispensa)"
+      "v": "63",
+      "l": "domande d'orale (52 dalla dispensa)"
     },
     {
-      "v": "213",
+      "v": "233",
       "l": "test verdi"
     },
     {
@@ -61,14 +62,15 @@
     }
   ],
   "fatto": [
-    "Motore dei legami: lemma fondamentale con integrali veri (quadratura di Gauss), tensore elastico e simmetrie, Voigt, gruppi di simmetria, lavoro lungo un cammino, Lamé e moduli tecnici, Sylvester.",
-    "M4: 7 lezioni; lemma fondamentale e TLV, classificazione dei comportamenti, prove su acciaio e calcestruzzo, elasticità lineare (81 → 36 → 21 contati dal motore), teorema sull'energia, simmetrie materiali.",
-    "Diagrammi: curva F–ΔL dell'acciaio con scarico, calcestruzzo a controllo di carico e di deformazione, creep e rilassamento, matrice di Voigt per classe di simmetria, tre cammini a confronto (iperelastico e no).",
-    "M5 (Lamé, moduli tecnici, plausibilità, problema elastico) è già scritto: 5 lezioni e 7 domande."
+    "M5: teorema di Lamé, isotropo sempre iperelastico, legame inverso e modulo di comprimibilità, coassialità (verificata sugli autovettori del motore).",
+    "Moduli tecnici dalle prove monoassiale e di scorrimento, E = 2G(1+ν), legami diretto e inverso; esempio numerico sull'acciaio.",
+    "Energia per isotropi in E e in T, restrizioni di plausibilità con Sylvester (minori controllati), auxetici e incomprimibilità.",
+    "Problema elastico (dati, equazioni, tipi, analogia con la trave, Hadamard), sovrapposizione e non linearità dell'energia.",
+    "Domande del Cap. 4 ora complete: 14 su 14."
   ],
   "prossimo": [
-    "M5, elasticità isotropa: registrazione, verifica e pubblicazione; poi M6 (Saint-Venant, prima parte).",
-    "Scelta fatta da solo: le domande 11–14 del riquadro del Cap. 4 vanno in M5, che copre §4.12–4.16.",
+    "M6, Saint-Venant prima parte: Kirchhoff, formulazione, CdS, sforzo normale, flessione retta e deviata; modello 3D del solido con sezione a scelta.",
+    "Scelta fatta da solo: le figure delle pp. 117 e 121 confermano x verso sinistra e y verso il basso nei disegni della sezione (NF-10 chiusa).",
     "Scelta fatta da solo: data dell'orale non nota, piano su 8 settimane; facoltativi esclusi."
   ],
   "da_te": [

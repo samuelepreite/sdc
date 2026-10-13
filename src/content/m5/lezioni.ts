@@ -231,6 +231,7 @@ Esempio della dispensa: una piccola sfera isotropa in compressione isotropa (imm
               tex: '=\\frac{2\\mu+2\\lambda}{2\\mu(2\\mu+3\\lambda)}s=\\frac{\\mu+\\lambda}{\\mu(2\\mu+3\\lambda)}s=\\frac sE',
               why: 'Denominatore comune; si definisce il **modulo di Young** $E:=\\frac{\\mu(2\\mu+3\\lambda)}{\\mu+\\lambda}$: è la legge di Hooke $s=E\\varepsilon_1$.',
               val: (v) => (TT(v)[0] * (v.mu + v.la)) / (v.mu * (2 * v.mu + 3 * v.la)),
+              eq: '§4.13.1',
             },
           ],
           checks: [
@@ -266,6 +267,7 @@ Esempio della dispensa: una piccola sfera isotropa in compressione isotropa (imm
               tex: '\\frac{\\gamma_{12}}2=\\frac{\\tau}{2G}\\ \\Rightarrow\\ \\tau=G\\gamma_{12},\\quad G:=\\mu',
               why: 'Con $E_{12}=\\gamma_{12}/2$ e $\\gamma_{12}=\\frac\\pi2-\\theta$: il **modulo di elasticità tangenziale** coincide con $\\mu$.',
               val: (v) => TT(v)[1] / (2 * tech(v).G),
+              eq: '§4.13.2',
             },
           ],
         },
@@ -419,6 +421,7 @@ Per un iperelastico significa $\\varphi(\\tens E)>0$: per passare dalla configur
         md: 'Si chiede che $\\varphi(\\tens E)$ sia definita positiva come forma quadratica in $(e_1,e_2,e_3)$.',
         source: D(4, '4.15.2', undefined, '92–93'),
         der: {
+          sample,
           lines: [
             { tex: '\\varphi=\\big(\\mu+\\tfrac\\lambda2\\big)(e_1^2+e_2^2+e_3^2)+\\tfrac\\lambda2(2e_1e_2+2e_2e_3+2e_3e_1)', why: 'Si moltiplica e divide per 2 il secondo termine: quadrati in diagonale, doppi prodotti fuori.' },
             { tex: '[A]=\\begin{bmatrix}\\mu+\\frac\\lambda2&\\frac\\lambda2&\\frac\\lambda2\\\\\\frac\\lambda2&\\mu+\\frac\\lambda2&\\frac\\lambda2\\\\\\frac\\lambda2&\\frac\\lambda2&\\mu+\\frac\\lambda2\\end{bmatrix},\\quad\\varphi=\\{x\\}^T[A]\\{x\\}', why: 'Matrice dei coefficienti.' },
