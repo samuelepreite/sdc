@@ -13,7 +13,7 @@ import { Chips, Range, Stage } from './Stage';
 const MODE_LABEL = { clebsch: 'Congettura di Clebsch: rotazione e ingobbamento (§5.8.1)', prandtl: 'Funzione di Prandtl F sulla sezione (§5.8.3)' };
 
 function configOf(s: TorsionScene): TorsionConfig {
-  return { mode: s.mode, section: s.section ?? s.sections?.[0] ?? 'quadrato', twist: s.twist ?? 60, warp: s.warp ?? 1 };
+  return { mode: s.mode, section: s.section ?? s.sections?.[0] ?? 'quadrato', twist: s.twist ?? 40, warp: s.warp ?? 1 };
 }
 
 export function Torsione3D({ scene, height = 440 }: { scene: TorsionScene; height?: number }) {

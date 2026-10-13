@@ -422,7 +422,7 @@ $q$ è un fattore di efficienza: quanto la sezione è meno rigida a torsione di 
                 return (f(x + h, y) + f(x - h, y) + f(x, y + h) + f(x, y - h) - 4 * f(x, y)) / (h * h);
               },
             },
-            { tex: '=2\\ ✓', why: '…e vale 2.', val: () => 2 },
+            { tex: '=2\\ ✓', why: '…e vale 2.', val: () => 2, eq: '§5.8.5' },
           ],
         },
       },

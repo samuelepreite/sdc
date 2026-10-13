@@ -20,7 +20,7 @@ import { OralList } from './pages';
 const KIND_LABEL: Record<OralQ['kind'], string> = { espositiva: 'espositiva', collegamento: 'collegamento', trabocchetto: 'trabocchetto' };
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 
-export function OralRunner({ o, onDone }: { o: OralQ; onDone?: () => void }) {
+export function OralRunner({ o, onDone }: { o: OralQ; onDone?: (r: { points: number; total: number; seconds: number }) => void }) {
   const { update } = useApp();
   const [phase, setPhase] = useState<'espongo' | 'confronto' | 'fatto'>('espongo');
   const [secs, setSecs] = useState(0);
@@ -38,7 +38,7 @@ export function OralRunner({ o, onDone }: { o: OralQ; onDone?: () => void }) {
   const submit = () => {
     update((s) => addOral(s, { qid: o.id, at: new Date().toISOString(), points: ticked, total: o.scaletta.length, seconds: secs }));
     setPhase('fatto');
-    onDone?.();
+    onDone?.({ points: ticked.length, total: o.scaletta.length, seconds: secs });
   };
   const share = o.scaletta.length ? ticked.length / o.scaletta.length : 0;
   return (

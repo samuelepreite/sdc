@@ -1,0 +1,133 @@
+/**
+ * Domande d'orale del Cap. 6 (M8): le 10 del riquadro «Per l'orale» (p. 159) più tre dedotte.
+ */
+import { D } from '../../engine/types';
+import type { OralQ } from '../types';
+
+const P6 = (n: number) => D(6, '6.10', `«Per l'orale», domanda ${n}`, 159);
+
+export const M8_ORALE: OralQ[] = [
+  {
+    id: 'o8.1',
+    kind: 'espositiva',
+    q: 'Duttili e fragili; tensione limite; verifica di resistenza monoassiale.',
+    concepts: ['c8.1'],
+    source: P6(1),
+    scaletta: ['Problemi di risposta e problemi di verifica; crisi locale e globale.', 'Duttili (acciaio, ±σ_y) e fragili (calcestruzzo, σ_c ≫ σ_t).', 'Stato di esercizio, verifica nel punto.', 'σ_L = σ_y per i duttili, σ_R per i fragili; dominio $[\\sigma_L^c,\\sigma_L^t]$.'],
+    lavagna: [{ tex: '\\sigma_L^c\\le\\sigma_{es}\\le\\sigma_L^t', rif: '§6.2.2' }],
+    figura: 'Diagrammi σ–ε di acciaio e calcestruzzo (p. 145); segmento del dominio (p. 146).',
+  },
+  {
+    id: 'o8.2',
+    kind: 'espositiva',
+    q: 'Coefficiente di sicurezza, tensione ammissibile, dominio di sicurezza (tensioni ammissibili).',
+    concepts: ['c8.1'],
+    source: P6(2),
+    scaletta: ['Incertezze su geometria, carichi, modello, resistenza; non si lambisce la crisi.', 'Def 6.2.1: $\\nu\\ge1$ divisore delle resistenze, $\\sigma_{adm}=\\sigma_L/\\nu$ (ν di sicurezza, NF-08).', 'Valori: acciaio 1,7–1,8, legno 2,5, calcestruzzo 3, muratura 4–10; più bassi per i duttili.', 'Metodo delle tensioni ammissibili; dominio di sicurezza dentro quello di resistenza.'],
+    lavagna: [{ tex: '\\sigma_{adm}=\\frac{\\sigma_L}\\nu', rif: 'Def 6.2.1' }],
+  },
+  {
+    id: 'o8.3',
+    kind: 'espositiva',
+    q: 'Perché servono i criteri; tensione ideale e funzione di crisi; riduzione allo spazio delle tensioni principali.',
+    concepts: ['c8.2'],
+    source: P6(3),
+    scaletta: ['Dominio limite a 6 dimensioni proibitivo; prove monoassiali.', 'Tra vettori non c’è ordinamento univoco.', 'Def 6.3.1: tensione ideale ugualmente pericolosa; funzione di crisi da una congettura.', 'Isotropi: $F(s_1,s_2,s_3)$; procedura e $\\sigma_{id}\\le\\sigma_L$; resistenze diverse, due funzioni.'],
+    lavagna: [{ tex: 'F(s_1,s_2,s_3)\\le F(\\sigma_L,0,0)\\iff\\sigma_{id}\\le\\sigma_L', rif: '§6.3.3' }],
+  },
+  {
+    id: 'o8.4',
+    kind: 'espositiva',
+    q: 'Galileo, Tresca (Lüders), Grashof (coassialità), Beltrami: congetture, ipotesi, tensioni ideali, campi di applicazione.',
+    concepts: ['c8.3', 'c8.4'],
+    source: P6(4),
+    scaletta: ['Galileo: estremi della tensione normale, $s_1$ e $s_3$; storico.', 'Tresca: tangenziale massima, Lüders, $s_1-s_3$; duttili, uguale resistenza.', 'Grashof: dilatazione massima, coassialità, $s_1-\\nu(s_2+s_3)$; ghisa.', 'Beltrami: energia φ, $\\sqrt{\\sum s_i^2-2\\nu\\sum s_is_j}$; uguale resistenza.'],
+    lavagna: [
+      { tex: '\\sigma_{id}^{T}=s_1-s_3', rif: '§6.4.2' },
+      { tex: '\\sigma_{id}^{t}=s_1-\\nu(s_2+s_3)', rif: '§6.4.3' },
+    ],
+    figura: 'Linee di Lüders e cerchio di Mohr con τ_max = σ_L/2 (p. 149).',
+  },
+  {
+    id: 'o8.5',
+    kind: 'espositiva',
+    q: 'La confutazione di Huber e cosa implica.',
+    concepts: ['c8.4'],
+    source: P6(5),
+    scaletta: ['Punto immerso: $\\tens T=-\\rho gh\\,\\tens I$.', 'Beltrami: $\\sigma_{id}=\\rho gh\\sqrt{3-6\\nu}$, crisi a $h_L$.', 'Nessuna crisi osservata per $h\\gg h_L$: un controesempio basta.', 'Implicazione: la parte idrostatica non porta alla crisi; serve un criterio sulle sole differenze (von Mises).'],
+    lavagna: [{ tex: 'h_L=\\frac{\\sigma_L}{\\rho g\\sqrt{3-6\\nu}}', rif: '§6.4.5' }],
+    figura: 'Il punto immerso a profondità h (p. 151).',
+  },
+  {
+    id: 'o8.6',
+    kind: 'espositiva',
+    q: 'II teorema di decomposizione; decomposizione del legame e dell’energia per isotropi; energia distorcente; dimostrazione di von Mises.',
+    concepts: ['c8.5'],
+    source: P6(6),
+    scaletta: ['Teo 6.5.1: parti sferica e deviatorica, uniche, ortogonali.', 'Significato su E (volume/forma) e su T (σ_m, scostamento dall’idrostatico).', 'Isotropi: $\\tens T_s=\\mathbb A\\tens E_s$, $\\tens T_d=2\\mu\\tens E_d$; $\\varphi=\\varphi(\\tens E_s)+\\varphi(\\tens E_d)$.', 'Def 6.5.2 e $\\varphi_d=\\frac1{12\\mu}\\sum(s_i-s_j)^2$; confronto con $\\sigma_L^2/(6\\mu)$; Teo 6.5.3.'],
+    lavagna: [
+      { tex: '\\varphi_d=\\frac1{4\\mu}\\Big[\\tens T\\cdot\\tens T-\\frac13(\\operatorname{tr}\\tens T)^2\\Big]', rif: '§6.5.2' },
+      { tex: '\\sigma_{id}=\\sqrt{\\tfrac12\\sum(s_i-s_j)^2}', rif: 'Teo 6.5.3' },
+    ],
+  },
+  {
+    id: 'o8.7',
+    kind: 'espositiva',
+    q: 'Criteri pressure insensitive; Huber a segni invertiti; quando von Mises e quando Beltrami.',
+    concepts: ['c8.5', 'c8.4'],
+    source: P6(7),
+    scaletta: ['Von Mises e Tresca dipendono dalle differenze: allo stato di Huber σ_id = 0.', 'Trazione uniforme: nella realtà rottura per decoesione; von Mises dà 0, Beltrami no.', 'Stati rari nelle strutture, dove prevale la compressione.', 'Procedura: $\\sigma_m\\le0$ von Mises, $\\sigma_m>0$ Beltrami.'],
+  },
+  {
+    id: 'o8.8',
+    kind: 'espositiva',
+    q: 'Mohr–Coulomb: attrito, coesione, dominio nel piano di Mohr, cerchio massimo.',
+    concepts: ['c8.6'],
+    source: P6(8),
+    scaletta: ['Crisi attritiva; Coulomb $T<-N\\tan\\phi$; coesione.', '$|\\tau|<c-\\sigma\\tan\\phi$; semirette per $(c/\\tan\\phi,0)$ e $(0,\\pm c)$.', 'Arbelo e cerchio massimo: interno, tangente, esterno.', 'In principali: $(s_1-s_3)+(s_1+s_3)\\sin\\phi\\le2c\\cos\\phi$, dalla distanza centro–retta.'],
+    lavagna: [{ tex: '|\\tau|<c-\\sigma\\tan\\phi', rif: '§6.6' }],
+    figura: 'Dominio di Mohr–Coulomb con un cerchio interno e uno tangente (p. 154).',
+  },
+  {
+    id: 'o8.9',
+    kind: 'espositiva',
+    q: 'Tensioni ideali alla Saint-Venant (Tresca, von Mises, Grashof).',
+    concepts: ['c8.7'],
+    source: P6(9),
+    scaletta: ['Stato con $\\sigma_z$, $\\tau_{zx}$, $\\tau_{zy}$: al più biassiale; principali $\\frac{\\sigma_z}2\\pm\\frac12\\sqrt{\\sigma_z^2+4\\tau_z^2}$ e una nulla (indici come nomi, NF-09).', 'Tresca $\\sqrt{\\sigma_z^2+4\\tau_z^2}$.', 'Von Mises $\\sqrt{\\sigma_z^2+3\\tau_z^2}$, con $s_1^2+s_2^2=\\sigma_z^2+2\\tau_z^2$.', 'Grashof $\\frac{1-\\nu}2\\sigma_z\\pm\\frac{1+\\nu}2\\sqrt{\\sigma_z^2+4\\tau_z^2}$; controprova con il puro taglio.'],
+    lavagna: [{ tex: '\\sigma_{id}^{vM}=\\sqrt{\\sigma_z^2+3\\tau_z^2}', rif: '§6.7' }],
+  },
+  {
+    id: 'o8.10',
+    kind: 'espositiva',
+    q: 'Estensione alle travature; schema di verifica e di progetto di un telaio.',
+    concepts: ['c8.7'],
+    source: P6(10),
+    scaletta: ['Un capannone non è un solido di Saint-Venant; regioni B con le stesse CdS.', 'CdS → Saint-Venant → criteri.', 'Verifica: sezioni critiche, punti pericolosi (lembi, attacco ala–anima, corda baricentrica), tabella delle σ_id.', 'Progetto: predimensionamento a flessione con $|M|_{\\max}$, arrotondamento, verifica anche dove c’è taglio.'],
+    figura: 'Il portale ABCD con carico q (p. 157).',
+  },
+  {
+    id: 'o8.11',
+    kind: 'collegamento',
+    q: 'L’energia specifica compare nei Capitoli 4, 5 e 6: che ruolo ha in ciascuno?',
+    concepts: ['c4.5', 'c5.3', 'c8.4', 'c8.5'],
+    source: { kind: 'deduzione', da: '§4.9, §4.14–4.15, §5.4.4, §6.4.4, §6.5', spiegazione: 'La dispensa usa φ per l’iperelasticità, per la plausibilità, per Clapeyron e per due criteri: la domanda chiede di ricucire il filo.' },
+    scaletta: ['Cap. 4: esistenza di φ ⟺ 𝔸 = 𝔸ᵀ; plausibilità 𝔸 ∈ Pos⁺ (φ > 0).', 'Cap. 4–5: non linearità di φ; Clapeyron Φ = ½NΔL.', 'Cap. 6: Beltrami usa tutta φ (confutato da Huber).', 'Von Mises usa solo la parte distorcente, grazie alla decomposizione ortogonale per isotropi.'],
+  },
+  {
+    id: 'o8.12',
+    kind: 'trabocchetto',
+    q: 'Tresca e von Mises danno la stessa tensione ideale?',
+    concepts: ['c8.3', 'c8.5'],
+    source: { kind: 'deduzione', da: '§6.4.2, §6.5, §6.7', spiegazione: 'Entrambi dipendono dalle differenze e coincidono in trazione semplice, ma non in generale: il puro taglio li separa.' },
+    scaletta: ['Coincidono negli stati monoassiali (vertici dell’esagono sul cerchio).', 'In generale no: puro taglio, Tresca 2τ, von Mises √3 τ.', 'Alla Saint-Venant: $\\sqrt{\\sigma_z^2+4\\tau_z^2}$ contro $\\sqrt{\\sigma_z^2+3\\tau_z^2}$; Tresca è più cautelativo.'],
+  },
+  {
+    id: 'o8.13',
+    kind: 'trabocchetto',
+    q: 'Nel Cap. 6 il simbolo ν indica il coefficiente di Poisson?',
+    concepts: ['c8.1', 'c8.3'],
+    source: { kind: 'deduzione', da: 'Def 6.2.1, §6.4.3–6.4.4, NF-08', spiegazione: 'La dispensa usa ν per due grandezze diverse nello stesso capitolo.' },
+    scaletta: ['Dipende: nella Def 6.2.1 è il coefficiente di sicurezza (≥ 1).', 'In Grashof, Beltrami e §6.7 è il coefficiente di Poisson (0 < ν ≤ ½).', 'All’orale conviene dichiararlo esplicitamente.'],
+  },
+];

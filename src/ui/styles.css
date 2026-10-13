@@ -2963,3 +2963,27 @@ main.route > *,
 .oral-q {
   display: block;
 }
+
+/* ---------------------------------------------------------------- Fase 3: mappa dei concetti e simulatore */
+.map-col { font: 600 12px/1 system-ui, sans-serif; fill: var(--muted); }
+.map-node rect { fill: var(--card); stroke: var(--line); stroke-width: 1.4; }
+.map-node { cursor: pointer; }
+.map-node.st-mid rect { fill: var(--warn-bg); stroke: var(--ded); }
+.map-node.st-ok rect { fill: var(--ok-bg); stroke: var(--ok); }
+.map-node.sel rect { stroke: var(--accent); stroke-width: 3; }
+.map-node.up rect { stroke: var(--accent); stroke-width: 2; }
+.map-node.down rect { stroke: var(--flux-out); stroke-width: 2; }
+.map-node.dim { opacity: 0.35; }
+.map-node:focus-visible rect { stroke: var(--accent); stroke-width: 3; }
+.map-id { font: 600 11px/1 ui-monospace, monospace; fill: var(--muted); }
+.map-title { font: 500 11px/1.2 system-ui, sans-serif; fill: var(--ink); }
+.map-edge { fill: none; stroke: var(--line); stroke-width: 1.2; }
+.map-edge.on { stroke: var(--accent); stroke-width: 2; }
+.map-edge.dim { opacity: 0.25; }
+.map-arrowhead { fill: var(--muted); }
+.map-key { display: inline-block; padding: 2px 8px; border-radius: 6px; border: 1px solid var(--line); margin-right: 6px; }
+.map-key.st-mid { background: var(--warn-bg); border-color: var(--ded); }
+.map-key.st-ok { background: var(--ok-bg); border-color: var(--ok); }
+.map-key.fac { border-style: dashed; }
+.sim-bar { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; }
+button.link { background: none; border: none; color: var(--accent); padding: 0; text-decoration: underline; cursor: pointer; }

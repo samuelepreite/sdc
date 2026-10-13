@@ -119,7 +119,7 @@ function Flusso({ sec, setSec }: { sec: string; setSec: (s: string) => void }) {
           </tr>
           <tr>
             <td>angolo unitario γ = q M_z/(G J₀)</td>
-            <td>{fmt((g.q * Mz) / (8077 * g.J0) * 1e5, 4)} ·10⁻⁵ rad/cm (acciaio, G = 80 770 MPa, esempio)</td>
+            <td>{((g.q * Mz) / (8077 * g.J0)).toExponential(3).replace('.', ',')} rad/cm (acciaio, G = 80 770 MPa, esempio)</td>
           </tr>
         </tbody>
       </table>

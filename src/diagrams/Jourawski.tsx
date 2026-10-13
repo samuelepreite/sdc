@@ -45,7 +45,7 @@ export function Jourawski({ params }: { params?: Record<string, number | string 
           <path d={path(pr.poly)} fill="rgba(100,116,139,0.14)" stroke="var(--ink, #1e293b)" strokeWidth={1.6} />
           {below.length >= 3 && <path d={path(below)} fill="rgba(202,138,4,0.28)" stroke="none" />}
           <line x1={cx + 1.3 * R * k} y1={cy} x2={cx - 1.3 * R * k} y2={cy} stroke={MUTED} strokeDasharray="4 3" />
-          <Lbl x={cx - 1.32 * R * k} y={cy - 6} color={MUTED} anchor="end">
+          <Lbl x={cx - 1.28 * R * k} y={cy - 8} color={MUTED}>
             x ≡ n
           </Lbl>
           <Arrow x1={cx} y1={cy - 1.2 * R * k} x2={cx} y2={cy + 1.25 * R * k} color={MUTED} w={1.2} />

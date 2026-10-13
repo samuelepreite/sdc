@@ -1,12 +1,12 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**Sessione 3 (13/10/2026, lavoro automatico): M2–M6 FATTI e pubblicati.**
-- M6 (Saint-Venant I: `engine/sezioni.ts`, V6 `three/beamRenderer.ts` + `Trave3D.tsx` kind `trave3d`, diagrammi `Sezione.tsx`, `Cds.tsx`, contenuti `src/content/m6/` con `P5`) completo: 282 test verdi, `verifica_ui.py --lezioni=m6` 0 problemi. NF-10 chiusa.
-- `RichText` rende gli elenchi; tabelle markdown NON supportate. Testi dei capitoli in `tools/testi/cap-XX.md`. Nelle derivazioni la tolleranza dei `val` è 1e-9: niente quadrature approssimate, derivate numeriche solo su polinomi con passo ≥ 1e-3.
-- **M7 scritto ma non registrato:** `engine/taglio.ts`, `engine/torsione.ts` (+ `tests/taglio_torsione.test.ts`, 12 verdi), V7 `three/torsionRenderer.ts` + `Torsione3D.tsx` (kind `torsione3d`, modi clebsch/prandtl), diagrammi `Jourawski.tsx`, `Torsione.tsx`; contenuti `src/content/m7/` (c7.1–c7.6, orale o7.1–o7.6 con le domande 10–12 del Cap. 5). Nuova NF-14 (tubolare chiuso/aperto, p. 138).
-- **M8 in corso:** `engine/criteri.ts` (+ `tests/criteri.test.ts`, 10 verdi), V8 `three/criteriRenderer.ts` + `Criteri3D.tsx` (kind `criteri3d`), diagramma `Criteri.tsx` (schede verifica/piano/mohr). Da scrivere `src/content/m8/` (domande 1–10 del Cap. 6).
-- **Prossimo passo preciso:** `python3 tools/registra.py 7` → ciclo di M7 (`verifica_ui.py --lezioni=m7`); poi contenuti M8 e ciclo; poi Fase 3, Fase 4.
+**Sessione 3 (13/10/2026, lavoro automatico): M2–M7 FATTI e pubblicati.**
+- M7 (taglio e torsione: `engine/taglio.ts`, `engine/torsione.ts`, V7 `three/torsionRenderer.ts` + `Torsione3D.tsx` kind `torsione3d`, diagrammi `Jourawski.tsx`, `Torsione.tsx`, contenuti `src/content/m7/`) completo: 328 test verdi, `verifica_ui.py --lezioni=m7` 0 problemi. NF-14 aperta (p. 138).
+- `RichText` rende gli elenchi; tabelle markdown NON supportate. Testi in `tools/testi/cap-XX.md`. Nei `val` delle derivazioni tolleranza 1e-9: niente quadrature approssimate, derivate numeriche solo su polinomi con passo ≥ 1e-3.
+- **M8 scritto ma non registrato:** `engine/criteri.ts` (+ test), V8 `three/criteriRenderer.ts` + `Criteri3D.tsx` (kind `criteri3d`), `diagrams/Criteri.tsx`, contenuti `src/content/m8/` (c8.1–c8.7, orale o8.1–o8.13 con le 10 domande del Cap. 6).
+- **Fase 3 scritta, non collegata:** `learning/simulatore.ts` (+ `tests/simulatore.test.ts`), `ui/pages/simulatore.tsx`, `ui/pages/mappa.tsx`, CSS in coda a `styles.css`; `OralRunner.onDone` ora passa {points,total,seconds}. Da aggiungere le rotte `mappa` e `simulatore` in `App.tsx` (NAV, Router) e in `Altro`.
+- **Prossimo passo preciso:** `python3 tools/registra.py 8` → ciclo di M8 (`verifica_ui.py --lezioni=m8`); poi rotte della Fase 3 e ciclo; poi Fase 4 (piano: link al simulatore, rifinitura).
 
 ## §0c Lavoro automatico (dalla sessione 3)
 Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
@@ -38,7 +38,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 |---|---|---|
 | 0 Analisi | ✅ fatta | trascrizione, ANALISI, NOTE_FONTI, grafo (`tools/grafo.py` → `tools/grafo.json`) |
 | 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
-| 2 Moduli M2–M8 | in corso | M2–M6 fatti (13/10) |
+| 2 Moduli M2–M8 | in corso | M2–M7 fatti (13/10) |
 | 3 Orale | — | banca domande (74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore |
 | 4 Rifinitura | — | piano fino alla data dell'orale |
 
