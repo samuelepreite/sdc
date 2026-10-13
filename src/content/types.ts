@@ -84,13 +84,36 @@ export interface BeamScene {
   view?: 'prospettiva' | 'lato' | 'sezione';
 }
 
-export type SvgId = 'matrici' | 'simmetrie4' | 'divergenza' | 'compatibilita' | 'mohr' | 'arbelo' | 'prove' | 'voigt' | 'cammino' | 'isotropia' | 'problema' | 'sezione' | 'cds';
+/** Modello V7 (Cap. 5): la torsione. */
+export interface TorsionScene {
+  mode: 'clebsch' | 'prandtl';
+  /** chiave di SEZ_TORSIONE in engine/torsione */
+  section?: string;
+  sections?: string[];
+  twist?: number;
+  warp?: number;
+  controls?: ('section' | 'twist' | 'warp')[];
+  view?: 'prospettiva' | 'lato' | 'sezione';
+}
+
+/** Modello V8 (Cap. 6): criteri nello spazio delle tensioni principali. */
+export interface CriteriScene {
+  mode: 'spazio';
+  stato?: 'trazione' | 'taglio' | 'huber' | 'generico';
+  p?: number;
+  show?: ('vonMises' | 'tresca' | 'beltrami' | 'galileo')[];
+  view?: 'prospettiva' | 'asse';
+}
+
+export type SvgId = 'matrici' | 'simmetrie4' | 'divergenza' | 'compatibilita' | 'mohr' | 'arbelo' | 'prove' | 'voigt' | 'cammino' | 'isotropia' | 'problema' | 'sezione' | 'cds' | 'jourawski' | 'torsione' | 'criteri';
 
 export type LessonVisual =
   | { kind: 'tensori3d'; scene: TensorScene }
   | { kind: 'deforma3d'; scene: DeformScene }
   | { kind: 'tensione3d'; scene: StressScene }
   | { kind: 'trave3d'; scene: BeamScene }
+  | { kind: 'torsione3d'; scene: TorsionScene }
+  | { kind: 'criteri3d'; scene: CriteriScene }
   | { kind: 'svg'; id: SvgId; params?: Record<string, number | string | boolean> };
 
 /** Formula della scheda: LaTeX + etichetta + riferimento della dispensa. */

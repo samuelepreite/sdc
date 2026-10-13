@@ -230,7 +230,7 @@ export class BeamRenderer extends BaseRenderer<BeamConfig> {
     }
     sg.computeVertexNormals();
     this.dyn.add(new THREE.Mesh(sg, this.mat(COL.plane, { opacity: 0.55, side: THREE.DoubleSide })));
-    this.tag('A<sub>z</sub>', V(x1, y0, zm, false), 'plane');
+    this.tag('A<sub>z</sub>', V(x1, y1 * 1.15, zm, false), 'plane');
     // vettore tensione in un punto interno e in un punto del bordo (τ tangente al contorno)
     const k = 0.9;
     const pin: [number, number] = [0.25 * x0, 0.35 * y1];
@@ -248,7 +248,7 @@ export class BeamRenderer extends BaseRenderer<BeamConfig> {
     const ob = V(mid[0], mid[1], zm, false);
     const dt = 0.45 / tl;
     this.arrow(ob, [0, -t[0] * dt, -t[1] * dt], COL.tan, 0.016);
-    this.tag('τ<sub>z</sub>·n̂ = 0 sul bordo', [ob[0], ob[1] - t[0] * dt, ob[2] - t[1] * dt - 0.12], 'tan');
+    this.tag('sul bordo τ<sub>z</sub> è tangente', [ob[0] + 0.5, ob[1] - t[0] * dt, ob[2] + 0.28], 'tan');
     void sc;
   }
 
@@ -262,7 +262,7 @@ export class BeamRenderer extends BaseRenderer<BeamConfig> {
       this.line([V(-R * c, -R * s, L), V(R * c, R * s, L)], color, true);
       this.tag(lab, V(R * 1.08 * c, R * 1.08 * s, L), cls);
     };
-    lineAt(ang.beta, COL.e3, 'n (asse neutro)', 'c3');
+    lineAt(ang.beta, COL.e3, 'n', 'c3');
     if (this.cfg.mode === 'flessione') {
       lineAt(ang.gamma, 0xc026d3, 's', 'u');
       lineAt(ang.theta, COL.e2, 'f', 'c2');
@@ -276,7 +276,7 @@ export class BeamRenderer extends BaseRenderer<BeamConfig> {
       const u: V3 = [(dir[0] / nn) * m, (dir[1] / nn) * m, (dir[2] / nn) * m];
       this.arrow(o, u, COL.out, 0.024);
       this.arrow(o, [u[0] * 0.8, u[1] * 0.8, u[2] * 0.8], COL.out, 0.024);
-      this.tag('M', [o[0] + u[0] * 1.15, o[1] + u[1] * 1.15, o[2] + u[2] * 1.15], 'out');
+      this.tag('M', [o[0] + u[0] * 1.15 + 0.25, o[1] + u[1] * 1.15, o[2] + u[2] * 1.15 + 0.2], 'out');
     }
     void sc;
     void ld;

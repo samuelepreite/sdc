@@ -9,6 +9,8 @@ import { DiagramHost } from '../diagrams/DiagramHost';
 const Tensori3D = lazy(() => import('../three/Tensori3D').then((m) => ({ default: m.Tensori3D })));
 const Tensione3D = lazy(() => import('../three/Tensione3D').then((m) => ({ default: m.Tensione3D })));
 const Trave3D = lazy(() => import('../three/Trave3D').then((m) => ({ default: m.Trave3D })));
+const Torsione3D = lazy(() => import('../three/Torsione3D').then((m) => ({ default: m.Torsione3D })));
+const Criteri3D = lazy(() => import('../three/Criteri3D').then((m) => ({ default: m.Criteri3D })));
 const Deforma3D = lazy(() => import('../three/Deforma3D').then((m) => ({ default: m.Deforma3D })));
 
 /** chiave del visual: tipo + parametri, così un passo con una scena diversa rimonta il componente */
@@ -22,6 +24,8 @@ export function VisualHost({ v, height = 440 }: { v: LessonVisual; height?: numb
       {v.kind === 'deforma3d' && <Deforma3D scene={v.scene} height={height} />}
       {v.kind === 'tensione3d' && <Tensione3D scene={v.scene} height={height} />}
       {v.kind === 'trave3d' && <Trave3D scene={v.scene} height={height} />}
+      {v.kind === 'torsione3d' && <Torsione3D scene={v.scene} height={height} />}
+      {v.kind === 'criteri3d' && <Criteri3D scene={v.scene} height={height} />}
     </Suspense>
   );
 }

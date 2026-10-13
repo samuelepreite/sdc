@@ -1,13 +1,14 @@
 {
-  "quando": "13/10/2026, M5 completato",
-  "titolo": "Quinto modulo nell'app: elasticità isotropa e problema elastico",
-  "lede": "M5 ha 5 lezioni guidate con 14 derivazioni ricalcolate (isotropo ⇒ iperelastico, legame inverso, coassialità, moduli tecnici, E = 2G(1+ν), φ in E e in T, Sylvester, sovrapposizione e termine di accoppiamento) e 7 domande d'orale (le 4 restanti del Cap. 4 più 3 dedotte). <b>Si prosegue con M6 (Saint-Venant, prima parte): motore delle sezioni e modello 3D del solido già pronti.</b>",
+  "quando": "13/10/2026, M6 completato",
+  "titolo": "Sesto modulo nell'app: il solido di Saint-Venant, prima parte",
+  "lede": "M6 ha 8 lezioni guidate (una facoltativa) con 19 derivazioni verificate, 12 domande d'orale (le prime 9 del Cap. 5 più 3 dedotte), il modello 3D del solido di Saint-Venant con cinque sezioni (deformata calcolata con i campi della dispensa, colori di σ_z, asse ad arco, sezione a sella) e i diagrammi della sezione (ellisse d'inerzia, flessione deviata, nocciolo) e delle CdS. <b>Si prosegue con M7 (taglio e torsione), già scritto.</b>",
   "moduli_fatti": [
     "M1",
     "M2",
     "M3",
     "M4",
-    "M5"
+    "M5",
+    "M6"
   ],
   "fasi": [
     {
@@ -22,7 +23,7 @@
     },
     {
       "t": "2 · M2–M8",
-      "s": "M2–M5 fatti; prossimo M6",
+      "s": "M2–M6 fatti; prossimo M7",
       "cls": "next"
     },
     {
@@ -36,15 +37,15 @@
   ],
   "numeri": [
     {
-      "v": "36/57",
-      "l": "concetti nell'app (M1–M5)"
+      "v": "44/57",
+      "l": "concetti nell'app (M1–M6)"
     },
     {
-      "v": "63",
-      "l": "domande d'orale (52 dalla dispensa)"
+      "v": "75",
+      "l": "domande d'orale (61 dalla dispensa)"
     },
     {
-      "v": "233",
+      "v": "282",
       "l": "test verdi"
     },
     {
@@ -52,30 +53,30 @@
       "l": "problemi nella prova del browser"
     },
     {
-      "v": "4/13",
+      "v": "5/14",
       "l": "note sulla fonte risolte o confermate"
     },
     {
-      "v": "2",
+      "v": "3",
       "l": "punti da chiedere al docente",
       "warn": true
     }
   ],
   "fatto": [
-    "M5: teorema di Lamé, isotropo sempre iperelastico, legame inverso e modulo di comprimibilità, coassialità (verificata sugli autovettori del motore).",
-    "Moduli tecnici dalle prove monoassiale e di scorrimento, E = 2G(1+ν), legami diretto e inverso; esempio numerico sull'acciaio.",
-    "Energia per isotropi in E e in T, restrizioni di plausibilità con Sylvester (minori controllati), auxetici e incomprimibilità.",
-    "Problema elastico (dati, equazioni, tipi, analogia con la trave, Hadamard), sovrapposizione e non linearità dell'energia.",
-    "Domande del Cap. 4 ora complete: 14 su 14."
+    "Motore delle sezioni: proprietà esatte dal contorno, assi principali, nocciolo; campi di spostamento di sforzo normale e flessione derivati numericamente e confrontati con il legame (17 test).",
+    "M6: Kirchhoff, formulazione e ipotesi di Saint-Venant, CdS e postulato, sforzo normale, assi ed ellisse d'inerzia, Navier con anticlastica, flessione deviata con i due teoremi; SNE come facoltativo.",
+    "Modello 3D V6: fibre e vettore tensione, solido teso, flessione retta e deviata con s, n, f sulla base, sezione a sella.",
+    "Figure di pp. 117 e 121 controllate: x verso sinistra, y verso il basso (NF-10 chiusa).",
+    "M7 e M8 già in lavorazione: motori di taglio, torsione (funzione di Prandtl calcolata alle differenze finite) e criteri, con i loro test."
   ],
   "prossimo": [
-    "M6, Saint-Venant prima parte: Kirchhoff, formulazione, CdS, sforzo normale, flessione retta e deviata; modello 3D del solido con sezione a scelta.",
-    "Scelta fatta da solo: le figure delle pp. 117 e 121 confermano x verso sinistra e y verso il basso nei disegni della sezione (NF-10 chiusa).",
+    "M7, taglio e torsione: Jourawski, regola delle tangenti, Clebsch, Prandtl, sezioni esatte, Bredt; modello 3D della torsione e diagrammi.",
+    "Nuovo dubbio NF-14: il confronto tubolare chiuso/aperto della dispensa (≈150 volte) è qualitativo; con le sue formule globali il rapporto è circa la metà.",
     "Scelta fatta da solo: data dell'orale non nota, piano su 8 settimane; facoltativi esclusi."
   ],
   "da_te": [
     "Quando è l'orale? Con la data il piano distribuisce i moduli fino a quel giorno (ora usa 8 settimane).",
     "Il docente esclude o insiste su qualche argomento? Isostatiche e sforzo normale eccentrico restano facoltativi.",
-    "Per il docente: NF-02 (la «ellisse piatta» di p. 32) e NF-07 (argomenti facoltativi)."
+    "Per il docente: NF-02 (la «ellisse piatta» di p. 32), NF-07 (argomenti facoltativi), NF-14 (tubolare chiuso e aperto, p. 138)."
   ]
 }

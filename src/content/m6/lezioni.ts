@@ -335,6 +335,7 @@ Nei sistemi di travi si calcolano comunque le CdS: si rinuncia a una cosa che no
               tex: '=-\\frac{\\nu N}{EA}',
               why: 'Legame inverso con $T_{zz}=N/A$ e le altre nulle; allo stesso modo $\\partial v/\\partial y=-\\frac{\\nu N}{EA}$, $\\partial w/\\partial z=\\frac N{EA}$, scorrimenti nulli.',
               val: (v) => (-v.nu * v.N) / (v.E * sec(v).A),
+              eq: 'Teo 5.4.2',
             },
           ],
           checks: [

@@ -50,9 +50,9 @@ code{font-family:var(--mono);font-size:.88em}
 </style>
 <div class="wrap">
   <header>
-    <div class="eyebrow">App per l'orale di Scienza delle Costruzioni · aggiornato 13/10/2026, M5 completato</div>
-    <h1>Quinto modulo nell'app: elasticità isotropa e problema elastico</h1>
-    <p class="lede">M5 ha 5 lezioni guidate con 14 derivazioni ricalcolate (isotropo ⇒ iperelastico, legame inverso, coassialità, moduli tecnici, E = 2G(1+ν), φ in E e in T, Sylvester, sovrapposizione e termine di accoppiamento) e 7 domande d'orale (le 4 restanti del Cap. 4 più 3 dedotte). <b>Si prosegue con M6 (Saint-Venant, prima parte): motore delle sezioni e modello 3D del solido già pronti.</b></p>
+    <div class="eyebrow">App per l'orale di Scienza delle Costruzioni · aggiornato 13/10/2026, M6 completato</div>
+    <h1>Sesto modulo nell'app: il solido di Saint-Venant, prima parte</h1>
+    <p class="lede">M6 ha 8 lezioni guidate (una facoltativa) con 19 derivazioni verificate, 12 domande d'orale (le prime 9 del Cap. 5 più 3 dedotte), il modello 3D del solido di Saint-Venant con cinque sezioni (deformata calcolata con i campi della dispensa, colori di σ_z, asse ad arco, sezione a sella) e i diagrammi della sezione (ellisse d'inerzia, flessione deviata, nocciolo) e delle CdS. <b>Si prosegue con M7 (taglio e torsione), già scritto.</b></p>
   </header>
 
   <section>
@@ -66,7 +66,7 @@ code{font-family:var(--mono);font-size:.88em}
     <div class="phases">
       <div class="ph ok"><b>0 · Analisi</b><span>fatta il 12/10</span></div>
       <div class="ph ok"><b>1 · Impianto + M1</b><span>fatta il 13/10</span></div>
-      <div class="ph next"><b>2 · M2–M8</b><span>M2–M5 fatti; prossimo M6</span></div>
+      <div class="ph next"><b>2 · M2–M8</b><span>M2–M6 fatti; prossimo M7</span></div>
       <div class="ph "><b>3 · Orale</b><span>simulatore, mappa</span></div>
       <div class="ph "><b>4 · Rifinitura</b><span>piano fino all'esame</span></div>
     </div>
@@ -75,12 +75,12 @@ code{font-family:var(--mono);font-size:.88em}
   <section>
     <h2>Numeri</h2>
     <div class="nums">
-      <div class="n"><strong>36/57</strong><span>concetti nell'app (M1–M5)</span></div>
-      <div class="n"><strong>63</strong><span>domande d'orale (52 dalla dispensa)</span></div>
-      <div class="n"><strong>233</strong><span>test verdi</span></div>
+      <div class="n"><strong>44/57</strong><span>concetti nell'app (M1–M6)</span></div>
+      <div class="n"><strong>75</strong><span>domande d'orale (61 dalla dispensa)</span></div>
+      <div class="n"><strong>282</strong><span>test verdi</span></div>
       <div class="n"><strong>0</strong><span>problemi nella prova del browser</span></div>
-      <div class="n"><strong>4/13</strong><span>note sulla fonte risolte o confermate</span></div>
-      <div class="n warn"><strong>2</strong><span>punti da chiedere al docente</span></div>
+      <div class="n"><strong>5/14</strong><span>note sulla fonte risolte o confermate</span></div>
+      <div class="n warn"><strong>3</strong><span>punti da chiedere al docente</span></div>
     </div>
   </section>
 
@@ -88,18 +88,18 @@ code{font-family:var(--mono);font-size:.88em}
     <section>
       <h2>Fatto</h2>
       <ul>
-        <li>M5: teorema di Lamé, isotropo sempre iperelastico, legame inverso e modulo di comprimibilità, coassialità (verificata sugli autovettori del motore).</li>
-        <li>Moduli tecnici dalle prove monoassiale e di scorrimento, E = 2G(1+ν), legami diretto e inverso; esempio numerico sull'acciaio.</li>
-        <li>Energia per isotropi in E e in T, restrizioni di plausibilità con Sylvester (minori controllati), auxetici e incomprimibilità.</li>
-        <li>Problema elastico (dati, equazioni, tipi, analogia con la trave, Hadamard), sovrapposizione e non linearità dell'energia.</li>
-        <li>Domande del Cap. 4 ora complete: 14 su 14.</li>
+        <li>Motore delle sezioni: proprietà esatte dal contorno, assi principali, nocciolo; campi di spostamento di sforzo normale e flessione derivati numericamente e confrontati con il legame (17 test).</li>
+        <li>M6: Kirchhoff, formulazione e ipotesi di Saint-Venant, CdS e postulato, sforzo normale, assi ed ellisse d'inerzia, Navier con anticlastica, flessione deviata con i due teoremi; SNE come facoltativo.</li>
+        <li>Modello 3D V6: fibre e vettore tensione, solido teso, flessione retta e deviata con s, n, f sulla base, sezione a sella.</li>
+        <li>Figure di pp. 117 e 121 controllate: x verso sinistra, y verso il basso (NF-10 chiusa).</li>
+        <li>M7 e M8 già in lavorazione: motori di taglio, torsione (funzione di Prandtl calcolata alle differenze finite) e criteri, con i loro test.</li>
       </ul>
     </section>
     <section>
       <h2>Prossimo passo e scelte fatte da solo</h2>
       <ul>
-        <li>M6, Saint-Venant prima parte: Kirchhoff, formulazione, CdS, sforzo normale, flessione retta e deviata; modello 3D del solido con sezione a scelta.</li>
-        <li>Scelta fatta da solo: le figure delle pp. 117 e 121 confermano x verso sinistra e y verso il basso nei disegni della sezione (NF-10 chiusa).</li>
+        <li>M7, taglio e torsione: Jourawski, regola delle tangenti, Clebsch, Prandtl, sezioni esatte, Bredt; modello 3D della torsione e diagrammi.</li>
+        <li>Nuovo dubbio NF-14: il confronto tubolare chiuso/aperto della dispensa (≈150 volte) è qualitativo; con le sue formule globali il rapporto è circa la metà.</li>
         <li>Scelta fatta da solo: data dell'orale non nota, piano su 8 settimane; facoltativi esclusi.</li>
       </ul>
     </section>
@@ -110,13 +110,13 @@ code{font-family:var(--mono);font-size:.88em}
     <ol>
       <li>Quando è l'orale? Con la data il piano distribuisce i moduli fino a quel giorno (ora usa 8 settimane).</li>
       <li>Il docente esclude o insiste su qualche argomento? Isostatiche e sforzo normale eccentrico restano facoltativi.</li>
-      <li>Per il docente: NF-02 (la «ellisse piatta» di p. 32) e NF-07 (argomenti facoltativi).</li>
+      <li>Per il docente: NF-02 (la «ellisse piatta» di p. 32), NF-07 (argomenti facoltativi), NF-14 (tubolare chiuso e aperto, p. 138).</li>
     </ol>
   </section>
 </div>
 <script>
 const M=[["M1","Algebra tensoriale",14,7],["M2","Deformazione",21,8],["M3","Tensione",30,9],["M4","Legami costitutivi",21,7],["M5","Elasticità isotropa",12,5],["M6","Saint-Venant I",27,8],["M7","Taglio e torsione",17,6],["M8","Criteri di resistenza",16,7]];
-const DONE=["M1", "M2", "M3", "M4", "M5"];
+const DONE=["M1", "M2", "M3", "M4", "M5", "M6"];
 const t=document.getElementById('tube');
 for(const [id,n,p,c] of M){const d=document.createElement('div');d.className='seg';d.style.flex=p+' 1 0';
 d.innerHTML=`<div class="bar"><div class="a"></div><div class="b" style="width:${DONE.includes(id)?100:0}%"></div></div><div class="lab">${id}</div><div class="sub">${n}<br>${c} concetti · ${p} pp.</div>`;t.appendChild(d);}
