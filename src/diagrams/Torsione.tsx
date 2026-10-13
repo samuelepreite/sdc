@@ -190,7 +190,7 @@ function Sottili({ t, setT }: { t: number; setT: (v: number) => void }) {
           </tr>
         </tbody>
       </table>
-      <p className="small muted">M_z = 1 kN·m, valori di esempio. Il rapporto della dispensa (≈150 con t = 2 mm) viene da un confronto qualitativo; combinando le sue stesse formule globali il motore trova la metà (NF-14). Il messaggio non cambia: le sezioni chiuse resistono molto meglio a torsione.</p>
+      <p className="small muted">M_z = 1 kN·m, valori di esempio. Il rapporto della dispensa (≈150 con t = 2 mm) confronta la coppia di pareti della chiusa con una sola parete dell'aperta; il confronto omogeneo, e le formule globali della dispensa stessa, danno la metà (NF-14). Il messaggio non cambia: le sezioni chiuse resistono molto meglio a torsione.</p>
     </>
   );
 }

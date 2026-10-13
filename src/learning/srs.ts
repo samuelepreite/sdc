@@ -15,6 +15,7 @@
  */
 import { createEmptyCard, fsrs, generatorParameters, Rating, State, type Card, type Grade } from 'ts-fsrs';
 import type { AppState, OralLog, RecallLog } from '../storage/store';
+import { daysBetween } from './dates';
 
 export const SRS_PARAMS = generatorParameters({ request_retention: 0.9, enable_fuzz: false, enable_short_term: false });
 const scheduler = fsrs(SRS_PARAMS);
@@ -131,7 +132,7 @@ export function forecast(state: AppState, now: Date, days = 7): number[] {
   const start = new Date(now);
   start.setHours(0, 0, 0, 0);
   for (const [, c] of cardsOf(state)) {
-    const d = Math.floor((new Date(c.due).getTime() - start.getTime()) / 86400000);
+    const d = daysBetween(start, new Date(c.due));
     const i = Math.max(0, d);
     if (i < days) out[i]++;
   }

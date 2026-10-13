@@ -1,9 +1,10 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**Sessione 3 (13/10/2026, lavoro automatico): TUTTO FATTO — M2–M8, Fase 3, Fase 4, pubblicati.**
-- App completa: 57/57 concetti, 94 domande (74 della dispensa), 8 modelli 3D, mappa (`#/mappa`), simulatore (`#/simulatore`), piano su 8 settimane con link al simulatore e alle domande per modulo; pagina Fonti con NF-09, NF-10, NF-12, NF-14. 360 test verdi; `verifica_ui.py --lezioni=m5` 0 problemi.
-- Aperte per il docente: NF-02 (p. 32), NF-07 (facoltativi), NF-14 (p. 138). Da Samuele: data dell'orale (si imposta in Piano), eventuali argomenti esclusi.
+**Sessione 4 (13/10/2026 sera, verifica finale): app completa, nessun punto aperto.**
+- App completa: 57/57 concetti, 94 domande (74 dai riquadri «Per l'orale», tutte; 1 da un box «Attenzione»; 19 dedotte), 8 modelli 3D, mappa, simulatore, piano. 364 test verdi; `verifica_ui.py` completo (tutte le lezioni) 0 problemi, poi `--lezioni=m2,m7` dopo le modifiche: 0 problemi.
+- Fatto in sessione 4: piano senza slittamento delle date con l'ora legale (`src/learning/dates.ts`, test con `TZ=Europe/Rome` in `vite.config.ts`); default 12 h/settimana (migrazione del vecchio 10 mai toccato) e ore suggerite con pulsante; NF-02, NF-07, NF-14 chiuse sul PDF (pp. 32, 138); pagina Fonti con tutte le 14 note e colonna stato; conteggi domande corretti (Fonti, Orale); frase obsoleta in Progressi; modelli 3D sulle schede c2.1 e c2.5; README aggiornato.
+- Nessuna domanda aperta per il docente. Da Samuele solo la data dell'orale (si imposta in Piano).
 - `RichText` rende gli elenchi; tabelle markdown NON supportate. Testi in `tools/testi/cap-XX.md`. Nei `val` delle derivazioni tolleranza 1e-9.
 - **Prossimo passo preciso:** nessun lavoro previsto. Su richiesta: adattare il piano alla data dell'orale, rifinire contenuti segnalati dallo studente (feedback dei passi delle lezioni), aggiungere esercizi numerici.
 
@@ -39,12 +40,10 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 | 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
 | 2 Moduli M2–M8 | ✅ fatta | M2–M8 fatti (13/10) |
 | 3 Orale | ✅ fatta | banca (94 domande, 74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore (13/10) |
-| 4 Rifinitura | ✅ fatta | piano (8 settimane senza data), Fonti aggiornate (13/10) |
+| 4 Rifinitura | ✅ fatta | piano (8 settimane senza data), Fonti aggiornate (13/10); verifica finale e NF chiuse (13/10 sera) |
 
 ## Prossimi passi in ordine
-1. M2 (deformazione) con il modello V2 (intorno che si deforma, sfera → ellissoide).
-2. M3 (tensione) con V3 e V4 (piano di taglio, Mohr, arbelo).
-3. M4, M5, M6 (V6 trave 3D), M7 (V7 taglio/torsione), M8 (V8 criteri).
+Nessuno: Fasi 0–4 chiuse, note sulla fonte tutte risolte. Lavori futuri solo su richiesta (vedi §0).
 
 ## Regole dello studente (vincolanti)
 1. Unica fonte: la dispensa (notazione, segni, ordine; ogni contenuto cita §, Def/Teo/eq., pagina).
@@ -72,5 +71,5 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 - Ripubblicare l'app: se la sessione non ha ancora letto l'artifact, il publish viene rifiutato. Fare UNA `Artifact read` dell'URL senza `path` (salva l'HTML su file, mostra solo la testa: ~25k token), poi publish. Nella stessa sessione i publish successivi dello stesso file passano.
 - Fermare la prova nel browser: qualsiasi `pkill`/`pgrep -f` o `ps | grep` lanciato nello stesso comando che contiene il nome dello script uccide anche la shell (exit 144). Lanciare il kill in un comando a parte che NON contenga altrove il nome dello script (es. `ps aux | grep "[v]erifica_ui" | awk '{print $2}' | xargs -r kill` da solo).
 - Senza `--lezioni` la prova percorre TUTTE le 57 lezioni (molto lunga): usare sempre `--lezioni=mN` (le altre: solo la prima lezione).
-- La prova nel browser con tutte le lezioni dura ~10 min per passata: usare `--lezioni=mN` e lanciarla in background (`nohup … &`), leggendo il log.
+- La prova nel browser con tutte le lezioni dura ~10–15 min per passata (4 passate: ~45 min); lanciarla con `python3 -u` perché il log non resti nel buffer: usare `--lezioni=mN` e lanciarla in background (`nohup … &`), leggendo il log.
 - Vedi anche la tabella «Trappole già incontrate» del prompt di partenza (3D, formule lunghe, FSRS, prompt notturni).

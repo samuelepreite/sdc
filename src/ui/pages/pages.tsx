@@ -16,6 +16,7 @@ import { Icon } from '../components/Icon';
 import { ConceptFull, GuidedConcept } from '../components/Guided';
 import { Inline } from '../components/Tex';
 import { OralRunner } from './orale';
+import { daysBetween, parseLocalDate } from '../../learning/dates';
 
 // ------------------------------------------------------------------ Oggi
 const greeting = (d: Date) => (d.getHours() < 5 ? 'Buonanotte' : d.getHours() < 13 ? 'Buongiorno' : d.getHours() < 18 ? 'Buon pomeriggio' : 'Buonasera');
@@ -162,17 +163,23 @@ function WeakCard() {
 function ExamCard() {
   const { state } = useApp();
   const d = state.settings.examDate;
-  const days = d ? Math.ceil((Date.parse(d) - Date.now()) / 86400000) : null;
+  const days = d ? daysBetween(new Date(), parseLocalDate(d)) : null;
   return (
     <section className="card soft exam-card">
       <h2>Orale</h2>
       {days !== null && days >= 0 ? (
         <>
           <p className="countdown">
-            <span className="big-num">{days}</span> {days === 1 ? 'giorno' : 'giorni'}
+            {days === 0 ? (
+              <span className="big-num">oggi</span>
+            ) : (
+              <>
+                <span className="big-num">{days}</span> {days === 1 ? 'giorno' : 'giorni'}
+              </>
+            )}
           </p>
           <p className="small muted">
-            al {new Date(d!).toLocaleDateString('it-IT', { day: 'numeric', month: 'long' })}, con {state.settings.hoursPerWeek} ore di studio a settimana.
+            al {parseLocalDate(d!).toLocaleDateString('it-IT', { day: 'numeric', month: 'long' })}, con {state.settings.hoursPerWeek} ore di studio a settimana.
           </p>
           <a href="#/piano" className="small">
             Apri il piano settimanale
@@ -180,7 +187,9 @@ function ExamCard() {
         </>
       ) : (
         <>
-          <p className="muted">Indica la data dell&apos;orale e le ore a settimana: il piano distribuisce i moduli fino a quel giorno.</p>
+          <p className="muted">
+            {d ? 'La data dell\'orale impostata è passata: indica la prossima.' : 'Indica la data dell\'orale e le ore a settimana: il piano distribuisce i moduli fino a quel giorno.'}
+          </p>
           <a href="#/impostazioni" className="small">
             Imposta la data
           </a>
@@ -597,17 +606,23 @@ export function SyncText({ status, detail }: { status: string; detail?: string }
 
 // ------------------------------------------------------------------ Fonti
 const NF = [
-  ['NF-01', 'A', '§1.8.4, p. 13: il rimando «§3.4» per il vettore assiale va letto §1.3.4.'],
-  ['NF-02', 'B', '§2.10, p. 32: con una dilatazione principale nulla la sfera diventa un ellissoide con un semiasse invariato; è lo spostamento a stare nel piano. Da chiedere al docente.'],
-  ['NF-04', 'D', 'Teo 2.8.1 «di Kirchhoff» (compatibilità) e Teo 5.1.1 (problema elastico): nell\'app hanno nomi distinti.'],
-  ['NF-07', 'D', 'Linee isostatiche (§4.1) e sforzo normale eccentrico (§5.6): facoltativi, come dice la dispensa. Da confermare con il docente.'],
-  ['NF-08', 'D', 'Cap. 6: ν indica sia il coefficiente di sicurezza sia quello di Poisson.'],
-  ['NF-09', 'B', '§6.7, p. 155: per gli stati alla Saint-Venant la dispensa chiama s₁, s₂ le principali non nulle e s₃ quella nulla «che sta tra le due»: qui gli indici sono nomi, non un ordinamento. Le formule finali sono corrette.'],
-  ['NF-10', 'C', 'Cap. 5: verso degli assi nei disegni della sezione. Risolta sulle figure di pp. 117 e 121: x verso sinistra, y verso il basso.'],
-  ['NF-11', 'D', 'Risultati che la dispensa enuncia senza dimostrazione (es. Lamé, τmax con Lagrange, arbelo): nell\'app niente derivazione, spiegazione a parole.'],
-  ['NF-12', 'C', 'Figure della dispensa controllate sul PDF dove servivano ai modelli: Cap. 1 (pp. 4, 8, 12), Cap. 2 (pp. 27, 32), Cap. 3 (p. 58), Cap. 5 (pp. 117, 121, 137–138).'],
-  ['NF-14', 'B', 'p. 138: il confronto tubolare chiuso/aperto (≈150 volte) è un calcolo qualitativo; con le formule globali della dispensa (Bredt e rettangoli allungati) il rapporto è 3(B−t)/(2t), circa la metà. Da chiedere al docente.'],
+  ['NF-01', 'A', '§1.8.4, p. 13: il rimando «§3.4» per il vettore assiale va letto §1.3.4.', 'Risolta'],
+  ['NF-02', 'B', '§2.10, p. 32: con λ₁ = 0 la dispensa dice che «una sfera si deforma in un\'ellisse piatta nel piano n̂₂n̂₃». Lettura adottata: la deformazione è piana, ogni sezione dell\'intorno parallela al piano n̂₂n̂₃ diventa un\'ellisse nel proprio piano e lo spostamento uᵈᵖ sta in quel piano; la fibra lungo n̂₁ non cambia lunghezza (lo dice la dispensa subito dopo), quindi la sfera intera diventa un ellissoide con un semiasse invariato. All\'orale: cita la frase e precisa così.', 'Risolta'],
+  ['NF-03', 'C', 'pp. 33–35: nel testo estratto mancava il segno di p. 34. Sul PDF il quadro riassuntivo del Cap. 2 è a p. 34, le domande proseguono a p. 35.', 'Risolta'],
+  ['NF-04', 'D', 'Teo 2.8.1 «di Kirchhoff» (compatibilità) e Teo 5.1.1 (problema elastico): nell\'app hanno nomi distinti, con il collegamento esplicito.', 'Risolta'],
+  ['NF-05', 'C', '§3.14, p. 55: la verifica T n̂₃ = −3√5 n̂₃, illeggibile nel testo estratto, è ricalcolata e verificata numericamente.', 'Risolta'],
+  ['NF-06', 'D', '§3.7.1 e §3.7.3: tetraedro (colonne) e parallelepipedo (righe) leggono T in modo trasposto; per la simmetria è irrilevante (§3.9). L\'app usa la convenzione del Cap. 1 e segnala il cambio.', 'Risolta'],
+  ['NF-07', 'D', 'Linee isostatiche (§4.1, «non richiesto all\'orale») e sforzo normale eccentrico (§5.6, «non trattato a lezione»): facoltativi, come dice la dispensa stessa. Restano studiabili, ma sono fuori dal piano e dal simulatore; si riattivano da Impostazioni.', 'Risolta'],
+  ['NF-08', 'D', 'Cap. 6: ν indica sia il coefficiente di sicurezza sia quello di Poisson; a schermo «ν (sicurezza)» e «ν (Poisson)» quando compaiono vicini.', 'Risolta'],
+  ['NF-09', 'B', '§6.7, p. 155: per gli stati alla Saint-Venant la dispensa chiama s₁, s₂ le principali non nulle e s₃ quella nulla «che sta tra le due»: qui gli indici sono nomi, non un ordinamento. Le formule finali sono corrette.', 'Risolta'],
+  ['NF-10', 'C', 'Cap. 5: verso degli assi nei disegni della sezione. Sulle figure di pp. 117 e 121: x verso sinistra, y verso il basso.', 'Risolta'],
+  ['NF-11', 'D', 'Risultati che la dispensa enuncia senza dimostrazione (es. Lamé, τmax con Lagrange, arbelo): nell\'app niente derivazione, spiegazione a parole.', 'Risolta'],
+  ['NF-12', 'C', 'Figure della dispensa controllate sul PDF dove servivano ai modelli: Cap. 1 (pp. 4, 8, 12), Cap. 2 (pp. 27, 32), Cap. 3 (p. 58), Cap. 5 (pp. 117, 121, 137–138).', 'Risolta'],
+  ['NF-13', 'D', 'Simboli riusati (γ, φ, θ con più significati nei Cap. 2, 4, 5): notazione della dispensa mantenuta, con un\'etichetta a schermo nel contesto.', 'Risolta'],
+  ['NF-14', 'B', 'p. 138: la dispensa stima τ⁽²⁾ = 3(B−t)/t · τ⁽¹⁾ (≈150 volte) confrontando la coppia di pareti della sezione chiusa con una sola parete di quella aperta. Contando due pareti anche nell\'aperta, e con le formule globali della dispensa (Bredt e rettangolo allungato), il fattore è 3(B−t)/(2t) ≈ 74. All\'orale: il ragionamento della dispensa, poi il fattore corretto se serve; la conclusione non cambia.', 'Risolta'],
 ];
+
+const perOrale = (o: (typeof ALL_ORALI)[number]) => o.source.kind === 'dispensa' && /Per l'orale/.test(o.source.rif ?? '');
 
 export function Fonti() {
   const nDer = ALL_LESSONS.flatMap((l) => l.steps.filter((s) => s.kind === 'derivazione')).length;
@@ -624,21 +639,25 @@ export function Fonti() {
           </li>
           <li>Il motore che disegna i modelli è verificato per strade indipendenti: proprietà dei tensori su campioni casuali, conteggio delle componenti del IV ordine per classi di equivalenza, teorema della divergenza con due integrazioni numeriche diverse.</li>
           <li>Tutte le formule sono compilate da KaTeX nei test, con le macro della notazione della dispensa.</li>
-          <li>{ALL_ORALI.filter((o) => o.source.kind === 'dispensa').length} domande d&apos;orale vengono dai riquadri «Per l&apos;orale» della dispensa; {ALL_ORALI.filter((o) => o.source.kind !== 'dispensa').length} sono dedotte e marcate come tali.</li>
+          <li>
+            {ALL_ORALI.length} domande d&apos;orale: {ALL_ORALI.filter(perOrale).length} sono quelle dei riquadri «Per l&apos;orale» della dispensa (tutte),{' '}
+            {ALL_ORALI.filter((o) => o.source.kind === 'dispensa' && !perOrale(o)).length} viene da un altro riquadro della dispensa, {ALL_ORALI.filter((o) => o.source.kind !== 'dispensa').length} sono dedotte e marcate come tali.
+          </li>
         </ul>
       </section>
       <section className="card">
         <h2>Note sulla dispensa</h2>
-        <p className="small muted">Classi: A refuso certo · B incongruenza · C lettura dubbia · D scelta didattica. L&apos;elenco completo è in NOTE_FONTI.md.</p>
+        <p className="small muted">Classi: A refuso certo · B incongruenza · C lettura dubbia · D scelta didattica. Tutte le note sono risolte: per ognuna è indicata la lettura adottata nell&apos;app.</p>
         <table className="readout">
           <tbody>
-            {NF.map(([id, cl, t]) => (
+            {NF.map(([id, cl, t, stato]) => (
               <tr key={id}>
                 <td style={{ whiteSpace: 'nowrap' }}>
                   <b>{id}</b>
                 </td>
                 <td>{cl}</td>
                 <td>{t}</td>
+                <td style={{ whiteSpace: 'nowrap' }}>{stato}</td>
               </tr>
             ))}
           </tbody>

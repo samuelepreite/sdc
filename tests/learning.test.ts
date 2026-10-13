@@ -39,7 +39,11 @@ describe('impostazioni e persistenza', () => {
     expect(save(s, st)).toBe(true);
     expect(load(st).settings.hoursPerWeek).toBe(14);
     mem['sdc:v1'] = '{rotto';
-    expect(load(st).settings.hoursPerWeek).toBe(10);
+    expect(load(st).settings.hoursPerWeek).toBe(12);
+  });
+  it('il vecchio default di 10 h mai modificato passa a 12; una scelta esplicita resta', () => {
+    expect(migrate({ version: 1, settings: { hoursPerWeek: 10 } }).settings.hoursPerWeek).toBe(12);
+    expect(migrate({ version: 1, settings: { hoursPerWeek: 10 }, meta: { settingsAt: '2026-10-01T00:00:00Z' } }).settings.hoursPerWeek).toBe(10);
   });
 });
 
@@ -136,5 +140,43 @@ describe('piano settimanale', () => {
     expect(p.weeks[0].items[0].module).toBe('m1');
     expect(p.weeks[0].items[0].focus[0]).toBe('c1.1');
     expect(p.weeks.at(-1)!.simulationHours).toBeGreaterThan(0);
+  });
+});
+
+describe('piano: ore suggerite', () => {
+  it('con il tempo stretto suggerisce le ore che coprono la stima; con il default (12 h, 8 settimane) nessun avviso', async () => {
+    const { buildPlan } = await import('../src/learning/plan');
+    const opts = { now: new Date('2026-10-13T10:00:00'), masteryByModule: {}, conceptsByModule: {}, masteryByConcept: {} };
+    const s = defaultState();
+    expect(buildPlan(s, opts).warnings.filter((w) => w.startsWith('Tempo stretto'))).toEqual([]);
+    s.settings.hoursPerWeek = 6;
+    const p = buildPlan(s, opts);
+    expect(p.suggestedHours).toBeGreaterThan(6);
+    const s2 = defaultState();
+    s2.settings.hoursPerWeek = p.suggestedHours!;
+    expect(buildPlan(s2, opts).warnings.filter((w) => w.startsWith('Tempo stretto'))).toEqual([]);
+  });
+});
+
+describe('piano: date e ora legale', () => {
+  it('settimane di 7 giorni di calendario anche attraverso il cambio d\'ora del 25/10/2026', () => {
+    const opts = { now: new Date(2026, 9, 13, 10), masteryByModule: {}, conceptsByModule: {}, masteryByConcept: {} };
+    const p = buildPlan(defaultState(), opts);
+    const ymd = (d: Date) => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    expect(ymd(p.weeks[1].start)).toBe('2026-10-20');
+    expect(ymd(p.weeks[1].end)).toBe('2026-10-26');
+    expect(ymd(p.weeks[2].start)).toBe('2026-10-27');
+    expect(ymd(p.weeks[7].end)).toBe('2026-12-7');
+    for (const w of p.weeks) expect([w.start.getHours(), w.end.getHours()]).toEqual([0, 0]);
+  });
+});
+
+describe('date di calendario', () => {
+  it('giorni tra date e parsing locale attraverso l\'ora legale', async () => {
+    const { addDays, daysBetween, parseLocalDate } = await import('../src/learning/dates');
+    expect(daysBetween(new Date(2026, 9, 24, 23, 30), new Date(2026, 9, 26, 0, 10))).toBe(2);
+    expect(addDays(new Date(2026, 9, 13, 19), 14).getDate()).toBe(27);
+    const d = parseLocalDate('2026-12-01');
+    expect([d.getFullYear(), d.getMonth(), d.getDate(), d.getHours()]).toEqual([2026, 11, 1, 0]);
   });
 });

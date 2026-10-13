@@ -145,7 +145,7 @@ export function OraleIndex() {
     <div className="page">
       <h1>Orale</h1>
       <p className="lead muted">
-        {ALL_ORALI.length} domande ({ALL_ORALI.filter((o) => o.source.kind === 'dispensa').length} dai riquadri «Per l&apos;orale» della dispensa), {done} già esposte almeno una volta. Ognuna ha la scaletta della risposta, le equazioni alla lavagna con il riferimento e la figura da disegnare.
+        {ALL_ORALI.length} domande ({ALL_ORALI.filter((o) => o.source.kind === 'dispensa' && /Per l'orale/.test(o.source.rif ?? '')).length} dai riquadri «Per l&apos;orale» della dispensa, tutte), {done} già esposte almeno una volta. Ognuna ha la scaletta della risposta, le equazioni alla lavagna con il riferimento e la figura da disegnare.
       </p>
       <p>
         <a className="btn primary" href="#/simulatore">

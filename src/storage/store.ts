@@ -7,6 +7,8 @@
 export const STORAGE_KEY = 'sdc:v1';
 export const SCHEMA_VERSION = 1;
 export const APP_ID = 'sdc';
+/** ore a settimana di default: con 8 settimane senza data coprono la stima di 100 h (10 h, il default precedente, non bastavano) */
+export const DEFAULT_HOURS = 12;
 
 export interface Settings {
   examDate?: string; // ISO yyyy-mm-dd
@@ -71,7 +73,7 @@ export interface AppState {
 
 export const defaultState = (): AppState => ({
   version: SCHEMA_VERSION,
-  settings: { hoursPerWeek: 10 },
+  settings: { hoursPerWeek: DEFAULT_HOURS },
   recall: [],
   concepts: {},
   srs: {},
@@ -87,7 +89,12 @@ export function migrate(raw: unknown): AppState {
   if (typeof r.version !== 'number' || r.version > SCHEMA_VERSION) throw new Error("File non riconosciuto o creato da una versione più recente dell'app.");
   return {
     version: SCHEMA_VERSION,
-    settings: { ...base.settings, ...(r.settings ?? {}) },
+    settings: {
+      ...base.settings,
+      ...(r.settings ?? {}),
+      // il vecchio default (10 h) mai toccato dallo studente passa al nuovo default
+      ...(r.settings?.hoursPerWeek === 10 && !r.meta?.settingsAt ? { hoursPerWeek: DEFAULT_HOURS } : {}),
+    },
     recall: Array.isArray(r.recall) ? r.recall : [],
     concepts: r.concepts && typeof r.concepts === 'object' ? r.concepts : {},
     srs: r.srs && typeof r.srs === 'object' ? r.srs : {},

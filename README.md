@@ -2,9 +2,9 @@
 
 Web app di studio per l'esame **solo orale** di Scienza delle Costruzioni, costruita sulla dispensa del corso (unica fonte). Lezioni guidate da «professore», modelli 3D e diagrammi interattivi calcolati da un motore verificato, ripasso distanziato e preparazione dell'orale.
 
-**Stato:** Fase 1 completata: app pubblicata con il modulo M1 (algebra tensoriale). Vedi `RIPARTENZA.md`.
+**Stato:** completa (Fasi 0–4): 8 moduli, 57 concetti con lezioni guidate, 94 domande d'orale (tutte le 74 della dispensa), modelli 3D e diagrammi, mappa dei concetti, simulatore d'orale, piano di studio. Tutte le note sulla fonte sono risolte. App pubblicata: https://claude.ai/artifact/M9zqUrr9t4zY2Fgqos87EJ. Vedi `RIPARTENZA.md`.
 
-**Comandi:** `npm test` (suite), `npx tsc --noEmit -p .`, `npm run build:artifact` (→ `dist-artifact/sdc.html`), `python3 tools/verifica_ui.py [cartella-screenshot]` (verifica nel browser).
+**Comandi:** `npm test` (suite), `npx tsc --noEmit -p .`, `npm run build:artifact` (→ `dist-artifact/sdc.html`), `python3 tools/verifica_ui.py [cartella-screenshot] [--lezioni=m1,m2]` (verifica nel browser; senza `--lezioni` percorre tutte le lezioni).
 
 ## Dove sono le cose
 - `tools/testi/cap-01.md … cap-06.md` — trascrizione fedele della dispensa (formule in LaTeX, pagine, definizioni e teoremi numerati, domande d'orale).
@@ -15,4 +15,4 @@ Web app di studio per l'esame **solo orale** di Scienza delle Costruzioni, costr
 - `src/engine/` motore (tensori, campi) · `src/content/mN/` concetti, lezioni, domande d'orale · `src/three/` modelli 3D · `src/diagrams/` SVG · `src/learning/` FSRS, padronanza, sessione, piano · `src/storage/` stato e sincronizzazione · `src/ui/` pagine.
 
 ## Architettura
-React 18 + TypeScript + Vite, KaTeX, three.js, SVG, Vitest + Playwright, ts-fsrs, build in un unico HTML pubblicato come artifact claude.ai; infrastruttura ripresa da SEIMAFI. Dettagli nel prompt di partenza del progetto.
+React 19 + TypeScript + Vite, KaTeX, three.js, SVG, Vitest + Playwright, ts-fsrs, build in un unico HTML pubblicato come artifact claude.ai; infrastruttura ripresa da SEIMAFI. Dettagli nel prompt di partenza del progetto.

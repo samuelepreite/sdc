@@ -12,6 +12,7 @@ export const M2_CONCETTI: Concept[] = [
     title: 'Corpo, configurazioni, deformazione e spostamento',
     prereq: ['c1.1'],
     source: D(2, '2.1', 'Def 2.1.1–2.1.2', '15–16'),
+    visual: { kind: 'deforma3d', scene: { mode: 'rappresentazione', preset: 'generico', presets: ['generico', 'taglio', 'rotazione'], controls: ['preset', 'amp'] } },
     meaning: 'L’analisi della deformazione è uno studio **puramente geometrico**: descrive come cambia la forma del corpo, senza chiedersi perché. La **deformazione** $f$ porta ogni punto $X$ della configurazione di riferimento nel punto $x$ di quella attuale; lo **spostamento** è $\\vet u=x-X$.',
     formulas: [
       { tex: 'f:\\mathcal B\\to\\mathcal E,\\qquad x=f(X)', label: 'deformazione', rif: 'Def 2.1.2' },
@@ -141,6 +142,7 @@ Serve la regolarità di $f$: senza bicontinuità non si potrebbe nemmeno dire ch
     title: 'Piccole deformazioni, piccoli spostamenti, equilibrio referenziale',
     prereq: ['c2.4'],
     source: D(2, '2.6.1–2.6.2', 'Def 2.6.1–2.6.2', '23–24'),
+    visual: { kind: 'deforma3d', scene: { mode: 'intorno', preset: 'generico', presets: ['generico', 'rotazione', 'taglio'], controls: ['preset', 'amp'] } },
     meaning: 'Due ipotesi diverse con effetti diversi: **piccole deformazioni** ($\\|\\tens H\\|\\ll1$) permettono di linearizzare la descrizione della deformazione; **piccoli spostamenti** ($|\\vet u|\\ll1$) permettono di imporre l’equilibrio nella configurazione di riferimento (**equilibrio referenziale**).',
     formulas: [
       { tex: '\\|\\tens H\\|\\ll1\\ \\Rightarrow\\ \\tens F\\simeq\\tens I', label: 'piccole deformazioni', rif: 'Def 2.6.1' },

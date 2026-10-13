@@ -7,5 +7,6 @@ export default defineConfig(({ mode }) => ({
   base: './',
   plugins: mode === 'single' ? [react(), viteSingleFile()] : [react()],
   build: { outDir: mode === 'single' ? 'dist-single' : 'dist', chunkSizeWarningLimit: 2000 },
-  test: { globals: true, environment: 'node', include: ['tests/**/*.test.ts', 'tests/**/*.test.tsx'] },
+  test: { globals: true, environment: 'node', env: { TZ: 'Europe/Rome' }, // fuso dello studente: le date del piano attraversano l'ora legale
+    include: ['tests/**/*.test.ts', 'tests/**/*.test.tsx'] },
 }));

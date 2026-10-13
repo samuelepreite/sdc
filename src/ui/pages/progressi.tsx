@@ -11,6 +11,7 @@ import { buildPlan } from '../../learning/plan';
 import { cardsOf, dueCards, forecast, retrievabilityAt } from '../../learning/srs';
 import { isStudied } from '../../learning/session';
 import { go, useApp } from '../state';
+import { addDays, daysBetween, parseLocalDate } from '../../learning/dates';
 
 const pct = (x: number) => `${Math.round(x * 100)} %`;
 const fmtDate = (d: Date) => d.toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
@@ -74,11 +75,11 @@ export function Progressi() {
   const detail = useMemo(() => masteryDetail(state, now), [state, now]);
   const mastery = Object.fromEntries(Object.entries(detail).map(([k, v]) => [k, v.mastery]));
   const mm = moduleMastery(mastery, conceptIdsByModule());
-  const exam = state.settings.examDate ? new Date(state.settings.examDate + 'T09:00:00') : undefined;
-  const days = exam ? Math.ceil((exam.getTime() - now.getTime()) / 86400000) : null;
+  const exam = state.settings.examDate ? parseLocalDate(state.settings.examDate) : undefined;
+  const days = exam ? daysBetween(now, exam) : null;
   const due = dueCards(state, now).length;
   const next14 = forecast(state, now, 14);
-  const labels = next14.map((_, i) => (i === 0 ? 'oggi' : fmtDate(new Date(now.getTime() + i * 86400000))));
+  const labels = next14.map((_, i) => (i === 0 ? 'oggi' : fmtDate(addDays(now, i))));
   const cards = cardsOf(state);
   const concepts = ALL_CONCEPTS.filter((c) => !c.facoltativo || state.settings.facoltativi);
   const atExam = (id: string) => {
@@ -164,7 +165,7 @@ export function Progressi() {
             </tbody>
           </table>
         </div>
-        <p className="small muted">Compaiono i concetti dei moduli già nell&apos;app{state.settings.facoltativi ? ', facoltativi compresi' : ''}. «All&apos;orale» sotto l&apos;80 %: serve almeno un altro ripasso prima dell&apos;esame.</p>
+        <p className="small muted">{state.settings.facoltativi ? 'Tutti i concetti della dispensa, facoltativi compresi.' : 'Tutti i concetti della dispensa tranne i facoltativi (isostatiche, sforzo normale eccentrico), che si attivano in Impostazioni.'} «All&apos;orale» sotto l&apos;80 %: serve almeno un altro ripasso prima dell&apos;esame.</p>
       </section>
 
       <section className="card">
@@ -218,6 +219,13 @@ export function Piano() {
             {w}
           </p>
         ))}
+        {plan.suggestedHours !== undefined && plan.suggestedHours > state.settings.hoursPerWeek && plan.suggestedHours < 60 && (
+          <p>
+            <button onClick={() => update((s) => ({ ...s, settings: { ...s.settings, hoursPerWeek: plan.suggestedHours! } }))}>
+              Usa {plan.suggestedHours} ore a settimana
+            </button>
+          </p>
+        )}
         <p className="small muted">
           Il piano si ricalcola ogni volta che lo apri. Ogni settimana: prima i ripassi programmati, poi i moduli nell&apos;ordine della dispensa (M1 → M8), con ore proporzionali alle pagine del modulo e a quanto ti manca. L&apos;ultima settimana dedica metà del tempo alla simulazione d&apos;orale. Pesi e stime sono scelte didattiche, non dati sugli esami.
         </p>

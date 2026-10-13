@@ -131,7 +131,7 @@ Casi: cerchio, $\\tau_{zx}=0$ sulla corda baricentrica; rettangolo, $\\tau_{zx}\
 
 **Analogia idrodinamica** (§5.8.7): stesse equazioni del moto laminare di un fluido in un recipiente con la forma della sezione. $|\\tau_z|\\leftrightarrow|v|$, linee di tensione ↔ linee di flusso, $\\tau_zb=$ costante in un tubo di flusso. **Spigoli convessi** $\\tau\\to0$, **concavi** $\\tau\\to\\max$: servono i raccordi (anche nei doppi T), importanti per la fatica.
 
-**Sottile chiusa e aperta:** nella chiusa la tensione è costante nello spessore, nell'aperta varia linearmente e cambia segno. La dispensa stima, con un calcolo qualitativo, $\\tau^{(2)}=3\\frac{B-t}t\\tau^{(1)}$ (circa 150 volte per $B=100$ mm, $t=2$ mm): le sezioni chiuse resistono molto meglio a torsione.
+**Sottile chiusa e aperta:** nella chiusa la tensione è costante nello spessore, nell'aperta varia linearmente e cambia segno. La dispensa stima, con un calcolo qualitativo, $\\tau^{(2)}=3\\frac{B-t}t\\tau^{(1)}$ (circa 150 volte per $B=100$ mm, $t=2$ mm); con un confronto omogeneo, cioè contando due pareti per corda anche nell'aperta, il fattore è la metà, $\\frac32\\frac{B-t}t$ (circa 74 volte, *passaggio aggiunto*, NF-14). In ogni caso le sezioni chiuse resistono molto meglio a torsione.
 
 **Cerchio cavo** (§5.8.8): il bordo interno è una linea di flusso, la stessa $F$ del cerchio pieno risolve il problema.`,
     pitfalls: ['Dire che anche il quadrato non si ingobba: solo il cerchio (e il cerchio cavo).', 'Mettere il massimo negli spigoli del rettangolo: lì τ → 0; il massimo è ai punti medi dei lati lunghi.', 'Usare per la sezione aperta la formula di Bredt.'],

@@ -14,6 +14,7 @@
 import type { ModuleId } from '../engine/types';
 import type { Concept } from '../content/types';
 import type { AppState } from '../storage/store';
+import { addDays, daysBetween, DAY_MS, parseLocalDate } from './dates';
 import { MASTERY_OK, MODULE_ORDER } from './mastery';
 import { isStudied } from './session';
 import { cardsOf } from './srs';
@@ -21,7 +22,7 @@ import { cardsOf } from './srs';
 export const EXAM_WEIGHT: Record<ModuleId, number> = { m1: 14, m2: 21, m3: 30, m4: 21, m5: 12, m6: 27, m7: 17, m8: 16 };
 export const TOTAL_HOURS_ESTIMATE = 100;
 export const REVIEW_MIN = { q: 2, o: 10 };
-const DAY = 86400000;
+const DAY = DAY_MS;
 
 export interface PlanItem {
   module: ModuleId;
@@ -47,13 +48,15 @@ export interface StudyPlan {
   needByModule: Record<string, number>;
   hoursByModule: Record<string, number>;
   warnings: string[];
+  /** ore a settimana che coprirebbero la stima (solo se il tempo è stretto) */
+  suggestedHours?: number;
 }
 
 /** Minuti di ripasso già programmati per ciascuna settimana (le scadenze arretrate cadono nella prima). */
 export function reviewMinutesByWeek(state: AppState, start: Date, weeks: number): number[] {
   const out = Array(weeks).fill(0);
   for (const [id, c] of cardsOf(state)) {
-    const w = Math.max(0, Math.floor((new Date(c.due).getTime() - start.getTime()) / (7 * DAY)));
+    const w = Math.max(0, Math.floor(daysBetween(start, new Date(c.due)) / 7));
     if (w < weeks) out[w] += id.startsWith('q:') ? REVIEW_MIN.q : REVIEW_MIN.o;
   }
   return out;
@@ -67,7 +70,7 @@ export function buildPlan(
   const start = new Date(now);
   start.setHours(0, 0, 0, 0);
   const warnings: string[] = [];
-  const exam = state.settings.examDate ? new Date(state.settings.examDate + 'T00:00:00') : undefined;
+  const exam = state.settings.examDate ? parseLocalDate(state.settings.examDate) : undefined;
   let nWeeks: number;
   if (exam && exam.getTime() > start.getTime()) nWeeks = Math.max(1, Math.ceil(Math.round((exam.getTime() - start.getTime()) / DAY) / 7)); // giorni arrotondati: l'ora legale non aggiunge una settimana
   else {
@@ -87,8 +90,8 @@ export function buildPlan(
     const simulationHours = nWeeks >= 2 && i === nWeeks - 1 ? (cap - reviewHours) / 2 : 0;
     return {
       index: i + 1,
-      start: new Date(start.getTime() + i * 7 * DAY),
-      end: new Date(start.getTime() + (i * 7 + days - 1) * DAY),
+      start: addDays(start, i * 7),
+      end: addDays(start, i * 7 + days - 1),
       capacity: cap,
       reviewHours,
       simulationHours,
@@ -105,8 +108,22 @@ export function buildPlan(
   for (const m of MODULE_ORDER) hoursBy[m] = needSum > 0 ? (totalFree * need[m]) / needSum : 0;
 
   const estimate = TOTAL_HOURS_ESTIMATE * (needSum / Object.values(EXAM_WEIGHT).reduce((a, b) => a + b, 0));
-  if (totalFree < estimate * 0.8)
-    warnings.push(`Tempo stretto: circa ${Math.round(totalFree)} h di studio disponibili contro una stima indicativa di ${Math.round(estimate)} h. Valuta più ore a settimana.`);
+  // ore di studio libere con h ore a settimana (stesse regole delle settimane qui sopra)
+  const freeWith = (h: number) =>
+    weeks.reduce((acc, wk, i) => {
+      const cap = (h * wk.capacity) / H;
+      const rev = Math.min(cap, reviews[i]);
+      return acc + cap - rev - (wk.simulationHours > 0 ? (cap - rev) / 2 : 0);
+    }, 0);
+  let suggestedHours: number | undefined;
+  if (totalFree < estimate * 0.8) {
+    suggestedHours = H;
+    while (suggestedHours < 60 && freeWith(suggestedHours) < estimate) suggestedHours++;
+    warnings.push(
+      `Tempo stretto: circa ${Math.round(totalFree)} h di studio disponibili contro una stima indicativa di ${Math.round(estimate)} h. ` +
+        (suggestedHours > H && freeWith(suggestedHours) >= estimate ? `Con ${suggestedHours} ore a settimana il piano la coprirebbe.` : 'Il tempo resta poco anche con 60 ore a settimana: concentrati sulle domande d\'orale.'),
+    );
+  }
 
   // riempimento sequenziale delle settimane nell'ordine dei prerequisiti
   let w = 0;
@@ -140,5 +157,5 @@ export function buildPlan(
       cursor[it.module] = from + per;
     }
 
-  return { weeks, examDate: exam, assumedWeeks, needByModule: need, hoursByModule: hoursBy, warnings };
+  return { weeks, examDate: exam, assumedWeeks, needByModule: need, hoursByModule: hoursBy, warnings, suggestedHours };
 }
