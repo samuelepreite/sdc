@@ -8,6 +8,19 @@
 - Le 3 domande della sessione 1 (data dell'orale, domande degli anni passati, PDF) hanno ricevuto risposta solo per il PDF: data e argomenti esclusi restano da chiedere; nel frattempo facoltativi esclusi, piano su 8 settimane.
 - **Prossimo passo preciso:** M2 (analisi della deformazione, Cap. 2, pp. 15–35). (1) controllare sul PDF le figure del Cap. 2 (PDF pp. 19–39) e NF-02 (p. 32, PDF 36); (2) motore della deformazione in `src/engine/` + test; (3) concetti, lezioni (derivazioni elencate in ANALISI §4), domande d'orale del Cap. 2 (riquadro «Per l'orale»); (4) modello V2: intorno che si deforma, sfera → ellissoide, nuova modalità in `src/three/`; (5) suite, build, `tools/verifica_ui.py` (aggiungere i concetti m2 alla lista), pubblicazione, infografica, commit.
 
+## §0c Lavoro automatico (dalla sessione 3)
+Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
+- Ciclo per modulo (M2 → M8): figure del capitolo sul PDF → motore + test → contenuti (concetti, lezioni, domande d'orale) → modello visivo → `tsc`, suite, build, `verifica_ui.py` → pubblicazione app e infografica → commit e push → §0 aggiornato → copia `claude/codice.tar.gz.b64` e `claude/RIPARTENZA.md` nel progetto. **Un modulo è finito solo dopo il push.**
+- Dopo M8: Fase 3 (banca di tutte le domande d'orale, mappa dei concetti, simulatore d'orale a domande miste con tempo), poi Fase 4 (rifinitura, piano). Ogni fase chiude con lo stesso ciclo.
+- Risparmio di token senza perdere qualità:
+  - leggi solo `tools/testi/cap-XX.md` del modulo e le parti dei file di codice che servono (grep, range di righe); M1 è il modello da copiare: `src/content/m1/`, `src/three/tensorRenderer.ts`, `src/diagrams/`;
+  - PDF solo per le pagine con figure (Read con `pages`, pagina PDF = pagina + 4), mai il capitolo intero;
+  - non rileggere un file dopo averlo scritto; output di test e build filtrati (`tail`, `grep`);
+  - test mirati mentre lavori, suite completa e `verifica_ui.py` una volta per modulo; screenshot guardati solo se la verifica segnala qualcosa o per un controllo visivo del nuovo modello;
+  - una sola pubblicazione per modulo; niente subagenti;
+  - messaggi allo studente: 2–3 righe a fine modulo, nient'altro tra un modulo e l'altro.
+- Se la chat si interrompe o si riassume: rileggi questo file e riparti dal «Prossimo passo preciso».
+
 ## §0b Economia di token
 - La dispensa **non si rilegge**: si leggono `tools/testi/cap-XX.md` (solo il capitolo del modulo in lavorazione). Il testo grezzo è in `tools/fonte/dispensa.txt` solo per emergenze.
 - Una sessione = un modulo. Test mirati durante il lavoro, suite completa una volta. Output filtrato. Una pubblicazione a fine sessione.
