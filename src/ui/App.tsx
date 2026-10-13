@@ -3,6 +3,8 @@ import { StateProvider, useRoute, useApp } from './state';
 import { Altro, ConceptPage, Fonti, Home, ModulePage, ModuliPage, Session, Settings } from './pages/pages';
 import { OraleIndex, OralePage } from './pages/orale';
 import { Piano, Progressi } from './pages/progressi';
+import { Mappa } from './pages/mappa';
+import { Simulatore } from './pages/simulatore';
 import { LessonPage } from './components/Lesson';
 import { Brand, Icon } from './components/Icon';
 import { MODULES } from '../content/modules';
@@ -13,7 +15,8 @@ const NAV: { to: string; label: string; icon: string; also?: string[] }[] = [
   { to: '', label: 'Oggi', icon: 'oggi' },
   { to: 'sessione', label: 'Studia', icon: 'studia' },
   { to: 'moduli', label: 'Moduli', icon: 'moduli', also: ['modulo', 'concetto', 'lezione'] },
-  { to: 'orale', label: 'Orale', icon: 'orale' },
+  { to: 'orale', label: 'Orale', icon: 'orale', also: ['simulatore'] },
+  { to: 'mappa', label: 'Mappa', icon: 'modello' },
   { to: 'progressi', label: 'Progressi', icon: 'progressi' },
   { to: 'piano', label: 'Piano', icon: 'piano' },
   { to: 'fonti', label: 'Fonti', icon: 'fonti' },
@@ -24,8 +27,8 @@ const TABS: { to: string; label: string; icon: string; also?: string[] }[] = [
   { to: '', label: 'Oggi', icon: 'oggi' },
   { to: 'sessione', label: 'Studia', icon: 'studia' },
   { to: 'moduli', label: 'Moduli', icon: 'moduli', also: ['modulo', 'concetto', 'lezione'] },
-  { to: 'orale', label: 'Orale', icon: 'orale' },
-  { to: 'altro', label: 'Altro', icon: 'altro', also: ['progressi', 'piano', 'fonti', 'impostazioni'] },
+  { to: 'orale', label: 'Orale', icon: 'orale', also: ['simulatore'] },
+  { to: 'altro', label: 'Altro', icon: 'altro', also: ['progressi', 'piano', 'fonti', 'impostazioni', 'mappa'] },
 ];
 
 const SYNC_TEXT: Record<string, string> = {
@@ -149,6 +152,10 @@ function Router() {
       return <LessonPage key={b} id={b ?? ''} />;
     case 'orale':
       return b ? <OralePage key={b} id={b} /> : <OraleIndex />;
+    case 'simulatore':
+      return <Simulatore />;
+    case 'mappa':
+      return <Mappa />;
     case 'progressi':
       return <Progressi />;
     case 'piano':

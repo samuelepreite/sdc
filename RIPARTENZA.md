@@ -1,11 +1,11 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**Sessione 3 (13/10/2026, lavoro automatico): M2–M8 FATTI e pubblicati (Fase 2 chiusa).**
-- M8 (criteri: `engine/criteri.ts`, V8 `three/criteriRenderer.ts` + `Criteri3D.tsx` kind `criteri3d`, `diagrams/Criteri.tsx`, contenuti `src/content/m8/`) completo: 360 test verdi, `verifica_ui.py --lezioni=m8` 0 problemi. 57/57 concetti, 94 domande (74 della dispensa, tutte).
+**Sessione 3 (13/10/2026, lavoro automatico): M2–M8 e Fase 3 FATTI e pubblicati.**
+- Tutti i moduli nell'app: 57/57 concetti, 94 domande (74 della dispensa). 360 test verdi.
+- Fase 3: `learning/simulatore.ts` (+ test), `ui/pages/simulatore.tsx` (rotta `simulatore`), `ui/pages/mappa.tsx` (rotta `mappa`), link nella banca, voci in NAV e in Altro; `verifica_ui.py` fa un'interrogazione completa e una selezione sulla mappa. Prova `--lezioni=m5`: 0 problemi.
 - `RichText` rende gli elenchi; tabelle markdown NON supportate. Testi in `tools/testi/cap-XX.md`. Nei `val` delle derivazioni tolleranza 1e-9.
-- **Fase 3 scritta, non collegata:** `learning/simulatore.ts` (+ test), `ui/pages/simulatore.tsx`, `ui/pages/mappa.tsx`, CSS in coda a `styles.css`. Lo script `fase3.py` (nella scratchpad della sessione 3, da rifare se perso) aggiunge le rotte `mappa` e `simulatore` (App.tsx NAV/TABS/Router, Altro, link dalla banca) e i controlli in `verifica_ui.py`.
-- **Prossimo passo preciso:** collegare Fase 3 → `tsc`, suite, build, `verifica_ui.py` (completa), pubblicazione, infografica, commit. Poi Fase 4: note sulla fonte aggiornate nella pagina Fonti (NF-09, NF-10, NF-12, NF-14), piano collegato al simulatore e alle domande per modulo; ciclo finale.
+- **Prossimo passo preciso:** Fase 4 — pagina Fonti con NF-09, NF-10, NF-12, NF-14 aggiornate; Piano con link al simulatore e numero di domande per modulo; suite, build, `verifica_ui.py --lezioni=m1`, pubblicazione, infografica finale, commit, copia nel progetto.
 
 ## §0c Lavoro automatico (dalla sessione 3)
 Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
@@ -38,7 +38,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 | 0 Analisi | ✅ fatta | trascrizione, ANALISI, NOTE_FONTI, grafo (`tools/grafo.py` → `tools/grafo.json`) |
 | 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
 | 2 Moduli M2–M8 | ✅ fatta | M2–M8 fatti (13/10) |
-| 3 Orale | — | banca domande (74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore |
+| 3 Orale | ✅ fatta | banca (94 domande, 74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore (13/10) |
 | 4 Rifinitura | — | piano fino alla data dell'orale |
 
 ## Prossimi passi in ordine
@@ -70,6 +70,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 - Il primo `git push` dopo il clone di un repository vuoto può fallire con «expected 'acknowledgments'»: rilanciare `git push -u origin main`.
 - Nel testo estratto le matrici sono spezzate da caratteri `\f`: i numeri di pagina si riconoscono come riga con solo il numero seguita da «Scienza delle Costruzioni …» o da «Capitolo N».
 - Ripubblicare l'app: se la sessione non ha ancora letto l'artifact, il publish viene rifiutato. Fare UNA `Artifact read` dell'URL senza `path` (salva l'HTML su file, mostra solo la testa: ~25k token), poi publish. Nella stessa sessione i publish successivi dello stesso file passano.
-- `pkill -f verifica_ui` uccide anche la shell che lo lancia: usare `ps … | awk | xargs kill`.
+- Fermare la prova nel browser: qualsiasi `pkill`/`pgrep -f` o `ps | grep` lanciato nello stesso comando che contiene il nome dello script uccide anche la shell (exit 144). Lanciare il kill in un comando a parte che NON contenga altrove il nome dello script (es. `ps aux | grep "[v]erifica_ui" | awk '{print $2}' | xargs -r kill` da solo).
+- Senza `--lezioni` la prova percorre TUTTE le 57 lezioni (molto lunga): usare sempre `--lezioni=mN` (le altre: solo la prima lezione).
 - La prova nel browser con tutte le lezioni dura ~10 min per passata: usare `--lezioni=mN` e lanciarla in background (`nohup … &`), leggendo il log.
 - Vedi anche la tabella «Trappole già incontrate» del prompt di partenza (3D, formule lunghe, FSRS, prompt notturni).

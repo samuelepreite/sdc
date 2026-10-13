@@ -147,6 +147,11 @@ export function OraleIndex() {
       <p className="lead muted">
         {ALL_ORALI.length} domande ({ALL_ORALI.filter((o) => o.source.kind === 'dispensa').length} dai riquadri «Per l&apos;orale» della dispensa), {done} già esposte almeno una volta. Ognuna ha la scaletta della risposta, le equazioni alla lavagna con il riferimento e la figura da disegnare.
       </p>
+      <p>
+        <a className="btn primary" href="#/simulatore">
+          Simula un&apos;interrogazione
+        </a>
+      </p>
       <div className="chips" role="radiogroup" aria-label="Tipo di domanda">
         {(['tutte', 'espositiva', 'collegamento', 'trabocchetto'] as const).map((k) => (
           <button key={k} role="radio" aria-checked={kind === k} className={kind === k ? 'on' : ''} onClick={() => setKind(k)}>

@@ -61,7 +61,7 @@ export function Mappa() {
         <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" aria-label="Mappa dei concetti con i prerequisiti">
           {MODULES.map((m, i) => (
             <text key={m.id} x={12 + i * (W + GX) + W / 2} y={22} textAnchor="middle" className={`map-col mod-${m.id}`}>
-              {m.id.toUpperCase()} · {m.title}
+              {m.id.toUpperCase()} · {m.short}
             </text>
           ))}
           {ALL_CONCEPTS.flatMap((c) =>

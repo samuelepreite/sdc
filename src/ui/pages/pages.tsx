@@ -218,6 +218,8 @@ export function ModuliPage() {
 
 export function Altro() {
   const items = [
+    { to: 'simulatore', icon: 'tempo', t: "Simulatore d'orale", d: 'Domande miste con il tempo, poi il resoconto' },
+    { to: 'mappa', icon: 'modello', t: 'Mappa dei concetti', d: 'I 57 concetti con i prerequisiti e la padronanza' },
     { to: 'piano', icon: 'piano', t: 'Piano di studio', d: "Ore per settimana fino all'orale" },
     { to: 'fonti', icon: 'fonti', t: 'Fonti e verifiche', d: 'Come sono controllati formule e numeri; note sulla dispensa' },
     { to: 'impostazioni', icon: 'impostazioni', t: 'Impostazioni', d: "Data dell'orale, ore, salvataggio" },

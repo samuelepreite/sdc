@@ -133,7 +133,7 @@ def run(scheme, width, shader_fail=False):
             b.close()
             return
 
-        for r in ['', 'moduli', 'orale', 'progressi', 'piano', 'fonti', 'impostazioni', 'altro', 'sessione'] + [f'modulo/m{i}' for i in range(1, 9)] + [f'concetto/{c}' for c in CONCEPTS]:
+        for r in ['', 'moduli', 'orale', 'simulatore', 'mappa', 'progressi', 'piano', 'fonti', 'impostazioni', 'altro', 'sessione'] + [f'modulo/m{i}' for i in range(1, 9)] + [f'concetto/{c}' for c in CONCEPTS]:
             visit(r)
         # scheda intera con modelli e diagrammi
         for c in CONCEPTS:
@@ -168,13 +168,31 @@ def run(scheme, width, shader_fail=False):
         check(page.locator('.oral-result').count() == 1, 'orale: esito non mostrato')
         if SHOTS:
             page.screenshot(path=str(SHOTS / f'orale-{scheme}-{width}.png'))
+        # simulatore: un'interrogazione completa
+        visit('simulatore', 300)
+        page.click('button:has-text("Inizia")')
+        for _ in range(8):
+            if page.locator('h1:has-text("Resoconto")').count():
+                break
+            page.wait_for_timeout(300)
+            page.click('button:has-text("Ho finito, confronta")')
+            page.locator('.scaletta input[type=checkbox]').first.check()
+            page.locator('button:has-text("Registra")').click()
+            page.wait_for_timeout(1300)
+        check(page.locator('h1:has-text("Resoconto")').count() == 1, 'simulatore: resoconto non mostrato')
+        check(overflow(page) <= 1, f'{scheme} {width}: scorrimento orizzontale nel resoconto del simulatore')
+        # mappa: selezione di un concetto
+        visit('mappa', 300)
+        page.locator('.map-node').nth(10).click()
+        page.wait_for_timeout(200)
+        check(page.locator('.map-node.up, .map-node.down').count() > 0, 'mappa: selezione senza evidenziazione')
         for r in ['', 'progressi', 'piano']:
             visit(r, 300)
             if SHOTS:
                 page.screenshot(path=str(SHOTS / f'{r or "oggi"}-{scheme}-{width}.png'))
         state = page.evaluate("JSON.parse(localStorage.getItem('sdc:v1'))")
         check(sum(1 for l in state['lessons'].values() if l.get('doneAt')) == len(WALKED), 'non tutte le lezioni risultano finite nello stato')
-        check(len(state['oral']) == 1, 'esposizione orale non salvata')
+        check(len(state['oral']) >= 2, 'esposizioni orali non salvate (banca e simulatore)')
         real = [e for e in errs if 'favicon' not in e and 'fonts.g' not in e and 'ERR_TUNNEL' not in e]  # i font Google non sono raggiungibili da qui
         check(not real, f'{scheme} {width}: errori in console {real[:3]}')
         b.close()
