@@ -1,11 +1,11 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**Sessione 3 (13/10/2026, lavoro automatico): M2–M8 e Fase 3 FATTI e pubblicati.**
-- Tutti i moduli nell'app: 57/57 concetti, 94 domande (74 della dispensa). 360 test verdi.
-- Fase 3: `learning/simulatore.ts` (+ test), `ui/pages/simulatore.tsx` (rotta `simulatore`), `ui/pages/mappa.tsx` (rotta `mappa`), link nella banca, voci in NAV e in Altro; `verifica_ui.py` fa un'interrogazione completa e una selezione sulla mappa. Prova `--lezioni=m5`: 0 problemi.
+**Sessione 3 (13/10/2026, lavoro automatico): TUTTO FATTO — M2–M8, Fase 3, Fase 4, pubblicati.**
+- App completa: 57/57 concetti, 94 domande (74 della dispensa), 8 modelli 3D, mappa (`#/mappa`), simulatore (`#/simulatore`), piano su 8 settimane con link al simulatore e alle domande per modulo; pagina Fonti con NF-09, NF-10, NF-12, NF-14. 360 test verdi; `verifica_ui.py --lezioni=m5` 0 problemi.
+- Aperte per il docente: NF-02 (p. 32), NF-07 (facoltativi), NF-14 (p. 138). Da Samuele: data dell'orale (si imposta in Piano), eventuali argomenti esclusi.
 - `RichText` rende gli elenchi; tabelle markdown NON supportate. Testi in `tools/testi/cap-XX.md`. Nei `val` delle derivazioni tolleranza 1e-9.
-- **Prossimo passo preciso:** Fase 4 — pagina Fonti con NF-09, NF-10, NF-12, NF-14 aggiornate; Piano con link al simulatore e numero di domande per modulo; suite, build, `verifica_ui.py --lezioni=m1`, pubblicazione, infografica finale, commit, copia nel progetto.
+- **Prossimo passo preciso:** nessun lavoro previsto. Su richiesta: adattare il piano alla data dell'orale, rifinire contenuti segnalati dallo studente (feedback dei passi delle lezioni), aggiungere esercizi numerici.
 
 ## §0c Lavoro automatico (dalla sessione 3)
 Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
@@ -39,7 +39,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 | 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
 | 2 Moduli M2–M8 | ✅ fatta | M2–M8 fatti (13/10) |
 | 3 Orale | ✅ fatta | banca (94 domande, 74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore (13/10) |
-| 4 Rifinitura | — | piano fino alla data dell'orale |
+| 4 Rifinitura | ✅ fatta | piano (8 settimane senza data), Fonti aggiornate (13/10) |
 
 ## Prossimi passi in ordine
 1. M2 (deformazione) con il modello V2 (intorno che si deforma, sfera → ellissoide).

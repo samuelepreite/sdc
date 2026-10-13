@@ -602,8 +602,11 @@ const NF = [
   ['NF-04', 'D', 'Teo 2.8.1 «di Kirchhoff» (compatibilità) e Teo 5.1.1 (problema elastico): nell\'app hanno nomi distinti.'],
   ['NF-07', 'D', 'Linee isostatiche (§4.1) e sforzo normale eccentrico (§5.6): facoltativi, come dice la dispensa. Da confermare con il docente.'],
   ['NF-08', 'D', 'Cap. 6: ν indica sia il coefficiente di sicurezza sia quello di Poisson.'],
+  ['NF-09', 'B', '§6.7, p. 155: per gli stati alla Saint-Venant la dispensa chiama s₁, s₂ le principali non nulle e s₃ quella nulla «che sta tra le due»: qui gli indici sono nomi, non un ordinamento. Le formule finali sono corrette.'],
+  ['NF-10', 'C', 'Cap. 5: verso degli assi nei disegni della sezione. Risolta sulle figure di pp. 117 e 121: x verso sinistra, y verso il basso.'],
   ['NF-11', 'D', 'Risultati che la dispensa enuncia senza dimostrazione (es. Lamé, τmax con Lagrange, arbelo): nell\'app niente derivazione, spiegazione a parole.'],
-  ['NF-12', 'C', 'Figure della dispensa: quelle del Cap. 1 (pp. 4, 8, 12) sono controllate sul PDF; le altre si controllano modulo per modulo.'],
+  ['NF-12', 'C', 'Figure della dispensa controllate sul PDF dove servivano ai modelli: Cap. 1 (pp. 4, 8, 12), Cap. 2 (pp. 27, 32), Cap. 3 (p. 58), Cap. 5 (pp. 117, 121, 137–138).'],
+  ['NF-14', 'B', 'p. 138: il confronto tubolare chiuso/aperto (≈150 volte) è un calcolo qualitativo; con le formule globali della dispensa (Bredt e rettangoli allungati) il rapporto è 3(B−t)/(2t), circa la metà. Da chiedere al docente.'],
 ];
 
 export function Fonti() {
@@ -631,7 +634,7 @@ export function Fonti() {
           <tbody>
             {NF.map(([id, cl, t]) => (
               <tr key={id}>
-                <td>
+                <td style={{ whiteSpace: 'nowrap' }}>
                   <b>{id}</b>
                 </td>
                 <td>{cl}</td>

@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import { ALL_CONCEPTS, conceptIdsByModule, conceptsOf } from '../../content';
 import { MODULES } from '../../content/modules';
 import { ALL_LESSONS } from '../../content/lezioni';
+import { ALL_ORALI } from '../../content/orale';
 import { masteryDetail, moduleMastery, MASTERY_OK } from '../../learning/mastery';
 import { buildPlan } from '../../learning/plan';
 import { cardsOf, dueCards, forecast, retrievabilityAt } from '../../learning/srs';
@@ -245,6 +246,10 @@ export function Piano() {
                     {it.module.toUpperCase()} · {m.title}
                   </b>{' '}
                   — {h(it.hours)}
+                  {' · '}
+                  <a className="small" href={`#/modulo/${it.module}`}>
+                    {ALL_ORALI.filter((o) => ALL_CONCEPTS.find((c) => c.id === o.concepts[0])?.module === it.module).length} domande d&apos;orale
+                  </a>
                   {it.pending ? (
                     <span className="small muted"> (contenuti in arrivo nell&apos;app: studia dalla dispensa, {m.source})</span>
                   ) : (
@@ -265,7 +270,10 @@ export function Piano() {
             })}
             {w.simulationHours > 0 && (
               <li>
-                <b>Simulazione d&apos;orale</b> — {h(w.simulationHours)}
+                <a href="#/simulatore">
+                  <b>Simulazione d&apos;orale</b>
+                </a>{' '}
+                — {h(w.simulationHours)}
               </li>
             )}
           </ul>
