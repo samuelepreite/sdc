@@ -1,11 +1,12 @@
 {
-  "quando": "13/10/2026, M3 completato",
-  "titolo": "Terzo modulo nell'app: l'analisi della tensione",
-  "lede": "M3 ha 9 lezioni guidate, 16 domande d'orale (le 14 della dispensa più 2 dedotte), il modello 3D della tensione in un punto (piano di taglio, tetraedro di Cauchy, reciprocità, direzioni principali) e i diagrammi interattivi del cerchio di Mohr e dell'arbelo. <b>Si prosegue con M4 (legami costitutivi), già scritto in parte.</b>",
+  "quando": "13/10/2026, M4 completato",
+  "titolo": "Quarto modulo nell'app: i legami costitutivi",
+  "lede": "M4 ha 7 lezioni guidate (una facoltativa, le isostatiche), 12 domande d'orale (le 10 della dispensa per §4.1–4.11 più 2 dedotte) e cinque diagrammi nuovi: prove di laboratorio su acciaio e calcestruzzo, creep e rilassamento, notazione di Voigt con le classi di simmetria, cammino di deformazione, provino isotropo. <b>Si prosegue con M5 (elasticità isotropa), già scritto.</b>",
   "moduli_fatti": [
     "M1",
     "M2",
-    "M3"
+    "M3",
+    "M4"
   ],
   "fasi": [
     {
@@ -20,7 +21,7 @@
     },
     {
       "t": "2 · M2–M8",
-      "s": "M2, M3 fatti; prossimo M4",
+      "s": "M2–M4 fatti; prossimo M5",
       "cls": "next"
     },
     {
@@ -34,15 +35,15 @@
   ],
   "numeri": [
     {
-      "v": "24/57",
-      "l": "concetti nell'app (M1–M3)"
+      "v": "31/57",
+      "l": "concetti nell'app (M1–M4)"
     },
     {
-      "v": "44",
-      "l": "domande d'orale (38 dalla dispensa)"
+      "v": "56",
+      "l": "domande d'orale (48 dalla dispensa)"
     },
     {
-      "v": "185",
+      "v": "213",
       "l": "test verdi"
     },
     {
@@ -60,15 +61,14 @@
     }
   ],
   "fatto": [
-    "Motore della tensione: vettore tensione e componenti speciali, principali, τ_max, Mohr, arbelo; l'esercizio di §3.14 e l'esempio di §3.17.2 tornano con tutti i numeri della dispensa.",
-    "M3: 9 lezioni con 12 derivazioni ricalcolate (tetraedro, σ_n come forma quadratica, euristica degli estremi, equazione del cerchio, correttezza della costruzione con il polo).",
-    "Modello 3D V3 (piano di taglio, tetraedro di Cauchy, parallelepipedo, principali) e diagrammi di Mohr (costruzione con il polo, principali, τ estreme) e dell'arbelo con 300 giaciture casuali.",
-    "Elenchi puntati e numerati ora resi come elenchi in tutte le lezioni (anche M1, prima apparivano in riga).",
-    "Figura di Mohr di p. 58 controllata sul PDF: asse τ verso il basso, polo P(σ₁, −τ₁₂)."
+    "Motore dei legami: lemma fondamentale con integrali veri (quadratura di Gauss), tensore elastico e simmetrie, Voigt, gruppi di simmetria, lavoro lungo un cammino, Lamé e moduli tecnici, Sylvester.",
+    "M4: 7 lezioni; lemma fondamentale e TLV, classificazione dei comportamenti, prove su acciaio e calcestruzzo, elasticità lineare (81 → 36 → 21 contati dal motore), teorema sull'energia, simmetrie materiali.",
+    "Diagrammi: curva F–ΔL dell'acciaio con scarico, calcestruzzo a controllo di carico e di deformazione, creep e rilassamento, matrice di Voigt per classe di simmetria, tre cammini a confronto (iperelastico e no).",
+    "M5 (Lamé, moduli tecnici, plausibilità, problema elastico) è già scritto: 5 lezioni e 7 domande."
   ],
   "prossimo": [
-    "M4, legami costitutivi (motore, lezioni, domande e diagrammi già scritti; da registrare e verificare), poi M5.",
-    "Scelta fatta da solo: NF-05 risolta (verifica di §3.14 ricalcolata).",
+    "M5, elasticità isotropa: registrazione, verifica e pubblicazione; poi M6 (Saint-Venant, prima parte).",
+    "Scelta fatta da solo: le domande 11–14 del riquadro del Cap. 4 vanno in M5, che copre §4.12–4.16.",
     "Scelta fatta da solo: data dell'orale non nota, piano su 8 settimane; facoltativi esclusi."
   ],
   "da_te": [

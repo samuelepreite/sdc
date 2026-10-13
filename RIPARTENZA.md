@@ -1,12 +1,12 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**Sessione 3 (13/10/2026, lavoro automatico): M2 e M3 FATTI e pubblicati.**
-- M2 (deformazione) e M3 (tensione: `engine/tensione.ts`, `three/stressRenderer.ts` + `Tensione3D.tsx`, `diagrams/Mohr.tsx`, `Arbelo.tsx`) completi: 185 test verdi, `verifica_ui.py --lezioni=m3` 0 problemi.
-- `RichText` (ui/components/Tex.tsx) ora rende gli elenchi «- …» e «1. …» (prima uscivano in riga, anche in M1). Le tabelle markdown NON sono supportate: usare elenchi.
-- Infrastruttura: `visual/VisualHost.tsx`, `three/Stage.tsx`, `diagrams/svgkit.tsx`, `tools/stato.py` (+ `docs/stato.json`), `tools/foto.py`, `tools/fine_modulo.sh "msg"` (commit, push, archivio `.backup.b64` da caricare nel progetto come `claude/codice.tar.gz.b64`).
-- **M4 e M5 già scritti ma non registrati:** motore `engine/elastico.ts` (+ `tests/elastico.test.ts`, 8 verdi), diagrammi `Prove.tsx`, `Voigt.tsx`, `Cammino.tsx`, `Isotropia.tsx`, `Problema.tsx`; contenuti M4 in `src/content/m4/` (concetti, lezioni, orale con `P4`). M5: da scrivere i contenuti (`src/content/m5/`), domande 11–14 del Cap. 4 (usare `P4` da m4/orale).
-- **Prossimo passo preciso:** registrare M4 → `tsc`, suite, build, `verifica_ui.py --lezioni=m4`, foto dei diagrammi, pubblicazione, infografica, `fine_modulo.sh`, copia nel progetto. Poi M5, M6 (V6 trave 3D), M7, M8, Fase 3, Fase 4.
+**Sessione 3 (13/10/2026, lavoro automatico): M2, M3, M4 FATTI e pubblicati.**
+- M4 (legami costitutivi: `engine/elastico.ts`, diagrammi `Prove`, `Voigt`, `Cammino`, `Isotropia`, `Problema`; contenuti `src/content/m4/`, `P4` in m4/orale) completo: 213 test verdi, `verifica_ui.py --lezioni=m4` 0 problemi.
+- `RichText` (ui/components/Tex.tsx) rende gli elenchi «- …» e «1. …». Le tabelle markdown NON sono supportate: usare elenchi.
+- Infrastruttura: `visual/VisualHost.tsx`, `three/Stage.tsx`, `diagrams/svgkit.tsx`, `tools/stato.py` (+ `docs/stato.json`), `tools/foto.py`, `tools/registra.py N`, `tools/fine_modulo.sh "msg"` (commit, push, archivio `.backup.b64` da caricare nel progetto come `claude/codice.tar.gz.b64`).
+- **M5 scritto ma non registrato:** `src/content/m5/` (concetti c5.1–c5.5, lezioni, orale o5.1–o5.7 con le domande 11–14 del Cap. 4).
+- **Prossimo passo preciso:** `python3 tools/registra.py 5` → `tsc`, suite (il test conta 14 domande del Cap. 4), build, `verifica_ui.py --lezioni=m5`, pubblicazione, infografica, `fine_modulo.sh`, copia nel progetto. Poi M6 (V6 trave 3D), M7, M8, Fase 3, Fase 4.
 
 ## §0c Lavoro automatico (dalla sessione 3)
 Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
@@ -38,7 +38,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 |---|---|---|
 | 0 Analisi | ✅ fatta | trascrizione, ANALISI, NOTE_FONTI, grafo (`tools/grafo.py` → `tools/grafo.json`) |
 | 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
-| 2 Moduli M2–M8 | in corso | M2, M3 fatti (13/10) |
+| 2 Moduli M2–M8 | in corso | M2, M3, M4 fatti (13/10) |
 | 3 Orale | — | banca domande (74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore |
 | 4 Rifinitura | — | piano fino alla data dell'orale |
 

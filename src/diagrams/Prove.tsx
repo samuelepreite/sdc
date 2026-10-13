@@ -77,12 +77,12 @@ function Steel({ unload, reale }: { unload: number; reale: boolean }) {
           <Lbl x={W - 14} y={H - 46} anchor="end" color={MUTED}>ΔL</Lbl>
           <Lbl x={56} y={22} color={MUTED}>F</Lbl>
           {[
-            [0.5, 'elastico'],
+            [0, 'elastico'],
             [2.5, 'snervamento'],
             [9, 'incrudimento'],
             [16, 'strizione'],
           ].map(([x, l]) => (
-            <Lbl key={l as string} x={X(x as number)} y={H - 18} anchor="middle" color={MUTED} size={12}>
+            <Lbl key={l as string} x={X(x as number)} y={l === 'elastico' ? H - 4 : H - 18} anchor={l === 'elastico' ? 'start' : 'middle'} color={MUTED} size={12}>
               {l as string}
             </Lbl>
           ))}
@@ -95,7 +95,7 @@ function Steel({ unload, reale }: { unload: number; reale: boolean }) {
           ].map(([x, y, l]) => (
             <g key={l as string}>
               <circle cx={X(x as number)} cy={Y(y as number)} r={3.5} fill={C1} />
-              <Lbl x={X(x as number) + 4} y={Y(y as number) - 6} color={C1} size={12}>
+              <Lbl x={X(x as number) + (l === 'Fp' ? -6 : 4)} y={Y(y as number) - (l === 'Fp' ? -4 : 6)} color={C1} size={12} anchor={l === 'Fp' ? 'end' : 'start'}>
                 {l as string}
               </Lbl>
             </g>
