@@ -2,3 +2,4 @@ tools/fonte/raw-cap-*.txt
 node_modules/
 dist/
 backup/
+dist-single/
