@@ -99,6 +99,6 @@ export class CriteriRenderer extends BaseRenderer<CriteriConfig> {
     this.dyn.add(pt);
     this.line([[m, m, m], s], COL.out, true);
     const sv = C.sortS(this.cfg.s);
-    this.tag(`punto di lavoro (σ_m = ${((sv[0] + sv[1] + sv[2]) / 3).toFixed(2)} σ_L)`, [s[0] + 0.12, s[1], s[2] + 0.18], 'out');
+    this.tag(`P · σ<sub>m</sub> = ${((sv[0] + sv[1] + sv[2]) / 3).toFixed(2).replace('.', ',')} σ<sub>L</sub>`, [s[0] + 0.35, s[1] - 0.2, s[2] + 0.25], 'out');
   }
 }

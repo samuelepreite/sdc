@@ -180,9 +180,9 @@ function Piano() {
 }
 
 function Mohr() {
-  const [s1, setS1] = useState(1.2);
-  const [s2, setS2] = useState(0.2);
-  const [s3, setS3] = useState(-2.4);
+  const [s1, setS1] = useState(0.6);
+  const [s2, setS2] = useState(-0.2);
+  const [s3, setS3] = useState(-1.4);
   const [c, setC] = useState(1);
   const [phiDeg, setPhi] = useState(30);
   const phi = (phiDeg * Math.PI) / 180;

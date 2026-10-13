@@ -1,12 +1,11 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**Sessione 3 (13/10/2026, lavoro automatico): M2–M7 FATTI e pubblicati.**
-- M7 (taglio e torsione: `engine/taglio.ts`, `engine/torsione.ts`, V7 `three/torsionRenderer.ts` + `Torsione3D.tsx` kind `torsione3d`, diagrammi `Jourawski.tsx`, `Torsione.tsx`, contenuti `src/content/m7/`) completo: 328 test verdi, `verifica_ui.py --lezioni=m7` 0 problemi. NF-14 aperta (p. 138).
-- `RichText` rende gli elenchi; tabelle markdown NON supportate. Testi in `tools/testi/cap-XX.md`. Nei `val` delle derivazioni tolleranza 1e-9: niente quadrature approssimate, derivate numeriche solo su polinomi con passo ≥ 1e-3.
-- **M8 scritto ma non registrato:** `engine/criteri.ts` (+ test), V8 `three/criteriRenderer.ts` + `Criteri3D.tsx` (kind `criteri3d`), `diagrams/Criteri.tsx`, contenuti `src/content/m8/` (c8.1–c8.7, orale o8.1–o8.13 con le 10 domande del Cap. 6).
-- **Fase 3 scritta, non collegata:** `learning/simulatore.ts` (+ `tests/simulatore.test.ts`), `ui/pages/simulatore.tsx`, `ui/pages/mappa.tsx`, CSS in coda a `styles.css`; `OralRunner.onDone` ora passa {points,total,seconds}. Da aggiungere le rotte `mappa` e `simulatore` in `App.tsx` (NAV, Router) e in `Altro`.
-- **Prossimo passo preciso:** `python3 tools/registra.py 8` → ciclo di M8 (`verifica_ui.py --lezioni=m8`); poi rotte della Fase 3 e ciclo; poi Fase 4 (piano: link al simulatore, rifinitura).
+**Sessione 3 (13/10/2026, lavoro automatico): M2–M8 FATTI e pubblicati (Fase 2 chiusa).**
+- M8 (criteri: `engine/criteri.ts`, V8 `three/criteriRenderer.ts` + `Criteri3D.tsx` kind `criteri3d`, `diagrams/Criteri.tsx`, contenuti `src/content/m8/`) completo: 360 test verdi, `verifica_ui.py --lezioni=m8` 0 problemi. 57/57 concetti, 94 domande (74 della dispensa, tutte).
+- `RichText` rende gli elenchi; tabelle markdown NON supportate. Testi in `tools/testi/cap-XX.md`. Nei `val` delle derivazioni tolleranza 1e-9.
+- **Fase 3 scritta, non collegata:** `learning/simulatore.ts` (+ test), `ui/pages/simulatore.tsx`, `ui/pages/mappa.tsx`, CSS in coda a `styles.css`. Lo script `fase3.py` (nella scratchpad della sessione 3, da rifare se perso) aggiunge le rotte `mappa` e `simulatore` (App.tsx NAV/TABS/Router, Altro, link dalla banca) e i controlli in `verifica_ui.py`.
+- **Prossimo passo preciso:** collegare Fase 3 → `tsc`, suite, build, `verifica_ui.py` (completa), pubblicazione, infografica, commit. Poi Fase 4: note sulla fonte aggiornate nella pagina Fonti (NF-09, NF-10, NF-12, NF-14), piano collegato al simulatore e alle domande per modulo; ciclo finale.
 
 ## §0c Lavoro automatico (dalla sessione 3)
 Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
@@ -38,7 +37,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 |---|---|---|
 | 0 Analisi | ✅ fatta | trascrizione, ANALISI, NOTE_FONTI, grafo (`tools/grafo.py` → `tools/grafo.json`) |
 | 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
-| 2 Moduli M2–M8 | in corso | M2–M7 fatti (13/10) |
+| 2 Moduli M2–M8 | ✅ fatta | M2–M8 fatti (13/10) |
 | 3 Orale | — | banca domande (74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore |
 | 4 Rifinitura | — | piano fino alla data dell'orale |
 

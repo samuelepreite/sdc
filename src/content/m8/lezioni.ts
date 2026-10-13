@@ -356,7 +356,7 @@ $$\\tens A_s=\\operatorname{sph}\\tens A=\\tfrac13(\\operatorname{tr}\\tens A)\\
           sample,
           lines: [
             { tex: '\\operatorname{tr}\\tens A_s', why: 'Traccia della parte sferica.', val: (v) => T.trace(C.sph(Esym(v))) },
-            { tex: '=\\operatorname{tr}\\tens A,\\qquad\\operatorname{tr}\\tens A_d=0', why: 'La parte deviatorica ha traccia nulla.', val: (v) => T.trace(Esym(v)) },
+            { tex: '=\\operatorname{tr}\\tens A,\\qquad\\operatorname{tr}\\tens A_d=0', why: 'La parte deviatorica ha traccia nulla.', val: (v) => T.trace(Esym(v)), eq: 'Teo 6.5.1' },
           ],
           checks: [
             { what: '$\\tens A_s\\cdot\\tens A_d=\\lambda\\operatorname{tr}\\tens A_d=0$: decomposizione ortogonale', f: (v) => [T.ddot(C.sph(Esym(v)), C.dev(Esym(v))), 0] },

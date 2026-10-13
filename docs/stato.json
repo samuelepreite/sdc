@@ -1,7 +1,7 @@
 {
-  "quando": "13/10/2026, M7 completato",
-  "titolo": "Settimo modulo nell'app: taglio e torsione",
-  "lede": "M7 ha 6 lezioni guidate con 13 derivazioni verificate e 6 domande d'orale (le ultime 3 del Cap. 5 più 3 dedotte). Il motore risolve la funzione di Prandtl per qualsiasi sezione: linee di tensione, ingobbamento nel modello 3D della torsione, fattore q; il diagramma di Jourawski taglia davvero la sezione e applica la regola delle tangenti. <b>Si prosegue con M8 (criteri di resistenza), già scritto.</b>",
+  "quando": "13/10/2026, M8 completato: tutti i moduli nell'app",
+  "titolo": "Ottavo modulo nell'app: i criteri di resistenza. Il programma è completo",
+  "lede": "M8 ha 7 lezioni guidate con 15 derivazioni verificate e 13 domande d'orale (le 10 del Cap. 6 più 3 dedotte), il modello 3D dei criteri nello spazio delle tensioni principali (von Mises, Tresca, Beltrami, Galileo, con lo stato di Huber) e i diagrammi di verifica monoassiale, dei domini nel piano e di Mohr–Coulomb. <b>Tutti gli otto moduli sono nell'app; ora la Fase 3: mappa dei concetti e simulatore d'orale.</b>",
   "moduli_fatti": [
     "M1",
     "M2",
@@ -9,7 +9,8 @@
     "M4",
     "M5",
     "M6",
-    "M7"
+    "M7",
+    "M8"
   ],
   "fasi": [
     {
@@ -24,12 +25,13 @@
     },
     {
       "t": "2 · M2–M8",
-      "s": "M2–M7 fatti; prossimo M8",
-      "cls": "next"
+      "s": "fatta il 13/10",
+      "cls": "ok"
     },
     {
       "t": "3 · Orale",
-      "s": "simulatore, mappa"
+      "s": "mappa, simulatore: prossima",
+      "cls": "next"
     },
     {
       "t": "4 · Rifinitura",
@@ -38,15 +40,15 @@
   ],
   "numeri": [
     {
-      "v": "50/57",
-      "l": "concetti nell'app (M1–M7)"
+      "v": "57/57",
+      "l": "concetti nell'app (tutti i moduli)"
     },
     {
-      "v": "81",
-      "l": "domande d'orale (64 dalla dispensa)"
+      "v": "94",
+      "l": "domande d'orale (74 dalla dispensa, tutte)"
     },
     {
-      "v": "328",
+      "v": "360",
       "l": "test verdi"
     },
     {
@@ -64,15 +66,15 @@
     }
   ],
   "fatto": [
-    "Motore del taglio: area sottesa, corda e momento statico calcolati tagliando il poligono; massimo di τ̄ (Prop 5.7.3) e salto ala–anima controllati.",
-    "Motore della torsione: funzione di Prandtl alle differenze finite; cerchio, quadrato e rettangolo tornano con la dispensa entro pochi per cento; ingobbamento dal gradiente di F.",
-    "M7: Jourawski con dimostrazione, regola delle tangenti, Clebsch e Neumann, Prandtl e Dirichlet, sezioni esatte, analogia idrodinamica, sottili aperte e Bredt.",
-    "Modello 3D V7: sezioni che ruotano e si ingobbano, grafico di F; diagrammi di Jourawski e delle linee di tensione.",
-    "Domande del Cap. 5 ora complete: 12 su 12."
+    "Motore dei criteri: tensioni ideali di Galileo, Tresca, Grashof, Beltrami, von Mises; Mohr–Coulomb verificato con la geometria del cerchio massimo; decomposizione sferica/deviatorica ed energia distorcente controllate con il legame di Lamé.",
+    "M8: verifica monoassiale e coefficiente di sicurezza, perché servono i criteri, i quattro criteri classici, Huber, von Mises con la dimostrazione, Mohr–Coulomb, tensioni ideali alla Saint-Venant, travature, verifica e progetto.",
+    "Modello 3D V8: superfici limite nello spazio delle tensioni principali, asse idrostatico e stato di Huber con la pressione regolabile.",
+    "Tutte le 74 domande «Per l'orale» della dispensa sono nella banca, con scaletta, lavagna e figura.",
+    "Già scritti per la Fase 3: mappa dei concetti con i prerequisiti e simulatore d'orale a domande miste con il tempo."
   ],
   "prossimo": [
-    "M8, criteri di resistenza: verifica monoassiale, Galileo, Tresca, Grashof, Beltrami e Huber, von Mises, Mohr–Coulomb, stati alla Saint-Venant; criteri nello spazio delle tensioni principali.",
-    "Poi Fase 3: mappa dei concetti e simulatore d'orale (già scritti), e Fase 4.",
+    "Fase 3: collegare mappa e simulatore all'app, verificarli nel browser, pubblicare.",
+    "Fase 4: rifinitura (note sulla fonte aggiornate nell'app, piano collegato al simulatore e alle domande per modulo).",
     "Scelta fatta da solo: data dell'orale non nota, piano su 8 settimane; facoltativi esclusi."
   ],
   "da_te": [
