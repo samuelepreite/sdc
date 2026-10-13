@@ -1,0 +1,38 @@
+{
+  "quando": "13/10/2026, M2 completato",
+  "titolo": "Secondo modulo nell'app: l'analisi della deformazione",
+  "lede": "M2 ha 8 lezioni guidate, 15 domande d'orale (le 13 della dispensa più 2 dedotte) e un nuovo modello 3D: l'intorno che si deforma, la sfera che diventa ellissoide, la formula di rappresentazione. <b>Lavoro in automatico: si prosegue con M3 (tensione).</b>",
+  "moduli_fatti": ["M1", "M2"],
+  "fasi": [
+    {"t": "0 · Analisi", "s": "fatta il 12/10", "cls": "ok"},
+    {"t": "1 · Impianto + M1", "s": "fatta il 13/10", "cls": "ok"},
+    {"t": "2 · M2–M8", "s": "M2 fatto; prossimo M3, tensione", "cls": "next"},
+    {"t": "3 · Orale", "s": "simulatore, mappa"},
+    {"t": "4 · Rifinitura", "s": "piano fino all'esame"}
+  ],
+  "numeri": [
+    {"v": "15/57", "l": "concetti nell'app (M1, M2)"},
+    {"v": "28", "l": "domande d'orale (24 dalla dispensa)"},
+    {"v": "132", "l": "test verdi"},
+    {"v": "0", "l": "problemi nella prova del browser"},
+    {"v": "3/13", "l": "note sulla fonte risolte o confermate"},
+    {"v": "2", "l": "punti da chiedere al docente", "warn": true}
+  ],
+  "fatto": [
+    "Motore della deformazione: parametri di misura finiti e linearizzati, rappresentazione, direzioni principali (metodo di Jacobi), residuo di Saint-Venant; 11 test con verifiche geometriche indipendenti.",
+    "M2: 8 lezioni guidate con 9 derivazioni ricalcolate su 25 casi casuali (identità cinematica, dx = F dX, ε_n, sin γ, Θ = det F − 1, linearizzazione di D, ε_n in componenti, formula di rappresentazione, spettrale b, estremo).",
+    "Modello 3D V2 con tre modalità e la scelta della parte disegnata (H, solo E, solo W); tabella finita contro linearizzata.",
+    "Diagramma delle tessere per la compatibilità (campo compatibile e non compatibile).",
+    "Figure del Cap. 2 controllate sul PDF (pp. 16, 18, 27, 29, 32): corrispondono al testo."
+  ],
+  "prossimo": [
+    "M3, analisi della tensione (Cap. 3): piano di taglio, tetraedro di Cauchy, cerchio di Mohr e arbelo.",
+    "Scelta fatta da solo: NF-02 resta aperta (la p. 32 non ha figure): nell'app la sfera diventa un ellissoide con un semiasse invariato, e lo diciamo.",
+    "Scelta fatta da solo: data dell'orale non nota, piano su 8 settimane; isostatiche e sforzo normale eccentrico restano facoltativi."
+  ],
+  "da_te": [
+    "Quando è l'orale? Con la data il piano distribuisce i moduli fino a quel giorno (ora usa 8 settimane).",
+    "Il docente esclude o insiste su qualche argomento? Isostatiche e sforzo normale eccentrico restano facoltativi.",
+    "Per il docente: NF-02 (la «ellisse piatta» di p. 32) e NF-07 (argomenti facoltativi)."
+  ]
+}

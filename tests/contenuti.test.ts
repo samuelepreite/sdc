@@ -14,6 +14,12 @@ import { MACROS } from '../src/ui/components/Tex';
 import { SVG_IDS } from '../src/diagrams/DiagramHost';
 import type { Source } from '../src/engine/types';
 
+/** modalità ammesse per ogni modello 3D */
+const MODES: Record<string, string[]> = {
+  tensori3d: ['trasforma', 'proiettori', 'assiale', 'eulero'],
+  deforma3d: ['intorno', 'ellissoide', 'rappresentazione'],
+  tensione3d: ['taglio', 'tetraedro', 'parallelepipedo', 'principali'],
+};
 const grafo = grafoJson as { id: string; modulo: string; titolo: string; prereq: string[]; flag: string }[];
 const byId = new Map(grafo.map((g) => [g.id, g]));
 
@@ -82,9 +88,15 @@ describe('contenuti', () => {
     }
     for (const c of ALL_CONCEPTS) if (!c.facoltativo) expect(ALL_ORALI.some((o) => o.concepts.includes(c.id)), c.id).toBe(true);
   });
-  it('le domande della dispensa ci sono tutte: Cap. 1 ne ha 11', () => {
+  it('le domande della dispensa ci sono tutte (11, 13, 14, 14, 12, 10 per capitolo, se il modulo è presente)', () => {
     const fromDisp = (cap: number) => ALL_ORALI.filter((o) => o.source.kind === 'dispensa' && o.source.cap === cap && /domanda \d+/.test(o.source.rif ?? ''));
-    expect(fromDisp(1).length).toBe(11);
+    const attese: Record<number, number> = { 1: 11, 2: 13, 3: 14, 4: 14, 5: 12, 6: 10 };
+    const capDi: Record<string, number> = { m1: 1, m2: 2, m3: 3, m4: 4, m5: 4, m6: 5, m7: 5, m8: 6 };
+    const presenti = new Set(ALL_CONCEPTS.map((c) => capDi[c.module]));
+    for (const cap of presenti) if (cap !== 4 && cap !== 5) expect(fromDisp(cap).length, `Cap. ${cap}`).toBe(attese[cap]);
+    const pieni = (mods: string[]) => mods.every((m) => ALL_CONCEPTS.some((c) => c.module === m));
+    if (pieni(['m4', 'm5'])) expect(fromDisp(4).length).toBe(14);
+    if (pieni(['m6', 'm7'])) expect(fromDisp(5).length).toBe(12);
   });
   it('nessun segnaposto (undefined, NaN, TODO) nei testi', () => {
     for (const s of strings([ALL_CONCEPTS, ALL_LESSONS, ALL_ORALI])) expect(s, s.slice(0, 60)).not.toMatch(/undefined|NaN|TODO|lorem ipsum/);
@@ -103,7 +115,7 @@ describe('contenuti', () => {
     const visuals = [...ALL_CONCEPTS.map((c) => c.visual), ...ALL_LESSONS.flatMap((l) => [l.visual, ...l.steps.map((s) => ('visual' in s ? s.visual : undefined))])].filter(Boolean);
     for (const v of visuals) {
       if (v!.kind === 'svg') expect(SVG_IDS).toContain(v!.id);
-      else expect(['trasforma', 'proiettori', 'assiale', 'eulero']).toContain(v!.scene.mode);
+      else expect(MODES[v!.kind], v!.kind).toContain((v!.scene as { mode: string }).mode);
     }
   });
 });

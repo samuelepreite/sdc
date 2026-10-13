@@ -3,9 +3,8 @@
  *  - scheda intera: significato, formule con riferimento, modello o diagramma, spiegazione, errori tipici;
  *  - scheda «a pezzi»: la scheda si legge in 2–4 pezzi con una domanda di richiamo tra un pezzo e l'altro.
  */
-import { lazy, Suspense, useState, type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import type { Concept, ConceptFormula } from '../../content/types';
-import { DiagramHost } from '../../diagrams/DiagramHost';
 import { chunkConcept } from '../../learning/chunks';
 import { addRecall } from '../../learning/actions';
 import { getConcept } from '../../content';
@@ -14,17 +13,12 @@ import { RichText, Inline, Tex } from './Tex';
 import { SourceTag } from './bits';
 import { RecallCard } from './RecallCard';
 
-const Tensori3D = lazy(() => import('../../three/Tensori3D').then((m) => ({ default: m.Tensori3D })));
+import { VisualHost } from '../../visual/VisualHost';
 
 export function ConceptVisual({ c }: { c: Concept }) {
   const v = c.visual;
   if (!v) return null;
-  if (v.kind === 'svg') return <DiagramHost id={v.id} params={v.params} />;
-  return (
-    <Suspense fallback={<div className="p3-loading">Carico il modello 3D…</div>}>
-      <Tensori3D scene={v.scene} height={380} />
-    </Suspense>
-  );
+  return <VisualHost v={v} height={380} />;
 }
 
 export function FormulaList({ fs }: { fs: ConceptFormula[] }) {

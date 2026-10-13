@@ -1,8 +1,9 @@
 /** Tutte le lezioni guidate, una per concetto, nell'ordine della dispensa. */
 import type { Lesson } from './types';
 import { M1_LEZIONI } from './m1/lezioni';
+import { M2_LEZIONI } from './m2/lezioni';
 
-export const ALL_LESSONS: Lesson[] = [...M1_LEZIONI];
+export const ALL_LESSONS: Lesson[] = [...M1_LEZIONI, ...M2_LEZIONI];
 const byConcept = new Map(ALL_LESSONS.map((l) => [l.concept, l]));
 export const getLesson = (conceptId: string) => byConcept.get(conceptId);
 /** id della domanda di una lezione nello storico dei richiami (non entra nel ripasso FSRS) */

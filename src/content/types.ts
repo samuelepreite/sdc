@@ -41,9 +41,43 @@ export interface TensorScene {
   view?: 'prospettiva' | 'alto' | 'fronte' | 'asse';
 }
 
-export type SvgId = 'matrici' | 'simmetrie4' | 'divergenza';
+/** Modello V2 (Cap. 2): intorno che si deforma, sfera → ellissoide, formula di rappresentazione. */
+export interface DeformScene {
+  mode: 'intorno' | 'ellissoide' | 'rappresentazione';
+  /** gradiente di spostamento d'esempio (chiave di H_PRESETS in engine/deformazione) */
+  preset?: string;
+  presets?: string[];
+  /** parte di H disegnata: tutto H, la deformazione pura E, la rotazione rigida W */
+  part?: 'H' | 'E' | 'W';
+  /** amplificazione del disegno */
+  amp?: number;
+  /** angolo della fibra n̂ nel piano xy (gradi) */
+  alpha?: number;
+  /** fibra di prova m̂: [inclinazione, azimut] in gradi */
+  probe?: [number, number];
+  controls?: ('preset' | 'part' | 'amp' | 'alpha' | 'probe')[];
+  view?: 'prospettiva' | 'alto' | 'fronte';
+}
 
-export type LessonVisual = { kind: 'tensori3d'; scene: TensorScene } | { kind: 'svg'; id: SvgId; params?: Record<string, number | string | boolean> };
+/** Modello V3 (Cap. 3): la tensione in un punto. */
+export interface StressScene {
+  mode: 'taglio' | 'tetraedro' | 'parallelepipedo' | 'principali';
+  /** stato di tensione d'esempio (chiave di T_PRESETS in engine/tensione) */
+  preset?: string;
+  presets?: string[];
+  /** giacitura n̂: [inclinazione, azimut] in gradi */
+  dir?: [number, number];
+  controls?: ('preset' | 'dir')[];
+  view?: 'prospettiva' | 'alto' | 'normale';
+}
+
+export type SvgId = 'matrici' | 'simmetrie4' | 'divergenza' | 'compatibilita' | 'mohr' | 'arbelo';
+
+export type LessonVisual =
+  | { kind: 'tensori3d'; scene: TensorScene }
+  | { kind: 'deforma3d'; scene: DeformScene }
+  | { kind: 'tensione3d'; scene: StressScene }
+  | { kind: 'svg'; id: SvgId; params?: Record<string, number | string | boolean> };
 
 /** Formula della scheda: LaTeX + etichetta + riferimento della dispensa. */
 export interface ConceptFormula {

@@ -4,12 +4,11 @@
  * a destra, fissa, la scena (modello 3D o diagramma) che ogni passo imposta. Ogni passo si può giudicare
  * (chiaro / troppo veloce / troppo lento / non ho capito): i giudizi si salvano e servono a tarare le lezioni.
  */
-import { useEffect, useMemo, useRef, useState, lazy, Suspense } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { DerivLine, Lesson, LessonStep, LessonVisual } from '../../content/types';
 import { getLesson, lessonQid, ALL_LESSONS } from '../../content/lezioni';
 import { getConcept } from '../../content';
 import { oralsOfConcept } from '../../content/orale';
-import { DiagramHost } from '../../diagrams/DiagramHost';
 import { addRecall, lessonFeedback, lessonStep } from '../../learning/actions';
 import type { StepFeedback } from '../../storage/store';
 import { useApp } from '../state';
@@ -18,7 +17,7 @@ import { RecallCard } from './RecallCard';
 import { SourceTag } from './bits';
 import { canSpeak, speak, stopSpeaking } from '../speech';
 
-const Tensori3D = lazy(() => import('../../three/Tensori3D').then((m) => ({ default: m.Tensori3D })));
+import { VisualHost } from '../../visual/VisualHost';
 
 const FEEDBACK: { v: StepFeedback; label: string }[] = [
   { v: 'chiaro', label: 'chiaro' },
@@ -249,16 +248,11 @@ function StepView({ lesson, step, index, active, wasDone, review, onComplete }: 
 }
 
 /** chiave del visual: id + parametri della scena, così un passo con una scena diversa rimonta il componente */
-export const visualKey = (v: LessonVisual) => (v.kind === 'svg' ? `svg:${v.id}:${JSON.stringify(v.params ?? {})}` : `3d:${JSON.stringify(v.scene)}`);
+export { visualKey } from '../../visual/VisualHost';
 
 export function VisualPanel({ visual }: { visual: LessonVisual | null }) {
   if (!visual) return <div className="lesson-visual-empty small muted">In questo passo non serve il modello.</div>;
-  if (visual.kind === 'svg') return <DiagramHost key={visualKey(visual)} id={visual.id} params={visual.params} />;
-  return (
-    <Suspense fallback={<div className="p3-loading">Carico il modello 3D…</div>}>
-      <Tensori3D scene={visual.scene} height={440} />
-    </Suspense>
-  );
+  return <VisualHost v={visual} height={440} />;
 }
 
 export function LessonPage({ id }: { id: string }) {

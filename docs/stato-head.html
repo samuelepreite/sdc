@@ -1,0 +1,50 @@
+<title>Stato SdC orale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una colonna larga tipo tavola di progetto; in alto la notizia, poi il "tubo" dei moduli in scala di pagine, poi numeri, fatto, prossimo, domande. */
+:root{
+  --bg:#f3f5f7; --paper:#ffffff; --ink:#18212b; --muted:#5b6672; --line:#d5dbe1;
+  --accent:#c2410c; --done:#2f6f8f; --done-soft:#d7e7ef; --todo:#e6eaee;
+  --display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11171d;--paper:#18212a;--ink:#e6ebf0;--muted:#9aa7b3;--line:#2c3844;--accent:#f08a4b;--done:#6fb3d2;--done-soft:#1f3a49;--todo:#24303b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#11171d;--paper:#18212a;--ink:#e6ebf0;--muted:#9aa7b3;--line:#2c3844;--accent:#f08a4b;--done:#6fb3d2;--done-soft:#1f3a49;--todo:#24303b;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding:28px 20px 48px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:28px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.1}
+h2{font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.lede{max-width:68ch;margin:8px 0 0;color:var(--ink)}
+.lede b{color:var(--accent);font-weight:600}
+section{display:grid;gap:12px}
+.tube{display:flex;gap:3px;overflow-x:auto;padding-bottom:4px}
+.seg{min-width:0;display:grid;gap:6px}
+.bar{height:34px;border-radius:3px;background:var(--todo);position:relative;overflow:hidden;border:1px solid var(--line)}
+.bar .a{position:absolute;inset:0 auto 0 0;width:100%;background:var(--done-soft)}
+.bar .b{position:absolute;inset:0 auto 0 0;width:0;background:var(--done)}
+.seg .lab{font-family:var(--display);font-weight:600;font-size:14px}
+.seg .sub{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.35}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);font-family:var(--mono)}
+.legend i{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle;border:1px solid var(--line)}
+.phases{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.ph{padding:10px 12px;border-top:3px solid var(--line);font-size:14px}
+.ph b{display:block;font-family:var(--display);font-size:15px}
+.ph.ok{border-color:var(--done)} .ph.next{border-color:var(--accent)}
+.ph span{color:var(--muted);font-size:13px}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.n{background:var(--paper);padding:14px 16px}
+.n strong{display:block;font-family:var(--display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}
+.n span{font-size:13px;color:var(--muted)}
+.n.warn strong{color:var(--accent)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.q{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);padding:14px 18px}
+.q ol{margin:6px 0 0;padding-left:22px;display:grid;gap:6px}
+code{font-family:var(--mono);font-size:.88em}
+@media (max-width:720px){.phases{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.tube{flex-wrap:wrap}.seg{flex:1 1 45%!important}}
+</style>

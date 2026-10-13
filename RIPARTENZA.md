@@ -1,12 +1,12 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**FINITA alle 08:30 del 13/10/2026** (sessione 2, Fase 1). Precedente: sessione 1 FINITA il 12/10 (Fase 0).
-- Fatto: impianto ripreso da SEIMAFI e adattato all'orale (stato `sdc:v1`, FSRS con schede `q:` richiamo e `o:` orale, padronanza, sessione, piano, sincronizzazione `core`/`rec-i`/`ora-i`); **M1 completo**: 7 concetti, 7 lezioni guidate con derivazioni verificate, 13 domande d'orale (11 dalla dispensa + 2 dedotte), modello 3D dei tensori (trasforma, proiettori, assiale, Eulero) e 3 diagrammi SVG (matrici, simmetrie IV ordine, divergenza); pagine Oggi, Studia, Moduli, Orale («spiegalo a voce» con cronometro, scaletta, lavagna, figura), Progressi, Piano, Fonti, Impostazioni.
-- Verifiche: `tsc` pulito, 89 test verdi, `python3 tools/verifica_ui.py` (Chromium: tutte le pagine in chiaro/scuro e a 820 px, tutte le 7 lezioni percorse fino in fondo, 3D che disegna anche con shader PBR rotti) → 0 problemi.
-- Lo studente ha allegato il PDF della dispensa in due parti (13/10): **pagina PDF = pagina dispensa + 4** (parte 1 pp. 1–99 della numerazione PDF, parte 2 pp. 100–163). Figure del Cap. 1 controllate; NF-03 risolta. I PDF stanno solo nella chat: se il contenitore si perde, chiederli di nuovo.
-- Le 3 domande della sessione 1 (data dell'orale, domande degli anni passati, PDF) hanno ricevuto risposta solo per il PDF: data e argomenti esclusi restano da chiedere; nel frattempo facoltativi esclusi, piano su 8 settimane.
-- **Prossimo passo preciso:** M2 (analisi della deformazione, Cap. 2, pp. 15–35). (1) controllare sul PDF le figure del Cap. 2 (PDF pp. 19–39) e NF-02 (p. 32, PDF 36); (2) motore della deformazione in `src/engine/` + test; (3) concetti, lezioni (derivazioni elencate in ANALISI §4), domande d'orale del Cap. 2 (riquadro «Per l'orale»); (4) modello V2: intorno che si deforma, sfera → ellissoide, nuova modalità in `src/three/`; (5) suite, build, `tools/verifica_ui.py` (aggiungere i concetti m2 alla lista), pubblicazione, infografica, commit.
+**Sessione 3 (13/10/2026, lavoro automatico): M2 FATTO e pubblicato.** Precedenti: sessione 2 (Fase 1 + M1), sessione 1 (Fase 0).
+- M2: motore `src/engine/deformazione.ts` + `src/engine/spettro.ts` (Jacobi, classificazione dagli invarianti), 11 test; 8 concetti, 8 lezioni, 15 domande d'orale (13 + 2 dedotte); modello V2 `src/three/deformRenderer.ts` + `Deforma3D.tsx` (modalità intorno / ellissoide / rappresentazione); diagramma `src/diagrams/Compatibilita.tsx`.
+- Infrastruttura nuova (da riusare): `src/visual/VisualHost.tsx` smista ogni visual (aggiungere un `kind` in `content/types.ts` e un ramo qui); `src/three/Stage.tsx` guscio 3D comune (Stage, Range, Chips, matTex, vecTex); `src/diagrams/svgkit.tsx` per i diagrammi SVG; `tools/stato.py` genera l'infografica da `docs/stato.json`; `tools/foto.py` fotografa una rotta della build; `tools/verifica_ui.py --lezioni=m3` percorre tutte le lezioni solo dei moduli indicati (le altre: solo la prima).
+- **M3 già iniziato (non registrato nell'app):** motore `src/engine/tensione.ts` + 10 test verdi; `src/three/stressRenderer.ts` + `Tensione3D.tsx`; diagrammi `Mohr.tsx`, `Arbelo.tsx`; contenuti scritti in `src/content/m3/` (concetti, lezioni, orale) ma **non ancora importati** in `content/index.ts`, `orale.ts`, `lezioni.ts`.
+- Scelte fatte da solo: NF-02 resta aperta (p. 32 senza figure); data dell'orale non nota → 8 settimane; facoltativi esclusi.
+- **Prossimo passo preciso:** registrare M3 (import in index/orale/lezioni), `tsc`, suite, correggere, build, `verifica_ui.py --lezioni=m3`, foto del modello V3 e di Mohr, pubblicazione, infografica (`docs/stato.json` → `python3 tools/stato.py`), commit, RIPARTENZA, copia nel progetto. Poi M4.
 
 ## §0c Lavoro automatico (dalla sessione 3)
 Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
@@ -38,7 +38,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 |---|---|---|
 | 0 Analisi | ✅ fatta | trascrizione, ANALISI, NOTE_FONTI, grafo (`tools/grafo.py` → `tools/grafo.json`) |
 | 1 Impianto + M1 | ✅ fatta | app pubblicata; M1 completo; verifica UI automatica |
-| 2 Moduli M2–M8 | — | uno per sessione, sempre uno avanti allo studente |
+| 2 Moduli M2–M8 | in corso | M2 fatto (13/10); M3 iniziato |
 | 3 Orale | — | banca domande (74 dalla fonte), spiegalo a voce, lavagna, mappa, simulatore |
 | 4 Rifinitura | — | piano fino alla data dell'orale |
 
@@ -70,4 +70,7 @@ Lo studente non segue in diretta: **non fare domande**, scegli la lettura più r
 - I font Google non si caricano dal contenitore (ERR_TUNNEL): errore di console da ignorare nella verifica.
 - Il primo `git push` dopo il clone di un repository vuoto può fallire con «expected 'acknowledgments'»: rilanciare `git push -u origin main`.
 - Nel testo estratto le matrici sono spezzate da caratteri `\f`: i numeri di pagina si riconoscono come riga con solo il numero seguita da «Scienza delle Costruzioni …» o da «Capitolo N».
+- Ripubblicare l'app: se la sessione non ha ancora letto l'artifact, il publish viene rifiutato. Fare UNA `Artifact read` dell'URL senza `path` (salva l'HTML su file, mostra solo la testa: ~25k token), poi publish. Nella stessa sessione i publish successivi dello stesso file passano.
+- `pkill -f verifica_ui` uccide anche la shell che lo lancia: usare `ps … | awk | xargs kill`.
+- La prova nel browser con tutte le lezioni dura ~10 min per passata: usare `--lezioni=mN` e lanciarla in background (`nohup … &`), leggendo il log.
 - Vedi anche la tabella «Trappole già incontrate» del prompt di partenza (3D, formule lunghe, FSRS, prompt notturni).

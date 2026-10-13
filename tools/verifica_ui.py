@@ -5,15 +5,23 @@ Verifica dell'interfaccia sulla build in file unico (dist-single/index.html), co
   - ogni lezione si percorre fino in fondo: «Avanti», domande (si sceglie la prima opzione), derivazioni, fine;
   - il modello 3D disegna davvero qualcosa (pixel non uniformi), anche simulando il fallimento degli shader PBR;
   - una domanda d'orale si espone e si registra.
-Uso: python3 tools/verifica_ui.py [cartella-screenshot]
+Uso: python3 tools/verifica_ui.py [cartella-screenshot] [--lezioni=m2,m3]
+  --lezioni: moduli di cui percorrere tutte le lezioni (default: tutti); degli altri si apre solo la prima lezione.
 """
 import json, sys, pathlib
 from playwright.sync_api import sync_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 URL = (ROOT / 'dist-single' / 'index.html').as_uri()
-SHOTS = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else None
-CONCEPTS = [c['id'] for c in json.loads((ROOT / 'tools' / 'grafo.json').read_text()) if c['modulo'] == 'm1']
+ARGS = [a for a in sys.argv[1:] if not a.startswith('--')]
+SHOTS = pathlib.Path(ARGS[0]) if ARGS else None
+WALK = next((a.split('=', 1)[1].split(',') for a in sys.argv[1:] if a.startswith('--lezioni=')), None)
+MODULI = sorted(d.name for d in (ROOT / 'src' / 'content').iterdir() if d.is_dir() and d.name.startswith('m'))
+GRAFO = json.loads((ROOT / 'tools' / 'grafo.json').read_text())
+CONCEPTS = [c['id'] for c in GRAFO if c['modulo'] in MODULI]
+# per ogni modulo, la prima lezione: si controlla che il modello 3D (se c'è) disegni davvero
+FIRST_OF = {next(c['id'] for c in GRAFO if c['modulo'] == m) for m in MODULI}
+WALKED = [c['id'] for c in GRAFO if c['modulo'] in MODULI and (WALK is None or c['modulo'] in WALK or c['id'] in FIRST_OF)]
 
 # simula uno shader PBR che non compila: il link dei programmi con «#define STANDARD» fallisce
 SHADER_FAIL = """
@@ -134,14 +142,15 @@ def run(scheme, width, shader_fail=False):
             page.wait_for_timeout(400)
             check(overflow(page) <= 1, f'{scheme} {width}: scorrimento orizzontale nella scheda intera {c}')
         # lezioni complete
-        for c in CONCEPTS:
+        for c in WALKED:
             visit(f'lezione/{c}', 600)
-            if c == 'c1.1':
+            if c in FIRST_OF:
                 page.wait_for_timeout(1200)
                 v = canvas_varies(page)
-                check(v > 4, f'{scheme}: il modello 3D della lezione c1.1 non disegna (deviazione {v:.1f})')
+                if v != -1:
+                    check(v > 4, f'{scheme}: il modello 3D della lezione {c} non disegna (deviazione {v:.1f})')
                 if SHOTS:
-                    page.screenshot(path=str(SHOTS / f'lezione-c1.1-{scheme}-{width}.png'))
+                    page.screenshot(path=str(SHOTS / f'lezione-{c}-{scheme}-{width}.png'))
             ok = walk_lesson(page, c)
             check(ok, f'lezione {c} non completata')
             check(overflow(page) <= 1, f'{scheme} {width}: scorrimento orizzontale a fine lezione {c}')
@@ -164,7 +173,7 @@ def run(scheme, width, shader_fail=False):
             if SHOTS:
                 page.screenshot(path=str(SHOTS / f'{r or "oggi"}-{scheme}-{width}.png'))
         state = page.evaluate("JSON.parse(localStorage.getItem('sdc:v1'))")
-        check(sum(1 for l in state['lessons'].values() if l.get('doneAt')) == len(CONCEPTS), 'non tutte le lezioni risultano finite nello stato')
+        check(sum(1 for l in state['lessons'].values() if l.get('doneAt')) == len(WALKED), 'non tutte le lezioni risultano finite nello stato')
         check(len(state['oral']) == 1, 'esposizione orale non salvata')
         real = [e for e in errs if 'favicon' not in e and 'fonts.g' not in e and 'ERR_TUNNEL' not in e]  # i font Google non sono raggiungibili da qui
         check(not real, f'{scheme} {width}: errori in console {real[:3]}')
