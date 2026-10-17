@@ -132,7 +132,6 @@ Tieni a mente queste tre mosse (differenza, TLV, definita positività): sono anc
             {
               tex: '\\vet b=\\vet 0\\ \\text{in }\\mathcal B,\\qquad\\hat{\\vet s}=\\vet 0\\ \\text{su }\\partial\\mathcal B_\\ell,\\qquad\\vet u=\\vet 0\\ \\text{su }\\partial\\mathcal B_v',
               why: `Scriviamo esplicitamente che cosa vuol dire «dati nulli»: nessuna forza di volume, nessuna forza sul contorno libero, spostamento nullo dove il corpo è vincolato.`,
-              aggiunto: true,
             },
             {
               tex: '\\underbrace{\\int_{\\partial\\mathcal B_\\ell}\\hat{\\vet s}\\cdot\\vet u}_{=0}+\\underbrace{\\int_{\\partial\\mathcal B_v}\\tens T\\hat n\\cdot\\vet u}_{=0}+\\underbrace{\\int_{\\mathcal B}\\vet b\\cdot\\vet u}_{=0}=\\int_{\\mathcal B}\\tens T\\cdot\\tens E',
@@ -142,7 +141,6 @@ Tieni a mente queste tre mosse (differenza, TLV, definita positività): sono anc
             {
               tex: '\\int_{\\mathcal B}\\tens T\\cdot\\tens E\\,dV=0',
               why: `Il lavoro esterno è zero, quindi anche il lavoro interno, che il TLV gli rende uguale, è zero.`,
-              aggiunto: true,
             },
             {
               tex: '\\int_{\\mathcal B}\\mathbb A\\tens E\\cdot\\tens E\\,dV=0',
@@ -174,7 +172,7 @@ Tieni a mente queste tre mosse (differenza, TLV, definita positività): sono anc
         title: 'Che cosa abbiamo dimostrato e a che cosa servirà',
         md: `Rileggiamo il risultato a parole: **due soluzioni dello stesso problema elastico possono differire solo per un moto rigido infinitesimo**, che non deforma e non sollecita il corpo. Lo stato di deformazione e lo stato di tensione sono quindi determinati dai dati.
 
-Controlliamolo sui due casi estremi. Per l'aereo in crociera, libero nello spazio, il moto rigido resta indeterminato: sappiamo come è deformato, non dove si trova. Per la trave appoggiata, invece, gli appoggi impongono spostamenti nulli in certi punti; un moto rigido che rispetti quei vincoli deve essere nullo, quindi la deformata è unica (deduzione: la dispensa lo afferma per l'esempio, senza svolgere il passaggio).
+Controlliamolo sui due casi estremi. Per l'aereo in crociera, libero nello spazio, il moto rigido resta indeterminato: sappiamo come è deformato, non dove si trova. Per la trave appoggiata, invece, gli appoggi impongono spostamenti nulli in certi punti; un moto rigido che rispetti quei vincoli deve essere nullo, quindi la deformata è unica. La dispensa lo afferma per l'esempio; il ragionamento sul moto rigido è nostro (deduzione).
 
 A che cosa servirà? Il teorema è il **fulcro del metodo semi-inverso** di Saint-Venant (§5.2.2): se indoviniamo una terna e verifichiamo che soddisfa tutte le equazioni, Kirchhoff ci garantisce che è **la** soluzione, non una fra tante. Senza questo teorema, indovinare non basterebbe.`,
       },
@@ -186,7 +184,7 @@ A che cosa servirà? Il teorema è il **fulcro del metodo semi-inverso** di Sain
 
 Se esistesse una deformazione $\\tens E\\ne\\tens O$ con $\\mathbb A\\tens E\\cdot\\tens E=0$, il corpo potrebbe deformarsi in quel modo senza spendere energia, e l'integrale nullo non ci direbbe più nulla: la dimostrazione si fermerebbe lì (deduzione).
 
-La dispensa sottolinea che la stessa condizione compare **tre volte** nel corso (Oss., §5.1):
+La dispensa (enunciato del Teo 5.1.1 e Oss., §5.1) attribuisce a questa condizione **tre ruoli**:
 - rende il legame **invertibile**, così che si può scrivere $\\tens E$ in funzione di $\\tens T$;
 - traduce la **plausibilità fisica** del materiale: deformare costa lavoro;
 - garantisce l'**unicità** di Kirchhoff.`,
@@ -261,7 +259,7 @@ Non ci sono vincoli: è un problema **nelle forze**, come l'aereo in crociera. L
         id: 'l62-3',
         kind: 'spiega',
         title: 'Il riferimento e le equazioni di campo',
-        md: `Fissiamo il riferimento come la dispensa: origine nel baricentro della base di sinistra, asse $z$ lungo l'asse del solido (la base di sinistra è $z=0$, quella di destra $z=L$), assi $x$ e $y$ nel piano della sezione, scelti come **assi principali centrali d'inerzia** (li studieremo nella lezione c6.5). Le componenti dello spostamento si chiamano $u$, $v$, $w$.
+        md: `Fissiamo il riferimento come la dispensa: origine nel baricentro della base di sinistra, asse $z$ lungo l'asse del solido (la base di sinistra è $z=0$, quella di destra $z=L$), assi $x$ e $y$ nel piano della sezione, scelti come **assi principali centrali d'inerzia** (li studieremo nella lezione «Assi principali centrali ed ellisse d’inerzia»). Le componenti dello spostamento si chiamano $u$, $v$, $w$.
 
 Le **equazioni di campo** sono quelle del problema elastico (§5.2.1):
 - **congruenza**: $E_{xx}=\\partial u/\\partial x$, …, $E_{xy}=\\frac12(\\partial u/\\partial y+\\partial v/\\partial x)$, …;
@@ -269,7 +267,9 @@ Le **equazioni di campo** sono quelle del problema elastico (§5.2.1):
 - **simmetria** di $\\tens T$;
 - **legame inverso** con i moduli tecnici: $E_{xx}=\\frac1E[T_{xx}-\\nu(T_{yy}+T_{zz})]$, …, $E_{xy}=T_{xy}/(2G)$, ….
 
-In tutto sono 18 equazioni. Il conto torna con le incognite (deduzione): 3 componenti di spostamento, 6 di deformazione e 9 di tensione, contro 6 equazioni di congruenza, 3 di equilibrio, 3 di simmetria e 6 di legame.`,
+In tutto sono 18 equazioni. Attenzione alle lettere: $E$ da sola è il modulo di Young, mentre $\\tens E$ e le sue componenti $E_{xx}$, $E_{xy}$, … sono la deformazione; la dispensa usa la stessa lettera per entrambe, e le distingue il grassetto o gli indici.
+
+Il conto torna con le incognite (deduzione): 3 componenti di spostamento, 6 di deformazione e 9 di tensione, contro 6 equazioni di congruenza, 3 di equilibrio, 3 di simmetria e 6 di legame.`,
       },
       {
         id: 'l62-4',
@@ -297,10 +297,7 @@ Risolvere il problema vuol dire trovare $\\vet u$, $\\tens E$, $\\tens T$ che so
 
 Nel **problema diretto** si parte dai dati (forma, materiale, carichi) e si calcola la soluzione: è ciò che vorremmo fare, ma in generale non sappiamo farlo. Nel **problema inverso** si parte dagli effetti misurati e si risale al sistema che li ha prodotti: è l'identificazione strutturale.
 
-Saint-Venant sta **in mezzo**, con il **metodo semi-inverso**. Il ragionamento ha tre tempi:
-1. si **ipotizza** una parte della soluzione, guidati da un'interpretazione meccanica di come si comporta il solido;
-2. si **ricava il resto** dalle equazioni;
-3. si **verifica** che la terna ottenuta soddisfi tutte le equazioni di campo e al contorno.
+Saint-Venant sta **in mezzo**, con il **metodo semi-inverso**. Prima si **ipotizza** una parte della soluzione, guidati da un'interpretazione meccanica di come si comporta il solido; poi, tenendo ferma quell'ipotesi, si **ricava il resto** dalle equazioni; infine si **verifica** che la terna ottenuta soddisfi tutte le equazioni di campo e al contorno.
 
 Se la verifica riesce, il teorema di Kirchhoff garantisce che abbiamo trovato **la** soluzione esatta. L'ipotesi iniziale, quindi, non peggiora la qualità del risultato: o porta alla soluzione vera, o fallisce la verifica (§5.2.4).`,
       },
@@ -405,7 +402,9 @@ e le due analoghe per le righe $y$ e $z$. Siccome molte componenti sono nulle, c
 $$T_{xz}=A(x,y),\\qquad T_{yz}=B(x,y),\\qquad T_{zz}=C(x,y)\\,z+D(x,y).$$
 A parole: **le tangenziali sono le stesse in ogni sezione**, e la **tensione normale varia al più linearmente lungo l'asse**. Le quattro funzioni $A$, $B$, $C$, $D$ restano da determinare.
 
-Questo è il «telaio» comune a tutti i casi del problema. In ogni caso (sforzo normale, flessione, taglio, torsione) aggiungeremo un'ipotesi più specifica su $A$, $B$, $C$, $D$ e poi verificheremo. Per esempio, nello sforzo normale si sceglierà $A=B=C=0$ e $D$ costante, e verrà $D=N/A$ (lezione c6.4).
+Attenzione ai nomi: qui $A$, $B$, $C$, $D$ sono funzioni di $x$ e $y$. La lettera $A$, in particolare, non indica la sezione né la sua area, che la dispensa chiama con la stessa lettera: il significato si capisce dal contesto, perché la funzione porta sempre i suoi argomenti, $A(x,y)$.
+
+Questo è il «telaio» comune a tutti i casi del problema. In ogni caso (sforzo normale, flessione, taglio, torsione) aggiungeremo un'ipotesi più specifica su $A$, $B$, $C$, $D$ e poi verificheremo. Per esempio, nello sforzo normale si sceglierà $A=B=C=0$ e $D$ costante, e verrà $D=N/A$ (lezione «Lo sforzo normale»).
 
 Nota che $C\\ne0$ vuol dire tensione normale che cambia da sezione a sezione: succederà nel taglio, dove il momento flettente varia lungo l'asse.`,
       },
@@ -420,7 +419,6 @@ Nota che $C\\ne0$ vuol dire tensione normale che cambia da sezione a sezione: su
             {
               tex: 'T_{xx}n_x+T_{xy}n_y=0,\\qquad T_{yx}n_x+T_{yy}n_y=0',
               why: `Le prime due condizioni sul mantello contengono solo componenti che l'ipotesi pone uguali a zero: sono soddisfatte automaticamente, $0=0$.`,
-              aggiunto: true,
             },
             {
               tex: 'T_{zx}n_x+T_{zy}n_y=0',
@@ -439,7 +437,7 @@ Nota che $C\\ne0$ vuol dire tensione normale che cambia da sezione a sezione: su
         id: 'l62-15',
         kind: 'spiega',
         title: 'Perché la tangenziale deve seguire il bordo',
-        md: `C'è un modo fisico di capire questo risultato. Per la simmetria del tensore delle tensioni, una componente tangenziale sulla sezione che puntasse **fuori dal bordo** richiederebbe una componente uguale sul mantello, diretta lungo l'asse $z$. Ma il mantello è scarico: quella componente deve essere zero, e quindi anche la parte della tangenziale che punta fuori dal bordo (deduzione: è la simmetria $T_{zn}=T_{nz}$ letta sul bordo).
+        md: `C'è un modo fisico di capire questo risultato. Per la simmetria del tensore delle tensioni, una componente tangenziale sulla sezione che puntasse **fuori dal bordo** richiederebbe una componente uguale sul mantello, diretta lungo l'asse $z$. Ma il mantello è scarico: quella componente deve essere zero, e quindi anche la parte della tangenziale che punta fuori dal bordo. È la simmetria $T_{zn}=T_{nz}$ letta sul bordo (deduzione).
 
 Questo risultato tornerà nel Modulo 7, quando studieremo il taglio e la torsione: sul bordo della sezione la tangenziale deve sempre essere diretta lungo il contorno.
 
@@ -471,7 +469,6 @@ La useremo, insieme alle altre, quando integreremo gli spostamenti nei singoli c
               tex: '=(0\\cdot0-0^2)+(0\\cdot T_{zz}-T_{xz}^2)+(0\\cdot T_{zz}-T_{yz}^2)',
               why: `$II$ è la somma dei tre minori principali $2\\times2$: quello delle righe e colonne $x,y$, quello di $x,z$ e quello di $y,z$. Il primo è nullo perché la parte $xy$ della matrice è tutta zero.`,
               val: (v) => 0 + (0 * v.Tzz - v.Txz ** 2) + (0 * v.Tzz - v.Tyz ** 2),
-              aggiunto: true,
             },
             { tex: '=-(T_{xz}^2+T_{yz}^2)', why: `Sommando: $II$ è diverso da zero appena c'è una tangenziale sulla sezione.`, val: (v) => -(v.Txz ** 2 + v.Tyz ** 2), eq: '§5.2.3' },
           ],
@@ -551,7 +548,7 @@ dove $X-G_0$ è il vettore che va dal baricentro al punto $X$ in cui agisce la f
         md: `Ora imponiamo l'equilibrio di tutto il solido, prendendo i momenti rispetto a $G_0$:
 $$\\vet R_0+\\vet R_L=\\vet 0,\\qquad\\vet M_0+\\vet M_L+L\\hat e_z\\wedge\\vet R_L=\\vet 0.\\tag{5.1}$$
 
-La prima equazione dice che le due risultanti sono uguali e opposte. Nella seconda compare un termine in più, $L\\hat e_z\\wedge\\vet R_L$. Da dove viene? $\\vet M_L$ è il momento delle forze di destra rispetto a $G_L$, non rispetto a $G_0$. Per spostare il polo da $G_L$ a $G_0$ bisogna aggiungere il momento della risultante $\\vet R_L$ applicata in $G_L$, e il braccio è il vettore $G_L-G_0=L\\hat e_z$ (passaggio aggiunto: è la regola del trasporto dei momenti).
+La prima equazione dice che le due risultanti sono uguali e opposte. Nella seconda compare un termine in più, $L\\hat e_z\\wedge\\vet R_L$. Da dove viene? $\\vet M_L$ è il momento delle forze di destra rispetto a $G_L$, non rispetto a $G_0$. Per spostare il polo da $G_L$ a $G_0$ bisogna aggiungere il momento della risultante $\\vet R_L$ applicata in $G_L$, e il braccio è il vettore $G_L-G_0=L\\hat e_z$. È la regola del trasporto dei momenti (passaggio aggiunto).
 
 Terremo questa equazione da parte: fra poco la sottrarremo a un'altra equazione di equilibrio.`,
       },
@@ -565,7 +562,7 @@ Le **caratteristiche della sollecitazione** (Def 5.2.2) sono la risultante e il 
 $$\\vet R(z)=\\int_{A_z}\\vet t_{e_z}\\,dA,\\qquad\\vet M(z)=\\int_{A_z}(X-G_z)\\wedge\\vet t_{e_z}\\,dA.$$
 Le loro componenti si prendono negli **assi principali centrali d'inerzia** $x$, $y$ e lungo $z$.
 
-L'idea è riassumere un campo di tensioni, che varia da punto a punto della sezione, con sei numeri: tre componenti di forza e tre di momento. Sono le stesse grandezze che nella teoria delle travi chiami sforzo normale, taglio e momento.`,
+L'idea è riassumere un campo di tensioni, che varia da punto a punto della sezione, con sei numeri: tre componenti di forza e tre di momento. Sono le grandezze che, come ricorda la dispensa (§5.2.8), si calcolano nei sistemi di travi.`,
       },
       {
         id: 'l63-5',
@@ -625,7 +622,6 @@ L'idea è questa. Consideriamo il tratto $\\mathcal B^-$ del solido compreso fra
               tex: '=M_x+(L-z)(-T_y)',
               why: `Con $\\vet R_L=(T_x,T_y,N)$ il prodotto vettoriale vale $\\hat e_z\\wedge\\vet R_L=(-T_y,\\ T_x,\\ 0)$: la sua componente $x$ è $-T_y$. Qui, come fa la dispensa, togliamo il «cappuccio» ai carichi della base di destra e li scriviamo come le CdS.`,
               val: (v) => v.Mx + (v.L - v.z) * -v.Ty,
-              aggiunto: true,
             },
             {
               tex: '=M_x-T_y(L-z)',
@@ -651,7 +647,7 @@ A parole: **tagli, sforzo normale e momento torcente sono costanti; i momenti fl
 
 Controlliamolo su due casi. Sulla base di destra, $z=L$, il termine $(L-z)$ si annulla e ritroviamo $M_x(L)=M_x$, il valore assegnato: torna. Se il taglio è nullo, i flettenti sono costanti: è ciò che accadrà nella flessione semplice, dove il solido è caricato da sole coppie.
 
-La lettura fisica è quella di una mensola caricata all'estremo (deduzione): il taglio è lo stesso ovunque, e il momento cresce con la distanza dal punto di applicazione del carico.`,
+La lettura fisica è quella di una mensola caricata all'estremo (esempio aggiunto): il taglio è lo stesso ovunque, e il momento cresce con la distanza dal punto di applicazione del carico.`,
       },
       {
         id: 'l63-10',
@@ -705,7 +701,7 @@ Rimane una domanda: la soluzione del problema indebolito vale anche per il probl
         title: 'Il postulato di Saint-Venant',
         md: `Il **postulato di Saint-Venant** (Teo 5.2.4) afferma: soluzioni ottenute con distribuzioni di forze sulle basi **diverse ma staticamente equivalenti** sono **indistinguibili a sufficiente distanza dalle basi**.
 
-La figura di p. 108 lo mostra con tre modi diversi di applicare lo stesso sforzo normale $N$: concentrato, uniforme, distribuito in modo irregolare. Vicino alla base le tensioni sono molto diverse; oltre una certa distanza $d$, detta **distanza di estinzione**, le tre soluzioni coincidono. La distanza di estinzione è legata ai **raggi d'inerzia** della sezione, cioè alle sue dimensioni trasversali: in un solido molto allungato è piccola rispetto a $L$.
+La figura di p. 108 lo mostra con tre distribuzioni diverse, ma staticamente equivalenti, dello stesso sforzo normale $N$. Vicino alla base le tre soluzioni sono diverse; oltre una certa distanza $d$, detta **distanza di estinzione**, sono indistinguibili. La dispensa dice che la differenza resta confinata in un piccolo intorno delle basi, e che la distanza di estinzione è legata alle caratteristiche inerziali della sezione, in particolare ai **raggi d'inerzia**.
 
 Nato come postulato, l'enunciato è stato dimostrato nel 1960; la dispensa lo enuncia senza dimostrazione. È questo risultato che giustifica il problema indebolito: rinunciamo a descrivere bene solo una zona vicina alle basi.`,
       },
@@ -761,7 +757,7 @@ La seconda è un'immagine: il **telaio di una bicicletta**. In ogni sezione di u
         title: 'Dove siamo e dove andiamo',
         md: `Nelle due lezioni precedenti abbiamo preparato il terreno: il solido di Saint-Venant, l'ipotesi a fibre, le caratteristiche della sollecitazione (CdS) e il postulato che ci permette di assegnare solo quelle. Da qui in poi risolviamo davvero il problema, un caso alla volta.
 
-Questa lezione affronta il caso più semplice, lo **sforzo normale**: il solido tirato (o schiacciato) da due forze uguali e opposte lungo l'asse. È il caso che conosci dalla linea elastica estensionale delle travi, ma qui lo risolviamo in tre dimensioni.
+Questa lezione affronta il caso più semplice, lo **sforzo normale**: il solido tirato (o schiacciato) da due forze uguali e opposte lungo l'asse. Ne hai visto una versione a una dimensione nell'analogia con la trave del problema elastico (§4.16.2, $N=EA\\,\\varepsilon$); qui lo risolviamo in tre dimensioni.
 
 È anche la prima volta che vediamo il metodo semi-inverso al lavoro dall'inizio alla fine, quindi segui con attenzione la ricetta, che si ripeterà identica nella flessione: **ipotesi** sulla forma della tensione, **equilibrio** (nel volume, sul mantello, sulle basi), **legame** per passare alle deformazioni, **congruenza** per trovare gli spostamenti, **verifica** finale. Poi leggeremo la soluzione: tensione, deformazione, volume ed energia.`,
       },
@@ -777,7 +773,7 @@ La dispensa (§5.3) raggruppa i casi in **quattro casi fondamentali**:
 3. **flessione composta**, cioè il taglio $T_x$, $T_y$, che come abbiamo visto porta con sé un momento variabile lungo il solido;
 4. **torsione**, con $M_z$.
 
-I primi due producono solo la tensione normale $\\sigma_z=T_{zz}$; il terzo e il quarto producono anche le tangenziali $\\tau_{zx}$, $\\tau_{zy}$. C'è poi un **quinto caso derivato**, lo **sforzo normale eccentrico**: una forza lungo l'asse ma non applicata nel baricentro, che equivale a sforzo normale più flessione (lezione c6.8). In questo modulo studiamo i casi 1 e 2; taglio e torsione sono del Modulo 7.`,
+I primi due producono solo la tensione normale $\\sigma_z=T_{zz}$; il terzo e il quarto producono anche le tangenziali $\\tau_{zx}$, $\\tau_{zy}$. C'è poi un **quinto caso derivato**, lo **sforzo normale eccentrico**: una forza lungo l'asse ma non applicata nel baricentro, che equivale a sforzo normale più flessione (lezione «Sforzo normale eccentrico e nocciolo»). In questo modulo studiamo i casi 1 e 2; taglio e torsione sono del Modulo 7.`,
       },
       {
         id: 'l64-3',
@@ -785,7 +781,7 @@ I primi due producono solo la tensione normale $\\sigma_z=T_{zz}$; il terzo e il
         title: 'Che cosa intendiamo per sforzo normale',
         md: `La **Def 5.4.1** dice: le forze sulle basi sono **staticamente equivalenti** a due forze uguali e opposte di intensità $N$, dirette lungo l'asse e applicate nei baricentri delle basi. In altre parole, l'unica CdS non nulla è $N$.
 
-Due precisazioni. La prima: il dato **non è** una forza concentrata nel baricentro. Una forza concentrata produrrebbe tensioni infinite nel punto di applicazione; ciò che conta, grazie al problema indebolito, è solo l'**equivalenza statica**: qualsiasi distribuzione con risultante $N$ lungo l'asse e momento nullo rispetto al baricentro.
+Due precisazioni. La prima: il dato **non è** una forza concentrata nel baricentro, perché in un problema di meccanica dei solidi il dato non può essere una forza concentrata (§5.4). Una forza concentrata produrrebbe tensioni infinite nel punto di applicazione (deduzione). Ciò che conta, grazie al problema indebolito, è solo l'**equivalenza statica**: qualsiasi distribuzione con risultante $N$ lungo l'asse e momento nullo rispetto al baricentro.
 
 La seconda riguarda i segni: i versi positivi delle CdS sono concordi agli assi sulla base di destra e opposti sulla base di sinistra. Quindi $N>0$ è **trazione** e $N<0$ è **compressione**.
 
@@ -799,7 +795,7 @@ Guarda il modello: le due frecce $N$ sono applicate ai centri delle basi e tiran
 
 La dispensa (§5.4.1) aggiunge quindi all'ipotesi di Saint-Venant una **congettura ulteriore**:
 $$T_{xz}=T_{yz}\\equiv0,\\qquad T_{zz}=D\\ \\text{costante}.$$
-Nella forma generale $(\\star)$ della lezione c6.2, $T_{xz}=A$, $T_{yz}=B$, $T_{zz}=Cz+D$, questo vuol dire scegliere $A=B=C=0$ e $D(x,y)=D$, un numero solo.
+Nella forma generale $(\\star)$, $T_{xz}=A(x,y)$, $T_{yz}=B(x,y)$, $T_{zz}=C(x,y)\\,z+D(x,y)$, ricavata nella lezione «Il problema di Saint-Venant e il metodo semi-inverso» (§5.2.3), questo vuol dire scegliere $A=B=C=0$ e $D(x,y)=D$, un numero solo. Qui $A$ è la funzione di $(\\star)$; fra poco la stessa lettera tornerà a indicare l'area della sezione, come nella dispensa.
 
 Ricorda il senso di questa mossa: non stiamo affermando che la soluzione è così; stiamo facendo un tentativo. Se tutte le equazioni risulteranno soddisfatte, il teorema di Kirchhoff ci dirà che il tentativo era giusto. Resta da trovare il valore di $D$.`,
       },
@@ -845,7 +841,7 @@ Ricorda il senso di questa mossa: non stiamo affermando che la soluzione è cos�
         id: 'l64-7',
         kind: 'derivazione',
         title: 'Dalla tensione alle deformazioni',
-        md: `Vogliamo le deformazioni prodotte da $[\\tens T]=\\operatorname{diag}(0,0,N/A)$. Strategia: inserire la tensione nel legame inverso con i moduli tecnici. Il campione deriva numericamente lo spostamento della soluzione in un punto a caso e controlla che dia proprio queste deformazioni.`,
+        md: `Vogliamo le deformazioni prodotte da $[\\tens T]=\\operatorname{diag}(0,0,N/A)$. Strategia: inserire la tensione nel legame inverso con i moduli tecnici. Ricorda che $E$ senza indici è il modulo di Young, mentre $E_{xx}$, $E_{zz}$, … sono componenti della deformazione. Il campione deriva numericamente lo spostamento della soluzione in un punto a caso e controlla che dia proprio queste deformazioni.`,
         source: D(5, '5.4.3–5.4.4', 'Teo 5.4.2', '111–112'),
         der: {
           sample,
@@ -927,7 +923,7 @@ Per il teorema di Kirchhoff è **la** soluzione del problema indebolito, a meno 
 
 Leggiamola sul caso particolare $\\nu=0$, un materiale senza effetto Poisson (deduzione): $u$ e $v$ si annullano, e resta solo $w=\\frac N{EA}z$. Il solido si allunga senza restringersi, come ci si aspetta. Con $\\nu>0$, invece, l'allungamento lungo $z$ si accompagna a una contrazione nel piano della sezione.
 
-La dispensa osserva che questa soluzione **generalizza** la linea elastica estensionale delle travi a una soluzione tridimensionale.`,
+La dispensa osserva che questa soluzione **generalizza** la linea elastica estensionale a una soluzione tridimensionale.`,
       },
       {
         id: 'l64-11',
@@ -958,7 +954,7 @@ La **rigidezza estensionale** $K_N$ è la forza necessaria per un allungamento u
 
 Derivando $w$ rispetto a $z$ si ottiene $w'=\\frac N{EA}$, cioè
 $$N=EA\\,w'.$$
-È il **legame della linea elastica estensionale**. La dispensa osserva che la linea elastica delle travi è proprio la parte della soluzione tridimensionale che riguarda l'asse.`,
+È il **legame della linea elastica estensionale**. La dispensa osserva che la linea elastica è proprio la parte della soluzione tridimensionale che riguarda l'asse.`,
       },
       {
         id: 'l64-14',
@@ -1004,7 +1000,7 @@ Caso particolare (deduzione): per un materiale incomprimibile, $\\nu=\\frac12$, 
           sample,
           lines: [
             { tex: '\\Phi=\\int_{\\mathcal B}\\varphi\\,dV=\\frac{N^2}{2EA^2}\\,AL', why: `L'energia specifica dello stato monoassiale è $\\varphi=\\frac{\\sigma^2}{2E}$ (Prop 4.14.1), qui $\\frac{N^2}{2EA^2}$; è uniforme, quindi l'integrale è $\\varphi$ per il volume $AL$.`, val: (v) => (v.N ** 2 / (2 * v.E * sec(v).A ** 2)) * sec(v).A * v.L },
-            { tex: '=\\frac{N^2L}{2EA}', why: `Semplificando un'area.`, val: (v) => (v.N ** 2 * v.L) / (2 * v.E * sec(v).A), aggiunto: true },
+            { tex: '=\\frac{N^2L}{2EA}', why: `Semplificando un'area.`, val: (v) => (v.N ** 2 * v.L) / (2 * v.E * sec(v).A) },
             {
               tex: '=\\frac12N\\cdot\\frac{NL}{EA}=\\frac12N\\,\\Delta L',
               why: `Mettiamo in evidenza $\\frac12N$ e riconosciamo nel resto l'allungamento $\\Delta L=\\frac{NL}{EA}$.`,
@@ -1075,7 +1071,7 @@ Il prossimo caso, la **flessione**, è diverso: la sezione viene «piegata», e 
         title: 'Flessione semplice e asse di sollecitazione',
         md: `La **Def 5.5.1** dice: si ha **flessione semplice** quando le forze sulle basi sono staticamente equivalenti a **due coppie uguali e opposte**, che agiscono nel piano delle basi. L'unica caratteristica della sollecitazione (CdS) non nulla è quindi il momento flettente $\\vet M$, un vettore che giace nel piano della sezione.
 
-Una coppia «fa ruotare» in un piano preciso: il **piano di sollecitazione** $\\pi_s$, ortogonale al vettore $\\vet M$ e contenente l'asse del solido. Per esempio, una coppia con vettore lungo $x$ fa ruotare il solido nel piano $yz$ (deduzione).
+Una coppia «fa ruotare» in un piano preciso: il **piano di sollecitazione** $\\pi_s$, ortogonale al vettore $\\vet M$ e contenente l'asse del solido. Per esempio, una coppia con vettore lungo $x$ fa ruotare il solido nel piano $yz$ (esempio aggiunto).
 
 L'intersezione di $\\pi_s$ con la sezione è una retta per il baricentro: si chiama **asse di sollecitazione** $s$. Per costruzione $s$ è ortogonale a $\\vet M$. La dispensa precisa che da qui in poi è essenziale che $x$ e $y$ siano **assi principali centrali d'inerzia**: vediamo che cosa sono.`,
       },
@@ -1083,13 +1079,13 @@ L'intersezione di $\\pi_s$ con la sezione è una retta per il baricentro: si chi
         id: 'l65-3',
         kind: 'spiega',
         title: 'Richiamo: momenti d’inerzia e momento centrifugo',
-        md: `Ricordiamo dal corso di geometria delle aree le grandezze che misurano come è distribuita l'area attorno agli assi (passaggio aggiunto: la dispensa le usa senza ridefinirle).
+        md: `Ricordiamo dal corso di geometria delle aree le grandezze che misurano come è distribuita l'area attorno agli assi. La dispensa le usa senza ridefinirle (passaggio aggiunto).
 
 - Il **momento statico** rispetto a $x$ è $S_x=\\int_Ay\\,dA$. È nullo se l'asse passa per il baricentro: lo abbiamo usato nello sforzo normale.
 - Il **momento d'inerzia** rispetto a $x$ è $J_x=\\int_Ay^2\\,dA$: pesa ogni pezzetto d'area con il quadrato della sua distanza dall'asse. Più l'area è lontana dall'asse, più $J_x$ è grande. Allo stesso modo $J_y=\\int_Ax^2\\,dA$.
 - Il **momento centrifugo** è $J_{xy}=\\int_Axy\\,dA$. Può essere positivo, negativo o nullo, a seconda di come è disposta l'area nei quattro quadranti.
 
-Nella flessione il momento centrifugo comparirà in una CdS: se non fosse nullo, un momento lungo $x$ produrrebbe anche un momento lungo $y$ (lezione c6.6). Per questo vogliamo assi in cui $J_{xy}=0$.`,
+Nella flessione il momento centrifugo comparirà in una CdS: se non fosse nullo, un momento lungo $x$ produrrebbe anche un momento lungo $y$ (lezione «La flessione retta: Navier»). Per questo vogliamo assi in cui $J_{xy}=0$.`,
       },
       {
         id: 'l65-4',
@@ -1115,7 +1111,7 @@ Per un rettangolo o un doppio T gli APCdI sono quindi gli assi di simmetria. Per
         title: 'Raggi d’inerzia ed ellisse centrale d’inerzia',
         md: `Il momento d'inerzia dipende dall'area: una sezione più grande ha $J$ più grande. Per confrontare la **forma** si usa il **raggio d'inerzia**, una lunghezza:
 $$\\rho_x=\\sqrt{J_x/A},\\qquad\\rho_y=\\sqrt{J_y/A}.$$
-Leggilo così: $\\rho_x$ è la distanza dall'asse $x$ a cui dovresti concentrare tutta l'area per avere lo stesso momento d'inerzia. Vale anche al contrario: $J_x=\\rho_x^2A$.
+Leggilo così: $\\rho_x$ è la distanza dall'asse $x$ a cui dovresti concentrare tutta l'area per avere lo stesso momento d'inerzia (deduzione). Vale anche al contrario: $J_x=\\rho_x^2A$.
 
 L'**ellisse centrale d'inerzia** (ECdI) è il diagramma polare dei raggi d'inerzia: per ogni asse baricentrico si riporta il suo raggio d'inerzia. C'è un dettaglio che confonde sempre: il raggio relativo a un asse si riporta lungo la direzione **coniugata**, non lungo l'asse stesso. Negli APCdI la direzione coniugata di $x$ è $y$, quindi **lungo $y$ si riporta $\\rho_x$** e lungo $x$ si riporta $\\rho_y$. I semiassi dell'ellisse sono $\\rho_y$ lungo $x$ e $\\rho_x$ lungo $y$.
 
@@ -1125,7 +1121,7 @@ Per il rettangolo alto ($\\rho_x>\\rho_y$) l'ellisse è quindi allungata **in ve
         id: 'l65-7',
         kind: 'numeri',
         title: 'Le sezioni d’esempio',
-        md: `Il motore calcola le proprietà dal contorno (formule di Green). Rettangolo 20×40: $J_x=${Math.round(S.principal(S.SEZIONI.rettangolo.poly).Jx)}$ cm⁴ ($BH^3/12$). Doppio T di 40 cm: $J_x=${Math.round(S.principal(S.SEZIONI.doppioT.poly).Jx)}$ cm⁴ con meno della metà dell'area: l'area è stata spostata nelle ali, lontano dall'asse, e $J_x$ è cresciuto. L a lati uguali: APCdI ruotati di ${Math.round((Math.abs(S.principal(S.SEZIONI.L.poly).psi) * 180) / Math.PI)}° (bisettrice), baricentro fuori dalla figura. Valori di esempio, non della dispensa.`,
+        md: `Il motore calcola le proprietà dal contorno (formule di Green). Rettangolo 20×40: $J_x=${Math.round(S.principal(S.SEZIONI.rettangolo.poly).Jx)}$ cm⁴ ($BH^3/12$). Doppio T alto 40 cm e largo 20: $J_x=${Math.round(S.principal(S.SEZIONI.doppioT.poly).Jx)}$ cm⁴, poco meno della metà del rettangolo, con circa un quinto dell'area. Il $J_x$ per unità d'area, cioè $\\rho_x^2=J_x/A$, è circa il doppio: l'area è stata spostata nelle ali, lontano dall'asse. L a lati uguali: APCdI ruotati di ${Math.round((Math.abs(S.principal(S.SEZIONI.L.poly).psi) * 180) / Math.PI)}° (bisettrice), baricentro fuori dalla figura. Valori di esempio, non della dispensa.`,
         values: { Jrett: Math.round(S.principal(S.SEZIONI.rettangolo.poly).Jx), JdoppioT: Math.round(S.principal(S.SEZIONI.doppioT.poly).Jx), psiL: Math.round((Math.abs(S.principal(S.SEZIONI.L.poly).psi) * 180) / Math.PI) },
         visual: SVG('sezione', { tab: 'ecdi', section: 'L' }),
       },
@@ -1177,7 +1173,7 @@ Gli esempi della dispensa:
 - L a lati uguali con $s$ sull'asse di simmetria: la flessione è **retta**;
 - quadrato: la flessione è **sempre retta**, perché ogni asse baricentrico è principale.
 
-Il piano di studio è questo: risolveremo la flessione retta con $M_x$ (lezione c6.6), poi quella con $M_y$, e otterremo la deviata come sovrapposizione delle due (lezione c6.7).`,
+Il piano di studio è questo: risolveremo la flessione retta con $M_x$ (lezione «La flessione retta: Navier»), poi quella con $M_y$, e otterremo la deviata come sovrapposizione delle due (lezione «La flessione deviata e i due teoremi»).`,
       },
       {
         id: 'l65-12',
@@ -1218,7 +1214,7 @@ Il piano di studio è questo: risolveremo la flessione retta con $M_x$ (lezione 
         id: 'l66-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione c6.4 abbiamo risolto lo sforzo normale con il metodo semi-inverso; nella lezione c6.5 abbiamo preparato gli strumenti per la flessione: assi principali centrali d'inerzia (APCdI), momenti d'inerzia, convenzioni sugli angoli.
+        md: `Nella lezione «Lo sforzo normale» abbiamo risolto lo sforzo normale con il metodo semi-inverso; nella lezione «Assi principali centrali ed ellisse d’inerzia» abbiamo preparato gli strumenti per la flessione: assi principali centrali d'inerzia (APCdI), momenti d'inerzia, convenzioni sugli angoli.
 
 Ora risolviamo la **flessione retta** con un momento $M_x$ lungo l'asse $x$: il solido viene piegato nel piano $yz$. Seguiremo la stessa ricetta dello sforzo normale: **ipotesi** sulla tensione, **equilibrio**, **legame**, **congruenza**, **verifica**. Il risultato più famoso è la **formula di Navier**, $\\sigma_z=\\frac{M_x}{J_x}y$.
 
@@ -1232,9 +1228,11 @@ Poi leggeremo la soluzione con calma, perché è ricca: la tensione «a farfalla
 
 La dispensa (§5.5.3) aggiunge quindi all'ipotesi di Saint-Venant la congettura
 $$T_{zx}=T_{zy}\\equiv0,\\qquad T_{zz}=D\\,y,$$
-con $D$ costante da determinare. Nella forma $(\\star)$ della lezione c6.2 vuol dire $A=B=C=0$ e $D(x,y)=D\\,y$.
+con $D$ costante da determinare. Nella forma $(\\star)$ (§5.2.3) vuol dire $A=B=C=0$ e $D(x,y)=D\\,y$.
 
-Ricorda la convenzione della dispensa: nei disegni della sezione l'asse **$y$ è rivolto verso il basso**. Con $D>0$, quindi, la tensione è di trazione nella parte bassa della sezione ($y>0$) e di compressione in quella alta.`,
+Ricorda la convenzione della dispensa: nei disegni della sezione l'asse **$y$ è rivolto verso il basso**. Con $D>0$, quindi, la tensione è di trazione nella parte bassa della sezione ($y>0$) e di compressione in quella alta.
+
+Come nello sforzo normale, $A$, $B$, $C$ qui sono le funzioni della forma $(\\star)$, non l'area della sezione.`,
       },
       {
         id: 'l66-3',
@@ -1263,7 +1261,7 @@ Ricorda la convenzione della dispensa: nei disegni della sezione l'asse **$y$ è
         title: 'Dal legame alle deformazioni',
         md: `L'equilibrio è soddisfatto. Ora il **legame inverso**, come nello sforzo normale, con l'unica differenza che $T_{zz}$ non è più costante ma vale $\\frac{M_x}{J_x}y$ (§5.5.3):
 $$E_{xx}=E_{yy}=-\\frac\\nu E\\,\\frac{M_x}{J_x}\\,y,\\qquad E_{zz}=\\frac{M_x}{EJ_x}\\,y,\\qquad\\text{scorrimenti nulli}.$$
-A parole: ogni fibra si allunga in proporzione alla sua distanza $y$ dall'asse $x$, e si restringe lateralmente di $\\nu$ volte tanto.
+A parole: ogni fibra si allunga in proporzione alla sua ordinata $y$, cioè alla sua distanza con segno dall'asse $x$, e si restringe lateralmente di $\\nu$ volte tanto. Come sempre, $E$ senza indici è il modulo di Young e $E_{xx}$, $E_{zz}$, … sono componenti della deformazione.
 
 Prima di integrare gli spostamenti c'è una domanda: queste deformazioni sono **congruenti**, cioè esiste davvero uno spostamento che le produce? Per una sezione semplicemente connessa la condizione necessaria e sufficiente è la compatibilità, $\\operatorname{rot}\\operatorname{rot}\\tens E=\\tens O$, che contiene solo derivate seconde delle componenti di $\\tens E$. Qui le componenti sono **lineari**, le derivate seconde sono nulle e la condizione è soddisfatta. Possiamo integrare con fiducia.`,
       },
@@ -1271,31 +1269,37 @@ Prima di integrare gli spostamenti c'è una domanda: queste deformazioni sono **
         id: 'l66-5',
         kind: 'derivazione',
         title: 'Congruenza: integrare e correggere',
-        md: `Vogliamo il campo di spostamento. Strategia: integrare le tre dilatazioni come nello sforzo normale; questa volta però gli scorrimenti non vengono nulli da soli, e bisogna correggere $v$ con due termini scelti apposta per annullarli.`,
+        md: `Vogliamo il campo di spostamento. Strategia: la dispensa procede «per via euristica». Integriamo le tre dilatazioni come nello sforzo normale; questa volta però le funzioni d'integrazione non possono essere un semplice moto rigido, perché gli scorrimenti non si annullano da soli: bisogna scegliere $\\bar v$ apposta per annullarli. Il campione deriva numericamente il campo finale in un punto a caso del rettangolo e controlla che dia le deformazioni del legame.`,
         source: D(5, '5.5.3', undefined, '116–117'),
         der: {
+          sample,
           lines: [
             {
-              tex: 'u=-\\frac\\nu E\\frac{M_x}{J_x}xy+\\bar u,\\qquad v=-\\frac\\nu E\\frac{M_x}{2J_x}y^2+\\bar v,\\qquad w=\\frac{M_x}{EJ_x}yz+\\bar w',
-              why: `Integriamo $\\partial u/\\partial x$ rispetto a $x$, $\\partial v/\\partial y$ rispetto a $y$ (da $y$ viene $y^2/2$) e $\\partial w/\\partial z$ rispetto a $z$, più le funzioni d'integrazione $\\bar u$, $\\bar v$, $\\bar w$.`,
+              tex: 'u=-\\frac\\nu E\\frac{M_x}{J_x}xy+\\bar u(y,z),\\qquad v=-\\frac\\nu E\\frac{M_x}{2J_x}y^2+\\bar v(x,z),\\qquad w=\\frac{M_x}{EJ_x}yz+\\bar w(x,y)',
+              why: `Integriamo $\\partial u/\\partial x$ rispetto a $x$, $\\partial v/\\partial y$ rispetto a $y$ (da $y$ viene $y^2/2$) e $\\partial w/\\partial z$ rispetto a $z$. Ogni integrazione lascia una funzione che non dipende dalla variabile d'integrazione: $\\bar u(y,z)$ dipende solo da $y$ e $z$, $\\bar v(x,z)$ solo da $x$ e $z$, $\\bar w(x,y)$ solo da $x$ e $y$. Per questo le funzioni d'integrazione non cambiano le dilatazioni $E_{xx}$, $E_{yy}$, $E_{zz}$.`,
             },
             {
-              tex: '2E_{xy}=\\frac{\\partial u}{\\partial y}+\\frac{\\partial v}{\\partial x}=-\\frac{\\nu M_x}{EJ_x}x+\\dots\\ne0',
-              why: `Controlliamo lo scorrimento nel piano della sezione, che deve essere nullo. Derivando $u$ rispetto a $y$ resta un termine in $x$ che nessun'altra parte cancella: le sole parti integrate non bastano.`,
+              tex: '2\\bar E_{xy}=\\frac{\\partial\\bar u}{\\partial y}+\\frac{\\partial\\bar v}{\\partial x}=\\frac{\\nu M_x}{EJ_x}\\,x\\ne0',
+              why: `Imponiamo che lo scorrimento nel piano della sezione sia nullo, $E_{xy}=0$. La parte integrata di $u$, derivata rispetto a $y$, dà $-\\frac{\\nu M_x}{EJ_x}x$, e quella di $v$ non dipende da $x$: perché $E_{xy}$ sia nullo, le funzioni d'integrazione devono compensare quel termine. Quindi il campo $\\bar{\\vet u}=(\\bar u,\\bar v,\\bar w)$ ha $\\bar E_{xy}\\ne0$, e non può essere un moto rigido come nello sforzo normale.`,
+              aggiunto: true,
+            },
+            {
+              tex: '2\\bar E_{yz}=\\frac{\\partial\\bar v}{\\partial z}+\\frac{\\partial\\bar w}{\\partial y}=-\\frac{M_x}{EJ_x}\\,z\\ne0',
+              why: `Lo stesso per lo scorrimento fra sezione e asse, $E_{yz}=0$: la parte integrata di $w$, derivata rispetto a $y$, dà $\\frac{M_x}{EJ_x}z$, che le funzioni d'integrazione devono cancellare. Lo scorrimento $E_{zx}$ invece non dà problemi, perché la parte integrata di $u$ non dipende da $z$ e quella di $w$ non dipende da $x$. È ciò che dice la dispensa: $\\bar E_{zx}=0$, ma $\\bar E_{xy}\\ne0$ e $\\bar E_{yz}\\ne0$.`,
               aggiunto: true,
             },
             {
               tex: 'v\\ \\to\\ v+\\frac{\\nu M_x}{2EJ_x}x^2',
-              why: `Aggiungiamo a $v$ un termine in $x^2$: la sua derivata rispetto a $x$ è $+\\frac{\\nu M_x}{EJ_x}x$ e cancella il termine trovato. Non cambia $E_{yy}=\\partial v/\\partial y$, perché non dipende da $y$.`,
-            },
-            {
-              tex: '2E_{yz}=\\frac{\\partial v}{\\partial z}+\\frac{\\partial w}{\\partial y}=\\frac{M_x}{EJ_x}z+\\dots\\ne0',
-              why: `Lo stesso problema per lo scorrimento fra sezione e asse: la derivata di $w$ rispetto a $y$ lascia un termine in $z$.`,
-              aggiunto: true,
+              why: `La dispensa osserva che l'errore compare sempre dove c'è $\\bar v$, e corregge $v$. Aggiungiamo un termine in $x^2$: la sua derivata rispetto a $x$, $+\\frac{\\nu M_x}{EJ_x}x$, è proprio quella che serve per $E_{xy}$. Non cambia $E_{yy}=\\partial v/\\partial y$, perché non dipende da $y$.`,
             },
             {
               tex: 'v\\ \\to\\ v-\\frac{M_x}{2EJ_x}z^2',
-              why: `Aggiungiamo a $v$ un termine in $z^2$, la cui derivata rispetto a $z$, $-\\frac{M_x}{EJ_x}z$, cancella quello trovato. Anche questo non tocca $E_{yy}$. Lo scorrimento $E_{zx}$ è già nullo, perché $u$ non dipende da $z$ e $w$ non dipende da $x$.`,
+              why: `Aggiungiamo poi un termine in $z^2$: la sua derivata rispetto a $z$, $-\\frac{M_x}{EJ_x}z$, è quella che serve per $E_{yz}$. Non tocca $E_{xy}$, perché non dipende da $x$, né $E_{yy}$, perché non dipende da $y$.`,
+            },
+            {
+              tex: '\\bar v(x,z)=\\frac{\\nu M_x}{2EJ_x}x^2-\\frac{M_x}{2EJ_x}z^2\\quad(+\\ \\text{moto rigido})',
+              why: `Le due correzioni equivalgono a scegliere così la funzione d'integrazione $\\bar v(x,z)$, che infatti dipende solo da $x$ e da $z$, come deve. Con questa scelta le condizioni delle due righe con $\\bar E_{xy}$ e $\\bar E_{yz}$ sono soddisfatte; $\\bar u$ e $\\bar w$, insieme a ciò che resta di $\\bar v$, hanno deformazione nulla e formano quindi soltanto un moto rigido infinitesimo.`,
+              aggiunto: true,
             },
             {
               tex: 'u=-\\frac{\\nu M_x}{EJ_x}xy,\\quad v=-\\frac{\\nu M_x}{2EJ_x}\\Big[(y^2-x^2)+\\frac{z^2}\\nu\\Big],\\quad w=\\frac{M_x}{EJ_x}yz',
@@ -1304,27 +1308,28 @@ Prima di integrare gli spostamenti c'è una domanda: queste deformazioni sono **
               eq: '§5.5.3',
             },
           ],
+          checks: [
+            { what: '$E_{zz}=\\partial w/\\partial z=\\sigma_z/E$', f: (v) => [strain(v, { N: 0, Mx: v.Mx, My: 0 }).zz, ((v.Mx / sec(v).Jx) * pt(v)[1]) / v.E] },
+            { what: '$E_{xx}=-\\nu\\sigma_z/E$', f: (v) => [strain(v, { N: 0, Mx: v.Mx, My: 0 }).xx, (-v.nu * v.Mx * pt(v)[1]) / (v.E * sec(v).Jx)] },
+            { what: '$E_{yy}=-\\nu\\sigma_z/E$', f: (v) => [strain(v, { N: 0, Mx: v.Mx, My: 0 }).yy, (-v.nu * v.Mx * pt(v)[1]) / (v.E * sec(v).Jx)] },
+            { what: '$E_{xy}=0$', f: (v) => [strain(v, { N: 0, Mx: v.Mx, My: 0 }).xy, 0] },
+            { what: '$E_{yz}=0$', f: (v) => [strain(v, { N: 0, Mx: v.Mx, My: 0 }).yz, 0] },
+            { what: '$E_{zx}=0$', f: (v) => [strain(v, { N: 0, Mx: v.Mx, My: 0 }).zx, 0] },
+          ],
         },
       },
       {
         id: 'l66-6',
-        kind: 'derivazione',
-        title: 'Verifica numerica del campo',
-        md: `Vogliamo controllare che il campo trovato dia davvero le deformazioni del legame. Strategia: il campione deriva numericamente lo spostamento in un punto a caso del rettangolo e confronta con le formule.`,
-        source: D(5, '5.5.3', undefined, '116–117'),
-        der: {
-          sample,
-          lines: [
-            { tex: 'E_{zz}=\\frac{\\partial w}{\\partial z}', why: `Derivata numerica della componente $w$ del campo, in un punto a caso.`, val: (v) => strain(v, { N: 0, Mx: v.Mx, My: 0 }).zz },
-            { tex: '=\\frac{M_x}{EJ_x}\\,y', why: `Derivando $w=\\frac{M_x}{EJ_x}yz$ rispetto a $z$.`, val: (v) => (v.Mx / (v.E * sec(v).Jx)) * pt(v)[1], aggiunto: true },
-            { tex: '=\\frac{\\sigma_z}E', why: `È la tensione di Navier divisa per $E$, come vuole il legame: torna. Le altre componenti sono controllate qui sotto.`, val: (v) => ((v.Mx / sec(v).Jx) * pt(v)[1]) / v.E, eq: '§5.5.3' },
-          ],
-          checks: [
-            { what: '$E_{xy}=0$', f: (v) => [strain(v, { N: 0, Mx: v.Mx, My: 0 }).xy, 0] },
-            { what: '$E_{yz}=0$', f: (v) => [strain(v, { N: 0, Mx: v.Mx, My: 0 }).yz, 0] },
-            { what: '$E_{xx}=-\\nu\\sigma_z/E$', f: (v) => [strain(v, { N: 0, Mx: v.Mx, My: 0 }).xx, (-v.nu * v.Mx * pt(v)[1]) / (v.E * sec(v).Jx)] },
-          ],
-        },
+        kind: 'spiega',
+        title: 'Controllo: il campo dà le deformazioni del legame?',
+        md: `Prima di leggere la soluzione conviene controllarla, facendo il percorso al contrario: dal campo di spostamento alle deformazioni.
+
+Le dilatazioni si ottengono derivando. Da $w=\\frac{M_x}{EJ_x}yz$, rispetto a $z$, viene $E_{zz}=\\frac{M_x}{EJ_x}y$, cioè la tensione di Navier divisa per $E$. Da $u=-\\frac{\\nu M_x}{EJ_x}xy$, rispetto a $x$, viene $E_{xx}=-\\frac{\\nu M_x}{EJ_x}y$; in $v$, rispetto a $y$, conta solo il termine $-\\frac{\\nu M_x}{2EJ_x}y^2$, che dà lo stesso valore per $E_{yy}$. Sono le dilatazioni del legame: la fibra si allunga di $\\sigma_z/E$ e si restringe lateralmente di $\\nu$ volte tanto. La dispensa non scrive questo controllo delle dilatazioni (passaggio aggiunto).
+
+Gli scorrimenti, invece, la dispensa li verifica esplicitamente:
+$$E_{xy}=\\tfrac12\\Big(-\\frac{\\nu M_x}{EJ_x}x+\\frac{\\nu M_x}{EJ_x}x\\Big)=0,\\qquad E_{yz}=\\tfrac12\\Big(-\\frac{M_x}{EJ_x}z+\\frac{M_x}{EJ_x}z\\Big)=0,\\qquad E_{zx}=0.$$
+
+Lo stesso controllo, fatto numericamente in un punto a caso del rettangolo, compare nei controlli della derivazione «Congruenza: integrare e correggere».`,
       },
       {
         id: 'l66-7',
@@ -1347,11 +1352,13 @@ Con $M_x>0$ e $y$ rivolto verso il basso, le fibre **sotto** l'asse neutro ($y>0
         id: 'l66-9',
         kind: 'spiega',
         title: 'Le tensioni massime e i moduli di resistenza',
-        md: `Il diagramma a farfalla ha i valori estremi ai **lembi**, i punti della sezione più lontani dall'asse neutro. Chiamiamo $y'$ e $y''$ le distanze del lembo inferiore e del lembo superiore. Allora
-$$\\sigma'_z=\\frac{M_x}{W'_x},\\qquad\\sigma''_z=\\frac{M_x}{W''_x},\\qquad W'_x=\\frac{J_x}{y'},\\quad W''_x=\\frac{J_x}{y''}.$$
-I $W$ si chiamano **moduli di resistenza**: dipendono solo dalla sezione, e per i profilati metallici sono riportati nei sagomari. Più $W$ è grande, più bassa è la tensione massima a parità di momento.
+        md: `Il diagramma a farfalla ha i valori estremi ai **lembi**, i punti della sezione più lontani dall'asse neutro. Come la dispensa, chiamiamo $y'$ e $y''$ le **ordinate**, con il loro segno, del lembo inferiore e del lembo superiore: siccome $y$ è rivolto verso il basso, $y'>0$ e $y''<0$. Sostituendole nella formula di Navier:
+$$\\sigma'_z=\\frac{M_x}{J_x}\\,y'=\\frac{M_x}{W'_x},\\qquad\\sigma''_z=\\frac{M_x}{J_x}\\,y''=\\frac{M_x}{W''_x},\\qquad W'_x=\\frac{J_x}{y'},\\quad W''_x=\\frac{J_x}{y''}.$$
+Il segno è già contenuto nelle ordinate: il modulo di resistenza $W''_x$ è negativo, perché $y''<0$, quindi con $M_x>0$ la tensione $\\sigma''_z$ è di compressione, come deve essere sopra l'asse neutro, mentre $\\sigma'_z$ è di trazione (deduzione). Se si preferisce lavorare con le distanze, cioè con i valori assoluti, bisogna aggiungere a parole che al lembo superiore la tensione è di compressione.
 
-Una nota storica della dispensa: la formula $N/A$ era nota già a Galileo, quella della flessione a Navier; il contributo davvero nuovo di Saint-Venant riguarda soprattutto la torsione (Modulo 7). Qui Saint-Venant **ritrova** Navier come soluzione esatta del problema tridimensionale.`,
+I $W$ si chiamano **moduli di resistenza**: dipendono solo dalla sezione, e la dispensa ricorda che sono riportati nei sagomari dei profilati metallici per una rapida prima valutazione. Più $|W|$ è grande, più bassa è in modulo la tensione al lembo a parità di momento.
+
+Una nota storica della dispensa: la formula $N/A$ era nota già a Galileo, quella della flessione a Navier; il contributo davvero nuovo di Saint-Venant riguarda soprattutto la torsione (Modulo 7). Il problema di Saint-Venant, dice la dispensa, recepisce e generalizza questi risultati: qui la formula di Navier esce come soluzione esatta del problema tridimensionale.`,
       },
       {
         id: 'l66-10',
@@ -1362,7 +1369,7 @@ Una nota storica della dispensa: la formula $N/A$ era nota già a Galileo, quell
           'Guarda i colori: rosso sotto (trazione), blu sopra (compressione), bianco a metà altezza, sull’asse neutro.',
           'Sulla base di destra leggi la retta $n$: è l’asse neutro, orizzontale, che separa la zona rossa da quella blu.',
           'Leggi nella tabella $\\sigma_{z,\\max}$ e $\\sigma_{z,\\min}$: nel rettangolo sono uguali e opposte, perché i due lembi sono alla stessa distanza dall’asse neutro.',
-          'Passa al T: i due valori diventano diversi, perché il baricentro non è più a metà altezza e la distanza $y\'$ del lembo inferiore è diversa dalla distanza $y\'\'$ del lembo superiore.',
+          'Passa al T: i due valori diventano diversi in modulo, perché il baricentro non è più a metà altezza e l’ordinata $y\'$ del lembo inferiore non è più l’opposta dell’ordinata $y\'\'$ del lembo superiore.',
         ],
         visual: BEAM('flessione', { alpha: 0, controls: ['section', 'amp'] }),
       },
@@ -1377,7 +1384,7 @@ Una nota storica della dispensa: la formula $N/A$ era nota già a Galileo, quell
         title: 'Le sezioni restano piane: Bernoulli–Navier',
         md: `Passiamo alla deformazione, e prima di tutto alle sezioni. Gli **scorrimenti sono nulli**: gli angoli retti fra le fibre longitudinali e le sezioni restano retti. Inoltre $w=\\frac{M_x}{EJ_x}yz$ è lineare in $y$ su ogni sezione $z=\\text{cost}$: i punti di una sezione si spostano lungo l'asse in proporzione alla loro quota, quindi la sezione deformata è ancora un **piano**, che ruota attorno all'asse neutro.
 
-La dispensa lo riassume così: la linea elastica resta ortogonale alla deformata della sezione, che resta **piana**. È l'**ipotesi di Bernoulli–Navier** della teoria delle travi. La differenza importante è che lì era un'ipotesi; qui è un **risultato**, ottenuto risolvendo il problema tridimensionale.
+La dispensa lo riassume così: la linea elastica resta ortogonale alla deformata della sezione, che resta **piana**, e chiama questa proprietà **ipotesi di Bernoulli–Navier**. Il motivo che dà è questo: se l'asse si incurva, gli assi nella sezione devono restare ortogonali ad esso, e siccome ciò vale per tutta la sezione, la sezione è forzata a restare piana. Nota che qui la planarità non è stata assunta: è una conseguenza della soluzione trovata (deduzione).
 
 Nota però una sottigliezza: piana in direzione $z$ non vuol dire che la sezione non si deformi nel suo piano. Lo vedremo con la deformazione anticlastica.`,
       },
@@ -1400,7 +1407,7 @@ Nota però una sottigliezza: piana in direzione $z$ non vuol dire che la sezione
             },
             {
               tex: '\\kappa\\simeq-v\'\'(z)',
-              why: `La curvatura dell'asse, per spostamenti piccoli, è la derivata seconda dello spostamento, con lo stesso segno della rotazione. Il valore è calcolato dal motore per differenze finite.`,
+              why: `La curvatura dell'asse, per spostamenti piccoli, è a meno del segno la derivata seconda dello spostamento. La dispensa prende $\\kappa\\simeq-v''$, cioè la derivata della rotazione $\\varphi=-v'$. Il valore è calcolato dal motore per differenze finite.`,
               val: (v) => {
                 const f = (z: number) => S.displacement({ N: 0, Mx: v.Mx, My: 0 }, sec(v), v.E, v.nu, [0, 0, z])[1];
                 const h = 1e-3;
@@ -1416,7 +1423,7 @@ Nota però una sottigliezza: piana in direzione $z$ non vuol dire che la sezione
             },
             {
               tex: 'M_x=EJ_x\\,\\kappa',
-              why: `Riscritta al contrario: il momento è la rigidezza $EJ_x$ per la curvatura. È il **legame della linea elastica flessionale**, che conosci dalla teoria delle travi.`,
+              why: `Riscritta al contrario: il momento è la rigidezza $EJ_x$ per la curvatura. È quello che la dispensa chiama **legame costitutivo della linea elastica flessionale**.`,
               eq: '§5.5.3',
             },
           ],
@@ -1448,9 +1455,11 @@ Le fibre si allungano di $\\Delta L=\\frac{M_xL}{EJ_x}y$: sotto si allungano, so
         title: 'Perché il doppio T',
         md: `La rigidezza flessionale e i moduli di resistenza dipendono da $J_x=\\int y^2dA$. Questo ha una conseguenza pratica, che la dispensa sottolinea (Oss., §5.5.3).
 
-A **parità di area**, cioè di materiale e di peso, conviene **allontanare l'area dall'asse neutro**: ogni pezzetto d'area pesa con il quadrato della sua distanza. Il momento d'inerzia cresce come il cubo delle dimensioni della sezione, per esempio $BH^3/12$ nel rettangolo. Aumentare $J_x$ fa diminuire sia la rotazione $\\Delta\\varphi$ sia la tensione massima.
+A **parità di area**, cioè di materiale e di peso, conviene **allontanare l'area dall'asse neutro**: ogni pezzetto d'area pesa con il quadrato della sua distanza, e per questo, dice la dispensa, il momento d'inerzia cresce come il cubo delle dimensioni della sezione. Per esempio, nel rettangolo $J_x=BH^3/12$ (esempio aggiunto).
 
-La sezione che sfrutta meglio questo principio è il **doppio T**: due ali lontane dall'asse, dove la tensione è grande, collegate da un'anima sottile vicino all'asse, dove la tensione è piccola e il materiale servirebbe poco. È la sezione ottimale per la flessione. Lo hai visto nei numeri della lezione c6.5: il doppio T d'esempio ha un $J_x$ molto grande con meno della metà dell'area del rettangolo.`,
+La dispensa confronta un quadrato con una sezione della stessa area ottenuta tagliando il quadrato e spostando le parti lontano dall'asse $x$, verso un doppio T. Il momento d'inerzia cresce, quindi la rotazione relativa $\\Delta\\varphi$ diminuisce. Per la tensione massima il discorso è più delicato: in $\\sigma'_z=\\frac{M_x}{J_x}y'$ cresce anche l'ordinata $y'$ del lembo, perché la sezione è diventata più alta. Nell'esempio della dispensa prevale l'aumento di $J_x$, e anche la tensione massima diminuisce; non è una regola che valga per qualunque modifica della sezione.
+
+La sezione che sfrutta meglio questo principio è il **doppio T**: due ali lontane dall'asse, dove la tensione è grande, collegate da un'anima sottile vicino all'asse, dove la tensione è piccola e il materiale servirebbe poco (deduzione). La dispensa la indica come la sezione ottimale per la flessione. Lo hai visto nei numeri della lezione «Assi principali centrali ed ellisse d’inerzia»: con circa un quinto dell'area del rettangolo, il doppio T d'esempio ha poco meno della metà del suo $J_x$, cioè un momento d'inerzia per unità d'area circa doppio.`,
       },
       {
         id: 'l66-16',
@@ -1459,7 +1468,7 @@ La sezione che sfrutta meglio questo principio è il **doppio T**: due ali lonta
         md: 'Vista di lato del solido inflesso; il tratteggio grigio è la forma iniziale.',
         tasks: [
           'Guarda l’asse: è un arco di cerchio, con la concavità verso l’alto (verso $y<0$) per $M_x>0$.',
-          'Guarda le basi: restano piane e ortogonali all’asse deformato. È Bernoulli–Navier, ottenuto come risultato.',
+          'Guarda le basi: restano piane e ortogonali all’asse deformato. È la proprietà che la dispensa chiama ipotesi di Bernoulli–Navier; qui la vedi come conseguenza della soluzione (deduzione).',
           'Leggi nella tabella il raggio $r=EJ_x/M_x$ e la rotazione $\\Delta\\varphi$; passa al doppio T e nota che, a parità di momento, $\\Delta\\varphi$ cambia con $J_x$.',
         ],
         visual: BEAM('flessione', { alpha: 0, controls: ['section', 'amp'], view: 'lato' }),
@@ -1483,7 +1492,7 @@ Sull'asse neutro ($y=0$) resta $v^{dp}=\\frac{\\nu M_x}{2EJ_x}x^2$: l'asse neutr
         id: 'l66-19',
         kind: 'derivazione',
         title: 'La deformazione anticlastica',
-        md: `Vogliamo la curvatura dell'asse neutro della sezione e confrontarla con quella dell'asse del solido. Strategia: derivare due volte $v^{dp}$ rispetto a $x$ sull'asse neutro, e leggere il segno con la stessa convenzione usata per l'asse del solido. Il campione calcola la derivata seconda per differenze finite.`,
+        md: `Vogliamo la curvatura dell'asse neutro della sezione e confrontarla con quella dell'asse del solido. Strategia: derivare due volte $v^{dp}$ rispetto a $x$ sull'asse neutro, e confrontare il segno con quello trovato per l'asse del solido. Per arrivare al segno di $\\rho'$ scritto dalla dispensa usiamo la stessa convenzione dell'asse del solido; la dispensa non la esplicita, quindi la riga che la applica è marcata come aggiunta. Il campione calcola la derivata seconda per differenze finite.`,
         source: D(5, '5.5.3', undefined, 119),
         der: {
           sample,
@@ -1504,12 +1513,12 @@ Sull'asse neutro ($y=0$) resta $v^{dp}=\\frac{\\nu M_x}{2EJ_x}x^2$: l'asse neutr
             },
             {
               tex: '\\frac1{\\rho\'}=-\\frac{d^2v^{dp}}{dx^2}=-\\frac{\\nu M_x}{EJ_x}',
-              why: `Misuriamo la curvatura con la stessa convenzione dell'asse del solido, $\\kappa\\simeq-v''$, così i due segni sono confrontabili. Con questa lettura si ottiene il segno della dispensa.`,
+              why: `La dispensa scrive $\\rho'=1/\\kappa'$ ma non dice come misura la curvatura $\\kappa'$ dell'asse neutro. Il segno che riporta si ottiene con la stessa regola usata per l'asse del solido, $\\kappa\\simeq-v''$, con $x$ al posto di $z$: questa convenzione è una nostra ricostruzione. La conclusione fisica, invece, non dipende da come si sceglie il segno: si legge già nella riga precedente, perché $v''$ è negativo lungo l'asse del solido e positivo lungo l'asse neutro, quindi le due linee hanno la concavità rivolta da parti opposte.`,
               aggiunto: true,
             },
             {
               tex: '\\rho\'=-\\frac{EJ_x}{\\nu M_x},\\qquad|\\rho\'|=\\frac r\\nu>r',
-              why: `Invertendo. In modulo il raggio è quello dell'asse, $r=EJ_x/M_x$, diviso per $\\nu$: siccome $\\nu<1$, la sezione si incurva **meno** dell'asse. Il segno meno dice che si incurva dalla parte opposta.`,
+              why: `Invertendo. In modulo il raggio è quello dell'asse, $r=EJ_x/M_x$, diviso per $\\nu$: siccome $0<\\nu<\\frac12$, la sezione si incurva **meno** dell'asse. Con la convenzione della riga precedente, e con $M_x>0$, il raggio $r$ dell'asse del solido è positivo e quello dell'asse neutro negativo: è il modo in cui la dispensa dice che le due linee si incurvano da parti opposte.`,
               eq: '§5.5.3',
             },
           ],
@@ -1528,7 +1537,7 @@ Sull'asse neutro ($y=0$) resta $v^{dp}=\\frac{\\nu M_x}{2EJ_x}x^2$: l'asse neutr
 
 Il raggio dell'asse neutro è $|\\rho'|=r/\\nu$, più grande di $r$: con $\\nu=0{,}3$ circa tre volte più grande, quindi la curvatura trasversale è più debole di quella longitudinale. Caso di controllo (deduzione): con $\\nu=0$ non c'è effetto Poisson, $|\\rho'|\\to\\infty$ e la sezione resta indeformata nel suo piano.
 
-Puoi vederlo con una gomma da cancellare: piegandola, le facce laterali si incurvano nel verso opposto (deduzione: esempio aggiunto).`,
+Puoi vederlo con una gomma da cancellare: piegandola, le facce laterali si incurvano nel verso opposto (esempio aggiunto).`,
       },
       {
         id: 'l66-21',
@@ -1552,7 +1561,7 @@ La dilatazione cubica è la traccia di $\\tens E$: $\\Theta=\\frac{1-2\\nu}E\\fr
 $$\\Delta V=\\frac{1-2\\nu}E\\,\\frac{M_xL}{J_x}\\,S_x=0,$$
 perché il momento statico $S_x$ è nullo: aumenti e diminuzioni si compensano esattamente e **il volume non cambia**.
 
-L'energia specifica è $\\varphi=\\frac{\\sigma_z^2}{2E}=\\frac{M_x^2}{2EJ_x^2}y^2$. Integrando sulla sezione compare $\\int y^2dA=J_x$, e sulla lunghezza un fattore $L$:
+L'energia specifica è $\\varphi=\\frac{\\sigma_z^2}{2E}=\\frac{M_x^2}{2EJ_x^2}y^2$. Attenzione alla lettera: qui $\\varphi$ è l'energia specifica, non la rotazione $\\varphi(z)$ della sezione che abbiamo usato per l'asse; la dispensa usa la stessa lettera per entrambe. Integrando sulla sezione compare $\\int y^2dA=J_x$, e sulla lunghezza un fattore $L$:
 $$\\Phi=\\frac{M_x^2L}{2EJ_x}=\\frac12M_x\\,\\Delta\\varphi.$$
 È di nuovo il teorema di **Clapeyron**, con il momento al posto della forza e la rotazione al posto dell'allungamento. La dispensa precisa che il carico deve crescere lentamente **rispetto al periodo naturale di vibrazione** del solido.`,
       },
@@ -1562,7 +1571,7 @@ $$\\Phi=\\frac{M_x^2L}{2EJ_x}=\\frac12M_x\\,\\Delta\\varphi.$$
         title: 'Il caso con M_y',
         md: `Resta la flessione retta con il momento lungo l'altro asse principale, $M_y$ (§5.5.4). Il ragionamento è lo stesso, con i ruoli di $x$ e $y$ scambiati: si ipotizza $T_{zz}=D\\,x$, e dalla CdS $M_y=-\\int T_{zz}x\\,dA=-D\\,J_y$ si trova $D=-M_y/J_y$, cioè
 $$\\sigma_z=-\\frac{M_y}{J_y}\\,x.$$
-Il segno meno viene dalla definizione di $M_y$ (Def 5.2.2), ed è facile dimenticarlo. L'asse neutro è l'asse $y$; con $M_y>0$ la sezione è compressa per $x>0$.
+Il segno meno viene dalla definizione di $M_y$ (Def 5.2.2), ed è un segno che si dimentica spesso. L'asse neutro è l'asse $y$; con $M_y>0$ la sezione è compressa per $x>0$.
 
 L'asse si sposta lungo $x$: $u^{dp}(0,0,z)=\\frac{M_y}{2EJ_y}z^2$. Il campo completo, che negli appunti era rimasto a metà e che la dispensa completa, è
 $$u=\\frac{M_y}{2EJ_y}\\big[\\nu(x^2-y^2)+z^2\\big],\\qquad v=\\frac{\\nu M_y}{EJ_y}xy,\\qquad w=-\\frac{M_y}{EJ_y}xz.$$
@@ -1586,9 +1595,9 @@ Questi due casi retti sono i mattoni della flessione deviata.`,
       {
         id: 'l66-26',
         kind: 'riassunto',
-        md: `**Il filo della lezione.** Con un momento $M_x$ si ipotizza una tensione normale lineare nella quota $y$ e nessuna tangenziale. L'equilibrio sulla base dà la formula di Navier, e i momenti parassiti sono nulli perché gli assi sono baricentrici e principali. Il legame dà deformazioni lineari, compatibili; integrandole e correggendo $v$ con due termini quadratici si trova uno spostamento congruente, quindi per Kirchhoff la soluzione esatta. La tensione è a farfalla, nulla sull'asse neutro; le sezioni restano piane (Bernoulli–Navier come risultato) e l'asse diventa un arco di cerchio di curvatura $M_x/(EJ_x)$; per l'effetto Poisson la sezione si incurva dalla parte opposta; il volume non cambia e l'energia segue Clapeyron.
+        md: `**Il filo della lezione.** Con un momento $M_x$ si ipotizza una tensione normale lineare nella quota $y$ e nessuna tangenziale. L'equilibrio sulla base dà la formula di Navier, e i momenti parassiti sono nulli perché gli assi sono baricentrici e principali. Il legame dà deformazioni lineari, compatibili; integrandole e correggendo $v$ con due termini quadratici si trova uno spostamento congruente, quindi per Kirchhoff la soluzione esatta. La tensione è a farfalla, nulla sull'asse neutro, con i valori estremi ai lembi; le sezioni restano piane, la proprietà che la dispensa chiama ipotesi di Bernoulli–Navier e che qui segue dalla soluzione (deduzione), e l'asse diventa un arco di cerchio di curvatura $M_x/(EJ_x)$; per l'effetto Poisson la sezione si incurva dalla parte opposta; il volume non cambia e l'energia segue Clapeyron.
 
-- Navier: $\\sigma_z=\\frac{M_x}{J_x}\\,y$; moduli di resistenza $W=J_x/y$ (§5.5.3).
+- Navier: $\\sigma_z=\\frac{M_x}{J_x}\\,y$; ai lembi $\\sigma'_z=M_x/W'_x$, $\\sigma''_z=M_x/W''_x$ con $W'_x=J_x/y'$, $W''_x=J_x/y''$ e $y'$, $y''$ ordinate con segno (§5.5.3).
 - Linea elastica flessionale: $M_x=EJ_x\\,\\kappa$, $r=\\frac{EJ_x}{M_x}$, $\\Delta\\varphi=\\frac{M_xL}{EJ_x}=\\frac{M_x}{K_f}$, $K_f=\\frac{EJ_x}L$ (§5.5.3).
 - Anticlastica: $\\rho'=-\\frac{EJ_x}{\\nu M_x}$, $|\\rho'|=\\frac r\\nu$ (§5.5.3).
 - Volume ed energia: $\\Delta V=0$, $\\Phi=\\frac{M_x^2L}{2EJ_x}=\\frac12M_x\\Delta\\varphi$ (§5.5.3).
@@ -1622,7 +1631,7 @@ Le tappe: gli angoli che servono per descrivere la situazione; la formula **bino
         md: `Sulla sezione, in flessione deviata, si incontrano quattro rette per il baricentro $G$, ciascuna con il suo significato. Conviene averle chiare prima degli angoli.
 
 - La direzione del **momento** $\\vet M$.
-- L'**asse di sollecitazione** $s$, traccia del piano in cui la coppia fa ruotare il solido; è ortogonale a $\\vet M$ (lezione c6.5).
+- L'**asse di sollecitazione** $s$, traccia del piano in cui la coppia fa ruotare il solido; è ortogonale a $\\vet M$ (lezione «Assi principali centrali ed ellisse d’inerzia»).
 - L'**asse neutro** $n$, la retta dei punti in cui $\\sigma_z=0$. La dispensa lo orienta in modo che $\\vet M$ abbia componente positiva lungo $n$.
 - L'**asse di flessione** $f$, traccia del piano in cui si incurva davvero l'asse del solido.
 
@@ -1637,7 +1646,7 @@ Lo schema della dispensa per affrontare un esercizio è: disegnare sezione e mom
         md: `Per ciascuna retta la dispensa definisce un angolo, sempre misurato a partire dall'asse $x$ (§5.5.5, figura di p. 121):
 $$\\alpha=\\widehat{MGx},\\quad\\gamma=\\tfrac\\pi2+\\alpha,\\quad\\beta=\\widehat{nGx},\\quad\\theta=\\widehat{fGx}=\\tfrac\\pi2+\\beta,\\quad\\delta=\\widehat{fGs}=\\theta-\\gamma=\\beta-\\alpha.$$
 
-Leggiamoli in ordine. $\\alpha$ è l'inclinazione del momento, $\\gamma$ quella dell'asse di sollecitazione: differiscono di 90° perché $s\\perp\\vet M$. $\\beta$ è l'inclinazione dell'asse neutro, $\\theta$ quella dell'asse di flessione; anch'essi differiscono di 90°, ma questo è un risultato (il secondo teorema), non una definizione.
+Leggiamoli in ordine. $\\alpha$ è l'inclinazione del momento, $\\gamma$ quella dell'asse di sollecitazione: differiscono di 90° perché $s\\perp\\vet M$. $\\beta$ è l'inclinazione dell'asse neutro, $\\theta$ quella dell'asse di flessione; anch'essi differiscono di 90°. La dispensa lo scrive già nell'elenco degli angoli, ma è proprio ciò che afferma il secondo teorema, che lo dimostra.
 
 L'ultimo angolo, $\\delta$, è l'**angolo di deviazione**: di quanto il piano in cui il solido si inflette è ruotato rispetto al piano della coppia. In flessione retta vale zero; in flessione deviata no, ed è questo che dà il nome al caso: **l'asse si inflette in un piano diverso da quello della coppia**.`,
       },
@@ -1653,7 +1662,7 @@ L'ultimo angolo, $\\delta$, è l'**angolo di deviazione**: di quanto il piano in
         md: `Ora la tensione. Il momento ha componenti $M_x=M\\cos\\alpha$ e $M_y=M\\sin\\alpha$ lungo gli assi principali. Ciascuna produce una flessione retta, che sappiamo risolvere: $M_x$ dà $\\frac{M_x}{J_x}y$, $M_y$ dà $-\\frac{M_y}{J_y}x$. Per la sovrapposizione la tensione è la somma, la **formula binomia**:
 $$\\sigma_z=\\frac{M_x}{J_x}\\,y-\\frac{M_y}{J_y}\\,x.$$
 
-La formula è corretta ma scomoda (deduzione: la dispensa la presenta come sovrapposizione, il commento sulla scomodità è nostro). Le zone compresse dei due diagrammi sono diverse: $M_x$ comprime sopra l'asse $x$, $M_y$ comprime da un lato dell'asse $y$. Guardando la formula non si capisce subito dove la sezione è più sollecitata. Vorremmo una formula che, come Navier, dipenda da **una sola distanza**: la distanza dall'asse neutro.`,
+La dispensa avverte che la formula, pur corretta, è **scomoda**, perché dipende da due variabili e le zone compresse dei due diagrammi sono diverse: $M_x$ comprime sopra l'asse $x$, $M_y$ comprime da un lato dell'asse $y$. Sovrapponendo i due diagrammi non si capisce subito dove la sezione è più sollecitata. Vorremmo una formula che, come Navier, dipenda da **una sola distanza**: la distanza dall'asse neutro.`,
       },
       {
         id: 'l67-6',
@@ -1680,7 +1689,7 @@ La formula è corretta ma scomoda (deduzione: la dispensa la presenta come sovra
         title: 'Lettura della monomia',
         md: `La formula monomia, $\\sigma_z=\\frac{M_n}{J_n}f$, è una **formula di Navier scritta rispetto all'asse neutro**: la tensione è proporzionale alla distanza $f$ dall'asse neutro, nulla su di esso, massima nei punti della sezione più lontani da esso. Per trovare il punto più sollecitato basta quindi tracciare l'asse neutro e cercare il punto più lontano, come nella flessione retta.
 
-Le due coordinate del riferimento ruotato sono $n=x\\cos\\beta+y\\sin\\beta$ e $f=-x\\sin\\beta+y\\cos\\beta$: è la rotazione di un angolo $\\beta$.
+Le due coordinate del riferimento ruotato sono $n=x\\cos\\beta+y\\sin\\beta$ e $f=-x\\sin\\beta+y\\cos\\beta$: è la rotazione di un angolo $\\beta$. Nota che la dispensa usa le stesse lettere $n$ e $f$ sia per gli assi (asse neutro, asse di flessione) sia per le coordinate misurate lungo di essi.
 
 Controllo sul caso retto: con $\\alpha=0$ il momento è lungo $x$, l'asse neutro è $x$ ($\\beta=0$) e $\\delta=0$. Allora $M_n=M=M_x$, $J_n=J_x$, $f=y$, e la monomia diventa $\\frac{M_x}{J_x}y$: **ritroviamo Navier**.
 
@@ -1690,9 +1699,9 @@ Resta però da sapere dove sta l'asse neutro, cioè quanto vale $\\beta$. Lo dic
         id: 'l67-8',
         kind: 'spiega',
         title: 'Diametri coniugati: che cosa vuol dire',
-        md: `Il primo teorema dirà che asse neutro e asse di sollecitazione sono **coniugati** rispetto all'ellisse centrale d'inerzia. Prima di dimostrarlo, chiariamo la parola (passaggio aggiunto: la dispensa usa la nozione senza richiamarla).
+        md: `Il primo teorema dirà che asse neutro e asse di sollecitazione sono **coniugati** rispetto all'ellisse centrale d'inerzia. Prima di dimostrarlo, chiariamo la parola.
 
-In un'ellisse, due diametri si dicono **coniugati** se ciascuno è parallelo alle tangenti all'ellisse negli estremi dell'altro. In un **cerchio** due diametri coniugati sono sempre **ortogonali**; in un'ellisse allungata, in generale **no**: tranne la coppia dei due assi dell'ellisse, i diametri coniugati formano un angolo diverso da 90°. La dispensa lo ricorda: le coppie coniugate non sono necessariamente ortogonali.
+La dispensa definisce coniugate due direzioni baricentriche con momento centrifugo nullo, $J_{aa'}=0$ (Oss. 1, §5.5.5). In termini di geometria dell'ellisse, due diametri si dicono **coniugati** se ciascuno è parallelo alle tangenti all'ellisse negli estremi dell'altro (passaggio aggiunto). In un **cerchio** due diametri coniugati sono sempre **ortogonali**; in un'ellisse allungata, in generale **no**: tranne la coppia dei due assi dell'ellisse, i diametri coniugati formano un angolo diverso da 90°. La dispensa lo ricorda: le coppie coniugate non sono necessariamente ortogonali.
 
 C'è un modo comodo per riconoscerli. Per un'ellisse con semiasse $a$ lungo $x$ e $b$ lungo $y$, due diametri di coefficienti angolari $m_1$ e $m_2$ sono coniugati quando $m_1m_2=-b^2/a^2$ (passaggio aggiunto). Nell'ellisse centrale d'inerzia il semiasse lungo $x$ è $\\rho_y$ e quello lungo $y$ è $\\rho_x$: la condizione diventa $m_1m_2=-\\rho_x^2/\\rho_y^2$. Tienila a mente.`,
       },
@@ -1705,13 +1714,12 @@ C'è un modo comodo per riconoscerli. Per un'ellisse con semiasse $a$ lungo $x$ 
         der: {
           sample,
           lines: [
-            { tex: '\\frac{M_x}{J_x}y-\\frac{M_y}{J_y}x=0', why: `Sull'asse neutro la tensione è nulla: imponiamo che la binomia valga zero.`, aggiunto: true },
+            { tex: '\\frac{M_x}{J_x}y-\\frac{M_y}{J_y}x=0', why: `Sull'asse neutro la tensione è nulla: imponiamo che la binomia valga zero.` },
             { tex: '\\frac{M_x}{J_x}y=\\frac{M_y}{J_y}x', why: `Portiamo il secondo termine a destra: è l'equazione dell'asse neutro, una retta per il baricentro.` },
             { tex: '\\tan\\beta=\\frac yx=\\frac{M_y}{J_y}\\frac{J_x}{M_x}', why: `Il coefficiente angolare di una retta per l'origine è $y/x$, e vale $\\tan\\beta$ perché $\\beta$ è l'inclinazione dell'asse neutro. Lo ricaviamo dividendo l'equazione per $x$ e per $M_x/J_x$.` },
             {
               tex: '=\\frac{M\\sin\\alpha}{A\\rho_y^2}\\,\\frac{A\\rho_x^2}{M\\cos\\alpha}',
               why: `Sostituiamo le componenti del momento, $M_y=M\\sin\\alpha$ e $M_x=M\\cos\\alpha$, e i momenti d'inerzia scritti con i raggi d'inerzia, $J=A\\rho^2$.`,
-              aggiunto: true,
             },
             { tex: '=\\tan\\alpha\\,\\frac{\\rho_x^2}{\\rho_y^2}', why: `$M$ e $A$ si semplificano, e $\\sin\\alpha/\\cos\\alpha=\\tan\\alpha$.` },
             {
@@ -1741,7 +1749,7 @@ C'è un modo comodo per riconoscerli. Per un'ellisse con semiasse $a$ lungo $x$ 
         title: 'Lettura del primo teorema',
         md: `Il **Teo 5.5.3** dice: **l'asse neutro e l'asse di sollecitazione sono coniugati rispetto all'ellisse centrale d'inerzia**, $\\tan\\beta\\tan\\gamma=-\\rho_x^2/\\rho_y^2$.
 
-Che cosa significa in pratica? Dalla relazione $\\tan\\beta=\\tan\\alpha\\,\\rho_x^2/\\rho_y^2$, siccome $\\rho_x>\\rho_y$ (l'asse $x$ è quello di inerzia massima), $|\\tan\\beta|>|\\tan\\alpha|$: l'asse neutro è **più inclinato** del momento, cioè ruotato verso l'asse $y$, quello di inerzia minima (deduzione). Più la sezione è «sbilanciata», come il doppio T, più l'effetto è forte.
+Che cosa significa in pratica? Dalla relazione $\\tan\\beta=\\tan\\alpha\\,\\rho_x^2/\\rho_y^2$, siccome $\\rho_x>\\rho_y$ (l'asse $x$ è quello di inerzia massima), $|\\tan\\beta|>|\\tan\\alpha|$: l'asse neutro è **più inclinato** del momento, cioè ruotato verso l'asse $y$, quello di inerzia minima (deduzione). Più $\\rho_x$ è grande rispetto a $\\rho_y$, come nel doppio T, più l'effetto è forte (deduzione).
 
 Due controlli. Se l'ellisse è un cerchio, $\\rho_x=\\rho_y$, il prodotto vale $-1$ e $n\\perp s$: è il caso del quadrato, in cui la flessione è sempre retta. Se il momento è lungo $x$, $\\alpha=0$ dà $\\tan\\beta=0$: l'asse neutro è $x$, come in Navier.`,
       },
@@ -1786,7 +1794,6 @@ Entrambe crescono come $z^2$: hanno **la stessa dipendenza da $z$**. Il loro rap
               tex: '=-\\frac1{\\tan\\alpha}\\,\\frac{\\rho_y^2}{\\rho_x^2}',
               why: `Con $M_x/M_y=\\cos\\alpha/\\sin\\alpha=1/\\tan\\alpha$ e $J_y/J_x=\\rho_y^2/\\rho_x^2$ (l'area si semplifica).`,
               val: (v) => (-1 / Math.tan(v.a)) * (sec(v).Jy / sec(v).Jx),
-              aggiunto: true,
             },
             {
               tex: '=\\tan\\gamma\\,\\frac{\\rho_y^2}{\\rho_x^2}',
@@ -1891,7 +1898,7 @@ Controllo sul caso retto: $\\alpha=0$ dà $\\beta=0$ ($n\\equiv x$) e $\\theta=\
 
 Nelle lezioni precedenti abbiamo risolto lo sforzo normale (una forza lungo l'asse, nel baricentro) e la flessione (una coppia). Che cosa succede se la forza è parallela all'asse ma **non passa per il baricentro**? È ciò che accade a un pilastro caricato fuori centro, o a una fondazione.
 
-Non serve un problema nuovo: è il **quinto caso derivato** di cui parlava la lezione c6.4, che si ottiene sommando sforzo normale e flessione. Le tappe: la coppia di trasporto e il centro di sollecitazione; la formula **trinomia**; l'asse neutro come **antipolare** del centro; il **nocciolo centrale d'inerzia**; infine i materiali che non reagiscono a trazione, con la **parzializzazione** e la **regola delle 3u** per il rettangolo.`,
+Non serve un problema nuovo: è il **quinto caso derivato** di cui parlava la lezione «Lo sforzo normale», che si ottiene sommando sforzo normale e flessione. Le tappe: la coppia di trasporto e il centro di sollecitazione; la formula **trinomia**; l'asse neutro come **antipolare** del centro; il **nocciolo centrale d'inerzia**; infine i materiali che non reagiscono a trazione, con la **parzializzazione** e la **regola delle 3u** per il rettangolo.`,
       },
       {
         id: 'l68-2',
@@ -1914,7 +1921,7 @@ La distanza di $c$ dal baricentro è l'**eccentricità** $e$, e $|\\vet M|=|N|\\
         der: {
           sample,
           lines: [
-            { tex: '\\sigma_z=\\frac NA+\\frac{M_x}{J_x}y-\\frac{M_y}{J_y}x', why: `Sovrapposizione: lo sforzo normale dà $N/A$, la flessione dà la binomia della lezione c6.7.`, val: (v) => S.sigmaZ({ N: v.N, Mx: v.N * v.y, My: -v.N * v.x }, sec(v), pt(v)[0], pt(v)[1]) },
+            { tex: '\\sigma_z=\\frac NA+\\frac{M_x}{J_x}y-\\frac{M_y}{J_y}x', why: `Sovrapposizione: lo sforzo normale dà $N/A$, la flessione dà la binomia della lezione «La flessione deviata e i due teoremi».`, val: (v) => S.sigmaZ({ N: v.N, Mx: v.N * v.y, My: -v.N * v.x }, sec(v), pt(v)[0], pt(v)[1]) },
             {
               tex: '=\\frac NA+\\frac{N\\,y_c}{J_x}y+\\frac{N\\,x_c}{J_y}x',
               why: `Sostituiamo la coppia di trasporto, $M_x=Ny_c$ e $M_y=-Nx_c$: il segno meno di $M_y$ e quello della binomia si compensano. Nel campione $x_c$ e $y_c$ sono le variabili $x$ e $y$.`,
@@ -1938,9 +1945,9 @@ La distanza di $c$ dal baricentro è l'**eccentricità** $e$, e $|\\vet M|=|N|\\
 
 L'asse neutro si trova annullando la parentesi della trinomia:
 $$1+\\frac{x\\,x_c}{\\rho_y^2}+\\frac{y\\,y_c}{\\rho_x^2}=0.$$
-È una retta che **non passa per il baricentro** (in $G$ il primo membro vale 1). Le sue intercette sugli assi sono $\\big(-\\rho_y^2/x_c,\\,0\\big)$ e $\\big(0,\\,-\\rho_x^2/y_c\\big)$: hanno segno opposto alle coordinate di $c$, quindi l'asse neutro sta **dalla parte opposta** al centro di sollecitazione.
+È una retta che **non passa per il baricentro** (in $G$ il primo membro vale 1). Le sue intercette sugli assi sono $\\big(-\\rho_y^2/x_c,\\,0\\big)$ e $\\big(0,\\,-\\rho_x^2/y_c\\big)$: hanno segno opposto alle coordinate di $c$, quindi l'asse neutro sta **dalla parte opposta** al centro di sollecitazione (deduzione).
 
-La dispensa dice che $c$ e $n$ sono **polo e antipolare** nella polarità d'inerzia: a ogni punto corrisponde una retta, e viceversa. Si noti la reciprocità: più $c$ è vicino al baricentro, più l'asse neutro è lontano. L'asse neutro $n'$ della sola flessione associata è parallelo a $n$ e passa per il baricentro. Il diagramma di $\\sigma_z$ è lineare: nullo su $n$, uguale a $N/A$ su $n'$.`,
+La dispensa dice che $c$ e $n$ sono **polo e antipolare** nella polarità d'inerzia: a ogni punto corrisponde una retta, e viceversa. Si noti la reciprocità, che si legge dalle intercette: più $c$ è vicino al baricentro, più l'asse neutro è lontano (deduzione). L'asse neutro $n'$ della sola flessione associata è parallelo a $n$ e passa per il baricentro. Il diagramma di $\\sigma_z$ è lineare: nullo su $n$, uguale a $N/A$ su $n'$.`,
       },
       {
         id: 'l68-5',
@@ -1972,7 +1979,7 @@ Allontanandosi dal baricentro, la compressione massima cresce.`,
 
 Verifichiamolo su un vertice (passaggio aggiunto). La retta radente il lato inferiore è $y=H/2$. Il suo antipolo ha $x_c=0$, e dall'intercetta $H/2=-\\rho_x^2/y_c$ si ricava $y_c=-2\\rho_x^2/H$. Per il rettangolo $\\rho_x^2=J_x/A=H^2/12$, quindi $y_c=-H/6$: il vertice del nocciolo è a un sesto dell'altezza dal baricentro, dalla parte opposta al lato radente.
 
-Ne segue la regola pratica: se il centro di compressione cade nel **terzo medio** della sezione, la sezione è tutta compressa. Non confondere il nocciolo con l'ellisse d'inerzia: sono costruiti diversamente e hanno forme diverse.`,
+Ne segue la regola pratica, valida quando il centro di compressione sta su un asse di simmetria: se cade nel **terzo medio** di quell'asse, cioè entro $\\pm H/6$ oppure $\\pm B/6$ dal baricentro, la sezione è tutta compressa. Fuori dagli assi non basta il terzo medio: il centro deve stare dentro il rombo (deduzione). Non confondere il nocciolo con l'ellisse d'inerzia: sono costruiti diversamente e hanno forme diverse.`,
       },
       {
         id: 'l68-8',
