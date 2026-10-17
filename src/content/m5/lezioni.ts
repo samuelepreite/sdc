@@ -77,7 +77,7 @@ $$\\tens T=2\\mu\\tens E+\\lambda(\\operatorname{tr}\\tens E)\\tens I.$$
 
 Guardiamo i due pezzi. Il primo, $2\\mu\\tens E$, è la deformazione stessa moltiplicata per un numero: una tensione «parallela» alla deformazione. Il secondo contiene $\\operatorname{tr}\\tens E$, la traccia della deformazione, cioè la somma degli elementi diagonali $E_{11}+E_{22}+E_{33}$; dal Modulo 2 sai che è la dilatazione volumica $\\Theta$, la variazione relativa di volume. Questa traccia moltiplica $\\tens I$, il tensore identità: è quindi una tensione uguale in tutte le direzioni, come una pressione, proporzionale a quanto è cambiato il volume.
 
-La dispensa enuncia il teorema e lo usa, senza riportarne la dimostrazione (p. 86): all'orale si enuncia, non si dimostra.`,
+La dispensa enuncia il teorema e lo usa, senza riportarne la dimostrazione (p. 86): quindi all'orale si enuncia, non si dimostra (deduzione).`,
       },
       {
         id: 'l51-4',
@@ -138,7 +138,6 @@ Che cosa dobbiamo dimostrare? Ricorda la definizione di trasposto di un tensore 
             {
               tex: '=2\\mu\\,\\tens E_2\\cdot\\tens E_1+\\lambda(\\operatorname{tr}\\tens E_2)\\,\\tens I\\cdot\\tens E_1',
               why: `Facciamo il percorso inverso sull'altra traccia: riscriviamo $\\operatorname{tr}\\tens E_1$ come $\\tens I\\cdot\\tens E_1$. È la stessa identità di prima, letta al contrario.`,
-              aggiunto: true,
               val: (v) => 2 * v.mu * T.ddot(sym(v, 'b'), sym(v, 'a')) + v.la * T.trace(sym(v, 'b')) * T.ddot(T.I3, sym(v, 'a')),
             },
             {
@@ -156,9 +155,9 @@ Che cosa dobbiamo dimostrare? Ricorda la definizione di trasposto di un tensore 
         title: 'Che cosa abbiamo dimostrato',
         md: `Il risultato si legge così: **un materiale elastico lineare isotropo è sempre iperelastico**. Il motivo profondo sta nella forma del legame: i due ingredienti, $\\tens E_1\\cdot\\tens E_2$ e $(\\operatorname{tr}\\tens E_1)(\\operatorname{tr}\\tens E_2)$, sono già simmetrici negli argomenti, quindi non c'è nulla da imporre.
 
-Prova il risultato su un caso semplice (passaggio aggiunto): prendi $\\tens E_1=\\tens I$. Allora $\\mathbb A\\tens I=2\\mu\\tens I+3\\lambda\\tens I$ (perché $\\operatorname{tr}\\tens I=3$) e $\\mathbb A\\tens I\\cdot\\tens E_2=(2\\mu+3\\lambda)\\operatorname{tr}\\tens E_2$. Dall'altra parte $\\mathbb A\\tens E_2\\cdot\\tens I$ è la traccia di $\\mathbb A\\tens E_2$, cioè $2\\mu\\operatorname{tr}\\tens E_2+3\\lambda\\operatorname{tr}\\tens E_2$: lo stesso numero.
+Prova il risultato su un caso semplice (esempio aggiunto): prendi $\\tens E_1=\\tens I$. Allora $\\mathbb A\\tens I=2\\mu\\tens I+3\\lambda\\tens I$ (perché $\\operatorname{tr}\\tens I=3$) e $\\mathbb A\\tens I\\cdot\\tens E_2=(2\\mu+3\\lambda)\\operatorname{tr}\\tens E_2$. Dall'altra parte $\\mathbb A\\tens E_2\\cdot\\tens I$ è la traccia di $\\mathbb A\\tens E_2$, cioè $2\\mu\\operatorname{tr}\\tens E_2+3\\lambda\\operatorname{tr}\\tens E_2$: lo stesso numero.
 
-La conseguenza pratica è che per un isotropo esiste sempre l'energia specifica $\\varphi$, e la useremo nella lezione sull'energia. Per gli anisotropi, invece, elastico e iperelastico restano due casi diversi (36 costanti contro 21).`,
+La conseguenza pratica è che per un isotropo esiste sempre l'energia specifica $\\varphi$, e la scriveremo nella lezione «Energia e restrizioni di plausibilità» (§4.14). Per gli anisotropi, invece, elastico e iperelastico restano due casi diversi (36 costanti contro 21).`,
       },
       {
         id: 'l51-9',
@@ -211,7 +210,7 @@ Per l'isotropo possiamo anche scrivere l'inverso in forma esplicita. La difficol
             },
             {
               tex: '\\tens E=\\frac1{2\\mu}\\tens T-\\frac{\\lambda}{2\\mu(2\\mu+3\\lambda)}(\\operatorname{tr}\\tens T)\\tens I',
-              why: `Riuniamo le due frazioni in un solo coefficiente. È il legame costitutivo inverso, valido con $\\mu\\ne0$ e $2\\mu+3\\lambda\\ne0$, condizioni coerenti con $\\mathbb A\\in\\mathrm{Pos}^+$.`,
+              why: `Moltiplichiamo tra loro le due frazioni del secondo termine, $\\frac{\\lambda}{2\\mu}\\cdot\\frac1{2\\mu+3\\lambda}$, e otteniamo un solo coefficiente. È il legame costitutivo inverso, valido con $\\mu\\ne0$ e $2\\mu+3\\lambda\\ne0$, condizioni coerenti con $\\mathbb A\\in\\mathrm{Pos}^+$.`,
               val: (v) => TT(v)[0] / (2 * v.mu) - (v.la / (2 * v.mu * (2 * v.mu + 3 * v.la))) * T.trace(TT(v)),
               eq: 'Prop 4.12.3',
             },
@@ -225,7 +224,7 @@ Per l'isotropo possiamo anche scrivere l'inverso in forma esplicita. La difficol
         title: 'Il legame inverso su un caso semplice',
         md: `Il legame inverso ha la stessa struttura di quello diretto: un termine proporzionale a $\\tens T$ e un termine «di pressione» proporzionale a $(\\operatorname{tr}\\tens T)\\tens I$. Cambiano solo i coefficienti.
 
-Mettiamolo alla prova (passaggio aggiunto) con una compressione uguale in tutte le direzioni, $\\tens T=-p\\,\\tens I$, come quella di un oggetto immerso in acqua. Allora $\\operatorname{tr}\\tens T=-3p$ e
+Mettiamolo alla prova (esempio aggiunto) con una compressione uguale in tutte le direzioni, $\\tens T=-p\\,\\tens I$, come quella di un oggetto immerso in acqua. Allora $\\operatorname{tr}\\tens T=-3p$ e
 $$\\tens E=-\\frac{p}{2\\mu}\\tens I+\\frac{3\\lambda p}{2\\mu(2\\mu+3\\lambda)}\\tens I=-\\frac{p}{2\\mu+3\\lambda}\\tens I.$$
 La deformazione è anch'essa proporzionale all'identità: il cubetto si accorcia allo stesso modo nelle tre direzioni, senza distorcersi. È quello che ci si aspetta da un materiale che non ha direzioni privilegiate.
 
@@ -241,12 +240,12 @@ Il numero $2\\mu+3\\lambda$ che compare qui sarà protagonista del prossimo pass
 
 **Seconda: il volume.** La traccia della tensione è $\\sigma_1+\\sigma_2+\\sigma_3=3\\sigma_m$, dove $\\sigma_m$ è la **tensione normale media**. Sostituendo,
 $$\\Theta=\\frac{3\\sigma_m}{2\\mu+3\\lambda}=\\frac{\\sigma_m}{K},\\qquad K:=\\frac{2\\mu+3\\lambda}3.$$
-$K$ si chiama **modulo di comprimibilità volumetrica** (bulk modulus). La formula dice una cosa notevole: **la variazione di volume dipende solo dalla tensione normale media**, non da come la tensione è distribuita tra le direzioni né dalle tensioni tangenziali. Più $K$ è grande, più il materiale resiste a cambiare volume.`,
+$K$ si chiama **modulo di comprimibilità volumetrica** (bulk modulus). La formula dice una cosa notevole: **la variazione di volume dipende solo dalla tensione normale media**, non da come la tensione è distribuita tra le direzioni né dalle tensioni tangenziali (deduzione). Più $K$ è grande, più il materiale resiste a cambiare volume (deduzione).`,
       },
       {
         id: 'l51-13',
         kind: 'domanda',
-        q: { id: 'l51-q1', kind: 'scelta', q: 'Il modulo di comprimibilità $K$ lega…', options: ['la dilatazione volumica $\\Theta$ alla tensione normale media $\\sigma_m$', 'lo scorrimento alla tensione tangenziale', 'la dilatazione longitudinale alla tensione monoassiale', 'l’energia alla deformazione'], correct: 0, why: '§4.12.2: $\\Theta=\\sigma_m/K$, con $K=(2\\mu+3\\lambda)/3$. Le altre coppie esistono ma hanno altri moduli: lo scorrimento è governato da $\\mu$ (che diventerà $G$), la dilatazione longitudinale da $E$, che vedremo nella prossima lezione.' },
+        q: { id: 'l51-q1', kind: 'scelta', q: 'Il modulo di comprimibilità $K$ lega…', options: ['la dilatazione volumica $\\Theta$ alla tensione normale media $\\sigma_m$', 'lo scorrimento alla tensione tangenziale', 'la dilatazione longitudinale alla tensione monoassiale', 'l’energia alla deformazione'], correct: 0, why: '§4.12.2: $\\Theta=\\sigma_m/K$, con $K=(2\\mu+3\\lambda)/3$. Le altre coppie esistono ma hanno altri moduli: lo scorrimento è governato da $\\mu$ (che diventerà $G$), la dilatazione longitudinale dal modulo di Young $E$, che vedremo nella lezione «I moduli tecnici».' },
       },
       {
         id: 'l51-14',
@@ -310,7 +309,7 @@ L'esempio fisico (p. 88): una piccola sfera di materiale isotropo in compression
         title: 'Il provino isotropo',
         md: 'Il diagramma applica una trazione $\\sigma$ al provino (tratteggio: prima; azzurro: dopo, con spostamenti amplificati) e calcola le deformazioni con il legame inverso. Guarda la tabella sotto il disegno mentre muovi i cursori.',
         tasks: [
-          'Lascia ν al valore iniziale e osserva il disegno: il provino si allunga lungo il carico e si contrae nelle due direzioni trasversali, della stessa quantità. Le due contrazioni uguali sono la firma dell’isotropia: nessuna direzione trasversale è privilegiata.',
+          'Il cursore ν regola il coefficiente di Poisson, che definiremo nella lezione «I moduli tecnici» (§4.13.1): per ora lascialo al valore iniziale e osserva il disegno: il provino si allunga lungo il carico e si contrae nelle due direzioni trasversali, della stessa quantità. Le due contrazioni uguali sono la firma dell’isotropia: nessuna direzione trasversale è privilegiata.',
           'Nota che il rettangolo azzurro resta un rettangolo con i lati paralleli a quelli tratteggiati: gli assi del provino sono direzioni principali sia della tensione sia della deformazione. È la coassialità.',
           'Leggi nella tabella $\\Theta$: dipende solo da $\\sigma$, che qui è tre volte la tensione normale media. È la formula $\\Theta=\\sigma_m/K$.',
         ],
@@ -329,7 +328,7 @@ L'esempio fisico (p. 88): una piccola sfera di materiale isotropo in compression
 
 1. **Pensare che la coassialità valga sempre.** È tentante, perché in tutti gli esercizi con l'acciaio le direzioni principali di tensione e deformazione coincidono. Ma è una proprietà degli isotropi, che discende dalla forma del legame di Lamé; per un anisotropo non vale, e darla per scontata è proprio l'errore che la dispensa attribuisce ai programmi di calcolo.
 2. **Dimenticare che per gli isotropi elastico e iperelastico coincidono.** Per gli anisotropi la simmetria maggiore è un'ipotesi in più (36 costanti contro 21); per gli isotropi è un teorema (Teo 4.12.2), e le costanti sono 2 in entrambi i casi.
-3. **Cercare un significato fisico diretto in $\\lambda$.** Le costanti di Lamé rendono il legame semplice da scrivere, ma non corrispondono al risultato di una prova: a $\\lambda$ non si associa nessun esperimento, e $\\mu$ ne ha poco. È proprio questo il motivo per cui nella prossima lezione introdurremo i moduli tecnici.`,
+3. **Cercare un significato fisico diretto in $\\lambda$.** Le costanti di Lamé rendono il legame semplice da scrivere, ma $\\lambda$ non ha un'interpretazione fisica diretta, perché non gli si può associare il risultato di una prova, e $\\mu$ ne ha poca (§4.13). È proprio questo il motivo per cui nella lezione seguente, «I moduli tecnici», introdurremo moduli legati alle prove.`,
       },
       {
         id: 'l51-20',
@@ -367,11 +366,11 @@ Le tappe: con una prova di trazione ricaviamo il modulo di Young $E$ e il coeffi
         id: 'l52-2',
         kind: 'spiega',
         title: 'Perché le costanti di Lamé non bastano all’ingegnere',
-        md: `I moduli di Lamé permettono di scrivere il legame nel modo più semplice, ma non hanno ($\\lambda$) o hanno poco ($\\mu$) un'interpretazione fisica diretta: non si può associare a $\\lambda$ il risultato di una prova (§4.13).
+        md: `I moduli di Lamé permettono di scrivere il legame nel modo più semplice, ma hanno poca interpretazione fisica diretta: $\\lambda$ non ne ha, perché non gli si può associare il risultato di una prova, e $\\mu$ ne ha poca (§4.13).
 
 I **moduli tecnici** nascono al contrario: si sceglie un esperimento semplice, si guarda che cosa succede al provino, e si chiama «modulo» il numero che descrive quella risposta. L'ingegnere fa l'esperimento, misura una quantità e tende a usare quella. Si passa così dalla formulazione matematicamente più comoda a una formulazione ingegneristica.
 
-Il metodo che useremo è sempre lo stesso, ed è bene averlo chiaro prima di cominciare: **in ogni prova conosciamo la tensione**, perché sappiamo che forza applichiamo e su quale area. Quindi usiamo il **legame inverso**, che dalla tensione dà la deformazione, e leggiamo nei coefficienti i moduli tecnici.`,
+Il metodo che useremo è lo stesso in entrambe le prove di questa lezione, ed è bene averlo chiaro prima di cominciare: **nella prova conosciamo la tensione**, perché sappiamo che forza applichiamo e su quale area. Quindi usiamo il **legame inverso**, che dalla tensione dà la deformazione, e leggiamo nei coefficienti i moduli tecnici.`,
       },
       {
         id: 'l52-3',
@@ -399,8 +398,14 @@ Sostituiamo nel legame inverso. Il primo termine, $\\frac1{2\\mu}\\tens T$, ha s
               val: (v) => El.strainIso(tech(v).E, tech(v).nu, [TT(v)[0], 0, 0, 0, 0, 0, 0, 0, 0])[0],
             },
             {
+              tex: '=\\frac{(2\\mu+3\\lambda)\\,s}{2\\mu(2\\mu+3\\lambda)}-\\frac{\\lambda s}{2\\mu(2\\mu+3\\lambda)}',
+              why: `Portiamo le due frazioni allo stesso denominatore, $2\\mu(2\\mu+3\\lambda)$: la prima frazione va moltiplicata sopra e sotto per $2\\mu+3\\lambda$, la seconda ha già quel denominatore. Il valore non cambia, perché abbiamo moltiplicato per $1$.`,
+              aggiunto: true,
+              val: (v) => (TT(v)[0] * (2 * v.mu + 3 * v.la)) / (2 * v.mu * (2 * v.mu + 3 * v.la)) - (v.la * TT(v)[0]) / (2 * v.mu * (2 * v.mu + 3 * v.la)),
+            },
+            {
               tex: '=\\frac{2\\mu+3\\lambda-\\lambda}{2\\mu(2\\mu+3\\lambda)}\\,s=\\frac{2\\mu+2\\lambda}{2\\mu(2\\mu+3\\lambda)}\\,s',
-              why: `Denominatore comune $2\\mu(2\\mu+3\\lambda)$: la prima frazione va moltiplicata sopra e sotto per $2\\mu+3\\lambda$; poi sottraiamo $\\lambda$ al numeratore.`,
+              why: `Ora che il denominatore è lo stesso, sottraiamo i numeratori: $(2\\mu+3\\lambda)-\\lambda=2\\mu+2\\lambda$.`,
               val: (v) => (TT(v)[0] * (2 * v.mu + 2 * v.la)) / (2 * v.mu * (2 * v.mu + 3 * v.la)),
             },
             {
@@ -410,7 +415,7 @@ Sostituiamo nel legame inverso. Il primo termine, $\\frac1{2\\mu}\\tens T$, ha s
             },
             {
               tex: '=\\frac sE,\\qquad E:=\\frac{\\mu(2\\mu+3\\lambda)}{\\mu+\\lambda}',
-              why: `Diamo un nome all'inverso del coefficiente: è il **modulo di Young** $E$. Allora $\\varepsilon_1=E_{11}=s/E$, cioè $s=E\\varepsilon_1$: la legge di Hooke.`,
+              why: `Diamo un nome all'inverso del coefficiente: è il **modulo di Young** $E$. Chiamando $\\varepsilon_1=E_{11}$ la dilatazione lungo $\\hat e_1$, si ha $\\varepsilon_1=s/E$, cioè $s=E\\varepsilon_1$: la legge di Hooke.`,
               val: (v) => TT(v)[0] / tech(v).E,
               eq: '§4.13.1',
             },
@@ -433,9 +438,11 @@ Sostituiamo nel legame inverso. Il primo termine, $\\frac1{2\\mu}\\tens T$, ha s
         title: 'Che cosa misura il modulo di Young',
         md: `Il risultato $\\varepsilon_1=s/E$ dice che, in una prova di trazione, **la dilatazione lungo il carico è la tensione divisa per $E$**. È la legge di Hooke $\\sigma=E\\varepsilon$ che conosci dal tratto elastico della curva tensione-deformazione: $E$ è la pendenza di quel tratto. Per questo $E$ si chiama anche **modulo di elasticità longitudinale**.
 
+Attenzione ai simboli: la dispensa usa la stessa lettera per due cose diverse. $E$ da sola è il modulo di Young, un numero; $\\tens E$ è il tensore di deformazione, e le sue componenti $E_{11}$, $E_{22}$, $E_{12}$ si riconoscono dai due pedici. Per questo scriviamo spesso $\\varepsilon_1$ al posto di $E_{11}$.
+
 Le dimensioni: $\\varepsilon$ è un numero puro, quindi $[E]=[s]/[\\varepsilon]=[F][L^{-2}]$, una tensione. Si misura in Pascal, di solito in MPa o GPa.
 
-Controlliamo la formula su un caso (passaggio aggiunto): se $\\lambda=0$, il legame di Lamé si riduce a $\\tens T=2\\mu\\tens E$ e la formula dà $E=\\mu\\cdot2\\mu/\\mu=2\\mu$. In effetti con $\\lambda=0$ la componente 11 del legame è $T_{11}=2\\mu E_{11}$, cioè $s=2\\mu\\varepsilon_1$: lo stesso risultato.`,
+Controlliamo la formula su un caso (esempio aggiunto): se $\\lambda=0$, il legame di Lamé si riduce a $\\tens T=2\\mu\\tens E$ e la formula dà $E=\\mu\\cdot2\\mu/\\mu=2\\mu$. In effetti con $\\lambda=0$ la componente 11 del legame è $T_{11}=2\\mu E_{11}$, cioè $s=2\\mu\\varepsilon_1$: lo stesso risultato.`,
       },
       {
         id: 'l52-6',
@@ -443,7 +450,9 @@ Controlliamo la formula su un caso (passaggio aggiunto): se $\\lambda=0$, il leg
         title: 'Che cosa succede di lato: il coefficiente di Poisson',
         md: `Ora le due direzioni trasversali. Lì il primo termine del legame inverso non contribuisce (la tensione ha solo la componente 11), e resta il secondo:
 $$E_{22}=E_{33}=-\\frac{\\lambda s}{2\\mu(2\\mu+3\\lambda)}.$$
-La dispensa riscrive questo coefficiente come multiplo di $s/E$, definendo il **coefficiente di Poisson** $\\nu:=\\frac{\\lambda}{2(\\mu+\\lambda)}$: si ottiene $E_{22}=E_{33}=-\\nu\\,s/E=-\\nu\\,\\varepsilon_1$ (il controllo numerico della derivazione precedente verifica proprio questa uguaglianza). Quindi
+La dispensa riscrive questo coefficiente come multiplo di $s/E$, definendo il **coefficiente di Poisson** $\\nu:=\\frac{\\lambda}{2(\\mu+\\lambda)}$. Facciamo il conto che lo giustifica (passaggio aggiunto): moltiplichiamo $\\nu$ per $\\frac1E=\\frac{\\mu+\\lambda}{\\mu(2\\mu+3\\lambda)}$, l'inverso del modulo di Young appena trovato, e il fattore $\\mu+\\lambda$ si semplifica tra numeratore e denominatore:
+$$\\frac{\\nu}{E}=\\frac{\\lambda}{2(\\mu+\\lambda)}\\cdot\\frac{\\mu+\\lambda}{\\mu(2\\mu+3\\lambda)}=\\frac{\\lambda}{2\\mu(2\\mu+3\\lambda)}.$$
+È proprio il coefficiente di $s$ nella dilatazione trasversale. Quindi $E_{22}=E_{33}=-\\nu\\,s/E$ e, poiché $s/E=\\varepsilon_1$, $E_{22}=E_{33}=-\\nu\\,\\varepsilon_1$. Ne segue
 $$\\nu=-\\frac{\\varepsilon_2}{\\varepsilon_1}=-\\frac{\\varepsilon_3}{\\varepsilon_1}.$$
 
 Tre cose da notare.
@@ -482,7 +491,7 @@ La traccia è nulla perché non ci sono tensioni normali. Allora nel legame inve
             },
             {
               tex: '=\\frac{\\tau}{2G},\\qquad G:=\\mu',
-              why: `Diamo a $\\mu$ il nome di **modulo di elasticità tangenziale** $G$: per l'isotropo coincide con la prima costante di Lamé.`,
+              why: `Diamo a $\\mu$ il nome di **modulo di elasticità tangenziale** $G$: per definizione $G$ coincide con $\\mu$, quindi al posto di $2\\mu$ scriviamo $2G$.`,
               val: (v) => TT(v)[1] / (2 * tech(v).G),
             },
             {
@@ -506,7 +515,7 @@ La traccia è nulla perché non ci sono tensioni normali. Allora nel legame inve
 
 La figura della dispensa (p. 89) aiuta a vederlo: un quadratino con i lati lungo $\\hat e_1$ e $\\hat e_2$ diventa un rombo; ciascun lato ruota di $\\gamma_{12}/2$ e l'angolo tra i lati diventa $\\theta=\\frac\\pi2-\\gamma_{12}$. Più $G$ è grande, meno il quadratino si «schiaccia» a parità di $\\tau$.
 
-Nota anche che cosa **non** succede: nessuna dilatazione, perché $\\operatorname{tr}\\tens T=0$ e quindi $E_{11}=E_{22}=E_{33}=0$. È il disaccoppiamento tra comportamento estensionale e di scorrimento visto con Lamé.`,
+Nota anche che cosa **non** succede: nessuna dilatazione. La tensione non ha componenti normali e la sua traccia è nulla, quindi $\\tens E=\\frac1{2G}\\tens T$ ha la diagonale nulla: $E_{11}=E_{22}=E_{33}=0$. È il disaccoppiamento tra comportamento estensionale e di scorrimento visto con Lamé.`,
       },
       {
         id: 'l52-11',
@@ -560,7 +569,7 @@ Nel passo seguente il motore fa questo conto per l'acciaio.`,
         id: 'l52-14',
         kind: 'numeri',
         title: 'L’acciaio in numeri',
-        md: `Con $E=205\\,000$ MPa e $\\nu=0{,}3$ il motore dà $G=\\mu=${r0(ST.mu)}$ MPa, $\\lambda=${r0(ST.lambda)}$ MPa e $K=${r0(STK)}$ MPa. Controlla a mente la relazione appena dimostrata: $2G(1+\\nu)=2\\cdot${r0(ST.mu)}\\cdot1{,}3\\approx205\\,000$. Nota che $G$ è circa il 38% di $E$, dentro la fascia tra un terzo e la metà vista sopra. Sono valori di esempio, non della dispensa.`,
+        md: `Con $E=205\\,000$ MPa e $\\nu=0{,}3$ il motore dà $G=\\mu=${r0(ST.mu)}$ MPa, $\\lambda=${r0(ST.lambda)}$ MPa e $K=${r0(STK)}$ MPa. Controlla a mente la relazione appena dimostrata: $2G(1+\\nu)=2\\cdot${r0(ST.mu)}\\cdot1{,}3\\approx205\\,000$. Nota che $G$ è circa il 38% di $E$, dentro la fascia tra un terzo e la metà vista sopra. Il valore $E=205\\,000$ MPa è quello che la dispensa dà per gli acciai (§4.5.3, p. 75); $\\nu=0{,}3$ invece è un valore d'esempio, non della dispensa.`,
         values: { G: r0(ST.mu), lambda: r0(ST.lambda), K: r0(STK) },
         visual: SVG('isotropia', { tab: 'provino', E: 205000, nu: 0.3 }),
       },
@@ -570,7 +579,7 @@ Nel passo seguente il motore fa questo conto per l'acciaio.`,
         title: 'Il legame inverso con i moduli tecnici',
         md: `Ora che abbiamo i moduli tecnici, riscriviamo il legame inverso di Lamé usando solo loro (§4.13.4). Bastano due sostituzioni nei coefficienti:
 $$\\frac1{2\\mu}=\\frac1{2G}=\\frac{1+\\nu}E,\\qquad\\frac{\\lambda}{2\\mu(2\\mu+3\\lambda)}=\\frac\\nu E.$$
-La prima viene da $E=2G(1+\\nu)$; la seconda l'abbiamo già incontrata, è il coefficiente della dilatazione trasversale nella prova di trazione. Si ottiene
+La prima viene da $G=\\mu$ e da $E=2G(1+\\nu)$. La seconda l'abbiamo già incontrata nel passo sul coefficiente di Poisson: lì abbiamo calcolato $\\frac\\nu E=\\frac{\\lambda}{2(\\mu+\\lambda)}\\cdot\\frac{\\mu+\\lambda}{\\mu(2\\mu+3\\lambda)}=\\frac{\\lambda}{2\\mu(2\\mu+3\\lambda)}$, il coefficiente della dilatazione trasversale nella prova di trazione. Si ottiene
 $$\\tens E=\\frac1E\\big[(1+\\nu)\\tens T-\\nu(\\operatorname{tr}\\tens T)\\tens I\\big].$$
 
 In componenti:
@@ -587,7 +596,7 @@ Sostituendo nel legame di Lamé:
 $$\\tens T=\\frac E{1+\\nu}\\Big[\\tens E+\\frac\\nu{1-2\\nu}(\\operatorname{tr}\\tens E)\\tens I\\Big].$$
 In componenti: $T_{ii}=\\frac E{1+\\nu}E_{ii}+\\frac{E\\nu}{(1+\\nu)(1-2\\nu)}(E_{11}+E_{22}+E_{33})$ e $T_{ij}=2GE_{ij}$ per $i\\ne j$.
 
-Osserva il fattore $1-2\\nu$ al denominatore: se $\\nu$ si avvicina a ½ il coefficiente esplode. Lo ritroveremo nella prossima lezione, quando parleremo di materiali incomprimibili.`,
+Osserva il fattore $1-2\\nu$ al denominatore: se $\\nu$ si avvicina a ½ il coefficiente esplode. Lo ritroveremo nella lezione «Energia e restrizioni di plausibilità», quando parleremo di materiali incomprimibili (§4.15.4).`,
       },
       {
         id: 'l52-17',
@@ -607,7 +616,7 @@ Osserva il fattore $1-2\\nu$ al denominatore: se $\\nu$ si avvicina a ½ il coef
 
 1. **Il segno di $\\nu$.** La definizione è $\\nu=-\\varepsilon_2/\\varepsilon_1$, con il meno. È tentante scrivere $\\nu=\\varepsilon_2/\\varepsilon_1$, «rapporto tra le dilatazioni»; ma allora i materiali comuni avrebbero $\\nu$ negativo. Con $\\nu>0$, in trazione il materiale si contrae lateralmente.
 2. **Il fattore 2 negli scorrimenti.** $E_{ij}=T_{ij}/(2G)$, mentre $\\gamma_{ij}=\\tau_{ij}/G$. L'errore nasce dal confondere la componente del tensore di deformazione con lo scorrimento angolare: ricorda che $E_{ij}=\\gamma_{ij}/2$.
-3. **Pensare che i tre moduli tecnici siano indipendenti.** Per un isotropo le costanti sono due, quindi uno dei tre si ricava dagli altri: $E=2G(1+\\nu)$. Se in un esercizio ti danno $E$, $\\nu$ e $G$ incompatibili, c'è un errore nei dati.`,
+3. **Pensare che i tre moduli tecnici siano indipendenti.** Per un isotropo le costanti sono due, quindi uno dei tre si ricava dagli altri: $E=2G(1+\\nu)$. Se in un esercizio ti danno $E$, $\\nu$ e $G$ che non rispettano questa relazione, c'è un errore nei dati (deduzione).`,
       },
       {
         id: 'l52-20',
@@ -666,7 +675,6 @@ C'è un'ulteriore semplificazione. Per la **coassialità** dell'isotropo esiste 
             {
               tex: '=\\mu\\,\\tens E\\cdot\\tens E+\\tfrac\\lambda2(\\operatorname{tr}\\tens E)\\,\\tens I\\cdot\\tens E',
               why: `Distribuiamo il prodotto scalare e portiamo fuori il fattore $\\frac12$: $\\frac12\\cdot2\\mu=\\mu$.`,
-              aggiunto: true,
               val: (v) => v.mu * T.ddot(sym(v, 'a'), sym(v, 'a')) + (v.la / 2) * T.trace(sym(v, 'a')) * T.ddot(T.I3, sym(v, 'a')),
             },
             {
@@ -678,7 +686,6 @@ C'è un'ulteriore semplificazione. Per la **coassialità** dell'isotropo esiste 
             {
               tex: '=\\mu(e_1^2+e_2^2+e_3^2)+\\tfrac\\lambda2(e_1^2+e_2^2+e_3^2+2e_1e_2+2e_2e_3+2e_3e_1)',
               why: `Passiamo al riferimento principale. Con $\\tens E$ diagonale, $\\tens E\\cdot\\tens E$ è la somma dei quadrati delle dilatazioni principali; la traccia è $e_1+e_2+e_3$, e il suo quadrato si sviluppa in quadrati più doppi prodotti.`,
-              aggiunto: true,
               val: (v) => {
                 const [a, b, c] = eigSym(sym(v, 'a')).values;
                 return v.mu * (a * a + b * b + c * c) + (v.la / 2) * (a * a + b * b + c * c + 2 * a * b + 2 * b * c + 2 * c * a);
@@ -702,17 +709,17 @@ C'è un'ulteriore semplificazione. Per la **coassialità** dell'isotropo esiste 
         title: 'Leggere φ(E) su due casi semplici',
         md: `L'espressione $\\varphi=\\mu\\tens E\\cdot\\tens E+\\frac\\lambda2(\\operatorname{tr}\\tens E)^2$ ha due pezzi, come il legame di Lamé: uno che «vede» tutta la deformazione e uno che vede solo la variazione di volume.
 
-Due controlli (passaggio aggiunto).
+Due controlli (esempio aggiunto).
 - **Deformazione senza variazione di volume**, per esempio uno scorrimento puro con $\\operatorname{tr}\\tens E=0$: resta $\\varphi=\\mu\\tens E\\cdot\\tens E$, e conta solo $\\mu$, cioè $G$. È coerente con la lezione precedente: lo scorrimento è governato da $G$.
 - **Dilatazione in una sola direzione**, $e_1=e$ ed $e_2=e_3=0$: tutti i doppi prodotti si annullano e resta $\\varphi=(\\mu+\\frac\\lambda2)e^2$, positiva se $\\mu+\\frac\\lambda2>0$. Questa condizione ricomparirà tra poco.
 
-La dispensa nota che l'espressione di $\\varphi(\\tens E)$ con i moduli tecnici è poco utilizzata; con i moduli tecnici si scrive di solito $\\varphi(\\tens T)$, che ricaviamo ora.`,
+La dispensa nota che l'espressione di $\\varphi(\\tens E)$ con i moduli tecnici è poco utilizzata; per questo con i moduli tecnici ricaviamo $\\varphi(\\tens T)$, l'energia in funzione della tensione.`,
       },
       {
         id: 'l53-5',
         kind: 'derivazione',
         title: 'L’energia in funzione della tensione',
-        md: 'Vogliamo $\\varphi$ scritta con $\\tens T$ e con i moduli tecnici, poi con le sole tensioni principali. Strategia: nella formula $\\varphi=\\frac12\\tens T\\cdot\\tens E$ sostituiamo $\\tens E$ con il legame inverso tecnico, poi passiamo al riferimento principale. È l’espressione più usata.',
+        md: 'Vogliamo $\\varphi$ scritta con $\\tens T$ e con i moduli tecnici, poi con le sole tensioni principali. Strategia: nella formula $\\varphi=\\frac12\\tens T\\cdot\\tens E$ sostituiamo $\\tens E$ con il legame inverso tecnico, poi passiamo al riferimento principale. Attenzione ai simboli: qui $E$ senza pedici è il modulo di Young, un numero, mentre $\\tens E$ è il tensore di deformazione.',
         source: D(4, '4.14', 'Prop 4.14.1', 91),
         der: {
           sample,
@@ -774,11 +781,11 @@ La dispensa nota che l'espressione di $\\varphi(\\tens E)$ con i moduli tecnici 
         id: 'l53-6',
         kind: 'spiega',
         title: 'Leggere φ(T) e la sua versione con Lamé',
-        md: `Controlliamo il risultato sulla prova di trazione (passaggio aggiunto): con $s_1=s$ e $s_2=s_3=0$ resta $\\varphi=s^2/(2E)$. Siccome $\\varepsilon_1=s/E$, è lo stesso che $\\frac12s\\,\\varepsilon_1$: metà della tensione per la dilatazione, esattamente come per una molla. Il coefficiente di Poisson non compare, perché le contrazioni laterali avvengono dove la tensione è nulla e non fanno lavoro.
+        md: `Controlliamo il risultato sulla prova di trazione (esempio aggiunto): con $s_1=s$ e $s_2=s_3=0$ resta $\\varphi=s^2/(2E)$. Siccome $\\varepsilon_1=s/E$, è lo stesso che $\\frac12s\\,\\varepsilon_1$: metà della tensione per la dilatazione, esattamente come per una molla. Il coefficiente di Poisson non compare, perché le contrazioni laterali avvengono dove la tensione è nulla e non fanno lavoro (deduzione).
 
 La stessa energia si può scrivere con le costanti di Lamé, sostituendo il legame inverso di Lamé invece di quello tecnico (Prop 4.14.1):
 $$\\varphi(\\tens T)=\\frac1{4\\mu}\\tens T\\cdot\\tens T-\\frac{\\lambda}{4\\mu(2\\mu+3\\lambda)}(\\operatorname{tr}\\tens T)^2=\\frac{\\mu+\\lambda}{2\\mu(2\\mu+3\\lambda)}\\sum s_i^2-\\frac{\\lambda}{2\\mu(2\\mu+3\\lambda)}\\sum s_is_j.$$
-Nel riferimento principale il coefficiente dei quadrati è $\\frac1{4\\mu}-\\frac{\\lambda}{4\\mu(2\\mu+3\\lambda)}=\\frac{\\mu+\\lambda}{2\\mu(2\\mu+3\\lambda)}$, cioè $\\frac1{2E}$: le due versioni coincidono, come verifica il controllo numerico della derivazione.`,
+Nel riferimento principale il coefficiente dei quadrati è $\\frac1{4\\mu}-\\frac{\\lambda}{4\\mu(2\\mu+3\\lambda)}=\\frac{\\mu+\\lambda}{2\\mu(2\\mu+3\\lambda)}$, cioè $\\frac1{2E}$ (deduzione: è l'inverso di $2E$, con $E=\\frac{\\mu(2\\mu+3\\lambda)}{\\mu+\\lambda}$): le due versioni coincidono, come verifica il controllo numerico della derivazione.`,
       },
       {
         id: 'l53-7',
@@ -803,7 +810,7 @@ In tre dimensioni al posto del numero $E$ c'è il tensore elastico $\\mathbb A$.
         title: 'La restrizione in tre dimensioni: per deformare si spende lavoro',
         md: `La generalizzazione di $E>0$ è la **definita positività** del tensore elastico (§4.15.1):
 $$\\mathbb A\\in\\mathrm{Pos}^+\\iff\\mathbb A\\tens E\\cdot\\tens E>0\\quad\\forall\\tens E\\in\\mathrm{Sym}-\\{\\tens O\\}.$$
-Per ogni deformazione simmetrica non nulla, il numero $\\mathbb A\\tens E\\cdot\\tens E$ deve essere positivo.
+Qui $\\mathrm{Sym}$ è l'insieme dei tensori simmetrici, da cui si toglie il tensore nullo $\\tens O$: per ogni deformazione simmetrica non nulla, il numero $\\mathbb A\\tens E\\cdot\\tens E$ deve essere positivo.
 
 Presa così è una relazione matematica astratta. Il significato fisico arriva dall'energia: per un materiale iperelastico $\\mathbb A\\tens E\\cdot\\tens E=2\\varphi(\\tens E)$, quindi la condizione dice $\\varphi(\\tens E)>0$ per ogni deformazione non nulla. Siccome nella configurazione naturale ($\\tens E=\\tens O$) l'energia è zero, **per passare a una qualsiasi configurazione deformata bisogna spendere lavoro**. Va precisato: si spende lavoro per deformare a partire dallo stato naturale; rilasciando la causa, in un materiale iperelastico è il corpo a restituire quell'energia.
 
@@ -847,7 +854,7 @@ Ora dimostriamo le due equivalenze, una alla volta. Per la prima useremo l'energ
             },
             {
               tex: '\\det[A]=\\mu^2\\big(\\mu+\\tfrac32\\lambda\\big)>0',
-              why: `Terzo minore: il determinante di tutta la matrice. Il controllo numerico verifica questa fattorizzazione.`,
+              why: `Terzo minore: il determinante di tutta la matrice. Da dove viene la fattorizzazione (passaggio aggiunto): una matrice $3\\times3$ con tutti gli elementi diagonali uguali ad $a$ e tutti quelli fuori diagonale uguali a $b$ ha determinante $(a-b)^2(a+2b)$; qui $a-b=\\mu$ e $a+2b=\\mu+\\frac32\\lambda$. Il controllo numerico verifica la fattorizzazione.`,
             },
             {
               tex: '2\\mu+\\lambda>0,\\qquad\\mu>0,\\qquad2\\mu+3\\lambda>0',
@@ -869,11 +876,11 @@ Ora dimostriamo le due equivalenze, una alla volta. Per la prima useremo l'energ
         id: 'l53-12',
         kind: 'spiega',
         title: 'Che cosa dicono le due condizioni',
-        md: `Il risultato si legge bene alla luce della prima lezione. $\\mu>0$ dice che il modulo che governa lo scorrimento è positivo: se distorci il materiale, spendi lavoro. $2\\mu+3\\lambda>0$ è la stessa cosa che $K>0$, perché $K=(2\\mu+3\\lambda)/3$ (deduzione): se cambi il volume, spendi lavoro. Le due condizioni corrispondono quindi ai due modi «indipendenti» in cui un isotropo si deforma: cambiando forma e cambiando volume (deduzione).
+        md: `Il risultato si legge bene alla luce della lezione sul teorema di Lamé. $\\mu>0$ dice che il modulo che governa lo scorrimento è positivo: se distorci il materiale, spendi lavoro (deduzione). $2\\mu+3\\lambda>0$ è la stessa cosa che $K>0$, perché $K=(2\\mu+3\\lambda)/3$ (deduzione): se cambi il volume, spendi lavoro. Le due condizioni corrispondono quindi ai due modi «indipendenti» in cui un isotropo si deforma: cambiando forma e cambiando volume (deduzione).
 
 Nota invece che **$\\lambda$ può essere negativo**: basta che non lo sia troppo, $\\lambda>-\\frac23\\mu$. Non c'è nessuna condizione «$\\lambda>0$».
 
-Controllo sull'acciaio: con i numeri della lezione precedente $\\mu$ e $\\lambda$ sono entrambi positivi, quindi le condizioni sono soddisfatte. Ora traduciamo le stesse condizioni nei moduli tecnici, che sono quelli che si misurano.`,
+Controllo sull'acciaio: con i numeri della lezione «I moduli tecnici» $\\mu$ e $\\lambda$ sono entrambi positivi, quindi le condizioni sono soddisfatte. Ora traduciamo le stesse condizioni nei moduli tecnici, che sono quelli che si misurano.`,
       },
       {
         id: 'l53-13',
@@ -888,7 +895,7 @@ Controllo sull'acciaio: con i numeri della lezione precedente $\\mu$ e $\\lambda
         source: D(4, '4.15.3', undefined, 93),
         der: {
           lines: [
-            { tex: 'G=\\mu>0', why: `Il modulo tangenziale coincide con la prima costante di Lamé, che è positiva per la prima condizione.` },
+            { tex: 'G=\\mu>0', why: `Il modulo di elasticità tangenziale coincide con $\\mu$, che è positivo per la prima condizione.` },
             { tex: '2\\mu+3\\lambda>0\\ \\Rightarrow\\ \\lambda>-\\tfrac23\\mu', why: `Riscriviamo la seconda condizione isolando $\\lambda$.` },
             { tex: '\\mu+\\lambda>\\mu-\\tfrac23\\mu=\\tfrac13\\mu>0', why: `Aggiungiamo $\\mu$ a entrambi i membri. Questo ci serve perché $\\mu+\\lambda$ è il denominatore di $E$.` },
             { tex: 'E=\\frac{\\mu(2\\mu+3\\lambda)}{\\mu+\\lambda}>0', why: `Il numeratore è prodotto di due quantità positive, il denominatore è positivo per la riga precedente: $E$, prodotto e rapporto di quantità positive, è positivo.` },
@@ -899,8 +906,8 @@ Controllo sull'acciaio: con i numeri della lezione precedente $\\mu$ e $\\lambda
             },
             {
               tex: '\\operatorname{tr}\\tens E=\\frac{\\operatorname{tr}\\tens T}{2\\mu+3\\lambda},\\ 2\\mu+3\\lambda>0\\ \\Rightarrow\\ 1-2\\nu>0\\ \\Rightarrow\\ \\nu<\\tfrac12',
-              why: `Dalla prima lezione sappiamo che $\\operatorname{tr}\\tens E=\\operatorname{tr}\\tens T/(2\\mu+3\\lambda)$, con denominatore positivo: le due tracce hanno lo **stesso segno**. Confrontando con la riga sopra, e con $E>0$, deve essere $1-2\\nu>0$.`,
-              ask: { q: 'Da dove viene il limite $\\nu<\\frac12$?', options: ['$\\operatorname{tr}\\tens E$ e $\\operatorname{tr}\\tens T$ devono avere lo stesso segno', 'Da $E>0$ da solo', 'Da $G>0$ da solo', 'Dalla coassialità'], correct: 0, why: 'Una tensione media di trazione deve aumentare il volume (§4.15.3): è la condizione $K>0$ letta sui moduli tecnici. $E>0$ e $G>0$ insieme danno solo $\\nu>-1$; la coassialità non dice nulla sui valori dei moduli.' },
+              why: `Dalla lezione sul teorema di Lamé (§4.12.2) sappiamo che $\\operatorname{tr}\\tens E=\\operatorname{tr}\\tens T/(2\\mu+3\\lambda)$, con denominatore positivo: le due tracce hanno lo **stesso segno**. Confrontando con la riga sopra, e con $E>0$, deve essere $1-2\\nu>0$.`,
+              ask: { q: 'Da dove viene il limite $\\nu<\\frac12$?', options: ['$\\operatorname{tr}\\tens E$ e $\\operatorname{tr}\\tens T$ devono avere lo stesso segno', 'Da $E>0$ da solo', 'Da $G>0$ da solo', 'Dalla coassialità'], correct: 0, why: 'Una tensione media di trazione deve aumentare il volume (§4.15.3): è la condizione $K>0$ letta sui moduli tecnici (deduzione). $E>0$ e $G>0$ insieme danno solo $\\nu>-1$; la coassialità non dice nulla sui valori dei moduli.' },
               eq: '§4.15.3',
             },
           ],
@@ -940,9 +947,9 @@ Perché allora i limiti teorici dicono $\\nu<\\frac12$ e quelli pratici $\\nu\\l
         id: 'l53-18',
         kind: 'prova',
         title: 'Muovi ν e guarda le conseguenze',
-        md: 'Il diagramma ha due viste. Nella vista «campo di ν» la curva mostra il rapporto $K/E=1/(3(1-2\\nu))$ al variare di $\\nu$, con le fasce dei limiti teorici e pratici. Nella vista «provino in trazione» il cursore ν cambia il comportamento del provino.',
+        md: 'Il diagramma ha due viste. Nella vista «campo di ν» la curva mostra il rapporto $K/E=1/(3(1-2\\nu))$ al variare di $\\nu$ (deduzione: si ottiene confrontando $\\Theta=\\sigma_m/K$ con $\\Theta=\\frac{1-2\\nu}E3\\sigma_m$), con le fasce dei limiti teorici e pratici. Nella vista «provino in trazione» il cursore ν cambia il comportamento del provino.',
         tasks: [
-          'Nella vista «campo di ν», segui la curva verso destra: per ν → ½ cresce senza limite. Un $K$ infinito vuol dire che il volume non può cambiare: è l’incomprimibilità.',
+          'Nella vista «campo di ν», segui la curva verso destra: per $\\nu\\to\\frac12$ cresce senza limite. Un $K$ infinito vuol dire che il volume non può cambiare: è l’incomprimibilità.',
           'Confronta le due fasce: quella teorica (−1 < ν < ½) e quella pratica (0 < ν ≤ ½). La differenza a sinistra sono gli auxetici; a destra, l’estremo ½ incluso solo nei limiti pratici.',
           'Passa alla vista «provino in trazione» e porta ν sotto zero: il provino teso si allarga di lato. Poi porta ν a 0,5 e guarda $\\Theta$ nella tabella: diventa zero.',
         ],
@@ -951,7 +958,7 @@ Perché allora i limiti teorici dicono $\\nu<\\frac12$ e quelli pratici $\\nu\\l
       {
         id: 'l53-19',
         kind: 'domanda',
-        q: { id: 'l53-q1', kind: 'scelta', q: 'Quali sono i limiti pratici dei moduli tecnici?', options: ['$E>0$, $G>0$, $0<\\nu\\le\\frac12$', '$E>0$, $G>0$, $-1<\\nu<\\frac12$', '$E\\ge0$, $G\\ge0$, $0\\le\\nu\\le1$', '$\\mu>0$, $2\\mu+3\\lambda>0$'], correct: 0, why: '§4.15.1: $-1<\\nu<\\frac12$ sono i limiti teorici; i pratici escludono gli auxetici ($\\nu\\le0$) e includono l’incomprimibile come caso limite ($\\nu=\\frac12$). L’ultima opzione è la condizione teorica scritta con le costanti di Lamé.' },
+        q: { id: 'l53-q1', kind: 'scelta', q: 'Quali sono i limiti pratici dei moduli tecnici?', options: ['$E>0$, $G>0$, $0<\\nu\\le\\frac12$', '$E>0$, $G>0$, $-1<\\nu<\\frac12$', '$E\\ge0$, $G\\ge0$, $0\\le\\nu\\le1$', '$\\mu>0$, $2\\mu+3\\lambda>0$'], correct: 0, why: '§4.15.1: $-1<\\nu<\\frac12$ sono i limiti teorici; i pratici escludono gli auxetici ($\\nu<0$) e il valore $\\nu=0$, e includono l’incomprimibile come caso limite ($\\nu=\\frac12$). L’ultima opzione è la condizione teorica scritta con le costanti di Lamé.' },
       },
       {
         id: 'l53-20',
@@ -991,9 +998,9 @@ Perché allora i limiti teorici dicono $\\nu<\\frac12$ e quelli pratici $\\nu\\l
         title: 'Dove siamo e dove andiamo',
         md: `Finora abbiamo costruito tre pezzi, ciascuno per conto suo. Nel Modulo 2, l'analisi della deformazione (la **cinematica**): come si descrive il cambiamento di forma, con lo spostamento $\\vet u$ e la deformazione $\\tens E$. Nel Modulo 3, l'analisi della tensione (la **statica**): come si descrivono le forze interne, con il tensore di Cauchy $\\tens T$ e le equazioni di equilibrio. Nel Modulo 4 e nelle ultime lezioni, il **legame costitutivo**: come un materiale collega tensione e deformazione, fino all'isotropo con $E$ e $\\nu$.
 
-Ora mettiamo insieme i tre ingredienti in un unico problema, il **problema elastico**: descrivere la risposta meccanica di un solido elastico caricato e vincolato. È il cuore di tutto il resto del corso: il problema di Saint-Venant, nel prossimo modulo, sarà un caso particolare.
+Ora mettiamo insieme i tre ingredienti in un unico problema, il **problema elastico**: descrivere la risposta meccanica di un solido elastico caricato e vincolato. Ci servirà subito: il problema di Saint-Venant, nel prossimo modulo, ne è un caso particolare.
 
-Le tappe: che cosa si assegna, che cosa si cerca, con quali equazioni; un'analogia con la trave che conosci; il conto di equazioni e incognite; e infine perché quel conto, da solo, non basta.`,
+Le tappe: che cosa si assegna, che cosa si cerca, con quali equazioni; un'analogia con una trave caricata lungo l'asse; il conto di equazioni e incognite; e infine perché quel conto, da solo, non basta.`,
       },
       {
         id: 'l54-2',
@@ -1004,7 +1011,7 @@ Le tappe: che cosa si assegna, che cosa si cerca, con quali equazioni; un'analog
 - quali **equazioni** si hanno a disposizione per risolverlo;
 - qual è la **struttura della soluzione**, cioè che cosa si cerca.
 
-Può sembrare pedante, ma è la stessa cosa che fai con un esercizio sulle travi: sai che ti danno luce, carichi, vincoli e sezione, sai che cerchi reazioni e diagrammi delle caratteristiche della sollecitazione, e sai quali equazioni usare. Qui facciamo lo stesso per un solido tridimensionale qualsiasi. Cominciamo dai dati, che sono quattro: geometria, carichi, vincoli, materiale.`,
+Può sembrare pedante, ma senza queste tre risposte non si sa nemmeno che cosa voglia dire «risolvere». Più avanti in questa lezione la dispensa fa lo stesso su una trave, il caso a una dimensione (§4.16.2); qui lo facciamo per un solido tridimensionale qualsiasi. Cominciamo dai dati, che sono quattro: geometria, carichi, vincoli, materiale.`,
       },
       {
         id: 'l54-3',
@@ -1041,7 +1048,7 @@ Una precisazione: le frontiere sono «eventuali». Una delle due può mancare, e
 $$\\{\\vet u(x),\\tens E(x),\\tens T(x)\\}\\quad\\forall x\\in\\mathcal B,$$
 cioè tre campi definiti in ogni punto del corpo: lo spostamento $\\vet u$ (un vettore), la deformazione infinitesima $\\tens E$ (un tensore simmetrico) e la tensione $\\tens T$ (il tensore di Cauchy).
 
-Sottolinea la parola **campi**: l'incognita non è un numero né un vettore, ma una terna di **funzioni** del punto. Questo è ciò che rende il problema elastico più difficile di un esercizio sulle travi isostatiche, dove spesso le incognite sono poche reazioni.
+Sottolinea la parola **campi**: l'incognita non è un numero né un vettore, ma una terna di **funzioni** del punto. Questo è ciò che rende difficile il problema elastico: si cercano funzioni, non pochi numeri (deduzione).
 
 Perché cercarli tutti e tre, se $\\tens E$ si ricava da $\\vet u$ e $\\tens T$ da $\\tens E$? Perché ciascuno serve a qualcosa: $\\vet u$ dice come si sposta la struttura, $\\tens E$ come si deforma localmente, $\\tens T$ quanto è sollecitato il materiale (e quindi se resiste). E ciascuno compare in un gruppo diverso di equazioni (deduzione).`,
       },
@@ -1061,7 +1068,7 @@ Perché cercarli tutti e tre, se $\\tens E$ si ricava da $\\vet u$ e $\\tens T$ 
 **Legame costitutivo** (Modulo 4 e lezioni precedenti), in ogni punto di $\\mathcal B$: $\\tens T=\\mathbb A\\tens E$. Lega $\\tens T$ a $\\tens E$.
 
 **Equilibrio** (Modulo 3), in due equazioni:
-- $\\operatorname{div}\\tens T+\\vet b=\\vet 0$ nei punti interni $\\mathring{\\mathcal B}$ (il cerchietto indica l'interno, senza la frontiera): è l'equilibrio alla traslazione in forma locale, la prima equazione cardinale scritta punto per punto. La divergenza di un tensore è il vettore che misura come varia la tensione da un punto all'altro;
+- $\\operatorname{div}\\tens T+\\vet b=\\vet 0$ nei punti interni $\\mathring{\\mathcal B}$ (il cerchietto indica l'interno, senza la frontiera): è l'equilibrio alla traslazione in forma locale, la prima equazione cardinale scritta punto per punto. La divergenza di un tensore è il vettore di componenti $\\sum_j\\partial T_{ij}/\\partial x_j$, che misura come varia la tensione da un punto all'altro;
 - $\\tens T=\\tens T^T$ in $\\mathcal B$: la simmetria del tensore di Cauchy, cioè l'equilibrio alla rotazione.
 
 Nota la catena: $\\vet u\\to\\tens E\\to\\tens T\\to$ equilibrio con i carichi $\\vet b$.`,
@@ -1084,7 +1091,7 @@ Ogni equazione «lavora» quindi in una zona precisa: congruenza e legame in tut
         md: `A seconda di quale porzione di frontiera c'è, il problema prende un nome diverso (§4.16.1).
 1. **Problema negli spostamenti**: $\\partial\\mathcal B_v\\equiv\\partial\\mathcal B$, quindi non c'è frontiera libera. Sul bordo si assegnano solo spostamenti. Esempio: una trave a doppio incastro a cui si impone un cedimento.
 2. **Problema nelle forze**: $\\partial\\mathcal B_\\ell\\equiv\\partial\\mathcal B$, quindi non c'è frontiera vincolata. Sul bordo si assegnano solo forze. Esempio: un aereo in volo, non soggetto a vincoli ma solo a carichi.
-3. **Problema misto**: ci sono entrambe le porzioni. È il caso più comune nelle strutture.
+3. **Problema misto**: ci sono entrambe le porzioni. È il caso più comune nelle strutture (deduzione).
 
 Nel problema nelle forze manca qualunque condizione sugli spostamenti. Ci torneremo tra poco: è la ragione per cui in quel caso lo spostamento resta determinato solo a meno di un moto rigido.`,
       },
@@ -1107,7 +1114,7 @@ Nel problema nelle forze manca qualunque condizione sugli spostamenti. Ci torner
       {
         id: 'l54-12',
         kind: 'spiega',
-        title: 'Un caso che conosci: la mensola',
+        title: 'Un caso a una dimensione: la mensola',
         md: `Per rendere concreta questa struttura astratta, la dispensa la confronta con una trave (§4.16.2). Prendi una mensola lunga $L$, incastrata in A e libera in B, con una forza assiale concentrata $F$ in B e un carico assiale distribuito $p(z)$ lungo l'asse $z$.
 
 Facciamo la corrispondenza pezzo per pezzo.
@@ -1116,7 +1123,7 @@ Facciamo la corrispondenza pezzo per pezzo.
 - Il punto **B** fa da frontiera libera: lì è assegnato lo sforzo normale, $N(L)=F$. La forza interna, che nella trave fa le veci della tensione, è uguale al carico applicato, proprio come $\\tens T\\hat n=\\hat{\\vet s}$.
 - La **soluzione** è la terna $\\{w(z),\\varepsilon(z),N(z)\\}$: spostamento assiale, deformazione estensionale e sforzo normale, che corrisponde a $\\{\\vet u,\\tens E,\\tens T\\}$.
 
-Assegnando la geometria si assegnano anche le caratteristiche della sezione (area $A$, momento d'inerzia $J$); il materiale entra con $E$ (o $G$, per un problema di torsione).`,
+Assegnando la geometria si assegnano anche le caratteristiche della sezione (area $A$, momento d'inerzia $J$); il materiale entra con $E$ (o $G$, per un problema di torsione). Qui $E$ è il modulo di Young, da non confondere con il tensore di deformazione $\\tens E$; e $A$ è l'area della sezione, da non confondere con il tensore elastico $\\mathbb A$.`,
       },
       {
         id: 'l54-13',
@@ -1126,7 +1133,7 @@ Assegnando la geometria si assegnano anche le caratteristiche della sezione (are
 $$\\underbrace{\\varepsilon=w'}_{\\text{congruenza}},\\qquad\\underbrace{N=EA\\,\\varepsilon}_{\\text{legame}},\\qquad\\underbrace{N'=-p}_{\\text{equilibrio}};\\qquad\\underbrace{w(0)=0}_{\\text{cinematica}},\\quad\\underbrace{N(L)=F}_{\\text{statica}}.$$
 L'apice indica la derivata rispetto a $z$. Le prime tre sono le equazioni di campo, le ultime due quelle al contorno, una cinematica sulla frontiera vincolata e una statica su quella libera.
 
-Combinando le tre equazioni di campo (sostituendo la congruenza nel legame e il legame nell'equilibrio) si ottiene l'equazione della linea elastica, un'unica equazione nello spostamento.
+Combinando le tre equazioni di campo (sostituendo la congruenza nel legame e il legame nell'equilibrio) si ottiene l'equazione della linea elastica, un'unica equazione nello spostamento (deduzione).
 
 La differenza con il solido sta nella natura delle grandezze. Nella trave sono **scalari** e la variabile è **una sola**, $z$: il problema è retto da equazioni differenziali **ordinarie**. Nel solido sono vettori e tensori, funzioni di tre coordinate: il problema è retto da equazioni differenziali **alle derivate parziali**. La struttura però è la stessa.`,
       },
@@ -1179,7 +1186,7 @@ La terza richiesta è la meno intuitiva, e merita un esempio.`,
 
 Per l'unicità la dispensa richiama, senza svolgerlo in questo capitolo, il **teorema di unicità di Kirchhoff**, che vedrai nel prossimo modulo: se $\\mathbb A\\in\\mathrm{Pos}^+$, il problema elastico ha **al più una** soluzione in termini di $\\tens E$ e $\\tens T$. Lo spostamento è unico se esiste una frontiera vincolata, $\\partial\\mathcal B_v\\ne\\emptyset$; nel problema nelle forze, invece, è determinato solo a meno di uno spostamento rigido infinitesimo. Ha senso: senza vincoli, puoi traslare o ruotare (infinitesimamente) l'aereo senza cambiare deformazioni e tensioni (deduzione).
 
-È qui che la restrizione di plausibilità della lezione precedente mostra la sua importanza: non serve solo a escludere materiali strani, ma garantisce che la soluzione sia una sola.`,
+È qui che la restrizione di plausibilità della lezione «Energia e restrizioni di plausibilità» mostra la sua importanza: non serve solo a escludere materiali strani, ma garantisce che la soluzione, se esiste, sia una sola in termini di $\\tens E$ e $\\tens T$.`,
       },
       {
         id: 'l54-18',
@@ -1192,7 +1199,7 @@ Per l'unicità la dispensa richiama, senza svolgerlo in questo capitolo, il **te
         title: 'Attenzione a…',
         md: `Tre errori ricorrono sul problema elastico.
 
-1. **Pensare che «equazioni = incognite» garantisca la soluzione.** Il conto 18 e 18 (o 15 e 15) è necessario per non avere un problema chiaramente mal formulato, ma non dice nulla su esistenza, unicità e stabilità: per quelle serve la buona posizione.
+1. **Pensare che «equazioni = incognite» garantisca la soluzione.** Il conto 18 e 18 (o 15 e 15) è rassicurante, ma non dice nulla su esistenza, unicità e stabilità: per quelle serve la buona posizione.
 2. **Usare le equazioni nel posto sbagliato.** L'equilibrio indefinito $\\operatorname{div}\\tens T+\\vet b=\\vet 0$ vale nei punti interni; sulla frontiera libera vale $\\tens T\\hat n=\\hat{\\vet s}$, su quella vincolata $\\vet u=\\hat{\\vet u}$. Non si assegnano mai forza e spostamento nello stesso punto.
 3. **Dimenticare il moto rigido nel problema nelle forze.** Senza frontiera vincolata deformazioni e tensioni sono uniche (se $\\mathbb A\\in\\mathrm{Pos}^+$), ma lo spostamento è determinato solo a meno di uno spostamento rigido infinitesimo.`,
       },
@@ -1239,7 +1246,7 @@ Ora guarda le equazioni del problema elastico una per una.
 - L'**equilibrio** $\\operatorname{div}\\tens T+\\vet b=\\vet 0$ e $\\tens T=\\tens T^T$: la divergenza è una derivata, quindi lineare, e la simmetria si conserva nelle combinazioni.
 - Le **condizioni al contorno** $\\tens T\\hat n=\\hat{\\vet s}$ e $\\vet u=\\hat{\\vet u}$: anche queste sono lineari nelle incognite e nei dati.
 
-Nessuna equazione contiene prodotti tra incognite, quadrati o funzioni non lineari. Tieni a mente questo elenco: è tutta la dimostrazione del teorema che segue.`,
+Nessuna equazione contiene prodotti tra incognite, quadrati o funzioni non lineari (deduzione: la dispensa parla della «linearità delle equazioni del problema» senza esaminarle una per una). Tieni a mente questo elenco: è tutta la dimostrazione del teorema che segue.`,
       },
       {
         id: 'l55-3',
@@ -1259,7 +1266,7 @@ In parole: **a una combinazione lineare di dati corrisponde la stessa combinazio
         id: 'l55-4',
         kind: 'spiega',
         title: 'Perché la combinazione funziona: il legame è lineare',
-        md: `Fermiamoci su uno degli ingredienti, il legame isotropo, per capire da dove viene la sovrapposizione. Il tensore elastico $\\mathbb A$ trasforma una deformazione in una tensione **in modo lineare**: se gli dai la deformazione combinata $\\alpha\\tens E_1+\\beta\\tens E_2$, restituisce la tensione combinata
+        md: `Fermiamoci su uno degli ingredienti, il legame costitutivo, per capire da dove viene la sovrapposizione. Il tensore elastico $\\mathbb A$ trasforma una deformazione in una tensione **in modo lineare**: se gli dai la deformazione combinata $\\alpha\\tens E_1+\\beta\\tens E_2$, restituisce la tensione combinata
 $$\\mathbb A[\\alpha\\tens E_1+\\beta\\tens E_2]=\\alpha\\,\\mathbb A\\tens E_1+\\beta\\,\\mathbb A\\tens E_2=\\alpha\\tens T_1+\\beta\\tens T_2.$$
 È esattamente ciò che il Teo 4.16.2 chiede alla tensione dello stato combinato. Lo stesso accade per le altre due famiglie di equazioni: la congruenza (la parte simmetrica del gradiente di una somma è la somma delle parti simmetriche) e l'equilibrio (la divergenza di una somma è la somma delle divergenze) (deduzione). Tutte e tre le equazioni sono lineari, e per questo la combinazione delle soluzioni è ancora una soluzione.`,
       },
@@ -1278,7 +1285,7 @@ C'è anche una conseguenza meno evidente: nella combinazione entrano anche i vin
         id: 'l55-6',
         kind: 'spiega',
         title: 'Quando la sovrapposizione non vale',
-        md: `La sovrapposizione **non è garantita in generale**: è una caratteristica dei problemi lineari. Se anche una sola equazione non è lineare, il teorema cade.
+        md: `La sovrapposizione **non è garantita in generale**: è una caratteristica dei problemi lineari. Se anche una sola equazione non è lineare, il teorema non è più garantito (deduzione).
 
 L'esempio della dispensa è l'**attrito**. Immagina un corpo appoggiato con attrito su cui agiscono due carichi. Se applichi prima l'uno e poi l'altro, oppure nell'ordine inverso, il corpo può scivolare in momenti diversi e arrivare a configurazioni finali diverse (deduzione). Con un problema non lineare **l'ordine di applicazione dei carichi cambia la soluzione**, e per risolvere bisognerebbe sapere qual è lo scenario di carico da studiare, cioè la storia completa dei carichi.
 
@@ -1349,7 +1356,7 @@ Per la dimostrazione serve un'ipotesi: se si parla di energia il materiale è ip
         title: 'Che cosa dice il termine di accoppiamento',
         md: `Il risultato si legge così: l'energia dello stato somma è la somma delle energie **più** un termine che dipende da entrambi gli stati insieme. Poiché $\\mathbb A\\tens E_1=\\tens T_1$, quel termine si può leggere anche come $\\tens T_1\\cdot\\tens E_2$: è il lavoro che la tensione del primo stato compie sulla deformazione del secondo (deduzione). Non appartiene a nessuno dei due casi da soli: nasce solo quando ci sono entrambi.
 
-Controllo su un caso semplice (passaggio aggiunto): prendi $\\tens E_2=\\tens E_1$. Lo stato somma è $2\\tens E_1$, e siccome $\\varphi$ è quadratica la sua energia è $4\\varphi(\\tens E_1)$. La formula dà $\\varphi(\\tens E_1)+\\varphi(\\tens E_1)+\\mathbb A\\tens E_1\\cdot\\tens E_1=2\\varphi(\\tens E_1)+2\\varphi(\\tens E_1)$: di nuovo $4\\varphi(\\tens E_1)$. Senza il termine di accoppiamento avremmo trovato la metà.
+Controllo su un caso semplice (esempio aggiunto): prendi $\\tens E_2=\\tens E_1$. Lo stato somma è $2\\tens E_1$, e siccome $\\varphi$ è quadratica la sua energia è $4\\varphi(\\tens E_1)$. La formula dà $\\varphi(\\tens E_1)+\\varphi(\\tens E_1)+\\mathbb A\\tens E_1\\cdot\\tens E_1=2\\varphi(\\tens E_1)+2\\varphi(\\tens E_1)$: di nuovo $4\\varphi(\\tens E_1)$. Senza il termine di accoppiamento avremmo trovato la metà.
 
 La conseguenza pratica: puoi sommare spostamenti, deformazioni e tensioni di due casi di carico, ma **non le loro energie**. Lo stesso vale per l'energia di tutto il corpo, che è l'integrale di $\\varphi$ sul volume (deduzione): la incontrerai nel prossimo modulo.`,
       },
@@ -1357,17 +1364,17 @@ La conseguenza pratica: puoi sommare spostamenti, deformazioni e tensioni di due
         id: 'l55-11',
         kind: 'prova',
         title: 'Il lavoro dipende dal quadrato dello stato finale',
-        md: 'Il diagramma del cammino di deformazione, già visto nella lezione sull’iperelasticità, porta un corpo dalla configurazione naturale a uno stato finale $\\tens E^*$ lungo tre cammini diversi e calcola il lavoro speso.',
+        md: 'Il diagramma del cammino di deformazione, già visto nella lezione «Energia specifica e iperelasticità», porta un corpo dalla configurazione naturale a uno stato finale $\\tens E^*$ lungo tre cammini diversi e calcola il lavoro speso.',
         tasks: [
           'Con la simmetria maggiore attiva, leggi il lavoro lungo i tre cammini: coincide sempre con $\\varphi(\\tens E^*)=\\frac12\\mathbb A\\tens E^*\\cdot\\tens E^*$, che dipende solo dallo stato finale.',
-          'Nota che quel lavoro è quadratico nello stato finale (passaggio aggiunto): per uno stato doppio il lavoro quadruplica, non raddoppia. È la stessa ragione per cui nella somma di due stati compare il termine di accoppiamento.',
+          'Nota che quel lavoro è quadratico nello stato finale (deduzione): per uno stato doppio il lavoro quadruplica, non raddoppia. È la stessa ragione per cui nella somma di due stati compare il termine di accoppiamento.',
         ],
         visual: SVG('cammino'),
       },
       {
         id: 'l55-12',
         kind: 'domanda',
-        q: { id: 'l55-q2', kind: 'scelta', q: 'Un isotropo subisce prima una compressione uniforme $\\tens E_1=a\\tens I$, poi le si somma uno scorrimento $\\tens E_2$ con $\\operatorname{tr}\\tens E_2=0$. Quanto vale il termine di accoppiamento $\\mathbb A\\tens E_1\\cdot\\tens E_2$?', options: ['Zero', '$2\\mu a$', '$3\\lambda a$', 'Non si può dire senza conoscere $\\tens E_2$'], correct: 0, why: 'Con Lamé, $\\mathbb A\\tens E_1=(2\\mu+3\\lambda)a\\tens I$, e $\\tens I\\cdot\\tens E_2=\\operatorname{tr}\\tens E_2=0$ (deduzione). In questo caso particolare le energie si sommano: una variazione di volume e una distorsione a volume costante non si «accoppiano» in un isotropo. In generale però il termine non è nullo.' },
+        q: { id: 'l55-q2', kind: 'scelta', q: 'Un isotropo subisce prima una compressione uniforme $\\tens E_1=a\\tens I$, poi gli si somma uno scorrimento $\\tens E_2$ con $\\operatorname{tr}\\tens E_2=0$. Quanto vale il termine di accoppiamento $\\mathbb A\\tens E_1\\cdot\\tens E_2$?', options: ['Zero', '$2\\mu a$', '$3\\lambda a$', 'Non si può dire senza conoscere $\\tens E_2$'], correct: 0, why: 'Con Lamé, $\\mathbb A\\tens E_1=(2\\mu+3\\lambda)a\\tens I$, e $\\tens I\\cdot\\tens E_2=\\operatorname{tr}\\tens E_2=0$ (deduzione). In questo caso particolare le energie si sommano: una variazione di volume e una distorsione a volume costante non si «accoppiano» in un isotropo. In generale però il termine non è nullo.' },
       },
       {
         id: 'l55-13',
@@ -1376,7 +1383,7 @@ La conseguenza pratica: puoi sommare spostamenti, deformazioni e tensioni di due
         md: `Due errori ricorrono su questo argomento.
 
 1. **Sommare le energie di due casi di carico.** È tentante, perché tutto il resto del problema si sovrappone: spostamenti, deformazioni, tensioni. Ma l'energia è quadratica nella deformazione, e nella somma compare il termine di accoppiamento $\\mathbb A\\tens E_1\\cdot\\tens E_2$. Sommare le energie significa dimenticarlo.
-2. **Applicare la sovrapposizione a problemi non lineari.** Il teorema discende dalla linearità di **tutte** le equazioni. Con l'attrito (e, più in generale, con qualunque non linearità, come i grandi spostamenti) la soluzione dipende dalla storia e dall'ordine dei carichi, e la somma delle soluzioni non è la soluzione della somma.`,
+2. **Applicare la sovrapposizione a problemi non lineari.** Il teorema discende dalla linearità di **tutte** le equazioni. Con l'attrito (e, più in generale, con qualunque non linearità, come i grandi spostamenti (deduzione)) la soluzione dipende dalla storia e dall'ordine dei carichi, e la somma delle soluzioni non è la soluzione della somma.`,
       },
       {
         id: 'l55-14',
