@@ -4,7 +4,6 @@
 import { useMemo } from 'react';
 import { ALL_CONCEPTS, conceptIdsByModule, conceptsOf } from '../../content';
 import { MODULES } from '../../content/modules';
-import { ALL_LESSONS } from '../../content/lezioni';
 import { ALL_ORALI } from '../../content/orale';
 import { masteryDetail, moduleMastery, MASTERY_OK } from '../../learning/mastery';
 import { buildPlan } from '../../learning/plan';
@@ -66,8 +65,6 @@ function Columns({ values, labels }: { values: number[]; labels: string[] }) {
   );
 }
 
-const stepTitle = (s: (typeof ALL_LESSONS)[number]['steps'][number] | undefined) => (s && 'title' in s ? s.title : undefined);
-const FB_LABEL: Record<string, string> = { chiaro: 'chiaro', veloce: 'troppo veloce', lento: 'troppo lento', confuso: 'confuso' };
 
 export function Progressi() {
   const { state } = useApp();
@@ -88,11 +85,6 @@ export function Progressi() {
     return cs.length ? cs.reduce((s, [, c]) => s + retrievabilityAt(c, exam), 0) / cs.length : null;
   };
   const mastered = concepts.filter((c) => (mastery[c.id] ?? 0) >= MASTERY_OK).length;
-  const feedback = ALL_LESSONS.flatMap((l) =>
-    Object.entries(state.lessons?.[l.concept]?.feedback ?? {})
-      .filter(([, f]) => f.v !== 'chiaro')
-      .map(([stepId, f]) => ({ l, stepId, f })),
-  );
   return (
     <div className="page">
       <h1>Progressi</h1>
@@ -154,7 +146,7 @@ export function Progressi() {
                     <td>
                       <a href={`#/concetto/${c.id}`}>{c.title}</a>
                     </td>
-                    <td>{state.lessons?.[c.id]?.doneAt ? 'fatta' : isStudied(state, c.id) ? 'scheda letta' : '—'}</td>
+                    <td>{state.lessons?.[c.id]?.doneAt ? 'fatta' : isStudied(state, c.id) ? 'studiata' : '—'}</td>
                     <td className="num">{d ? pct(d.perf) : '—'}</td>
                     <td className="num">{d && d.cards ? pct(d.recall) : '—'}</td>
                     <td className="num">{d ? pct(d.mastery) : '—'}</td>
@@ -170,25 +162,10 @@ export function Progressi() {
 
       <section className="card">
         <h2>Ripassi nei prossimi 14 giorni</h2>
-        {cards.length === 0 ? <p className="muted">Ancora nessuna scheda: si creano rispondendo ai richiami ed esponendo le domande d&apos;orale.</p> : <Columns values={next14} labels={labels} />}
-        <p className="small muted">{cards.length} schede in ripetizione distanziata (FSRS). Un errore torna il giorno dopo; le risposte sicure tornano sempre più distanziate.</p>
+        {cards.length === 0 ? <p className="muted">Ancora nessuna domanda in ripasso: entrano rispondendo ai richiami ed esponendo le domande d&apos;orale.</p> : <Columns values={next14} labels={labels} />}
+        <p className="small muted">{cards.length} domande in ripetizione distanziata (FSRS). Un errore torna il giorno dopo; le risposte sicure tornano sempre più distanziate.</p>
       </section>
 
-      <section className="card">
-        <h2>Le tue note sulle lezioni</h2>
-        {feedback.length === 0 ? (
-          <p className="muted">Nessun passo segnato come confuso, troppo veloce o troppo lento.</p>
-        ) : (
-          <ul>
-            {feedback.map(({ l, stepId, f }) => (
-              <li key={l.concept + stepId}>
-                <a href={`#/lezione/${l.concept}`}>{l.title}</a>, passo «{stepTitle(l.steps.find((s) => s.id === stepId)) ?? stepId}»: {FB_LABEL[f.v]}
-                {f.note ? ` — ${f.note}` : ''}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
     </div>
   );
 }

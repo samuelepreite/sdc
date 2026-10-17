@@ -1,6 +1,6 @@
 /**
  * Mappa dei concetti (Fase 3): i 57 concetti in colonne per modulo, con le frecce dei prerequisiti (grafo di
- * tools/grafo.py, riportato in ogni scheda) e il colore della padronanza. Selezionando un concetto si evidenziano
+ * tools/grafo.py, riportato in ogni lezione) e il colore della padronanza. Selezionando un concetto si evidenziano
  * tutto ciò che serve prima (a monte) e tutto ciò che ne dipende (a valle).
  */
 import { useMemo, useState } from 'react';
@@ -52,7 +52,7 @@ export function Mappa() {
     <div className="page">
       <h1>Mappa dei concetti</h1>
       <p className="lead muted">
-        {ALL_CONCEPTS.length} concetti, uno per scheda, nell&apos;ordine della dispensa. Le frecce vanno dal prerequisito al concetto che lo usa. Tocca un concetto: in blu ciò che serve prima, in arancio ciò che ne dipende; tocca di nuovo per aprire la scheda.
+        {ALL_CONCEPTS.length} concetti, uno per lezione, nell&apos;ordine della dispensa. Le frecce vanno dal prerequisito al concetto che lo usa. Tocca un concetto: in blu ciò che serve prima, in arancio ciò che ne dipende; tocca di nuovo per aprire la lezione.
       </p>
       <div className="legend small">
         <span className="map-key st-none">non ancora</span> <span className="map-key st-mid">in corso</span> <span className="map-key st-ok">padroneggiato</span> <span className="map-key fac">facoltativo</span>
@@ -129,7 +129,7 @@ export function Mappa() {
       </div>
       {sel && (
         <p className="small">
-          <b>{sel}</b> · {byId.get(sel)?.title}: {up.size} concetti a monte, {down.size} a valle. <a href={`#/concetto/${sel}`}>Apri la scheda</a> ·{' '}
+          <b>{sel}</b> · {byId.get(sel)?.title}: {up.size} concetti a monte, {down.size} a valle. <a href={`#/lezione/${sel}`}>Apri la lezione</a> ·{' '}
           <button className="link" onClick={() => setSel(null)}>
             togli la selezione
           </button>

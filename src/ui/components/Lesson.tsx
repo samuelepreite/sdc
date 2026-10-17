@@ -1,30 +1,24 @@
 /**
- * Lezione guidata: il professore costruisce il concetto un passo alla volta. A sinistra il racconto (spiegazioni,
- * derivazioni passaggio per passaggio con la domanda «qual è il passo successivo?», prove sul modello, domande);
- * a destra, fissa, la scena (modello 3D o diagramma) che ogni passo imposta. Ogni passo si può giudicare
- * (chiaro / troppo veloce / troppo lento / non ho capito): i giudizi si salvano e servono a tarare le lezioni.
+ * Lezione: è l'unico modo di studiare un concetto (le schede a parte non ci sono più). Il professore costruisce il
+ * concetto un passo alla volta. A sinistra il racconto (spiegazioni, derivazioni passaggio per passaggio con la
+ * domanda «qual è il passo successivo?», prove sul modello, domande); a destra, fissa, la scena (modello 3D o
+ * diagramma) che ogni passo imposta. In fondo, a lezione finita, le domande di richiamo del concetto e quelle d'orale.
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { DerivLine, Lesson, LessonStep, LessonVisual } from '../../content/types';
 import { getLesson, lessonQid, ALL_LESSONS } from '../../content/lezioni';
 import { getConcept } from '../../content';
 import { oralsOfConcept } from '../../content/orale';
-import { addRecall, lessonFeedback, lessonStep } from '../../learning/actions';
-import type { StepFeedback } from '../../storage/store';
+import { addRecall, lessonStep } from '../../learning/actions';
 import { useApp } from '../state';
 import { RichText, Tex, Inline } from './Tex';
 import { RecallCard } from './RecallCard';
 import { SourceTag } from './bits';
+import { OralList } from '../pages/pages';
+import { MODULES } from '../../content/modules';
 import { canSpeak, speak, stopSpeaking } from '../speech';
 
 import { VisualHost } from '../../visual/VisualHost';
-
-const FEEDBACK: { v: StepFeedback; label: string }[] = [
-  { v: 'chiaro', label: 'chiaro' },
-  { v: 'veloce', label: 'troppo veloce' },
-  { v: 'lento', label: 'troppo lento' },
-  { v: 'confuso', label: 'non ho capito' },
-];
 
 /** scena da mostrare al passo i: l'ultima impostata da un passo precedente (o la scena iniziale della lezione) */
 export function visualAt(lesson: Lesson, i: number): LessonVisual | null {
@@ -55,31 +49,6 @@ function SpeakButton({ text }: { text: string }) {
     >
       {on ? '■ ferma la voce' : '▶ ascolta'}
     </button>
-  );
-}
-
-function Feedback({ concept, stepId }: { concept: string; stepId: string }) {
-  const { state, update } = useApp();
-  const cur = state.lessons?.[concept]?.feedback[stepId];
-  const [note, setNote] = useState(cur?.note ?? '');
-  return (
-    <div className="lesson-fb">
-      <span className="small muted">Com&apos;era questo passo?</span>
-      {FEEDBACK.map((f) => (
-        <button key={f.v} className={`chip ${cur?.v === f.v ? 'on' : ''}`} onClick={() => update((s) => lessonFeedback(s, concept, stepId, f.v, note))}>
-          {f.label}
-        </button>
-      ))}
-      {(cur?.v === 'confuso' || cur?.v === 'veloce') && (
-        <textarea
-          className="lesson-note"
-          placeholder="Cosa non è chiaro? (facoltativo: lo leggo e correggo la lezione)"
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-          onBlur={() => cur && update((s) => lessonFeedback(s, concept, stepId, cur.v, note))}
-        />
-      )}
-    </div>
   );
 }
 
@@ -242,7 +211,6 @@ function StepView({ lesson, step, index, active, wasDone, review, onComplete }: 
           )}
         </>
       )}
-      {(active || wasDone) && <Feedback concept={lesson.concept} stepId={step.id} />}
     </section>
   );
 }
@@ -284,12 +252,12 @@ export function LessonPage({ id }: { id: string }) {
   return (
     <div className={`lesson mod-${c.module}`}>
       <header className="lesson-head">
-        <a href={`#/concetto/${id}`} className="small">
-          ← scheda «{c.title}»
+        <a href={`#/modulo/${c.module}`} className="small">
+          ← {MODULES.find((m) => m.id === c.module)?.title ?? 'Modulo'}
         </a>
         <h1>{lesson.title}</h1>
         <div className="lesson-meta small muted">
-          Lezione guidata · circa {lesson.minutes} minuti · <SourceTag source={lesson.source} />
+          Lezione · circa {lesson.minutes} minuti · <SourceTag source={lesson.source} />
           {review && <span className="badge-review">ripasso: le derivazioni le ricavi tu</span>}
         </div>
         <div className="lesson-progress" aria-label={`passo ${cur + 1} di ${lesson.steps.length}`}>
@@ -316,20 +284,27 @@ export function LessonPage({ id }: { id: string }) {
                   </button>
                 ) : (
                   <p className="verdict ok">
-                    <strong>Lezione completata.</strong> Ora fissala con le domande della scheda e provala a voce.
+                    <strong>Lezione completata.</strong> Ora fissala: rispondi a memoria alle domande qui sotto, poi prova a spiegarla a voce.
                   </p>
                 )}
+                {state.lessons?.[id]?.doneAt && (
+                  <section className="card lesson-after">
+                    <h3>Mettiti alla prova</h3>
+                    <p className="small muted">Rispondi senza tornare su: richiamare a memoria è ciò che fissa la lezione. Queste domande torneranno nel ripasso dei prossimi giorni.</p>
+                    {c.recall.map((q) => (
+                      <RecallCard key={q.id} q={q} concept={c} onAnswer={(correct, grade) => update((s) => addRecall(s, { qid: q.id, conceptId: c.id, at: new Date().toISOString(), correct, grade }))} />
+                    ))}
+                    {orals.length > 0 && (
+                      <>
+                        <h3>All&apos;orale ti possono chiedere</h3>
+                        <OralList list={orals} />
+                      </>
+                    )}
+                  </section>
+                )}
                 <div className="lesson-links">
-                  <a className="button" href={`#/concetto/${id}`}>
-                    Domande della scheda
-                  </a>
-                  {orals[0] && (
-                    <a className="button" href={`#/orale/${orals[0].id}`}>
-                      Spiegalo a voce
-                    </a>
-                  )}
                   {nextLesson && (
-                    <a className="button" href={`#/lezione/${nextLesson.concept}`}>
+                    <a className="button primary" href={`#/lezione/${nextLesson.concept}`}>
                       Lezione successiva →
                     </a>
                   )}

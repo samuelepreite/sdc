@@ -1,11 +1,11 @@
 // @vitest-environment jsdom
-/** Lezione guidata (interfaccia): si avanza solo completando il passo; derivazione con «prova tu»; giudizi e fine. */
+/** Lezione (interfaccia): si avanza solo completando il passo; derivazione con «prova tu»; a fine lezione domande e orale. */
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import { render, screen, fireEvent, cleanup, act } from '@testing-library/react';
 import { StateProvider, useApp } from '../src/ui/state';
 import { LessonPage, visualAt } from '../src/ui/components/Lesson';
 import { OralRunner } from '../src/ui/pages/orale';
-import { ALL_LESSONS, getLesson } from '../src/content/lezioni';
+import { ALL_LESSONS } from '../src/content/lezioni';
 import { ALL_ORALI } from '../src/content/orale';
 import { defaultState, type AppState } from '../src/storage/store';
 import { mdToSpeech } from '../src/ui/speech';
@@ -30,41 +30,44 @@ describe('lezione guidata', () => {
   it('ogni passo di ogni lezione ha una scena (eredita l\'ultima impostata)', () => {
     for (const l of ALL_LESSONS) for (let i = 0; i < l.steps.length; i++) expect(visualAt(l, i), `${l.concept} passo ${i}`).not.toBeNull();
   });
-  it('c1.1: giudizio salvato, domanda che blocca «Avanti», fine lezione → concetto studiato', () => {
-    const l = getLesson('c1.1')!;
-    mount(<LessonPage id="c1.1" />);
-    expect(screen.getByRole('heading', { name: l.title })).toBeTruthy();
-    fireEvent.click(screen.getAllByRole('button', { name: 'chiaro' })[0]);
-    expect(probe!.lessons['c1.1'].feedback['l11-1'].v).toBe('chiaro');
-    for (let i = 0; i < 5; i++) fireEvent.click(avanti()); // fino alla domanda (passo 6)
-    expect(screen.queryByRole('button', { name: /^Avanti$/ })).toBeNull();
-    fireEvent.click(screen.getByText(/prima il tensore sul versore/));
-    expect(probe!.recall.some((r) => r.qid === 'lezione:l11-q1' && r.correct)).toBe(true);
-    fireEvent.click(avanti());
-    fireEvent.click(avanti());
-    fireEvent.click(screen.getByRole('button', { name: 'Ho finito la lezione' }));
-    expect(probe!.lessons['c1.1'].doneAt).toBeDefined();
-    expect(screen.getByRole('link', { name: 'Spiegalo a voce' })).toBeTruthy();
-  });
-  it('c1.2: derivazione con «prova tu» prima del passaggio chiave', () => {
-    mount(<LessonPage id="c1.2" />);
-    fireEvent.click(avanti());
-    fireEvent.click(screen.getByRole('button', { name: 'Cominciamo' }));
-    expect(screen.queryByRole('button', { name: /^Avanti$/ })).toBeNull();
-    for (let g = 0; g < 10; g++) {
-      const opt = document.querySelector('.lesson-step.active .deriv-next .option:not([disabled])') as HTMLButtonElement | null;
-      if (opt) {
-        fireEvent.click(opt);
-        fireEvent.click(screen.getByRole('button', { name: 'Scrivi il passaggio' }));
-        continue;
+  it('ogni lezione si percorre fino in fondo: «Avanti» bloccato finché il passo non è completo; a fine lezione domande e orale', () => {
+    for (const l of ALL_LESSONS) {
+      const { unmount } = mount(<LessonPage id={l.concept} />);
+      expect(screen.getByRole('heading', { name: l.title })).toBeTruthy();
+      expect(screen.queryByRole('button', { name: 'chiaro' })).toBeNull(); // niente più giudizi sui passi
+      for (let i = 0; i < l.steps.length; i++) {
+        const st = l.steps[i];
+        const act = () => document.querySelector('.lesson-step.active') as HTMLElement;
+        if (st.kind === 'domanda') {
+          expect(screen.queryByRole('button', { name: /^Avanti$/ }), `${l.concept} ${st.id}`).toBeNull();
+          const q = st.q;
+          if (q.kind === 'vf') fireEvent.click([...act().querySelectorAll('.recall .seg button')].find((b) => b.textContent === (q.answer ? 'Vero' : 'Falso'))!);
+          else if (q.kind === 'scelta') fireEvent.click(act().querySelectorAll('.recall .options button')[q.correct]);
+          else {
+            fireEvent.click([...act().querySelectorAll('button')].find((b) => /mostra la risposta/.test(b.textContent ?? ''))!);
+            fireEvent.click([...act().querySelectorAll('button')].find((b) => b.textContent === 'Bene')!);
+          }
+          expect(probe!.recall.some((r) => r.qid === `lezione:${q.id}` && r.correct), `${l.concept} ${q.id}`).toBe(true);
+        }
+        if (st.kind === 'derivazione') {
+          for (let g = 0; g < 200; g++) {
+            const opt = act().querySelector('.deriv-next .option:not([disabled])') as HTMLButtonElement | null;
+            const btn = [...act().querySelectorAll('.deriv-next button')].find((b) => /^(Cominciamo|Passaggio successivo|Scrivi il passaggio)$/.test(b.textContent ?? '')) as HTMLButtonElement | undefined;
+            if (opt) fireEvent.click(opt);
+            else if (btn) fireEvent.click(btn);
+            else break;
+          }
+          expect(act().querySelectorAll('.deriv-line').length, `${l.concept} ${st.id}`).toBe(st.der.lines.length);
+        }
+        if (i < l.steps.length - 1) fireEvent.click(avanti());
       }
-      const nx = screen.queryByRole('button', { name: 'Passaggio successivo' });
-      if (nx) fireEvent.click(nx);
-      else break;
+      fireEvent.click(screen.getByRole('button', { name: 'Ho finito la lezione' }));
+      expect(probe!.lessons[l.concept].doneAt, l.concept).toBeDefined();
+      expect(screen.getByRole('heading', { name: 'Mettiti alla prova' })).toBeTruthy();
+      expect(document.querySelectorAll('.lesson-after .recall').length).toBeGreaterThan(0);
+      unmount();
     }
-    expect(document.querySelectorAll('.lesson-step.active .deriv-line').length).toBe(getLesson('c1.2')!.steps[1].kind === 'derivazione' ? 3 : -1);
-    expect(avanti()).toBeTruthy();
-  });
+  }, 120000);
   it('la voce legge le formule della notazione in parole', () => {
     expect(mdToSpeech('$\\tens A\\vet v$')).toContain('tensore A');
     expect(mdToSpeech('$\\operatorname{tr}\\tens A = 0$')).toContain('traccia di');

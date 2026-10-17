@@ -1,8 +1,8 @@
 import { useMemo, useRef, useState } from 'react';
-import { ALL_CONCEPTS, conceptIdsByModule, conceptsOf, getConcept } from '../../content';
+import { ALL_CONCEPTS, conceptIdsByModule, conceptsOf } from '../../content';
 import { MODULES } from '../../content/modules';
 import { ALL_LESSONS, getLesson } from '../../content/lezioni';
-import { ALL_ORALI, oralsOfConcept } from '../../content/orale';
+import { ALL_ORALI } from '../../content/orale';
 import type { Concept } from '../../content/types';
 import { masteryByConcept, MASTERY_OK } from '../../learning/mastery';
 import { dueCards } from '../../learning/srs';
@@ -13,7 +13,6 @@ import { go, useApp } from '../state';
 import { Collapsible, Progress } from '../components/bits';
 import { RecallCard } from '../components/RecallCard';
 import { Icon } from '../components/Icon';
-import { ConceptFull, GuidedConcept } from '../components/Guided';
 import { Inline } from '../components/Tex';
 import { OralRunner } from './orale';
 import { daysBetween, parseLocalDate } from '../../learning/dates';
@@ -308,7 +307,7 @@ export function Session() {
         <section className={`card lesson-cta mod-${cur.c.module}`}>
           <div>
             <h3>{getLesson(cur.c.id)?.title ?? cur.c.title}</h3>
-            <p className="small muted">Lezione guidata di circa {getLesson(cur.c.id)?.minutes ?? 15} minuti: il professore costruisce il concetto con te.</p>
+            <p className="small muted">Lezione di circa {getLesson(cur.c.id)?.minutes ?? 15} minuti: il professore costruisce il concetto con te, un passo alla volta.</p>
           </div>
           <a className="button primary" href={`#/lezione/${cur.c.id}`}>
             Inizia la lezione
@@ -324,7 +323,7 @@ export function Session() {
   );
 }
 
-// ------------------------------------------------------------------ Modulo e scheda
+// ------------------------------------------------------------------ Modulo
 export function ModulePage({ id }: { id: string }) {
   const { state } = useApp();
   const m = MODULES.find((x) => x.id === id);
@@ -369,7 +368,7 @@ export function ModulePage({ id }: { id: string }) {
               const lesson = getLesson(c.id);
               return (
                 <li key={c.id} className={isStudied(state, c.id) ? 'seen' : ''}>
-                  <a href={`#/concetto/${c.id}`}>
+                  <a href={`#/lezione/${c.id}`}>
                     <span className="cp-title">{c.title}</span>
                     {l?.doneAt ? <span className="tag tag-ok">lezione fatta</span> : l ? <span className="tag">passo {l.step + 1} di {lesson?.steps.length}</span> : lesson ? <span className="tag">{lesson.minutes} min</span> : null}
                     {c.facoltativo && <span className="tag tag-ded">facoltativo</span>}
@@ -416,58 +415,6 @@ export function OralList({ list }: { list: typeof ALL_ORALI }) {
         );
       })}
     </ul>
-  );
-}
-
-export function ConceptPage({ id }: { id: string }) {
-  const { state, update } = useApp();
-  const c = getConcept(id);
-  const [mode, setMode] = useState<'pezzi' | 'intera'>(c && isStudied(state, c.id) ? 'intera' : 'pezzi');
-  if (!c) return <div className="page card">Concetto non trovato.</div>;
-  const lesson = getLesson(id);
-  const ls = state.lessons?.[id];
-  const orals = oralsOfConcept(id);
-  return (
-    <div className={`page mod-${c.module}`}>
-      {c.facoltativo && <p className="callout">Facoltativo: {c.facoltativo}.</p>}
-      {lesson && (
-        <div className="lesson-cta">
-          <div>
-            <h3>Lezione guidata: {lesson.title}</h3>
-            <p className="small muted">
-              Il professore costruisce il concetto con te, passo passo. Circa {lesson.minutes} minuti.
-              {ls?.doneAt ? ' Completata: rifalla come ripasso, ricavando tu le formule.' : ls ? ` Sei al passo ${ls.step + 1} di ${lesson.steps.length}.` : ''}
-            </p>
-          </div>
-          <a className="button primary" href={`#/lezione/${id}`}>
-            {ls?.doneAt ? 'Ripassa' : ls ? 'Riprendi' : 'Inizia la lezione'}
-          </a>
-        </div>
-      )}
-      <div className="seg small-seg" role="group" aria-label="Modo di lettura">
-        <button className={mode === 'pezzi' ? 'on' : ''} onClick={() => setMode('pezzi')}>
-          Scheda a pezzi
-        </button>
-        <button className={mode === 'intera' ? 'on' : ''} onClick={() => setMode('intera')}>
-          Scheda intera
-        </button>
-      </div>
-      {mode === 'pezzi' ? <GuidedConcept key={c.id} c={c} onFinish={() => setMode('intera')} /> : <ConceptFull c={c} />}
-      {mode === 'intera' && (
-        <section className="card">
-          <h3>Mettiti alla prova</h3>
-          {c.recall.map((q) => (
-            <RecallCard key={q.id} q={q} concept={c} onAnswer={(correct, grade) => update((s) => addRecall(s, { qid: q.id, conceptId: c.id, at: new Date().toISOString(), correct, grade }))} />
-          ))}
-          {orals.length > 0 && (
-            <>
-              <h3>All&apos;orale ti possono chiedere</h3>
-              <OralList list={orals} />
-            </>
-          )}
-        </section>
-      )}
-    </div>
   );
 }
 

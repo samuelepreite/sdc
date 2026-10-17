@@ -34,7 +34,7 @@ export interface ConceptState {
   ownWords?: string;
 }
 
-/** Giudizio dello studente su un passo di una lezione guidata (serve a tarare le lezioni). */
+/** Giudizio su un passo di lezione: non si raccoglie più (ottobre 2026); il tipo resta per leggere i dati vecchi e sincronizzarli. */
 export type StepFeedback = 'chiaro' | 'veloce' | 'lento' | 'confuso';
 export interface LessonState {
   /** indice del passo più avanzato raggiunto */

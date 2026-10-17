@@ -135,12 +135,11 @@ def run(scheme, width, shader_fail=False):
 
         for r in ['', 'moduli', 'orale', 'simulatore', 'mappa', 'progressi', 'piano', 'fonti', 'impostazioni', 'altro', 'sessione'] + [f'modulo/m{i}' for i in range(1, 9)] + [f'concetto/{c}' for c in CONCEPTS]:
             visit(r)
-        # scheda intera con modelli e diagrammi
-        for c in CONCEPTS:
-            visit(f'concetto/{c}')
-            page.click('button:has-text("Scheda intera")')
-            page.wait_for_timeout(400)
-            check(overflow(page) <= 1, f'{scheme} {width}: scorrimento orizzontale nella scheda intera {c}')
+        # le vecchie schede non esistono più: #/concetto/… apre la lezione
+        for c in CONCEPTS[:3]:
+            visit(f'concetto/{c}', 400)
+            check(page.locator('.lesson-step').count() >= 1, f'#/concetto/{c} non apre la lezione')
+            check(page.locator('button:has-text("Scheda intera")').count() == 0, f'#/concetto/{c}: resta la scheda')
         # lezioni complete
         for c in WALKED:
             visit(f'lezione/{c}', 600)

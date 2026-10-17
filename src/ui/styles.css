@@ -2337,6 +2337,16 @@ main.wide {
   line-height: 1.68;
   margin: 0 0 12px;
 }
+.prof ul,
+.prof ol {
+  margin: 0 0 12px;
+  padding-left: 1.3em;
+}
+.prof li {
+  font-size: 1.02rem;
+  line-height: 1.62;
+  margin: 5px 0;
+}
 .prof .tex-display {
   margin: 10px 0 14px;
 }
@@ -2429,36 +2439,13 @@ main.wide {
   margin: 4px 0;
   line-height: 1.5;
 }
-.lesson-fb {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--line);
+.lesson-after {
+  display: grid;
+  gap: 12px;
+  margin: 0;
 }
-.lesson-fb .chip {
-  min-height: 28px;
-  padding: 2px 10px;
-  font-size: 0.8rem;
-  border-radius: 99px;
-}
-.lesson-fb .chip.on {
-  background: var(--mod, var(--accent));
-  border-color: var(--mod, var(--accent));
-  color: #fff;
-}
-.lesson-note {
-  flex-basis: 100%;
-  min-height: 56px;
-  font: inherit;
-  font-size: 0.9rem;
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--ink);
+.lesson-after h3 {
+  margin: 8px 0 0;
 }
 .lesson-nav {
   display: flex;

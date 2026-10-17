@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { StateProvider, useRoute, useApp } from './state';
-import { Altro, ConceptPage, Fonti, Home, ModulePage, ModuliPage, Session, Settings } from './pages/pages';
+import { Altro, Fonti, Home, ModulePage, ModuliPage, Session, Settings } from './pages/pages';
 import { OraleIndex, OralePage } from './pages/orale';
 import { Piano, Progressi } from './pages/progressi';
 import { Mappa } from './pages/mappa';
@@ -147,7 +147,7 @@ function Router() {
     case 'modulo':
       return <ModulePage key={b} id={b ?? 'm1'} />;
     case 'concetto':
-      return <ConceptPage key={b} id={b ?? ''} />;
+      return <LessonPage key={b} id={b ?? ''} />;
     case 'lezione':
       return <LessonPage key={b} id={b ?? ''} />;
     case 'orale':

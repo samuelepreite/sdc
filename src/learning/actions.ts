@@ -2,7 +2,7 @@
  * Transizioni di stato dell'app (pure): registrano un evento e aggiornano la ripetizione distanziata.
  * La UI chiama solo queste funzioni, così la logica è testabile senza interfaccia.
  */
-import type { AppState, OralLog, RecallLog, StepFeedback } from '../storage/store';
+import type { AppState, OralLog, RecallLog } from '../storage/store';
 import { getOral } from '../content/orale';
 import { rebuildSrs, scheduleOral, scheduleRecall } from './srs';
 
@@ -30,7 +30,7 @@ export function markStudied(s: AppState, conceptId: string, ownWords?: string): 
   return { ...s, concepts: { ...s.concepts, [conceptId]: { ...prev, theorySeenAt: prev.theorySeenAt ?? new Date().toISOString(), ownWords: ownWords ?? prev.ownWords } } };
 }
 
-/** Lezione guidata: avanza al passo `step` (non torna indietro); a fine lezione il concetto risulta studiato */
+/** Lezione: avanza al passo `step` (non torna indietro); a fine lezione il concetto risulta studiato */
 export function lessonStep(s: AppState, conceptId: string, step: number, done = false): AppState {
   const now = new Date().toISOString();
   const prev = s.lessons?.[conceptId] ?? { step: 0, startedAt: now, feedback: {} };
@@ -39,9 +39,3 @@ export function lessonStep(s: AppState, conceptId: string, step: number, done = 
   return done ? markStudied(out, conceptId) : out;
 }
 
-/** Lezione guidata: giudizio dello studente su un passo */
-export function lessonFeedback(s: AppState, conceptId: string, stepId: string, v: StepFeedback, note?: string): AppState {
-  const now = new Date().toISOString();
-  const prev = s.lessons?.[conceptId] ?? { step: 0, startedAt: now, feedback: {} };
-  return { ...s, lessons: { ...(s.lessons ?? {}), [conceptId]: { ...prev, feedback: { ...prev.feedback, [stepId]: { v, note: note?.trim() || undefined, at: now } } } } };
-}
