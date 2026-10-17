@@ -108,7 +108,7 @@ Questo vettore si chiama **vettore tensione** relativo alla giacitura $\\hat n$.
 $$\\lim_{\\operatorname{diam}\\Delta A\\to0}\\frac{\\Delta\\vet M}{\\Delta A}=\\vet 0.$$
 In parole: **a livello infinitesimo il momento interno è trascurabile**, e nel punto resta solo il vettore tensione.
 
-Escludere i momenti interni basta quasi sempre. Quando non basta servono i **continui polari** dei fratelli Cosserat: in essi ogni punto, oltre a traslare, può anche ruotare, e le sue rotazioni generano dei **micromomenti**. L'esempio della dispensa è la **muratura**, in cui i giunti tra i mattoni danno al materiale una struttura interna direzionale. Il prezzo da pagare è una complessità matematica molto maggiore; nel corso non li useremo.`,
+Escludere i momenti interni basta quasi sempre. Quando non basta servono i **continui polari** dei fratelli Cosserat: in essi ogni punto, oltre a traslare, può anche ruotare, e le sue rotazioni generano dei **micromomenti**. L'esempio della dispensa è la **muratura**, in cui i giunti tra i mattoni danno al materiale una struttura interna direzionale. Il prezzo da pagare è una complessità matematica maggiore; la dispensa non li sviluppa.`,
       },
       {
         id: 'l31-8',
@@ -131,14 +131,14 @@ C'è anche un fatto pratico che vale la pena dire all'orale: **non esiste un «t
 
 **Prima: conta solo la giacitura.** Per il punto $x$ possono passare superfici diverse, anche curve, purché abbiano in $x$ la stessa normale $\\hat n$: il vettore tensione in $x$ è lo stesso per tutte. Questo è il motivo per cui possiamo sempre ragionare con un piano: di una superficie qualunque, nel punto, conta solo il piano tangente.
 
-**Seconda: giaciture diverse danno, in generale, vettori diversi.** Se giri il piano attorno a $x$, cambia $\\hat n$ e cambia $\\vet t_n$. Quante giaciture ci sono? Un versore nello spazio si sceglie con due angoli, quindi le giaciture sono $\\infty^2$, e in ogni punto ci sono **$\\infty^2$ vettori tensione**, uno per giacitura. Tienilo a mente: è un'enormità di informazione, e una delle prossime lezioni (Cauchy–Poisson) mostrerà come ridurla.`,
+**Seconda: giaciture diverse danno, in generale, vettori diversi.** Se giri il piano attorno a $x$, cambia $\\hat n$ e cambia $\\vet t_n$. Quante giaciture ci sono? Un versore nello spazio si sceglie con due angoli, quindi le giaciture sono $\\infty^2$, e in ogni punto ci sono **$\\infty^2$ vettori tensione**, uno per giacitura. Tienilo a mente: è un'enormità di informazione, e la lezione «Cauchy–Poisson e il tetraedro» (§3.6–3.7.1) mostrerà come ridurla.`,
       },
       {
         id: 'l31-11',
         kind: 'prova',
         title: 'Cambia giacitura e guarda il vettore tensione',
         md: `Nel modello vedi il piano $\\pi$ per il punto, la sua normale $\\hat n$ e il vettore tensione $\\vet t_n$, disegnato in arancio. Con i cursori «inclinazione» e «azimut» scegli la giacitura.`,
-        tasks: [`Con «esercizio §3.14» muovi inclinazione e azimut: $\\vet t_n$ cambia direzione e lunghezza. Sono gli $\\infty^2$ vettori tensione del punto (§3.2.3).`, `Scegli «trazione semplice»: qualunque piano tu scelga, $\\vet t_n$ resta parallelo all'asse x. Cambia solo la sua lunghezza.`, `Scegli «idrostatico»: $\\vet t_n$ è sempre diretto lungo $\\hat n$, cioè perpendicolare al piano. Su questo caso torneremo nella lezione sulle tensioni principali.`],
+        tasks: [`Con «esercizio §3.14» muovi inclinazione e azimut: $\\vet t_n$ cambia direzione e lunghezza. Sono gli $\\infty^2$ vettori tensione del punto (§3.2.3).`, `Scegli «trazione semplice»: qualunque piano tu scelga, $\\vet t_n$ resta parallelo all'asse x. Cambia solo la sua lunghezza.`, `Scegli «idrostatico»: $\\vet t_n$ è sempre diretto lungo $\\hat n$, cioè perpendicolare al piano. Su questo caso torneremo nella lezione «Tensioni principali e stati di tensione» (§3.11.2).`],
         visual: ST({ mode: 'taglio', preset: 'esercizio', presets: ['esercizio', 'trazione', 'idrostatico', 'generico'], controls: ['preset', 'dir'] }),
       },
       {
@@ -268,7 +268,7 @@ Un caso particolare merita attenzione: se prendi come parte **tutto il corpo**, 
 
 L'esempio della dispensa è un **compasso**. Applica agli estremi delle due gambe due forze uguali, opposte e sulla stessa retta, che tendono ad allontanare le punte. La risultante è nulla, perché le forze sono opposte; il momento è nullo, perché sono sulla stessa retta e quindi non formano una coppia. Le ECS sono soddisfatte. Eppure il compasso **si apre**: non è in equilibrio.
 
-Che cosa non va? Guarda una sola gamba: su di essa agisce una delle due forze, e la cerniera non riesce a bilanciarla perché lascia ruotare. Quella parte non è in equilibrio, e gli assiomi di Eulero, che chiedono l'equilibrio di ogni parte, lo rilevano; le ECS, che guardano solo il tutto, no. Se invece saldi la cerniera, il compasso diventa un corpo rigido e resta fermo: **le ECS bastano solo per il rigido**.`,
+Che cosa non va? Guarda una sola gamba: su di essa agisce una delle due forze, e la cerniera non riesce a bilanciarla perché lascia ruotare. Quella parte non è in equilibrio, e gli assiomi di Eulero, che chiedono l'equilibrio di ogni parte, lo rilevano; le ECS, che guardano solo il tutto, no (deduzione). Se invece saldi la cerniera, il compasso diventa un corpo rigido e resta fermo: **le ECS bastano solo per il rigido**.`,
       },
       {
         id: 'l32-8',
@@ -327,7 +327,7 @@ L'idea della dimostrazione è scrivere l'equilibrio alla traslazione di $\\mathc
 
 Controllalo su un caso semplice (esempio aggiunto): una barra tirata alle due estremità. Fai un taglio trasversale. La parte di destra tira verso destra la parte di sinistra; la parte di sinistra tira verso sinistra quella di destra. Le due forze sono uguali e opposte, ed entrambe le facce sono in **trazione**: la tensione normale $\\sigma_n=\\vet t_n\\cdot\\hat n$ non cambia segno, perché cambiano segno sia $\\vet t_n$ sia $\\hat n$.
 
-Nota infine **che cosa ha fatto il lavoro** nella dimostrazione: non un calcolo, ma l'arbitrarietà della sezione. Lo stesso argomento tornerà più volte nel capitolo, ogni volta che passeremo da un'equazione integrale a un'equazione nel punto. Nella prossima lezione il lemma servirà a trattare le facce del tetraedro di Cauchy.`,
+Nota infine **che cosa ha fatto il lavoro** nella dimostrazione: non un calcolo, ma l'arbitrarietà della sezione. Lo stesso argomento tornerà più volte nel capitolo, ogni volta che passeremo da un'equazione integrale a un'equazione nel punto. Nella lezione «Cauchy–Poisson e il tetraedro» il lemma servirà a trattare le facce del tetraedro di Cauchy (§3.7.1).`,
       },
       {
         id: 'l32-12',
@@ -371,7 +371,7 @@ Nota infine **che cosa ha fatto il lavoro** nella dimostrazione: non un calcolo,
         title: 'Dove siamo e dove andiamo',
         md: `Nelle due lezioni precedenti abbiamo introdotto il vettore tensione $\\vet t_n$ e gli assiomi di Eulero, e ne abbiamo ricavato il lemma di Cauchy, $\\vet t_n=-\\vet t_{-n}$. Ci è rimasto però un problema aperto: in ogni punto ci sono $\\infty^2$ vettori tensione, uno per giacitura. Descrivere lo stato di tensione così sarebbe impraticabile.
 
-Questa lezione presenta il **teorema di Cauchy–Poisson**, che la dispensa chiama il risultato principale della meccanica dei solidi. Ne leggiamo l'enunciato completo, capiamo il significato dei suoi tre punti e dimostriamo il **primo**: esiste un tensore $\\tens T$, il **tensore di tensione**, che manda ogni giacitura nel suo vettore tensione. Lo strumento della dimostrazione è un piccolo tetraedro, il **tetraedro di Cauchy**. Gli altri due punti saranno la lezione successiva.`,
+Questa lezione presenta il **teorema di Cauchy–Poisson**, che la dispensa chiama il risultato principale della meccanica dei solidi. Ne leggiamo l'enunciato completo, capiamo il significato dei suoi tre punti e dimostriamo il **primo**: esiste un tensore $\\tens T$, il **tensore di tensione**, che manda ogni giacitura nel suo vettore tensione. Lo strumento della dimostrazione è un piccolo tetraedro, il **tetraedro di Cauchy**. Gli altri due punti sono l'oggetto della lezione «Equilibrio locale e simmetria» (§3.7.2–3.7.3).`,
       },
       {
         id: 'l33-2',
@@ -383,7 +383,7 @@ Dato un corpo $\\mathcal B$ soggetto a forze di volume $\\vet b$ e di superficie
 
 1. In ogni punto $x$ esiste un tensore $\\tens T(x)\\in\\mathrm{Lin}$ (un'applicazione lineare dai vettori ai vettori) tale che $\\vet t_n(x)=\\tens T(x)\\hat n$ per ogni giacitura $\\hat n$. $\\tens T$ si chiama **tensore di tensione di Cauchy**.
 2. Vale $\\operatorname{div}\\tens T(x)+\\vet b(x)=\\vet 0$ in ogni punto interno, $x\\in\\mathring{\\mathcal B}=\\mathcal B-\\partial\\mathcal B$: sono le **equazioni indefinite di equilibrio**.
-3. $\\tens T$ è **simmetrico**: $\\tens T=\\tens T^T$, cioè $\\tens T\\in\\mathrm{Sym}$.
+3. $\\tens T$ è **simmetrico**: $\\tens T=\\tens T^T$, cioè $\\tens T\\in\\mathrm{Sym}$, l'insieme dei tensori simmetrici.
 
 La dispensa aggiunge un'avvertenza che negli appunti mancava: per la **sufficienza** serve anche l'equilibrio al contorno, $\\tens T\\hat n=\\hat{\\vet s}$ su $\\partial\\mathcal B$, che nel problema elastico comparirà come condizione al contorno.`,
       },
@@ -421,7 +421,7 @@ Per il punto 1 conviene scegliere una parte di forma molto particolare. Vogliamo
         md: `Descriviamo il tetraedro (§3.7.1). Ha un vertice in $x$ e quattro facce:
 
 - tre facce sui piani coordinati per $x$; le loro **normali esterne** sono $-\\hat e_1,-\\hat e_2,-\\hat e_3$ (puntano fuori dal tetraedro, cioè «indietro» rispetto agli assi), e le loro aree sono $A_1,A_2,A_3$;
-- una faccia inclinata, di area $A$ e normale esterna $\\hat n$, con componenti $n_i=\\hat n\\cdot\\hat e_i$ tutte positive.
+- una faccia inclinata, di area $A$ e normale esterna $\\hat n$, con componenti $n_i=\\hat n\\cdot\\hat e_i$, tutte positive perché la faccia guarda verso il primo ottante (deduzione).
 
 Le tre facce coordinate sono le **proiezioni** della faccia inclinata sui piani coordinati. Proiettare un'area su un piano la moltiplica per il coseno dell'angolo tra le due normali, e quel coseno è proprio $\\hat e_i\\cdot\\hat n=n_i$. Quindi
 $$A_i=A\\,(\\hat e_i\\cdot\\hat n)=A\\,n_i\\qquad\\Longrightarrow\\qquad\\frac{n_i}{A_i}=\\frac1A.$$
@@ -446,7 +446,7 @@ Nel modello a destra la faccia inclinata ha la normale che scegli con i cursori.
           lines: [
             { tex: '\\int_\\Delta\\vet b\\,dV+\\int_A\\vet t_n\\,dA+\\sum_{i=1}^3\\int_{A_i}\\vet t_{-e_i}\\,dA_i=\\vet 0', why: `È l'assioma di Eulero $\\vet r=\\vet 0$ per il tetraedro $\\Delta$, che è una parte interna. Nel volume agisce $\\vet b$; sulla faccia inclinata agisce il vettore tensione della sua normale esterna $\\hat n$; su ciascuna faccia coordinata quello della normale esterna $-\\hat e_i$.` },
             { tex: '\\frac1A\\int_\\Delta\\vet b\\,dV+\\frac1A\\int_A\\vet t_n\\,dA+\\sum_{i=1}^3\\frac1A\\int_{A_i}\\vet t_{-e_i}\\,dA_i=\\vet 0', why: `Abbiamo diviso ogni termine per l'area $A$ della faccia inclinata. È lecito perché $A>0$, e serve perché nel limite vogliamo ottenere forze per unità di area, cioè vettori tensione.`, aggiunto: true },
-            { tex: '\\frac1A\\int_\\Delta\\vet b\\,dV+\\frac1A\\int_A\\vet t_n\\,dA-\\sum_{i=1}^3\\frac1A\\int_{A_i}\\vet t_{e_i}\\,dA_i=\\vet 0', why: `Abbiamo usato il lemma di Cauchy della lezione precedente: $\\vet t_{-e_i}=-\\vet t_{e_i}$. Il segno meno esce dall'integrale e cambia il «più» della somma in un «meno». Così compaiono i vettori tensione sulle giaciture coordinate positive.`, aggiunto: true },
+            { tex: '\\frac1A\\int_\\Delta\\vet b\\,dV+\\frac1A\\int_A\\vet t_n\\,dA-\\sum_{i=1}^3\\frac1A\\int_{A_i}\\vet t_{e_i}\\,dA_i=\\vet 0', why: `Abbiamo usato il lemma di Cauchy (Teo 3.5.1): $\\vet t_{-e_i}=-\\vet t_{e_i}$. Il segno meno esce dall'integrale e cambia il «più» della somma in un «meno». Così compaiono i vettori tensione sulle giaciture coordinate positive.`, aggiunto: true },
             { tex: '\\frac1A\\int_\\Delta\\vet b\\,dV+\\frac1A\\int_A\\vet t_n\\,dA-\\sum_{i=1}^3\\frac{n_i}{A_i}\\int_{A_i}\\vet t_{e_i}\\,dA_i=\\vet 0', why: `Abbiamo sostituito $\\frac1A=\\frac{n_i}{A_i}$, che viene da $A_i=An_i$. Lo scopo è avere ogni integrale diviso per l'area della **propria** faccia: $\\frac1{A_i}\\int_{A_i}\\vet t_{e_i}\\,dA_i$ è la media di $\\vet t_{e_i}$ su quella faccia.` },
             {
               tex: '\\frac1A\\int_\\Delta\\vet b\\,dV=O(d)\\ \\longrightarrow\\ \\vet 0',
@@ -469,7 +469,7 @@ Nel modello a destra la faccia inclinata ha la normale che scegli con i cursori.
         title: 'Che cosa dice il risultato, e un controllo',
         md: `Rileggiamo a parole: **il vettore tensione su una giacitura qualunque è una combinazione dei tre vettori tensione sulle giaciture coordinate, pesata con le componenti della normale**, $\\vet t_n=\\sum_i\\vet t_{e_i}n_i$. Siccome la dipendenza da $\\hat n$ è lineare, c'è un tensore che la rappresenta: $\\vet t_n=\\tens T\\hat n$.
 
-Controllo su un caso particolare: prendi $\\hat n=\\hat e_1$. Allora $n_1=1$, $n_2=n_3=0$, e la formula dà $\\vet t_{e_1}=\\vet t_{e_1}$: nessuna contraddizione. E in componenti $\\tens T\\hat e_1$ è la prima colonna della matrice: **la colonna $j$ della matrice di $\\tens T$ è il vettore tensione sulla giacitura $\\hat e_j$**, $T_{ij}=(\\vet t_{e_j})_i$. È la stessa regola del Modulo 1 per qualunque tensore, $A_{ij}=\\tens A\\hat e_j\\cdot\\hat e_i$.
+Controllo su un caso particolare (esempio aggiunto): prendi $\\hat n=\\hat e_1$. Allora $n_1=1$, $n_2=n_3=0$, e la formula dà $\\vet t_{e_1}=\\vet t_{e_1}$: nessuna contraddizione. E in componenti $\\tens T\\hat e_1$ è la prima colonna della matrice: **la colonna $j$ della matrice di $\\tens T$ è il vettore tensione sulla giacitura $\\hat e_j$**, $T_{ij}=(\\vet t_{e_j})_i$. È la stessa regola del Modulo 1 per qualunque tensore $\\tens A$ (qui un tensore generico, non l'area $A$ della faccia inclinata): $A_{ij}=\\tens A\\hat e_j\\cdot\\hat e_i$ (Def 1.2.2).
 
 Ecco perché il risultato è **operativo**: tre vettori, cioè nove numeri, sostituiscono gli $\\infty^2$ vettori tensione del punto. Tutti i calcoli delle prossime lezioni partono da qui.`,
       },
@@ -493,7 +493,7 @@ Ecco perché il risultato è **operativo**: tre vettori, cioè nove numeri, sost
         md: `Tre errori tipici su questa dimostrazione.
 
 1. **Dimenticare il lemma di Cauchy.** Sulle facce coordinate la normale esterna è $-\\hat e_i$, quindi agisce $\\vet t_{-e_i}$, non $\\vet t_{e_i}$. Senza il lemma, $\\vet t_{-e_i}=-\\vet t_{e_i}$, i segni non tornano e i vettori tensione sulle giaciture coordinate non compaiono.
-2. **Credere che le forze di volume contino nel limite.** Decrescono come $d^3$, contro il $d^2$ delle superfici: divise per l'area, tendono a zero. Questa è anche la ragione per cui la tensione si può definire punto per punto.
+2. **Credere che le forze di volume contino nel limite.** Decrescono come $d^3$, contro il $d^2$ delle superfici: divise per l'area, tendono a zero.
 3. **Scambiare righe e colonne.** Nel tetraedro la colonna $j$ della matrice di $\\tens T$ è $\\vet t_{e_j}$: $T_{ij}=(\\vet t_{e_j})_i$. Nella dimostrazione della simmetria la dispensa userà la convenzione per righe (nota NF-06); vedremo che per un tensore simmetrico la differenza non conta.`,
       },
       {
@@ -579,7 +579,7 @@ Un caso particolare per controllare (esempio aggiunto): se le forze di volume so
 
 **Perché nell'interno $\\mathring{\\mathcal B}$.** Le derivate sono limiti di **rapporti incrementali**: per derivare in un punto bisogna potersi spostare un poco in tutte le direzioni. Sulla frontiera non si può incrementare verso l'esterno, perché lì il corpo finisce; all'interno sì, senza limitazioni. Sulla frontiera vale invece l'equilibrio al contorno $\\tens T\\hat n=\\hat{\\vet s}$, che abbiamo incontrato nell'enunciato.
 
-**div o Div.** Con il minuscolo si indica la divergenza fatta nella configurazione **attuale**, con il maiuscolo quella fatta nella configurazione di **riferimento** (Cap. 2). L'equilibrio, in generale, va scritto nella configurazione attuale: è lì che il corpo si trova quando le forze agiscono. Se però spostamenti e deformazioni sono piccoli, $\\|\\tens H\\|\\ll1$ e $|\\vet u|\\ll1$, vale l'**equilibrio referenziale** del capitolo 2 e la differenza è trascurabile. La dispensa scrive comunque il minuscolo, per ricordare la regola generale.`,
+**div o Div.** Con il minuscolo si indica la divergenza fatta nella configurazione **attuale**, con il maiuscolo quella fatta nella configurazione di **riferimento** (Cap. 2). L'equilibrio, in generale, va scritto nella configurazione attuale: è lì che il corpo si trova quando le forze agiscono. Se però spostamenti e deformazioni sono piccoli, cioè $\\|\\tens H\\|\\ll1$ per il gradiente di spostamento $\\tens H$ e $|\\vet u|\\ll1$ per lo spostamento $\\vet u$, vale l'**equilibrio referenziale** del capitolo 2 e la differenza è trascurabile. La dispensa scrive comunque il minuscolo, per ricordare la regola generale.`,
       },
       {
         id: 'l34-3q',
@@ -592,7 +592,7 @@ Un caso particolare per controllare (esempio aggiunto): se le forze di volume so
         title: 'Punto 3: perché un parallelepipedo',
         md: `Passiamo all'equilibrio alla **rotazione**. Questa volta la dispensa non usa il teorema della divergenza, ma una parte di forma comoda: un **parallelepipedo infinitesimo** con spigoli $dx_1,dx_2,dx_3$ paralleli agli assi e un vertice in $x$ (§3.7.3). Le sue facce hanno normali $\\pm\\hat e_1,\\pm\\hat e_2,\\pm\\hat e_3$, quindi su ciascuna agiscono vettori tensione di giaciture coordinate, le cui componenti sono proprio i $T_{ij}$.
 
-Gli assiomi chiedono momento nullo rispetto a ogni polo. La dispensa impone che sia nullo il **momento assiale** rispetto a tre assi ortogonali per un punto. Basta, perché quando la risultante è nulla il momento non dipende dal polo, e un vettore con tre componenti nulle è nullo (passaggio aggiunto). Come assi sceglie $u,v,w$ che passano per il **baricentro** $G$ del parallelepipedo e sono paralleli agli spigoli.
+Gli assiomi chiedono momento nullo rispetto a ogni polo. La dispensa impone che sia nullo il **momento assiale** rispetto a tre assi ortogonali per un punto. Basta, perché quando la risultante è nulla il momento non dipende dal polo, e un vettore con tre componenti nulle è nullo (passaggio aggiunto). Come assi sceglie $u,v,w$ che passano per il **baricentro** $G$ del parallelepipedo e sono paralleli agli spigoli. Attenzione: qui $u$ è il nome di un asse, da non confondere con lo spostamento $\\vet u$ citato a proposito di div e Div.
 
 Una nota sulla notazione. Qui la dispensa scrive $T_{ij}=\\vet t_{e_i}\\cdot\\hat e_j$: **primo indice la giacitura, secondo la direzione**. Nel tetraedro avevamo $T_{ij}=(\\vet t_{e_j})_i$, per colonne. È la nota NF-06: per un tensore simmetrico, che è proprio ciò che stiamo per dimostrare, le due letture coincidono.`,
       },
@@ -604,7 +604,7 @@ Una nota sulla notazione. Qui la dispensa scrive $T_{ij}=\\vet t_{e_i}\\cdot\\ha
 
 - Le **forze di volume** hanno risultante $\\vet b\\,dx_1dx_2dx_3$ applicata in $G$: passano per l'asse, momento nullo.
 - Sulla faccia di normale $-\\hat e_i$, quella che contiene $x$, agiscono le componenti $-T_{ij}$ (lemma di Cauchy). Sulla faccia opposta, di normale $+\\hat e_i$ e a distanza $dx_i$, la tensione è cambiata di poco: le componenti sono $T_{ij}+\\frac{\\partial T_{ij}}{\\partial x_i}dx_i$, cioè il valore in $x$ più la sua variazione al primo ordine.
-- Sulle facce $\\pm\\hat e_1$, perpendicolari all'asse, le forze hanno la retta d'azione che incontra l'asse oppure gli è parallela: momento nullo.
+- Sulle facce $\\pm\\hat e_1$, perpendicolari all'asse, le forze sono applicate nei baricentri delle facce, che stanno sull'asse $u$: momento nullo.
 - Restano le facce $\\pm\\hat e_2$ e $\\pm\\hat e_3$. Su di esse le componenti lungo $\\hat e_1$ sono parallele all'asse e le componenti normali passano per l'asse: niente momento. Danno momento solo le **tangenziali** $T_{23}$, sulle facce $\\pm\\hat e_2$ in direzione $\\hat e_3$, e $T_{32}$, sulle facce $\\pm\\hat e_3$ in direzione $\\hat e_2$.
 
 Ognuna di queste forze ha braccio metà spigolo, perché l'asse passa per il baricentro.`,
@@ -618,9 +618,9 @@ Ognuna di queste forze ha braccio metà spigolo, perché l'asse passa per il bar
         der: {
           lines: [
             { tex: '\\Big[\\Big(T_{23}+\\frac{\\partial T_{23}}{\\partial x_2}dx_2\\Big)dx_1dx_3+T_{23}\\,dx_1dx_3\\Big]\\frac{dx_2}2', why: `Facce $\\pm\\hat e_2$, di area $dx_1dx_3$. La componente lungo $\\hat e_3$ sulla faccia lontana è $T_{23}$ più il suo incremento, su quella che contiene $x$ è $-T_{23}$; le due forze sono opposte e stanno da parti opposte dell'asse, a distanza $dx_2/2$, quindi i loro momenti si sommano con lo stesso segno.` },
-            { tex: '\\simeq T_{23}\\,dx_1dx_2dx_3', aggiunto: true, why: `Abbiamo sviluppato il prodotto e trascurato il termine con la derivata: vale $\\frac{\\partial T_{23}}{\\partial x_2}\\frac{dx_2^2}{2}dx_1dx_3$, che contiene quattro fattori infinitesimi invece di tre, ed è quindi un infinitesimo di ordine superiore rispetto a $dV=dx_1dx_2dx_3$. I due termini $T_{23}\\,dx_1dx_3\\,\\frac{dx_2}2$ si sommano.` },
+            { tex: '\\simeq T_{23}\\,dx_1dx_2dx_3', why: `Abbiamo sviluppato il prodotto e trascurato il termine con la derivata: vale $\\frac{\\partial T_{23}}{\\partial x_2}\\frac{dx_2^2}{2}dx_1dx_3$, che contiene quattro fattori infinitesimi invece di tre, ed è quindi un infinitesimo di ordine superiore rispetto a $dV=dx_1dx_2dx_3$. I due termini $T_{23}\\,dx_1dx_3\\,\\frac{dx_2}2$ si sommano.` },
             { tex: '-\\Big[\\Big(T_{32}+\\frac{\\partial T_{32}}{\\partial x_3}dx_3\\Big)dx_1dx_2+T_{32}\\,dx_1dx_2\\Big]\\frac{dx_3}2', why: `Facce $\\pm\\hat e_3$, di area $dx_1dx_2$, con le componenti lungo $\\hat e_2$ e braccio $dx_3/2$. Il ragionamento è identico, ma la coppia che si forma ha verso di rotazione **opposto** attorno a $u$: per questo c'è il segno meno.` },
-            { tex: '\\simeq-T_{32}\\,dx_1dx_2dx_3', aggiunto: true, why: `Come prima, trascuriamo il termine con la derivata, infinitesimo di ordine superiore.` },
+            { tex: '\\simeq-T_{32}\\,dx_1dx_2dx_3', why: `Come prima, trascuriamo il termine con la derivata, infinitesimo di ordine superiore.` },
             {
               tex: 'T_{23}\\,dV-T_{32}\\,dV=0',
               why: `Imponiamo che il momento totale attorno a $u$ sia nullo: abbiamo visto che le altre forze non danno contributo, quindi restano solo i due termini trovati.`,
@@ -636,9 +636,9 @@ Ognuna di queste forze ha braccio metà spigolo, perché l'asse passa per il bar
         title: 'La reciprocità delle tensioni tangenziali',
         md: `Che cosa vuol dire, fisicamente, $T_{23}=T_{32}$? Ricorda la lettura «primo indice la giacitura, secondo la direzione». $T_{23}$ è la tangenziale sulla giacitura $\\hat e_2$ in direzione $\\hat e_3$; $T_{32}$ è la tangenziale sulla giacitura $\\hat e_3$ in direzione $\\hat e_2$. Sono **uguali**.
 
-È il **teorema di reciprocità delle tensioni tangenziali** (Teo 3.7.1): $\\tau_{ij}=\\tau_{ji}$. La figura di p. 47 lo rende visibile. Le tangenziali sulle due facce opposte di normale $\\pm\\hat e_i$ formano una **coppia**, che da sola farebbe ruotare il cubetto, diciamo in senso antiorario. Per l'equilibrio alla rotazione serve una coppia uguale e opposta, oraria: la danno le tangenziali sulle facce di normale $\\pm\\hat e_j$. Le due coppie hanno bracci uguali, quindi devono avere forze uguali.
+È il **teorema di reciprocità delle tensioni tangenziali** (Teo 3.7.1): $\\tau_{ij}=\\tau_{ji}$. La figura di p. 47 lo rende visibile. Le tangenziali sulle due facce opposte di normale $\\pm\\hat e_i$ formano una **coppia**, che da sola farebbe ruotare il cubetto, diciamo in senso antiorario. Per l'equilibrio alla rotazione serve una coppia uguale e opposta, oraria: la danno le tangenziali sulle facce di normale $\\pm\\hat e_j$. Il momento di ciascuna coppia, come abbiamo appena calcolato, è la tangenziale per il volume $dV$, qualunque siano le lunghezze degli spigoli (la dispensa non suppone i lati uguali): quindi le due tangenziali devono essere uguali.
 
-Controllo con lo **scorrimento semplice** (esempio della lezione su Mohr, anticipato): se l'unica tangenziale non nulla fosse $\\tau_{12}$ sulle facce $\\pm\\hat e_1$, il cubetto girerebbe; la reciprocità impone che ci sia anche $\\tau_{21}=\\tau_{12}$ sulle facce $\\pm\\hat e_2$. Simmetria del tensore e reciprocità sono quindi **la stessa cosa** (§3.8, osservazione 3).`,
+Controllo con lo **scorrimento semplice**, lo stato che la dispensa studia con Mohr in §3.16.1 (esempio aggiunto): se l'unica tangenziale non nulla fosse $\\tau_{12}$ sulle facce $\\pm\\hat e_1$, il cubetto girerebbe; la reciprocità impone che ci sia anche $\\tau_{21}=\\tau_{12}$ sulle facce $\\pm\\hat e_2$. Simmetria del tensore e reciprocità sono quindi **la stessa cosa** (§3.8, osservazione 3).`,
       },
       {
         id: 'l34-5',
@@ -711,7 +711,7 @@ In posizione (riga 1, colonna 2) c'è $\\tau_{21}$: la componente lungo $\\hat e
 
 Ma il tensore è simmetrico (punto 3 di Cauchy–Poisson), e la reciprocità dice $\\tau_{21}=\\tau_{12}$. La discordanza è quindi **irrilevante**, e si scrive la forma più comoda:
 $$[\\tens T]=\\begin{bmatrix}\\sigma_1&\\tau_{12}&\\tau_{13}\\\\\\tau_{12}&\\sigma_2&\\tau_{23}\\\\\\tau_{13}&\\tau_{23}&\\sigma_3\\end{bmatrix}.$$
-Nota anche quanti numeri servono davvero: sei, tre normali e tre tangenziali (deduzione).`,
+Nota anche quanti numeri servono davvero: la matrice di un tensore simmetrico ha sei componenti distinte (§1.3), qui tre normali e tre tangenziali.`,
       },
       {
         id: 'l35-1q',
@@ -724,7 +724,7 @@ Nota anche quanti numeri servono davvero: sei, tre normali e tre tangenziali (de
         title: 'Il problema: dato $\\hat n$, quanto valgono normale e tangenziale?',
         md: `Ora il calcolo vero (§3.10). Sono dati la matrice $[\\tens T]$ e il versore $\\hat n$ della giacitura. Il primo passo è sempre lo stesso: il vettore tensione si ottiene con il prodotto righe per colonna,
 $$\\{\\vet t_n\\}=[\\tens T]\\{\\hat n\\}.$$
-Poi si separano le due componenti speciali della lezione sul vettore tensione: la **normale** $\\sigma_n=\\vet t_n\\cdot\\hat n$, proiezione su $\\hat n$, e la **tangenziale**, la parte che resta nel piano.
+Poi si separano le due componenti speciali viste nella lezione «Le forze interne e il vettore tensione» (§3.3): la **normale** $\\sigma_n=\\vet t_n\\cdot\\hat n$, proiezione su $\\hat n$, e la **tangenziale**, la parte che resta nel piano.
 
 Per la normale la dispensa scrive una formula esplicita, che conviene saper ricavare: mostra che $\\sigma_n$ dipende da $\\hat n$ in modo **quadratico**. Lo facciamo nella derivazione che segue.`,
       },
@@ -738,7 +738,7 @@ Per la normale la dispensa scrive una formula esplicita, che conviene saper rica
           sample: (r) => { const o: R = {}; putMat(o, 'T', T.sym(T.randMat(r))); putVec(o, 'n', T.unit(T.randVec(r))); return o; },
           lines: [
             { tex: '\\sigma_n=\\vet t_n\\cdot\\hat n=\\tens T\\hat n\\cdot\\hat n', why: `È la definizione di tensione normale (proiezione del vettore tensione su $\\hat n$), con $\\vet t_n=\\tens T\\hat n$ dal punto 1 di Cauchy–Poisson.`, val: (v) => traction(mat(v, 'T'), vec(v, 'n')).sigma },
-            { tex: '=\\textstyle\\sum_{i,j}T_{ij}n_jn_i', why: `In componenti: la $i$-esima componente di $\\tens T\\hat n$ è $\\sum_jT_{ij}n_j$ (prodotto righe per colonna); il prodotto scalare con $\\hat n$ la moltiplica per $n_i$ e somma su $i$.`, val: (v) => { const Tm = mat(v, 'T'); const n = vec(v, 'n'); let s = 0; for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) s += T.at(Tm, i, j) * n[j] * n[i]; return s; } },
+            { tex: '=\\textstyle\\sum_{i,j}T_{ij}n_jn_i', aggiunto: true, why: `In componenti: la $i$-esima componente di $\\tens T\\hat n$ è $\\sum_jT_{ij}n_j$ (prodotto righe per colonna); il prodotto scalare con $\\hat n$ la moltiplica per $n_i$ e somma su $i$.`, val: (v) => { const Tm = mat(v, 'T'); const n = vec(v, 'n'); let s = 0; for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) s += T.at(Tm, i, j) * n[j] * n[i]; return s; } },
             {
               tex: '=T_{11}n_1^2+T_{22}n_2^2+T_{33}n_3^2+(T_{12}+T_{21})n_1n_2+(T_{23}+T_{32})n_2n_3+(T_{31}+T_{13})n_3n_1',
               aggiunto: true,
@@ -761,7 +761,7 @@ Per la normale la dispensa scrive una formula esplicita, che conviene saper rica
         title: 'Leggere la formula della tensione normale',
         md: `La formula dice che la tensione normale su un piano è una **somma pesata** di tutte le componenti di $\\tens T$: le normali $T_{ii}$ pesate con i quadrati $n_i^2$, le tangenziali $T_{ij}$ pesate con il doppio prodotto $2n_in_j$. Anche le tangenziali dei piani coordinati, quindi, contribuiscono alla tensione **normale** su un piano inclinato.
 
-Controllo su un caso particolare: se $\\hat n=\\hat e_1$, cioè $n_1=1$ e $n_2=n_3=0$, sopravvive solo il primo termine e $\\sigma_n=T_{11}=\\sigma_1$. È giusto: sulla giacitura $\\hat e_1$ la tensione normale è quella scritta in posizione (1,1).
+Controllo su un caso particolare (esempio aggiunto): se $\\hat n=\\hat e_1$, cioè $n_1=1$ e $n_2=n_3=0$, sopravvive solo il primo termine e $\\sigma_n=T_{11}=\\sigma_1$. È giusto: sulla giacitura $\\hat e_1$ la tensione normale è quella scritta in posizione (1,1).
 
 Secondo controllo (esempio aggiunto): nello scorrimento semplice, con solo $T_{12}=\\tau$, sul piano inclinato a 45° nel piano $\\hat e_1\\hat e_2$, cioè $n_1=n_2=1/\\sqrt2$, si trova $\\sigma_n=2\\tau\\cdot\\frac12=\\tau$. Una tangenziale pura sui piani coordinati diventa una tensione normale su un piano a 45°: lo ritroveremo con il cerchio di Mohr.`,
       },
@@ -792,7 +792,7 @@ Secondo controllo (esempio aggiunto): nello scorrimento semplice, con solo $T_{1
         title: 'Una componente non è tutta la tangenziale',
         md: `Il risultato appena trovato va letto con attenzione: $\\tau_{n\\nu}$ è la componente della tangenziale **lungo la direzione che abbiamo scelto**, $\\hat\\nu$. Nel piano del taglio ci sono infinite direzioni, e la tangenziale vera, $\\boldsymbol\\tau_n$, punta in una sola di esse, $\\hat\\mu$, che in generale non conosciamo. Quindi **$\\tau_{n\\nu}$ in generale non è l'intera tangenziale**: lo è solo se per caso abbiamo scelto $\\hat\\nu=\\hat\\mu$.
 
-Controllo su un caso particolare: con $\\hat n=\\hat e_1$ e $\\hat\\nu=\\hat e_2$ la formula dà $\\tau_{n\\nu}=T_{12}(1\\cdot1+0)=\\tau_{12}$, cioè la tangenziale sulla giacitura $\\hat e_1$ in direzione $\\hat e_2$, come deve essere. Ma sulla stessa giacitura c'è anche $\\tau_{13}$, che con questa scelta di $\\hat\\nu$ non vediamo.
+Controllo su un caso particolare (esempio aggiunto): con $\\hat n=\\hat e_1$ e $\\hat\\nu=\\hat e_2$ la formula dà $\\tau_{n\\nu}=T_{12}(1\\cdot1+0)=\\tau_{12}$, cioè la tangenziale sulla giacitura $\\hat e_1$ in direzione $\\hat e_2$, come deve essere. Ma sulla stessa giacitura c'è anche $\\tau_{13}$, che con questa scelta di $\\hat\\nu$ non vediamo.
 
 Una nota di nomenclatura: nella dispensa $\\hat\\mu$ è la direzione della tangenziale e $\\hat\\nu$ una direzione assegnata; negli appunti erano scambiati.`,
       },
@@ -802,7 +802,7 @@ Una nota di nomenclatura: nella dispensa $\\hat\\mu$ è la direzione della tange
         title: 'La tangenziale totale, per differenza',
         md: `Come si trova allora l'intera tangenziale? Per **via indiretta**, in tre mosse: prima il vettore tensione, poi la sua parte normale, e infine quello che resta (§3.10):
 $$\\vet t_n\\ \\to\\ \\sigma_n\\ \\to\\ \\boldsymbol\\tau_n=\\vet t_n-\\sigma_n\\hat n.$$
-Il modulo $\\tau_n=|\\boldsymbol\\tau_n|$ è l'intensità della tangenziale, e la sua direzione è $\\hat\\mu=\\boldsymbol\\tau_n/\\tau_n$. È esattamente la decomposizione con i proiettori della prima lezione, fatta con i numeri.
+Il modulo $\\tau_n=|\\boldsymbol\\tau_n|$ è l'intensità della tangenziale, e la sua direzione è $\\hat\\mu=\\boldsymbol\\tau_n/\\tau_n$. È esattamente la decomposizione con i proiettori del Teo 3.3.1, fatta con i numeri.
 
 Il **segno** di $\\tau$ è inessenziale: la tangenziale fa scorrere le due facce del taglio, e lo scorrimento avviene comunque, in un verso o nell'altro.
 
@@ -834,9 +834,9 @@ Se dopo un esercizio questa relazione non torna, c'è un errore di conto.`,
         title: 'Attenzione a non confondere',
         md: `Tre errori tipici nei calcoli.
 
-1. **Confondere $\\tau_{n\\nu}$ con $\\tau_n$.** La prima è la componente lungo una direzione scelta, la seconda l'intera tangenziale. Se l'esercizio chiede «la tensione tangenziale» sul piano, si intende $\\tau_n$, e va trovata per differenza.
+1. **Confondere $\\tau_{n\\nu}$ con $\\tau_n$.** La prima è la componente lungo una direzione scelta, la seconda l'intera tangenziale. Se l'esercizio chiede «la tensione tangenziale» sul piano, si intende $\\tau_n$, e va trovata per differenza (deduzione).
 2. **Dimenticare i fattori 2 dei doppi prodotti in $\\sigma_n$.** Vengono dalla simmetria: ogni tangenziale compare due volte nella matrice. Se scrivi $T_{12}n_1n_2$ invece di $2T_{12}n_1n_2$, sbagli il risultato.
-3. **Non usare il controllo $|\\vet t_n|^2=\\sigma_n^2+\\tau_n^2$.** È gratuito e intercetta quasi tutti gli errori di conto: fallo sempre alla fine.`,
+3. **Non usare il controllo $|\\vet t_n|^2=\\sigma_n^2+\\tau_n^2$.** È gratuito e intercetta molti errori di conto: la dispensa lo usa come verifica alla fine dell'esercizio §3.14.`,
       },
       {
         id: 'l35-6',
@@ -865,7 +865,7 @@ Se dopo un esercizio questa relazione non torna, c'è un errore di conto.`,
         title: 'Dove siamo e dove andiamo',
         md: `Nella lezione precedente abbiamo imparato a calcolare, su una giacitura qualunque, la tensione normale e la tangenziale. Abbiamo visto che al variare del piano le due parti cambiano, e che in generale sono entrambe presenti.
 
-Questa lezione si chiede se esistono piani **speciali**: piani su cui la tensione è **solo normale**, senza tangenziale. Vedremo che esistono sempre, almeno tre e mutuamente ortogonali, e che il problema è identico a quello delle dilatazioni principali del capitolo 2: un problema agli autovalori. Poi useremo le tensioni principali per **classificare** gli stati di tensione (triassiale, biassiale, monoassiale), anche senza calcolarle, guardando solo gli invarianti. Chiudiamo con la prima parte dell'esercizio svolto della dispensa.`,
+Questa lezione si chiede se esistono piani **speciali**: piani su cui la tensione è **solo normale**, senza tangenziale. Vedremo che esistono sempre, che se ne può sempre scegliere una terna mutuamente ortogonale, e che il problema è identico a quello delle dilatazioni principali del capitolo 2: un problema agli autovalori. Poi useremo le tensioni principali per **classificare** gli stati di tensione (triassiale, biassiale, monoassiale), anche senza calcolarle, guardando solo gli invarianti. Chiudiamo con la prima parte dell'esercizio svolto della dispensa.`,
       },
       {
         id: 'l36-1a',
@@ -887,7 +887,7 @@ $$\\tens T\\hat n=\\lambda\\hat n\\iff(\\tens T-\\lambda\\tens I)\\hat n=\\vet 0
 - Gli **autovettori** $\\hat n$ si chiamano **direzioni principali**: sono le giaciture su cui la tensione è solo normale.
 - Il piano ortogonale a una direzione principale si chiama **piano principale di tensione** (Def 3.11.1): su di esso agisce la tensione principale $\\lambda$ e le tangenziali sono nulle.
 
-Ma siamo sicuri che autovalori e autovettori reali esistano? Qui torna utile il punto 3 di Cauchy–Poisson. Il **teorema spettrale** del capitolo 2 (Teo 2.9.2) garantisce, per ogni tensore **simmetrico**, almeno tre autocoppie reali con autovettori ortogonali. Siccome $\\tens T$ è simmetrico, il teorema si applica: esiste sempre una **terna principale di tensione**. Per un tensore non simmetrico gli autovalori potrebbero essere complessi, e la domanda non avrebbe risposta.`,
+Ma siamo sicuri che autovalori e autovettori reali esistano? Qui torna utile il punto 3 di Cauchy–Poisson. Il **teorema spettrale** del capitolo 2 (Teo 2.9.2) dice due cose per ogni tensore **simmetrico**: a) esistono almeno tre autocoppie reali $(\\lambda_i,\\hat n_i)$; b) ad autovalori distinti corrispondono autovettori ortogonali, cioè $\\lambda_1\\neq\\lambda_2\\Rightarrow\\hat n_1\\cdot\\hat n_2=0$. Siccome $\\tens T$ è simmetrico, il teorema si applica (§3.11.1). Con gli autovettori si può quindi formare una **terna principale di tensione**: se le tre tensioni principali sono distinte, l'ortogonalità è garantita dal punto b); se due coincidono, le direzioni ortogonali si scelgono tra le infinite disponibili, come vedremo tra poco con i casi dell'equazione secolare. Per un tensore non simmetrico le autocoppie si possono comunque cercare, ma gli autovalori possono essere complessi.`,
       },
       {
         id: 'l36-1q',
@@ -921,7 +921,7 @@ La dispensa chiama $s_1$ «tensione principale di **trazione**» e $s_3$ «tensi
         title: 'Radici distinte, doppie, triple',
         md: `Come per la deformazione, ci sono tre casi (§3.11.2).
 
-- **Radici distinte.** C'è una sola terna principale, e il tensore si scrive nella **rappresentazione spettrale** $\\tens T=\\sum_i\\lambda_i\\hat n_i\\otimes\\hat n_i$: somma di tre proiettori, ciascuno pesato con la sua tensione principale. Applicandola a $\\hat n_2$, per esempio, sopravvive solo il secondo termine e si ritrova $\\tens T\\hat n_2=\\lambda_2\\hat n_2$.
+- **Radici distinte.** C'è una sola terna principale, a meno dei versi dei suoi versori (deduzione), e il tensore si scrive nella **rappresentazione spettrale** $\\tens T=\\sum_i\\lambda_i\\hat n_i\\otimes\\hat n_i$: somma di tre proiettori, ciascuno pesato con la sua tensione principale. Applicandola a $\\hat n_2$, per esempio, sopravvive solo il secondo termine e si ritrova $\\tens T\\hat n_2=\\lambda_2\\hat n_2$.
 - **Radice doppia**, $\\lambda_1=\\lambda_2=\\lambda\\neq\\lambda_3$. La direzione $\\hat n_3$ è privilegiata, e ogni direzione perpendicolare a essa è principale: $\\tens T=\\lambda_3\\hat n_3\\otimes\\hat n_3+\\lambda(\\tens I-\\hat n_3\\otimes\\hat n_3)$. Le terne principali sono $\\infty^1$.
 - **Radice tripla**, $\\lambda_1=\\lambda_2=\\lambda_3=\\lambda$. Allora $\\tens T=\\lambda\\tens I$, e **ogni** riferimento è principale. È lo stato **idrostatico**, di cui parliamo subito.`,
       },
@@ -933,13 +933,13 @@ La dispensa chiama $s_1$ «tensione principale di **trazione**» e $s_3$ «tensi
 
 L'immagine della dispensa è una piccola **sfera immersa in un fluido in quiete**: il fluido la spinge con la stessa pressione da tutte le parti, sempre perpendicolarmente alla superficie. Con la convenzione dei segni del corso, la pressione corrisponde a $\\lambda<0$ (deduzione).
 
-Questo collegamento dice una cosa importante: **la tensione generalizza la pressione**. Un fluido in quiete non sopporta sforzi tangenziali, quindi il suo stato di tensione è sempre idrostatico e un solo numero, la pressione, lo descrive. Un solido invece può sopportare anche tangenziali, e per questo servono le sei componenti di un tensore simmetrico.`,
+Questo collegamento dice una cosa importante: **la tensione generalizza la pressione**. Un fluido in quiete non sopporta sforzi tangenziali, quindi il suo stato di tensione è sempre idrostatico e un solo numero, la pressione, lo descrive. Un solido invece può sopportare anche tangenziali, e per questo servono le componenti di un tensore simmetrico, sei distinte (§1.3).`,
       },
       {
         id: 'l36-3',
         kind: 'prova',
         title: 'Le direzioni principali sul modello',
-        md: `Nel modello vedi le tre direzioni principali, ciascuna con la sua tensione principale, e in giallo la giacitura della tangenziale massima, che studieremo nella prossima lezione.`,
+        md: `Nel modello vedi le tre direzioni principali, ciascuna con la sua tensione principale, e in giallo la giacitura della tangenziale massima, che studieremo nella lezione «Tensioni estreme».`,
         tasks: [`Scegli «idrostatico»: la radice è tripla e ogni terna è principale; il motore ne disegna una qualunque.`, `Scegli «esercizio §3.14»: una delle tre tensioni principali è nulla. Tienilo a mente per la classificazione.`, `Scegli «trazione semplice»: due tensioni principali sono nulle.`],
         visual: ST({ mode: 'principali', preset: 'generico', presets: ['generico', 'esercizio', 'trazione', 'idrostatico'], controls: ['preset'] }),
       },
@@ -962,9 +962,9 @@ Se tutte e tre le tensioni principali sono diverse da zero, lo stato si dice **t
         id: 'l36-4b',
         kind: 'spiega',
         title: 'Biassiale e monoassiale: i piani scarichi',
-        md: `**Stato biassiale, o piano** (una tensione principale nulla, diciamo $\\lambda_1=0$). Il primo termine sparisce: $\\vet t_m=\\lambda_2m_2\\hat n_2+\\lambda_3m_3\\hat n_3$. Il vettore tensione sta **sempre nel piano** di $\\hat n_2$ e $\\hat n_3$. Inoltre sulla giacitura $\\hat n_1$ il vettore tensione è **nullo**, $\\vet t_{n_1}=\\vet 0$: niente normale e niente tangenziale. Quel piano si chiama **piano scarico**. È un caso molto comune: è lo stato degli elementi di trave che vedremo con Saint-Venant. Esempio della dispensa: una matrice con il solo $\\tau_{12}=\\tau$ ha il piano di normale $\\hat e_3$ scarico, e lo stato è al più biassiale.
+        md: `**Stato biassiale, o piano** (una tensione principale nulla, diciamo $\\lambda_1=0$). Il primo termine sparisce: $\\vet t_m=\\lambda_2m_2\\hat n_2+\\lambda_3m_3\\hat n_3$. Il vettore tensione sta **sempre nel piano** di $\\hat n_2$ e $\\hat n_3$. Inoltre sulla giacitura $\\hat n_1$ il vettore tensione è **nullo**, $\\vet t_{n_1}=\\vet 0$: niente normale e niente tangenziale. Quel piano si chiama **piano scarico**. È un caso molto comune: la dispensa cita lo stato di tensione di scorrimento nelle travi, che si incontrerà nel problema di Saint-Venant (Cap. 5). Esempio della dispensa: una matrice con il solo $\\tau_{12}=\\tau$ ha il piano di normale $\\hat e_3$ scarico, e lo stato è al più biassiale.
 
-**Stato monoassiale** (due nulle, $\\lambda_1=\\lambda_2=0$). Resta $\\vet t_m=\\lambda_3m_3\\hat n_3$: il vettore tensione è **sempre parallelo** a $\\hat n_3$. I piani scarichi sono $\\infty^1$: tutti quelli che contengono la direzione $\\hat n_3$, cioè il fascio di asse $\\hat n_3$, perché per essi $m_3=0$. Esempio: $\\operatorname{diag}(\\sigma,0,0)$, la **trazione** semplice se $\\sigma>0$ o la **compressione** semplice se $\\sigma<0$.`,
+**Stato monoassiale** (due nulle, $\\lambda_1=\\lambda_2=0$). Resta $\\vet t_m=\\lambda_3m_3\\hat n_3$: il vettore tensione è **sempre parallelo** a $\\hat n_3$. I piani scarichi sono $\\infty^1$: tutti quelli che contengono la direzione $\\hat n_3$, cioè il fascio di asse $\\hat n_3$, perché per essi $m_3=0$. Esempio della dispensa: $\\operatorname{diag}(\\sigma,0,0)$, la **trazione** semplice se $\\sigma>0$ o la **compressione** semplice se $\\sigma<0$. Qui l'elemento non nullo sta al primo posto: la direzione carica è $\\hat e_1$, che fa la parte di $\\hat n_3$ nella convenzione $\\lambda_1=\\lambda_2=0$, e i piani scarichi sono quelli del fascio di asse $\\hat e_1$.`,
       },
       {
         id: 'l36-4c',
@@ -993,7 +993,7 @@ Quindi «monoassiale» descrive la **direzione** del vettore tensione, sempre la
 - $III=0$ e $II\\neq0$: **biassiale**;
 - $III=II=0$: **monoassiale** (e se anche $I=0$ lo stato è nullo).
 
-Il perché si vede scrivendo gli invarianti con le radici (passaggio aggiunto). $III=\\lambda_1\\lambda_2\\lambda_3$ è un prodotto: è nullo se e solo se almeno una tensione principale è nulla. Se $\\lambda_1=0$, allora $II=\\lambda_1\\lambda_2+\\lambda_2\\lambda_3+\\lambda_1\\lambda_3$ si riduce a $\\lambda_2\\lambda_3$, che è nullo se e solo se è nulla anche una seconda tensione principale. Ecco perché il determinante dice se ce n'è almeno una nulla, e il secondo invariante se ce n'è una seconda.
+Il perché sta nella struttura dell'equazione secolare $\\lambda^3-I\\lambda^2+II\\lambda-III=0$. Se $III=0$ manca il termine noto, e si può raccogliere $\\lambda$: $\\lambda(\\lambda^2-I\\lambda+II)=0$. C'è quindi certamente almeno una radice nulla, e lo stato è al più biassiale; a quel punto decide $II$. Se anche $II=0$, l'equazione diventa $\\lambda^2(\\lambda-I)=0$, con due radici nulle: lo stato è monoassiale. Lo stesso si legge sulle radici, perché $III=\\lambda_1\\lambda_2\\lambda_3$ è nullo se e solo se una tensione principale è nulla, e con $\\lambda_1=0$ il secondo invariante si riduce a $\\lambda_2\\lambda_3$.
 
 Lo stesso ragionamento, nel capitolo 2, classificava le deformazioni con dilatazioni principali nulle (§2.10).`,
       },
@@ -1008,11 +1008,11 @@ Lo stesso ragionamento, nel capitolo 2, classificava le deformazioni con dilataz
         title: 'Esercizio §3.14: classificazione e tensioni principali',
         md: `Applichiamo tutto all'esercizio della dispensa, la matrice con righe $(0,-3,0)$, $(-3,0,6)$, $(0,6,0)$.
 
-**Classificazione.** Gli invarianti sono $I=${f(P314.invarianti[0])}$, $II=${f(P314.invarianti[1])}$, $III=${f(P314.invarianti[2])}$. Il determinante è nullo e il secondo invariante no, quindi lo stato è **${P314.stato}**.
+**Classificazione.** Calcoliamo i tre invarianti come fa la dispensa. Il determinante, sviluppato lungo la prima riga, ha un solo termine non nullo: $III=\\det\\tens T=-(-3)\\begin{vmatrix}-3&6\\\\0&0\\end{vmatrix}=${f(P314.invarianti[2])}$, quindi lo stato è al più biassiale. Il secondo invariante è la somma dei tre minori principali 2×2, quelli costruiti sulla diagonale (righe e colonne 1–2, 1–3, 2–3): $II=(0-9)+(0-0)+(0-36)=${f(P314.invarianti[1])}$, diverso da zero. La traccia è $I=0+0+0=${f(P314.invarianti[0])}$. Determinante nullo e secondo invariante no: lo stato è **${P314.stato}**.
 
-**Tensioni principali.** L'equazione secolare diventa $\\lambda(\\lambda^2-45)=0$, con radici
+**Tensioni principali.** Con $I=0$, $II=-45$ e $III=0$ l'equazione secolare $\\lambda^3-I\\lambda^2+II\\lambda-III=0$ diventa $\\lambda^3-45\\lambda=0$, cioè $\\lambda(\\lambda^2-45)=0$, con radici
 $$s_1=3\\sqrt5=${f(P314.s[0])},\\quad s_2=0,\\quad s_3=-3\\sqrt5=${f(P314.s[2])}.$$
-**Direzioni** (a meno del verso): $\\hat n_1=(${f(P314.n[0][0])};\\ ${f(P314.n[0][1])};\\ ${f(P314.n[0][2])})$, $\\hat n_2=(${f(P314.n[1][0])};\\ ${f(P314.n[1][1])};\\ ${f(P314.n[1][2])})$, e $\\hat n_3=\\hat n_1\\wedge\\hat n_2$, perché la terna è ortogonale. La giacitura $\\hat n_2$, con tensione principale nulla, è il **piano scarico**. La verifica $\\tens T\\hat n_3=-3\\sqrt5\\,\\hat n_3$, illeggibile negli appunti, è stata ricalcolata (nota NF-05).`,
+**Direzioni** (a meno del verso): $\\hat n_1=(${f(P314.n[0][0])};\\ ${f(P314.n[0][1])};\\ ${f(P314.n[0][2])})$, $\\hat n_2=(${f(P314.n[1][0])};\\ ${f(P314.n[1][1])};\\ ${f(P314.n[1][2])})$. Le tre tensioni principali sono distinte, quindi le direzioni sono ortogonali (Teo 2.9.2, punto b), e la dispensa ottiene la terza con il prodotto vettoriale, $\\hat n_3=\\hat n_1\\wedge\\hat n_2$ (terna destrorsa). La giacitura $\\hat n_2$, con tensione principale nulla, è il **piano scarico**. La verifica $\\tens T\\hat n_3=-3\\sqrt5\\,\\hat n_3$, illeggibile nel testo estratto della dispensa, è stata ricalcolata (nota NF-05).`,
         values: { s1: P314.s[0], s3: P314.s[2], II: P314.invarianti[1] },
         visual: ST({ mode: 'principali', preset: 'esercizio', presets: ['esercizio'] }),
       },
@@ -1023,13 +1023,13 @@ $$s_1=3\\sqrt5=${f(P314.s[0])},\\quad s_2=0,\\quad s_3=-3\\sqrt5=${f(P314.s[2])}
         md: `Tre errori tipici su questa lezione.
 
 1. **«Monoassiale» scambiato per «solo tensioni normali».** Il vettore tensione ha sempre la stessa direzione, ma su un taglio obliquo si scompone in normale e tangenziale (riquadro di p. 52).
-2. **Dimenticare perché vale il teorema spettrale.** All'orale, quando dici «$\\tens T$ ha tre direzioni principali ortogonali», aggiungi «perché è simmetrico, per il punto 3 di Cauchy–Poisson». È il collegamento che il docente cerca.
+2. **Dimenticare perché vale il teorema spettrale.** All'orale, quando dici «$\\tens T$ ha tre direzioni principali ortogonali», aggiungi «perché è simmetrico, per il punto 3 di Cauchy–Poisson», e ricorda che l'ortogonalità è garantita per tensioni principali distinte; con una radice doppia le direzioni ortogonali si scelgono.
 3. **Credere che sia sempre $s_1>0$ e $s_3<0$.** I nomi «di trazione» e «di compressione» indicano solo la più grande e la più piccola; le tre tensioni principali possono avere tutte lo stesso segno.`,
       },
       {
         id: 'l36-7',
         kind: 'riassunto',
-        md: `**Il filo della lezione.** Normale e tangenziale impegnano diversamente il materiale, quindi ci chiediamo su quali piani la tangenziale sparisce: è il problema agli autovalori di $\\tens T$, che ha sempre una terna ortogonale di soluzioni reali perché $\\tens T$ è simmetrico. Le radici dell'equazione secolare, ordinate $s_1\\ge s_2\\ge s_3$, sono le tensioni principali; se sono distinte la terna è unica, se c'è una radice doppia le terne sono infinite, se la radice è tripla lo stato è idrostatico, come in un fluido in quiete. Contando le tensioni principali nulle, leggibili anche dagli invarianti, lo stato è triassiale, biassiale (con un piano scarico) o monoassiale; e monoassiale non vuol dire senza tangenziali.
+        md: `**Il filo della lezione.** Normale e tangenziale impegnano diversamente il materiale, quindi ci chiediamo su quali piani la tangenziale sparisce: è il problema agli autovalori di $\\tens T$, che ha sempre soluzioni reali, tra cui si può scegliere una terna ortogonale, perché $\\tens T$ è simmetrico. Le radici dell'equazione secolare, ordinate $s_1\\ge s_2\\ge s_3$, sono le tensioni principali; se sono distinte la terna è unica, se c'è una radice doppia le terne sono infinite, se la radice è tripla lo stato è idrostatico, come in un fluido in quiete. Contando le tensioni principali nulle, leggibili anche dagli invarianti, lo stato è triassiale, biassiale (con un piano scarico) o monoassiale; e monoassiale non vuol dire senza tangenziali.
 
 - Problema agli autovalori: $(\\tens T-\\lambda\\tens I)\\hat n=\\vet 0$, $\\ \\lambda^3-I\\lambda^2+II\\lambda-III=0$ (§3.11.1).
 - Rappresentazione spettrale: $\\tens T=\\sum_i\\lambda_i\\,\\hat n_i\\otimes\\hat n_i$ (§3.11.2).
@@ -1059,7 +1059,7 @@ La domanda ha due versioni, perché le tensioni sono di due tipi. Per la **tensi
         id: 'l37-0b',
         kind: 'spiega',
         title: 'Un problema di massimo vincolato',
-        md: `Mettiamoci nel **riferimento principale**, dove $[\\tens T]=\\operatorname{diag}(s_1,s_2,s_3)$. Una giacitura qualunque $\\hat m$ ha componenti $m_1,m_2,m_3$, e la tensione normale su di essa è la forma quadratica della lezione sul calcolo, che qui ha solo i quadrati perché le tangenziali sono nulle:
+        md: `Mettiamoci nel **riferimento principale**, dove $[\\tens T]=\\operatorname{diag}(s_1,s_2,s_3)$. Una giacitura qualunque $\\hat m$ ha componenti $m_1,m_2,m_3$, e la tensione normale su di essa è la forma quadratica di §3.10, che qui ha solo i quadrati perché le tangenziali sono nulle:
 $$\\sigma_m=s_1m_1^2+s_2m_2^2+s_3m_3^2.$$
 Vogliamo il massimo di questa funzione al variare di $\\hat m$. Ma le $m_i$ non sono libere: $\\hat m$ è un versore, quindi deve valere $\\hat m\\cdot\\hat m=m_1^2+m_2^2+m_3^2=1$. È un **massimo vincolato**, uno dei tanti problemi di ottimizzazione che si incontrano in ingegneria (§3.13.1).
 
@@ -1078,7 +1078,6 @@ Si potrebbe risolvere con le tecniche dell'analisi, ma la dispensa usa un ragion
             { tex: '=s_1m_1^2+s_2m_2^2+s_3m_3^2', why: `Nel riferimento principale il vettore tensione ha componenti $(s_1m_1,s_2m_2,s_3m_3)$, come abbiamo visto con la classificazione; il prodotto scalare con $\\hat m$ moltiplica ciascuna per $m_i$. Il campione numerico calcola le $m_i$ proiettando $\\hat m$ sulle direzioni principali vere.`, val: (v) => { const p = principalStress(mat(v, 'T')); const m = vec(v, 'm'); return p.s.reduce((a, s, i) => a + s * T.dotv(m, p.n[i]) ** 2, 0); } },
             {
               tex: '\\le s_1(m_1^2+m_2^2+m_3^2)',
-              aggiunto: true,
               why: `Abbiamo sostituito $s_2$ e $s_3$ con $s_1$, che è il più grande dei tre. Siccome ogni peso $m_i^2$ è non negativo, aumentare un coefficiente non può far diminuire la somma: la nuova quantità è maggiore o uguale.`,
             },
             {
@@ -1097,7 +1096,7 @@ Si potrebbe risolvere con le tecniche dell'analisi, ma la dispensa usa un ragion
         title: 'Che cosa dice il risultato sulle normali',
         md: `Rileggiamo la Prop 3.13.1: **la tensione normale su qualunque piano è compresa tra la tensione principale minima e la massima**, $s_3\\le\\sigma_m\\le s_1$. Le tensioni principali non sono solo i valori sui piani senza tangenziale: sono anche gli **estremi** della tensione normale.
 
-Controllo su un caso particolare: nello stato idrostatico $s_1=s_2=s_3=\\lambda$, e la disuguaglianza diventa $\\lambda\\le\\sigma_m\\le\\lambda$, cioè $\\sigma_m=\\lambda$ su ogni piano. È proprio ciò che sapevamo dalla lezione precedente.
+Controllo su un caso particolare (esempio aggiunto): nello stato idrostatico $s_1=s_2=s_3=\\lambda$, e la disuguaglianza diventa $\\lambda\\le\\sigma_m\\le\\lambda$, cioè $\\sigma_m=\\lambda$ su ogni piano. È proprio ciò che sapevamo dalla lezione precedente.
 
 È lo stesso risultato già incontrato nel capitolo 2 per le dilatazioni, $e_3\\le\\varepsilon_n\\le e_1$ (Prop 2.9.4), con la stessa dimostrazione. Ed è un ottimo **controllo** negli esercizi: una tensione normale fuori da $[s_3,s_1]$ è un errore di conto.`,
       },
@@ -1110,11 +1109,11 @@ Controllo su un caso particolare: nello stato idrostatico $s_1=s_2=s_3=\\lambda$
         id: 'l37-2a',
         kind: 'spiega',
         title: 'Perché la tangenziale è più difficile',
-        md: `Proviamo lo stesso per la tangenziale (§3.13.2). Nella lezione sul calcolo abbiamo visto che la componente tangenziale lungo una direzione $\\hat\\nu$ del piano si ottiene proiettando il vettore tensione su $\\hat\\nu$. Nel riferimento principale diventa
+        md: `Proviamo lo stesso per la tangenziale (§3.13.2). In §3.10 abbiamo visto che la componente tangenziale lungo una direzione $\\hat\\nu$ del piano si ottiene proiettando il vettore tensione su $\\hat\\nu$. Nel riferimento principale diventa
 $$\\tau_{m\\nu}=s_1m_1\\nu_1+s_2m_2\\nu_2+s_3m_3\\nu_3.$$
 Ora le incognite sono **due versori**: la giacitura $\\hat m$ e la direzione $\\hat\\nu$. In tutto sei variabili, con tre vincoli: $|\\hat m|=1$, $|\\hat\\nu|=1$ e $\\hat m\\cdot\\hat\\nu=0$, perché $\\hat\\nu$ deve stare nel piano.
 
-Qui i coefficienti $m_i\\nu_i$ possono essere negativi, e il trucco della media pesata non funziona più. Serve il metodo dei **moltiplicatori di Lagrange**, e la dispensa riporta il **risultato senza la derivazione** (nota NF-11). Noi faremo lo stesso: lo enunciamo e poi lo verifichiamo.`,
+Qui l'euristica non basta (§3.13.2): i coefficienti $m_i\\nu_i$ possono essere negativi, e il trucco della media pesata non funziona più (deduzione). Serve il metodo dei **moltiplicatori di Lagrange**, e la dispensa riporta il **risultato senza la derivazione** (nota NF-11). Noi faremo lo stesso: lo enunciamo e poi lo verifichiamo.`,
       },
       {
         id: 'l37-2',
@@ -1138,8 +1137,8 @@ Nel modello la giacitura della tangenziale massima è quella disegnata in giallo
           sample: (r) => { const o: R = {}; putMat(o, 'T', T.sym(T.randMat(r))); return o; },
           lines: [
             { tex: '\\tau_{m\\nu}=\\tens T\\hat m\\cdot\\hat\\nu', why: `È la componente tangenziale lungo $\\hat\\nu$. Il campione numerico la calcola con le direzioni principali vere di un tensore simmetrico casuale.`, val: (v) => { const t = tauMax(mat(v, 'T')); return traction(mat(v, 'T'), t.m, t.nu).tauNu; } },
-            { tex: '=s_1m_1\\nu_1+s_2m_2\\nu_2+s_3m_3\\nu_3', aggiunto: true, why: `Abbiamo scritto la formula nel riferimento principale, dove $\\tens T$ è diagonale.`, val: (v) => { const p = principalStress(mat(v, 'T')); const t = tauMax(mat(v, 'T')); return p.s.reduce((a, s, i) => a + s * T.dotv(t.m, p.n[i]) * T.dotv(t.nu, p.n[i]), 0); } },
-            { tex: '=s_1\\tfrac1{\\sqrt2}\\tfrac1{\\sqrt2}+s_2\\cdot0\\cdot0+s_3\\big(-\\tfrac1{\\sqrt2}\\big)\\tfrac1{\\sqrt2}', aggiunto: true, why: `Abbiamo sostituito le componenti: $m_1=\\nu_1=\\frac1{\\sqrt2}$, $m_2=\\nu_2=0$, $m_3=-\\frac1{\\sqrt2}$, $\\nu_3=\\frac1{\\sqrt2}$. Il termine con $s_2$ sparisce.`, val: (v) => { const p = principalStress(mat(v, 'T')); return p.s[0] / 2 - p.s[2] / 2; } },
+            { tex: '=s_1m_1\\nu_1+s_2m_2\\nu_2+s_3m_3\\nu_3', why: `Abbiamo scritto la formula nel riferimento principale, dove $\\tens T$ è diagonale (§3.13.2).`, val: (v) => { const p = principalStress(mat(v, 'T')); const t = tauMax(mat(v, 'T')); return p.s.reduce((a, s, i) => a + s * T.dotv(t.m, p.n[i]) * T.dotv(t.nu, p.n[i]), 0); } },
+            { tex: '=s_1\\tfrac1{\\sqrt2}\\tfrac1{\\sqrt2}+s_2\\cdot0\\cdot0+s_3\\big(-\\tfrac1{\\sqrt2}\\big)\\tfrac1{\\sqrt2}', why: `Abbiamo sostituito le componenti: $m_1=\\nu_1=\\frac1{\\sqrt2}$, $m_2=\\nu_2=0$, $m_3=-\\frac1{\\sqrt2}$, $\\nu_3=\\frac1{\\sqrt2}$. Il termine con $s_2$ sparisce.`, val: (v) => { const p = principalStress(mat(v, 'T')); return p.s[0] / 2 - p.s[2] / 2; } },
             { tex: '=\\tfrac12(s_1-s_3)', why: `Abbiamo raccolto il fattore $\\frac12$. È il valore annunciato dalla Prop 3.13.2.`, val: (v) => { const p = principalStress(mat(v, 'T')); return (p.s[0] - p.s[2]) / 2; }, eq: 'Prop 3.13.2' },
           ],
           checks: [{ what: 'σ sullo stesso piano = (s1 + s3)/2', f: (v) => { const t = tauMax(mat(v, 'T')); const p = principalStress(mat(v, 'T')); return [traction(mat(v, 'T'), t.m).sigma, (p.s[0] + p.s[2]) / 2]; } }],
@@ -1153,7 +1152,7 @@ Nel modello la giacitura della tangenziale massima è quella disegnata in giallo
 $$\\sigma_m=s_1m_1^2+s_2m_2^2+s_3m_3^2=\\tfrac12(s_1+s_3).$$
 Quindi la giacitura della tangenziale massima **non è scarica** di tensione normale: in generale su di essa c'è anche una normale, pari alla **semisomma** di $s_1$ e $s_3$, mentre la tangenziale è la **semidifferenza**.
 
-Controllo su un caso particolare: la trazione semplice, con $s_1=\\sigma$ e $s_2=s_3=0$. Allora $\\tau_{\\max}=\\sigma/2$ e sullo stesso piano $\\sigma_m=\\sigma/2$: è il taglio obliquo a 45° del provino, che nella lezione precedente sapevamo avere sia normale sia tangenziale. La normale sul piano di $\\tau_{\\max}$ è nulla solo se $s_1=-s_3$, come nell'esercizio che vediamo adesso.`,
+Controllo su un caso particolare: la trazione semplice, con $s_1=\\sigma$ e $s_2=s_3=0$. Allora $\\tau_{\\max}=\\sigma/2$ e sullo stesso piano $\\sigma_m=\\sigma/2$: è il taglio obliquo a 45° del provino, che nella lezione «Tensioni principali e stati di tensione» sapevamo avere sia normale sia tangenziale (§3.12). La normale sul piano di $\\tau_{\\max}$ è nulla solo se $s_1=-s_3$, come nell'esercizio che vediamo adesso.`,
       },
       {
         id: 'l37-4',
@@ -1164,7 +1163,7 @@ Controllo su un caso particolare: la trazione semplice, con $s_1=\\sigma$ e $s_2
         id: 'l37-5',
         kind: 'numeri',
         title: 'Esercizio §3.14, punto 3',
-        md: `Riprendiamo l'esercizio della dispensa, con $s_1=3\\sqrt5$, $s_2=0$, $s_3=-3\\sqrt5$ trovate nella lezione precedente.
+        md: `Riprendiamo l'esercizio della dispensa, con $s_1=3\\sqrt5$, $s_2=0$, $s_3=-3\\sqrt5$ trovate nella lezione «Tensioni principali e stati di tensione».
 
 - **Valore.** $\\tau_{\\max}=\\frac{3\\sqrt5-(-3\\sqrt5)}2=3\\sqrt5=${f(TM314.value)}$.
 - **Giacitura.** $\\{\\hat m\\}=\\frac1{\\sqrt2}(\\hat n_1-\\hat n_3)=\\frac{\\sqrt5}5(1,0,-2)$, e **direzione** $\\{\\hat\\nu\\}=\\frac1{\\sqrt2}(\\hat n_1+\\hat n_3)=(0,-1,0)$, a meno del verso.
@@ -1208,7 +1207,7 @@ La dispensa verifica anche con il calcolo diretto: $\\tens T\\hat m=(0,-3\\sqrt5
         id: 'l38-0',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Finora abbiamo calcolato le tensioni con le matrici: il vettore tensione $\\tens T\\hat n$, la normale come forma quadratica, le tensioni principali come autovalori. Nella lezione sul calcolo e in quella sulle tensioni principali abbiamo anche visto che normale e tangenziale cambiano al variare del piano, ma non abbiamo mai **visto** come cambiano.
+        md: `Finora abbiamo calcolato le tensioni con le matrici: il vettore tensione $\\tens T\\hat n$, la normale come forma quadratica, le tensioni principali come autovalori. Nelle lezioni «Calcolare σ_n e τ su una giacitura» e «Tensioni principali e stati di tensione» abbiamo anche visto che normale e tangenziale cambiano al variare del piano, ma non abbiamo mai **visto** come cambiano.
 
 Il **cerchio di Mohr** è una rappresentazione **grafica** dello stato di tensione in un punto (§3.15). Un tempo era molto usato perché mostra a colpo d'occhio cose che il calcolo nasconde: dove sono le tensioni principali, quanto vale la tangenziale massima, come sono legati piani ortogonali. Le tappe: delimitiamo la famiglia di piani che il cerchio descrive; ricaviamo normale e tangenziale in funzione dell'angolo del piano; mostriamo che i punti stanno su un cerchio; impariamo a costruirlo con il **polo**; dimostriamo che la costruzione è giusta; e leggiamo sul cerchio tensioni principali e tangenziali estreme.`,
       },
@@ -1234,7 +1233,7 @@ $\\hat\\nu$ è la direzione nel piano del taglio che si ottiene ruotando $\\hat 
 
 Quindi sul piano di giacitura $\\hat m$ il vettore tensione ha solo due componenti speciali che ci interessano: la normale $\\sigma_m$, lungo $\\hat m$, e la tangenziale $\\tau_{m\\nu}$, lungo $\\hat\\nu$. Non c'è tangenziale lungo $\\hat e_3$, e quindi $\\tau_{m\\nu}$ è **tutta** la tangenziale, a meno del segno (deduzione). Ogni piano del fascio è descritto da una coppia di numeri $(\\sigma_m,\\tau_{m\\nu})$, cioè da un punto in un piano cartesiano: questa è l'idea di Mohr.
 
-Due precisazioni della dispensa. Se lo stato è **biassiale**, con $\\hat e_3$ piano scarico, questo vale per ogni giacitura, ed è il cerchio «classico». Se lo stato è **triassiale**, vale solo per i piani del fascio; per gli altri servirà l'arbelo, nella prossima lezione.`,
+Due precisazioni della dispensa. Se lo stato è **biassiale**, con $\\hat e_3$ piano scarico, questo vale per ogni giacitura, ed è il cerchio «classico». Se lo stato è **triassiale**, vale solo per i piani del fascio; per gli altri servirà l'arbelo (§3.17), nella lezione «Mohr al lavoro: esempi e arbelo».`,
       },
       {
         id: 'l38-1q',
@@ -1245,7 +1244,7 @@ Due precisazioni della dispensa. Se lo stato è **biassiale**, con $\\hat e_3$ p
         id: 'l38-2',
         kind: 'derivazione',
         title: 'La tensione normale in funzione di 2α',
-        md: `**Dove vogliamo arrivare:** $\\sigma_m$ scritta con l'angolo doppio $2\\alpha$. **L'idea:** partiamo dalla forma quadratica della lezione sul calcolo con $\\hat m=(\\cos\\alpha,\\sin\\alpha,0)$; poi le formule di duplicazione trasformano quadrati e prodotti di seni e coseni in funzioni di $2\\alpha$. Il motivo di questo cambio sarà chiaro tra due passi: con $2\\alpha$ comparirà un cerchio.`,
+        md: `**Dove vogliamo arrivare:** $\\sigma_m$ scritta con l'angolo doppio $2\\alpha$. **L'idea:** partiamo dalla forma quadratica di §3.10 con $\\hat m=(\\cos\\alpha,\\sin\\alpha,0)$; poi le formule di duplicazione trasformano quadrati e prodotti di seni e coseni in funzioni di $2\\alpha$. Il motivo di questo cambio sarà chiaro tra due passi: con $2\\alpha$ comparirà un cerchio.`,
         source: D(3, '3.15.2', undefined, 57),
         der: {
           sample: sampleMohr,
@@ -1265,7 +1264,7 @@ Due precisazioni della dispensa. Se lo stato è **biassiale**, con $\\hat e_3$ p
         id: 'l38-2b',
         kind: 'spiega',
         title: 'La tangenziale, con lo stesso procedimento',
-        md: `La tangenziale si ottiene allo stesso modo, proiettando il vettore tensione su $\\hat\\nu=(-\\sin\\alpha,\\cos\\alpha,0)$ con la formula di $\\tau_{n\\nu}$ della lezione sul calcolo (§3.15.2):
+        md: `La tangenziale si ottiene allo stesso modo, proiettando il vettore tensione su $\\hat\\nu=(-\\sin\\alpha,\\cos\\alpha,0)$ con la formula di $\\tau_{n\\nu}$ di §3.10 (§3.15.2):
 $$\\tau_{m\\nu}=(\\sigma_2-\\sigma_1)\\sin\\alpha\\cos\\alpha+\\tau_{12}(\\cos^2\\alpha-\\sin^2\\alpha).$$
 Con $\\sin\\alpha\\cos\\alpha=\\frac12\\sin2\\alpha$ e $\\cos^2\\alpha-\\sin^2\\alpha=\\cos2\\alpha$ diventa
 $$\\tau_{m\\nu}=-\\frac{\\sigma_1-\\sigma_2}2\\sin2\\alpha+\\tau_{12}\\cos2\\alpha.$$
@@ -1291,6 +1290,7 @@ Guarda la struttura delle due formule: un termine costante (solo in $\\sigma_m$)
             },
             {
               tex: '=\\Big(\\dfrac{\\sigma_1-\\sigma_2}2\\Big)^2(\\cos^22\\alpha+\\sin^22\\alpha)+\\tau_{12}^2(\\sin^22\\alpha+\\cos^22\\alpha)',
+              aggiunto: true,
               why: `Abbiamo sviluppato i due quadrati. I doppi prodotti valgono $+2\\frac{\\sigma_1-\\sigma_2}2\\tau_{12}\\sin2\\alpha\\cos2\\alpha$ nel primo e $-2\\frac{\\sigma_1-\\sigma_2}2\\tau_{12}\\sin2\\alpha\\cos2\\alpha$ nel secondo: hanno segni opposti e si elidono. I quadrati si raccolgono a due a due.`,
               val: (v) => ((v.s1 - v.s2) / 2) ** 2 * (Math.cos(2 * v.a) ** 2 + Math.sin(2 * v.a) ** 2) + v.t ** 2,
             },
@@ -1312,7 +1312,7 @@ Guarda la struttura delle due formule: un termine costante (solo in $\\sigma_m$)
 $$\\Big(\\sigma_m-\\frac{\\sigma_1+\\sigma_2}2\\Big)^2+\\tau_{m\\nu}^2=R^2,\\qquad C=\\Big(\\frac{\\sigma_1+\\sigma_2}2,\\,0\\Big),\\qquad R=\\sqrt{\\Big(\\frac{\\sigma_1-\\sigma_2}2\\Big)^2+\\tau_{12}^2}.$$
 In parole: **al ruotare del piano attorno a $\\hat e_3$, il punto $(\\sigma_m,\\tau_{m\\nu})$ percorre un cerchio** con centro sull'asse delle $\\sigma$, nella semisomma delle due tensioni normali, e raggio che dipende dalla semidifferenza e dalla tangenziale. Siccome nelle formule compare $2\\alpha$, quando il piano fa mezzo giro ($\\alpha$ da 0 a 180°) il punto fa un giro intero: **gli angoli sul cerchio sono doppi** di quelli nello spazio.
 
-Controllo su un caso particolare: nello stato idrostatico del piano, $\\sigma_1=\\sigma_2$ e $\\tau_{12}=0$, il raggio è zero e il cerchio si riduce a un punto: tutti i piani hanno la stessa normale e nessuna tangenziale, come sapevamo.`,
+Controllo su un caso particolare (esempio aggiunto): nello stato idrostatico del piano, $\\sigma_1=\\sigma_2$ e $\\tau_{12}=0$, il raggio è zero e il cerchio si riduce a un punto: tutti i piani hanno la stessa normale e nessuna tangenziale, come sapevamo.`,
       },
       {
         id: 'l38-4a',
@@ -1331,7 +1331,7 @@ La dispensa non ne discute il motivo; è la scelta con cui la costruzione con il
         title: 'Costruire il cerchio con il polo',
         md: `La costruzione della dispensa ha quattro passi (§3.15.3).
 
-1. Segna i punti $A(\\sigma_1,0)$ e $B(\\sigma_2,0)$ sull'asse $\\sigma$ (nella figura $B$ sta a sinistra).
+1. Segna i punti $A(\\sigma_1,0)$ e $B(\\sigma_2,0)$ sull'asse $\\sigma$ (per convenzione $B$ è quello a sinistra).
 2. Segna il centro $C$, a metà tra $A$ e $B$.
 3. Segna il **polo di rappresentazione** $P(\\sigma_1,-\\tau_{12})$.
 4. Traccia il cerchio di centro $C$ che passa per $P$. È il cerchio giusto, perché $\\overline{CP}^2=\\big(\\frac{\\sigma_1-\\sigma_2}2\\big)^2+\\tau_{12}^2=R^2$.
@@ -1352,7 +1352,7 @@ Ora l'**impiego** (§3.15.4). Per trovare il punto di una giacitura $\\hat m$ qu
         title: 'Perché la costruzione funziona: l\'idea geometrica',
         md: `La costruzione con il polo va **dimostrata**: perché mai la retta per $P$ parallela a $\\hat\\nu$ dovrebbe cadere proprio nel punto giusto? La dispensa lo fa con un po' di geometria (Prop 3.15.1).
 
-Chiama $M$ il punto del cerchio sul semiasse positivo delle $\\sigma$, quello più a destra. Ci servono tre fatti.
+Chiama $M$ il punto del cerchio sull'asse delle $\\sigma$, quello più a destra. Ci servono tre fatti.
 
 1. L'angolo $\\widehat{Q_0PQ_m}$ è $\\alpha$, perché la retta $PQ_0$ è verticale (traccia del piano $\\hat e_1$) e la retta $PQ_m$ è inclinata di $\\alpha$ rispetto a essa. È un **angolo alla circonferenza**, e un angolo alla circonferenza è metà dell'angolo al centro che insiste sullo stesso arco: quindi $\\widehat{Q_0CQ_m}=2\\alpha$. Ecco da dove vengono gli angoli doppi.
 2. Chiama $\\gamma$ l'angolo $\\widehat{Q_0PM}$: allo stesso modo $\\widehat{Q_0CM}=2\\gamma$, e l'angolo al centro tra $Q_m$ e $M$ è $\\Theta=2\\gamma-2\\alpha$.
@@ -1426,7 +1426,7 @@ che viene dal triangolo $CAQ_0$: è il rapporto tra $R\\sin2\\gamma=\\tau_{12}$ 
         title: 'Le tangenziali estreme sul cerchio',
         md: `Le **tangenziali estreme** del fascio sono i punti del cerchio con $|\\tau|$ più grande: il più alto e il più basso, sulla verticale per il centro $C$ (§3.15.6). Le loro ordinate sono $\\pm R$, quindi
 $$\\tau_{\\max}=R.$$
-Uniti al polo, danno le tracce di due piani, che la dispensa chiama $\\alpha$ (tangenziale minima) e $\\beta$ (massima); ruotando $\\alpha$ in senso antiorario si va su $\\beta$. Su entrambi la tensione normale è l'ascissa del centro, $\\sigma_C$, che **non è nulla** in generale: è lo stesso fatto della lezione precedente, il piano di $\\tau_{\\max}$ non è scarico.
+Uniti al polo, danno le tracce di due piani, che la dispensa chiama $\\alpha$ (tangenziale minima) e $\\beta$ (massima). Attenzione: qui $\\alpha$ e $\\beta$ sono **nomi di piani**, da non confondere con l'angolo $\\alpha$ che finora individuava la giacitura $\\hat m$; ruotando $\\alpha$ in senso antiorario si va su $\\beta$. Su entrambi la tensione normale è l'ascissa del centro, $\\sigma_C$, che **non è nulla** in generale: è lo stesso fatto visto in §3.13.2: il piano di $\\tau_{\\max}$ non è scarico.
 
 Dove stanno questi piani? Sul cerchio, tra $S_1$ e il punto più alto c'è un quarto di giro, cioè 90° al centro; per la regola degli angoli doppi nello spazio sono **45°**. I piani di tangenziale massima sono inclinati di 45° rispetto ai piani principali, come la Prop 3.13.2 prevedeva con le bisettrici.
 
@@ -1482,7 +1482,7 @@ Ora mettiamo il cerchio al lavoro. Prima su due stati semplici e importanti, lo 
         id: 'l39-1',
         kind: 'spiega',
         title: 'Scorrimento semplice: il cerchio centrato nell\'origine',
-        md: `Lo **scorrimento semplice** è lo stato con una sola tangenziale non nulla, $\\tau_{12}=\\tau>0$ (§3.16.1). Classifichiamolo con la lezione sulle tensioni principali: la giacitura $\\hat e_3$ è principale e **scarica**, perché la terza colonna è nulla; gli invarianti valgono $III=0$ e $II=-\\tau^2\\neq0$, quindi lo stato è **biassiale**.
+        md: `Lo **scorrimento semplice** è lo stato con una sola tangenziale non nulla, $\\tau_{12}=\\tau>0$ (§3.16.1). Classifichiamolo con i criteri di §3.12: la giacitura $\\hat e_3$ è principale e **scarica**, perché la terza colonna è nulla; gli invarianti valgono $III=0$ e $II=-\\tau^2\\neq0$, quindi lo stato è **biassiale**.
 
 Costruiamo il cerchio. Con $\\sigma_1=\\sigma_2=0$ i punti $A$, $B$ e il centro $C$ coincidono con l'origine; il polo è $P=(0,-\\tau)$, e il raggio vale $R=\\sqrt{0+\\tau^2}=\\tau$. È un cerchio **centrato nell'origine**, di raggio $\\tau$.
 
@@ -1497,7 +1497,7 @@ Ritrovi così il controllo che avevamo fatto con la forma quadratica: sul piano 
         id: 'l39-1b',
         kind: 'spiega',
         title: 'Un piano a 30° nello scorrimento semplice',
-        md: `La dispensa propone un piccolo esercizio: il piano con $\\alpha=30°$ nello stesso stato (§3.16.1). Con le formule della lezione precedente, che qui hanno solo i termini con $\\tau_{12}$:
+        md: `La dispensa propone un piccolo esercizio: il piano con $\\alpha=30°$ nello stesso stato (§3.16.1). Con le formule di §3.15.2, che qui hanno solo i termini con $\\tau_{12}$:
 $$\\sigma_m=\\tau\\sin60°=\\frac{\\sqrt3}2\\tau,\\qquad\\tau_{m\\nu}=\\tau\\cos60°=\\frac\\tau2.$$
 Nota che compare $60°=2\\alpha$, l'angolo doppio.
 
@@ -1556,11 +1556,11 @@ I due cerchi piccoli stanno dentro quello grande e si toccano in $s_2$. La figur
         title: 'Il teorema dell\'arbelo',
         md: `I piani che non stanno in nessuno dei tre fasci dove finiscono? La risposta è il **teorema dell'arbelo di Mohr** (Teo 3.17.1): per qualunque giacitura, il punto $(\\sigma_m,\\tau_m)$ cade nella **regione compresa tra il cerchio massimo e i due cerchi minori**, oppure sui loro bordi. La dispensa lo enuncia senza dimostrazione (nota NF-11).
 
-Il teorema permette di **rileggere graficamente** i risultati della lezione sulle tensioni estreme:
+Il teorema permette di **rileggere graficamente** i risultati di §3.13 (lezione «Tensioni estreme»):
 - la regione è compresa tra le ascisse $s_3$ e $s_1$, quindi $s_3\\le\\sigma_m\\le s_1$ (Prop 3.13.1);
 - il punto più alto della regione è la cima del cerchio massimo, di raggio $\\frac{s_1-s_3}2$, quindi $\\tau_{\\max}=\\frac{s_1-s_3}2$ (Prop 3.13.2); e quel punto ha ascissa $\\frac{s_1+s_3}2$, la normale sul piano di $\\tau_{\\max}$.
 
-Ecco perché, nella lezione precedente, $R$ era la tangenziale massima solo **nel fascio**: il cerchio del fascio di asse $\\hat e_3$ può essere uno dei cerchi piccoli dell'arbelo.`,
+Ecco perché, nella lezione «Il cerchio di Mohr», $R$ era la tangenziale massima solo **nel fascio**: il cerchio del fascio di asse $\\hat e_3$ può essere uno dei cerchi piccoli dell'arbelo.`,
         visual: { kind: 'svg', id: 'arbelo', params: { caso: 'generico' } },
       },
       {
@@ -1583,7 +1583,7 @@ Ecco perché, nella lezione precedente, $R$ era la tangenziale massima solo **ne
         md: `L'esempio della dispensa: $\\sigma_1=98$, $\\sigma_2=14$, $\\tau_{12}=21$ MPa, con il piano di normale $\\hat e_3$ scarico. Seguiamo la costruzione.
 
 - **Cerchio.** $A(98,0)$, $B(14,0)$, centro $C=(${fd(M3172.C)};0)$, polo $P(98,-21)$, raggio $R=\\sqrt{42^2+21^2}=${fd(M3172.R)}$ MPa.
-- **Principali del fascio.** $s_1=${fd(M3172.sMax)}$ e $s_2=${fd(M3172.sMin)}$ MPa: **entrambe di trazione**, un caso in cui la principale «di compressione» del nome non lo è affatto.
+- **Principali del fascio.** $s_1=${fd(M3172.sMax)}$ e $s_2=${fd(M3172.sMin)}$ MPa: **entrambe di trazione**, come nota la dispensa; nessuna tensione principale di questo punto è di compressione.
 - **Direzione principale.** $\\tan2\\gamma=42/84=0{,}5$, da cui $\\gamma=${fd((M3172.gamma * 180) / Math.PI)}°$. Gli appunti riportavano 31,72°, che è $45°-13{,}28°$. Siccome $\\tan2\\gamma$ ha due soluzioni, $\\gamma$ e $\\gamma+90°$, per $s_1$ si sceglie quella con $\\sigma_m$ maggiore.
 - **Piano a $\\alpha=30°$.** $\\sigma_m=${fd(Q30.sigma)}$ e $\\tau_{m\\nu}=${fd(Q30.tau)}$ MPa; la faccia ortogonale ha $\\sigma_\\nu=${fd(Q120.sigma)}$ MPa. Controllo: $\\sigma_m+\\sigma_\\nu=${fd(Q30.sigma + Q120.sigma)}=\\sigma_1+\\sigma_2$, come deve essere per due punti opposti.`,
         values: { R: M3172.R, s1: M3172.sMax, s2: M3172.sMin, sigma30: Q30.sigma, tau30: Q30.tau },
