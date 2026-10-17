@@ -50,58 +50,46 @@ code{font-family:var(--mono);font-size:.88em}
 </style>
 <div class="wrap">
   <header>
-    <div class="eyebrow">App per l'orale di Scienza delle Costruzioni · aggiornato 13/10/2026 sera, verifica finale e chiusura dei dubbi</div>
-    <h1>L'app per l'orale è completa e senza punti aperti</h1>
-    <p class="lede">Tutto il programma della dispensa è nell'app: 57 concetti con lezioni guidate e derivazioni ricalcolate, 94 domande d'orale (tutte le 74 della dispensa), otto modelli 3D e i diagrammi interattivi, la mappa dei concetti, il simulatore d'interrogazione e il piano di studio su 8 settimane. <b>Tutte le 14 note sulla fonte sono risolte; non resta nessuna domanda per il docente.</b></p>
+    <div class="eyebrow">App per l'orale di Scienza delle Costruzioni · aggiornato 17/10/2026, lezioni riscritte</div>
+    <h1>Un solo tipo di lezione, riscritto per essere seguito</h1>
+    <p class="lede">Le schede a parte non ci sono più: aprire un concetto porta alla sua lezione guidata, che ora contiene anche spiegazione, formule ed errori tipici della vecchia scheda. Tutte le 57 lezioni sono state riscritte con una guida basata su come si impara (un'idea per passo, il perché prima del come, una mossa per riga nelle derivazioni, domande frequenti) e poi riviste una seconda volta sulla dispensa. <b>Tolti i pulsanti «chiaro / non ho capito».</b></p>
   </header>
 
   <section>
     <h2>Moduli (larghezza = pagine della dispensa)</h2>
     <div class="tube" id="tube"></div>
-    <div class="legend"><span><i style="background:var(--done-soft)"></i>analizzato</span><span><i style="background:var(--done)"></i>nell'app</span><span><i style="background:var(--todo)"></i>da fare</span></div>
-  </section>
-
-  <section>
-    <h2>Fasi</h2>
-    <div class="phases">
-      <div class="ph ok"><b>0 · Analisi</b><span>fatta il 12/10</span></div>
-      <div class="ph ok"><b>1 · Impianto + M1</b><span>fatta il 13/10</span></div>
-      <div class="ph ok"><b>2 · M2–M8</b><span>fatta il 13/10</span></div>
-      <div class="ph ok"><b>3 · Orale</b><span>fatta il 13/10</span></div>
-      <div class="ph ok"><b>4 · Rifinitura</b><span>fatta il 13/10</span></div>
-    </div>
+    <div class="legend"><span><i style="background:var(--done-soft)"></i>analizzato</span><span><i style="background:var(--done)"></i>lezioni riscritte e riviste</span><span><i style="background:var(--todo)"></i>da fare</span></div>
   </section>
 
   <section>
     <h2>Numeri</h2>
     <div class="nums">
-      <div class="n"><strong>57/57</strong><span>concetti nell'app (tutti i moduli)</span></div>
-      <div class="n"><strong>94</strong><span>domande d'orale (74 dalla dispensa, tutte)</span></div>
-      <div class="n"><strong>364</strong><span>test verdi</span></div>
+      <div class="n"><strong>57/57</strong><span>lezioni riscritte e riviste</span></div>
+      <div class="n"><strong>412 → 948</strong><span>passi (più brevi, uno per idea)</span></div>
+      <div class="n"><strong>175</strong><span>domande dentro le lezioni</span></div>
+      <div class="n"><strong>419</strong><span>test verdi (ogni derivazione ricalcolata, ogni lezione percorsa)</span></div>
       <div class="n"><strong>0</strong><span>problemi nella prova del browser</span></div>
-      <div class="n"><strong>14/14</strong><span>note sulla fonte risolte</span></div>
-      <div class="n"><strong>0</strong><span>punti da chiedere al docente</span></div>
+      <div class="n"><strong>≈ 27 h</strong><span>di lezioni in tutto</span></div>
     </div>
   </section>
 
   <div class="two">
     <section>
-      <h2>Fatto stasera</h2>
+      <h2>Fatto oggi</h2>
       <ul>
-        <li>Prova completa nel browser su tutte le 57 lezioni, in chiaro, scuro, 1366 e 820 px e con il 3D di riserva: 0 problemi; nuova prova sulle parti modificate: 0 problemi.</li>
-        <li>Corretto il piano: dopo il cambio dell'ora (25/10) le date delle settimane slittavano di un giorno. Ora i conti sono sui giorni di calendario, con test nel fuso di Roma.</li>
-        <li>Piano a 12 ore a settimana (prima 10, che non coprivano la stima di 100 h); se il tempo è stretto il piano suggerisce le ore e le applica con un clic.</li>
-        <li>Chiuse NF-02, NF-07 e NF-14 controllando le pagine 32 e 138 del PDF; pagina Fonti con tutte le 14 note e la lettura adottata.</li>
-        <li>Corretti i conteggi delle domande (74 dai riquadri «Per l'orale», tutte) e alcune frasi rimaste dal periodo a moduli parziali; modelli 3D aggiunti alle schede di due concetti del Cap. 2.</li>
+        <li>Pagina del concetto = lezione. A fine lezione: le domande di richiamo del concetto e quelle d'orale.</li>
+        <li>Guida di scrittura <code>docs/GUIDA_LEZIONI.md</code>: carico cognitivo, aggancio a ciò che si sa, concreto prima dell'astratto, esempi svolti, richiamo, errori tipici smontati.</li>
+        <li>Ogni lezione: «Dove siamo e dove andiamo», passi brevi collegati, derivazioni con lo scopo detto prima e il risultato letto dopo, «Attenzione a…», riassunto raccontato.</li>
+        <li>Revisione indipendente a campione, poi seconda passata su tutte le lezioni: corretti due errori di contenuto (segno dei lembi in flessione, segni di Prandtl), affermazioni più forti della fonte, aggiunte non marcate, simboli in conflitto.</li>
       </ul>
     </section>
     <section>
       <h2>Scelte fatte da solo</h2>
       <ul>
-        <li>NF-02 (p. 32): la «ellisse piatta» descrive le sezioni nel piano n̂₂n̂₃ (deformazione piana); la sfera intera diventa un ellissoide con un semiasse invariato.</li>
-        <li>NF-14 (p. 138): la dispensa confronta due pareti della sezione chiusa con una sola di quella aperta; il fattore omogeneo è 3(B−t)/(2t) ≈ 74, non 150. All'orale: il ragionamento della dispensa, poi la precisazione.</li>
-        <li>NF-07: isostatiche e sforzo normale eccentrico facoltativi, come dice la dispensa; fuori da piano e simulatore, riattivabili in Impostazioni.</li>
-        <li>Senza data dell'orale il piano copre 8 settimane da oggi; quando la imposti in Piano si ridistribuisce da solo.</li>
+        <li>Ciò che non è nella dispensa resta marcato: «(deduzione)», «(passaggio aggiunto)», «(esempio aggiunto)»; nelle derivazioni «passaggio aggiunto».</li>
+        <li>La sovrapposizione degli effetti (Cap. 4) resta spiegata a parole: la dispensa non la deriva.</li>
+        <li>Anticlastica: il segno di ρ′ è quello della dispensa; la convenzione di lettura della curvatura è una nostra ricostruzione, segnata.</li>
+        <li>I vecchi giudizi sui passi restano nei dati salvati ma non si mostrano più.</li>
       </ul>
     </section>
   </div>
@@ -109,7 +97,7 @@ code{font-family:var(--mono);font-size:.88em}
   <section class="q">
     <h2>Stato</h2>
     <ol>
-      <li>Niente da fare per completare l'app: è pronta per lo studio. L'unica impostazione personale è la data dell'orale, nella pagina Piano.</li>
+      <li>App pronta. Da fare solo su richiesta: aggiornare la copia dentro «Aula Studio», che si costruisce da un altro progetto.</li>
     </ol>
   </section>
 </div>

@@ -1,12 +1,16 @@
 # RIPARTENZA — leggere per primo
 
 ## §0 Stato dell'ultima sessione
-**Sessione 4 (13/10/2026 sera, verifica finale): app completa, nessun punto aperto.**
-- App completa: 57/57 concetti, 94 domande (74 dai riquadri «Per l'orale», tutte; 1 da un box «Attenzione»; 19 dedotte), 8 modelli 3D, mappa, simulatore, piano. 364 test verdi; `verifica_ui.py` completo (tutte le lezioni) 0 problemi, poi `--lezioni=m2,m7` dopo le modifiche: 0 problemi.
-- Fatto in sessione 4: piano senza slittamento delle date con l'ora legale (`src/learning/dates.ts`, test con `TZ=Europe/Rome` in `vite.config.ts`); default 12 h/settimana (migrazione del vecchio 10 mai toccato) e ore suggerite con pulsante; NF-02, NF-07, NF-14 chiuse sul PDF (pp. 32, 138); pagina Fonti con tutte le 14 note e colonna stato; conteggi domande corretti (Fonti, Orale); frase obsoleta in Progressi; modelli 3D sulle schede c2.1 e c2.5; README aggiornato.
-- Nessuna domanda aperta per il docente. Da Samuele solo la data dell'orale (si imposta in Piano).
-- `RichText` rende gli elenchi; tabelle markdown NON supportate. Testi in `tools/testi/cap-XX.md`. Nei `val` delle derivazioni tolleranza 1e-9.
-- **Prossimo passo preciso:** nessun lavoro previsto. Su richiesta: adattare il piano alla data dell'orale, rifinire contenuti segnalati dallo studente (feedback dei passi delle lezioni), aggiungere esercizi numerici.
+**Sessione 5 (17/10/2026): un solo tipo di lezione, 57 lezioni riscritte e riviste.**
+- Richiesta di Samuele: (1) niente più differenza tra lezione guidata e scheda; (2) lezioni più discorsive e concettuali, perché «mi perdo nei passaggi»; via i pulsanti «poco chiaro», che non portavano a una risposta.
+- Fatto: `#/concetto/…` apre la lezione (via `Guided.tsx`, `learning/chunks.ts`, schede a pezzi/intera); a fine lezione domande di richiamo del concetto e domande d'orale; tolti i giudizi dei passi (il tipo `StepFeedback` resta in `store.ts` solo per leggere/sincronizzare i dati vecchi).
+- Guida di scrittura `docs/GUIDA_LEZIONI.md` (basi: carico cognitivo, organizzatori anticipati, concreto→astratto, esempi svolti, richiamo, errori tipici) e criteri della seconda passata `docs/REVISIONE_LEZIONI.md`. **Ogni modifica futura alle lezioni segue queste due guide.**
+- Lezioni: 412 → 948 passi, 175 domande nelle lezioni, ~27 h in tutto (10–40 min per lezione; il test ora ammette fino a 40). Marcatori ammessi nel testo: (deduzione), (passaggio aggiunto), (esempio aggiunto); `RichText` NON fa il corsivo con asterisco singolo.
+- Revisione indipendente a campione + seconda passata su tutti i moduli. Corretti: segno dei lembi (c6.6), segni di Prandtl (c7.4), varie affermazioni più forti della fonte, aggiunte non marcate, simboli in conflitto ($E$/$\tens E$, $\lambda$). ANALISI §4: c8.5 ammette anche le due derivazioni di una riga del §6.5.
+- Punto da ricordare: anticlastica (c6.6) — segno di ρ′ della dispensa, convenzione di lettura κ≃−v″ nostra e marcata.
+- Test: 419 verdi (`lezioni-ui` percorre ogni lezione, un test per lezione). Prova nel browser `--lezioni=m1,m7` e `--lezioni=m3,m6`: 0 problemi.
+- **Aula Studio** (artifact che contiene SdC, SEIMAFI e MAM I) si costruisce da un progetto/repository che qui non c'è: la sua copia di SdC NON è aggiornata. Per aggiornarla serve quel sorgente.
+- **Prossimo passo preciso:** nessuno. Su richiesta: aggiornare Aula Studio, ritoccare singole lezioni.
 
 ## §0c Lavoro automatico (dalla sessione 3)
 Lo studente non segue in diretta: **non fare domande**, scegli la lettura più ragionevole e scrivila in §0 e nell'infografica. Si ferma solo una decisione irreversibile e ambigua (preparala, descrivila, fermati).
@@ -58,7 +62,7 @@ Nessuno: Fasi 0–4 chiuse, note sulla fonte tutte risolte. Lavori futuri solo s
 ## Procedura: aggiungere un modulo
 1. Leggere `tools/testi/cap-XX.md` del modulo e le righe di `tools/grafo.py`.
 2. Motore in `src/engine/` (SI, funzioni pure) + test (casi noti, verifiche indipendenti).
-3. Contenuti in `src/content/mN/`: concetti, schede, lezioni guidate (ultimo passo = riassunto con domande d'orale), domande; derivazioni con `sample`/`val` verificate su 25 campioni.
+3. Contenuti in `src/content/mN/`: concetti (dati per richiamo e mappa) e lezioni scritte secondo `docs/GUIDA_LEZIONI.md` (ultimo passo = riassunto con domande d'orale), domande; derivazioni con `sample`/`val` verificate su 25 campioni.
 4. Visual del modulo (V#), robusto (vedi trappole del prompt).
 5. `npx tsc --noEmit -p .`, suite, build, Playwright; infografica; commit, push, pubblicazione.
 
