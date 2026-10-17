@@ -44,61 +44,120 @@ export const M2_LEZIONI: Lesson[] = [
   {
     concept: 'c2.1',
     title: 'Configurazioni, deformazione, spostamento',
-    minutes: 10,
+    minutes: 14,
     source: D(2, '2.1', 'Def 2.1.1–2.1.2', '15–16'),
     visual: DEF({ mode: 'rappresentazione', preset: 'generico' }),
     steps: [
       {
         id: 'l21-1',
         kind: 'spiega',
-        title: 'Che cosa studiamo',
-        md: `Un corpo solido può cambiare forma per tante cause. L'**analisi della deformazione** studia questo cambiamento da un punto di vista **puramente cinematico**, cioè geometrico: descrive come il corpo si è trasformato, senza chiedersi perché (§2.1.2).
+        title: 'Dove siamo e dove andiamo',
+        md: `Nel primo modulo abbiamo costruito gli attrezzi: vettori, tensori, gradienti. Da qui comincia la meccanica vera e propria, e la domanda che guida tutto il capitolo 2 è semplice da dire: **quando un corpo cambia forma, come si descrive quel cambiamento con precisione?**
 
-All'oggetto reale (la scocca di un'auto) si associa un simulacro nello spazio euclideo: il **corpo materiale** $\\mathcal B$, una regione regolare e limitata. Regolare vuol dire che la frontiera $\\partial\\mathcal B$ è fatta di superfici almeno $C^1$ (Def 2.1.1).`,
+In questa lezione non facciamo ancora conti. Mettiamo in fila le parole che useremo per tutto il corso (corpo materiale, configurazione, deformazione, spostamento) e per ciascuna capiamo perché serve. Le tappe sono tre: prima sostituiamo l'oggetto reale con un oggetto matematico; poi decidiamo che cosa vogliamo descrivere e da quale punto di vista; infine diamo un nome preciso al cambiamento.
+
+Alla fine dovresti saper raccontare, senza formule davanti, che differenza c'è tra «deformazione» e «spostamento»: è la prima domanda d'orale del capitolo.`,
       },
       {
         id: 'l21-2',
         kind: 'spiega',
-        title: 'Perché la massa non entra',
-        md: `I punti di $\\mathcal B$ sono **punti materiali**: rispetto ai punti geometrici hanno massa. Nel corso però la massa non conta, perché lo studio fa astrazione dal tempo.
+        title: 'Dall\'oggetto reale al corpo materiale',
+        md: `Pensa alla scocca di un'automobile, l'esempio che usa la dispensa. È un oggetto fisico, fatto di lamiere, saldature, vernice. Per studiarlo con la matematica ci serve un suo sostituto geometrico: la regione di spazio che la scocca occupa. Questa regione si chiama **corpo materiale** e si indica con $\\mathcal B$ (§2.1.1).
 
-Ogni fenomeno reale si svolge in un tempo, e accelerazioni rapide generano forze d'inerzia. Se il fenomeno è molto lento (passeggeri che salgono piano sull'auto) l'accelerazione tende a zero e le forze d'inerzia diventano trascurabili. Lo studio statico è quel limite.`,
+Non va bene una regione qualunque. La Def 2.1.1 chiede due cose:
+- che $\\mathcal B$ sia **limitata**, cioè contenuta in una porzione finita di spazio, come ogni oggetto reale;
+- che sia **regolare**: il suo bordo, che si scrive $\\partial\\mathcal B$, deve essere fatto di superfici almeno $C^1$, cioè superfici lisce, con il piano tangente che cambia senza salti.
+
+I punti di $\\mathcal B$ si chiamano **punti materiali**. La differenza rispetto ai punti della geometria è che hanno una massa: sono pezzetti di materia, non solo posizioni.`,
       },
       {
         id: 'l21-3',
         kind: 'spiega',
-        title: 'Due configurazioni, due punti di vista',
-        md: `La regione occupata dal corpo si chiama **configurazione**, perché può cambiare. Se ne sceglie una come **riferimento**, $\\mathcal B$, con punto generico $X$; la generica altra è la configurazione **attuale** $f(\\mathcal B)$, con punto generico $x$.
+        title: 'Perché possiamo dimenticare la massa',
+        md: `Abbiamo appena detto che i punti materiali hanno massa. Eppure nel corso la massa non entra quasi mai nei conti. Come mai?
 
-- **Lagrangiano**: si segue il singolo punto $X$ e si guarda dove va. È il punto di vista del corso.
-- **Euleriano**: si parte dalla configurazione attuale e si risale all'origine del punto $x$. Serve anche nei solidi: la spinta del vento su una vela dipende dalla sua forma deformata.
+Ragioniamo sull'esempio dell'auto. Se dei passeggeri saltano dentro di colpo, la scocca sobbalza: ci sono accelerazioni, e dove c'è un'accelerazione la massa produce forze d'inerzia. Se invece i passeggeri salgono **molto lentamente**, la scocca si adatta piano piano, le accelerazioni sono quasi nulle e quindi anche le forze d'inerzia sono trascurabili.
 
-Le differenze tra i due si vedono solo per grandi spostamenti e deformazioni; noi lavoreremo con quelli piccoli.`,
+Lo studio **statico**, quello del corso, è proprio il caso limite di un fenomeno così lento che le accelerazioni tendono a zero (§2.1.1). In quel limite il tempo non conta più, e con lui sparisce il ruolo della massa. Ecco perché possiamo «fare astrazione dal tempo», come dice la dispensa.`,
       },
       {
         id: 'l21-4',
-        kind: 'spiega',
-        title: 'Deformazione e spostamento',
-        md: `**Def 2.1.2.** La **deformazione** è la mappa $f:\\mathcal B\\to\\mathcal E$, $x=f(X)$: una funzione vettoriale di variabile vettoriale. Lo **spostamento** è
-
-$$\\vet u(X)=x-X=f(X)-X.$$
-
-Sono entrambi campi vettoriali, ma diversi: $f$ trasforma un corpo in un altro, $\\vet u$ è il vettore che porta il singolo $X$ in $x$. In componenti $u_i=f_i(X_1,X_2,X_3)-X_i$.
-
-Nel modello a destra (che riprenderemo nella formula di rappresentazione) vedi due punti $X$ e $Y$ e i loro spostamenti.`,
+        kind: 'domanda',
+        q: { id: 'l21-q0', kind: 'scelta', q: 'Perché nello studio statico le forze d\'inerzia sono trascurabili?', options: ['Perché il fenomeno è pensato così lento che le accelerazioni tendono a zero', 'Perché i punti materiali non hanno massa', 'Perché il corpo materiale è una regione limitata', 'Perché le forze d\'inerzia si annullano sempre nei solidi'], correct: 0, why: 'La massa c\'è (i punti materiali la hanno), ma la forza d\'inerzia è massa per accelerazione: se l\'accelerazione tende a zero, la forza d\'inerzia diventa trascurabile (§2.1.1). La limitatezza di $\\mathcal B$ non c\'entra.' },
       },
       {
         id: 'l21-5',
-        kind: 'domanda',
-        q: { id: 'l21-q1', kind: 'scelta', q: 'Quale affermazione è corretta?', options: ['$f$ è la mappa che trasforma il corpo; $\\vet u$ è il vettore che porta il singolo punto', '$f$ e $\\vet u$ sono la stessa cosa', '$\\vet u$ è uno scalare', 'Lo spostamento dipende dalle cause della deformazione'], correct: 0, why: '§2.1.3: entrambi campi vettoriali; la deformazione è la mappa, lo spostamento il vettore $x-X$.' },
+        kind: 'spiega',
+        title: 'Che cosa vogliamo descrivere: solo la geometria',
+        md: `Sistemato il corpo, chiediamoci che cosa vogliamo dire di lui. L'analisi della deformazione ha un compito preciso e volutamente limitato: descrivere **come** il corpo ha cambiato forma, non **perché**. Le cause, cioè le forze e il materiale, arriveranno nei capitoli 3 e 4. Qui facciamo solo geometria: lo studio è **puramente cinematico** (§2.1.2).
+
+Per descrivere un cambiamento servono due «fotografie» del corpo, un prima e un dopo. La regione occupata dal corpo si chiama **configurazione**, e il nome ricorda che può cambiare.
+- La **configurazione di riferimento** è il «prima», che scegliamo noi: è proprio $\\mathcal B$, e il suo punto generico si chiama $X$, con la maiuscola.
+- La **configurazione attuale** è il «dopo»: si scrive $f(\\mathcal B)$, e il suo punto generico si chiama $x$, con la minuscola.
+
+Tieni a mente questa convenzione, perché la useremo sempre: **maiuscole per il prima, minuscole per il dopo**.`,
       },
       {
         id: 'l21-6',
-        kind: 'riassunto',
-        md: `**In una frase:** il corpo materiale passa dalla configurazione di riferimento $\\mathcal B$ a quella attuale $f(\\mathcal B)$; ogni punto si sposta di $\\vet u=f(X)-X$.
+        kind: 'spiega',
+        title: 'Due modi di guardare: lagrangiano ed euleriano',
+        md: `Fissati il prima e il dopo, possiamo partire da una delle due fotografie.
 
-- Studio puramente cinematico e statico (forze d'inerzia trascurabili).
-- Lagrangiano (si segue $X$) contro euleriano (si risale da $x$).`,
+Il punto di vista **lagrangiano** parte dal prima: prendi un punto $X$ del corpo e ti chiedi dove è andato a finire. È come mettere un'etichetta su un pezzetto di materia e seguirlo. È il punto di vista adottato nel corso.
+
+Il punto di vista **euleriano** parte dal dopo: guardi un punto $x$ della configurazione attuale e ti chiedi da dove viene. Serve quando ciò che conta è la forma finale. L'esempio della dispensa è la vela: la spinta del vento dipende dalla forma che la vela ha adesso, gonfia, non da quella che aveva quando era ripiegata.
+
+Le due descrizioni portano a risultati diversi solo quando spostamenti e deformazioni sono **grandi**. Noi lavoreremo con spostamenti e deformazioni piccoli, quindi scegliere il punto di vista lagrangiano non ci fa perdere nulla (§2.1.2).`,
+      },
+      {
+        id: 'l21-7',
+        kind: 'domanda',
+        q: { id: 'l21-q2', kind: 'vf', q: 'Nel punto di vista lagrangiano si parte da un punto $x$ della configurazione attuale e si risale alla sua origine.', answer: false, why: 'Questo è il punto di vista euleriano. Il lagrangiano fa il contrario: parte dal punto $X$ della configurazione di riferimento e lo segue fino a $x$ (§2.1.2).' },
+      },
+      {
+        id: 'l21-8',
+        kind: 'spiega',
+        title: 'La deformazione: la regola che sposta tutti i punti',
+        md: `Ora possiamo dare un nome preciso al cambiamento. La **deformazione** è la funzione $f$ che a ogni punto del prima associa il suo punto nel dopo (Def 2.1.2):
+$$f:\\mathcal B\\to\\mathcal E,\\qquad x=f(X).$$
+Leggila così: $f$ prende un punto del corpo di riferimento e restituisce un punto dello spazio euclideo $\\mathcal E$, cioè la sua nuova posizione. Siccome entra un punto (tre coordinate) ed esce un punto (tre coordinate), $f$ è una funzione vettoriale di variabile vettoriale.
+
+In componenti si scrive $x_i=f_i(X_1,X_2,X_3)$: ciascuna coordinata finale può dipendere da **tutte e tre** le coordinate iniziali. È questo che permette a $f$ di descrivere allungamenti, scorrimenti, rotazioni: non sposta i punti uno per uno a caso, ma con una regola unica per tutto il corpo.`,
+      },
+      {
+        id: 'l21-9',
+        kind: 'spiega',
+        title: 'Lo spostamento: la freccia del singolo punto',
+        md: `La deformazione dice **dove** si trova adesso ogni punto. Spesso però ci interessa un'altra cosa: **di quanto e in che direzione** si è mosso. Questa informazione è lo **spostamento** (Def 2.1.2), cioè il vettore che va dalla posizione iniziale a quella finale:
+$$\\vet u(X)=x-X=f(X)-X.$$
+In componenti, $u_i=f_i(X_1,X_2,X_3)-X_i$.
+
+Deformazione e spostamento sono entrambi **campi vettoriali**: a ogni punto $X$ assegnano qualcosa. Ma rispondono a domande diverse. Un esempio lo rende chiaro *(esempio aggiunto)*: se il corpo resta perfettamente fermo, ogni punto rimane dov'era, quindi $f(X)=X$. La deformazione allora è la funzione identità, **non** zero; lo spostamento invece è nullo, $\\vet u=\\vet 0$.
+
+Nel modello a destra vedi due punti, $X$ e $Y$, e le frecce dei loro spostamenti: ogni punto ha la sua freccia, ed è questo che fa di $\\vet u$ un campo.`,
+      },
+      {
+        id: 'l21-10',
+        kind: 'domanda',
+        q: { id: 'l21-q1', kind: 'scelta', q: 'Il corpo non si muove affatto. Quanto valgono la deformazione $f$ e lo spostamento $\\vet u$?', options: ['$f$ è l\'identità, $f(X)=X$; $\\vet u$ è nullo', '$f$ e $\\vet u$ sono entrambi nulli', '$f$ è nulla, $\\vet u$ è l\'identità', '$f$ e $\\vet u$ sono entrambi l\'identità'], correct: 0, why: 'La deformazione restituisce la posizione finale, che coincide con quella iniziale: $f(X)=X$. Una $f$ nulla manderebbe tutti i punti nell\'origine. Lo spostamento è la differenza $f(X)-X=\\vet 0$ (Def 2.1.2).' },
+      },
+      {
+        id: 'l21-11',
+        kind: 'spiega',
+        title: 'Attenzione a non confondere',
+        md: `Tre errori ricorrono spesso all'orale su questo argomento.
+
+1. **Confondere deformazione e spostamento.** $f$ è la mappa che trasforma tutto il corpo e restituisce posizioni; $\\vet u$ è la freccia che porta il singolo punto da $X$ a $x$. Sono entrambi campi vettoriali, ma l'esempio del corpo fermo mostra che non coincidono.
+2. **Dire che l'analisi della deformazione studia le cause.** No: è puramente cinematica, descrive il cambiamento di forma qualunque sia la sua origine.
+3. **Credere che lagrangiano ed euleriano diano risultati diversi anche per piccoli spostamenti.** Le differenze si apprezzano solo per grandi spostamenti e deformazioni.`,
+      },
+      {
+        id: 'l21-12',
+        kind: 'riassunto',
+        md: `**Il filo della lezione.** Per studiare un oggetto reale lo sostituiamo con un corpo materiale $\\mathcal B$, una regione limitata e regolare i cui punti hanno massa; la massa però non conta, perché lavoriamo nel limite statico di un fenomeno lentissimo. Vogliamo descrivere solo la geometria del cambiamento di forma, confrontando una configurazione di riferimento (punti $X$) con una attuale (punti $x$), e seguendo i punti dal prima al dopo, alla maniera lagrangiana. La deformazione $f$ è la regola che dà la nuova posizione di ogni punto; lo spostamento $\\vet u$ è la freccia che va dalla vecchia alla nuova posizione.
+
+- Deformazione: $x=f(X)$ (Def 2.1.2).
+- Spostamento: $\\vet u(X)=f(X)-X$, in componenti $u_i=f_i-X_i$ (Def 2.1.2).`,
         orale: ['Definire corpo materiale, configurazioni, deformazione e spostamento; punto di vista lagrangiano ed euleriano. (dispensa, domanda 1)'],
       },
     ],

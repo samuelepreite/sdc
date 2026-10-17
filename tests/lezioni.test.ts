@@ -79,10 +79,10 @@ describe('lezioni guidate', () => {
     expect(ALL_CONCEPTS.map((c) => c.id).filter((id) => !have.includes(id))).toEqual([]);
     expect(have).toEqual(ALL_CONCEPTS.map((c) => c.id).filter((id) => have.includes(id)));
   });
-  it('lezioni di 10–25 minuti, con almeno una prova sul modello o una domanda', () => {
+  it('lezioni di 10–40 minuti, con almeno una prova sul modello o una domanda', () => {
     for (const l of ALL_LESSONS) {
       expect(l.minutes).toBeGreaterThanOrEqual(10);
-      expect(l.minutes).toBeLessThanOrEqual(25);
+      expect(l.minutes).toBeLessThanOrEqual(40);
       expect(l.steps.some((s) => s.kind === 'prova' || s.kind === 'domanda'), l.concept).toBe(true);
     }
   });
