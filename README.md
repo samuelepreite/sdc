@@ -1,8 +1,8 @@
 # SDC — app per l'orale di Scienza delle Costruzioni
 
-Web app di studio per l'esame **solo orale** di Scienza delle Costruzioni, costruita sulla dispensa del corso (unica fonte). Lezioni guidate da «professore», modelli 3D e diagrammi interattivi calcolati da un motore verificato, ripasso distanziato e preparazione dell'orale.
+Web app di studio per l'esame **solo orale** di Scienza delle Costruzioni, costruita sulla dispensa del corso (unica fonte). Una lezione guidata per concetto (il «professore» costruisce il concetto passo passo; le vecchie schede sono confluite nelle lezioni), modelli 3D e diagrammi interattivi calcolati da un motore verificato, ripasso distanziato e preparazione dell'orale.
 
-**Stato:** completa (Fasi 0–4): 8 moduli, 57 concetti con lezioni guidate, 94 domande d'orale (tutte le 74 della dispensa), modelli 3D e diagrammi, mappa dei concetti, simulatore d'orale, piano di studio. Tutte le note sulla fonte sono risolte. App pubblicata: https://claude.ai/artifact/M9zqUrr9t4zY2Fgqos87EJ. Vedi `RIPARTENZA.md`.
+**Stato:** completa (Fasi 0–4): 8 moduli, 57 concetti, ciascuno con la sua lezione (riscritte il 17/10/2026 secondo `docs/GUIDA_LEZIONI.md`: 948 passi, 175 domande di richiamo dentro le lezioni), 94 domande d'orale (tutte le 74 della dispensa), modelli 3D e diagrammi, mappa dei concetti, simulatore d'orale, piano di studio. Tutte le note sulla fonte sono risolte. App pubblicata: https://claude.ai/artifact/M9zqUrr9t4zY2Fgqos87EJ. Vedi `RIPARTENZA.md`.
 
 **Comandi:** `npm test` (suite), `npx tsc --noEmit -p .`, `npm run build:artifact` (→ `dist-artifact/sdc.html`), `python3 tools/verifica_ui.py [cartella-screenshot] [--lezioni=m1,m2]` (verifica nel browser; senza `--lezioni` percorre tutte le lezioni).
 
