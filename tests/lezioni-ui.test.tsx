@@ -30,8 +30,9 @@ describe('lezione guidata', () => {
   it('ogni passo di ogni lezione ha una scena (eredita l\'ultima impostata)', () => {
     for (const l of ALL_LESSONS) for (let i = 0; i < l.steps.length; i++) expect(visualAt(l, i), `${l.concept} passo ${i}`).not.toBeNull();
   });
-  it('ogni lezione si percorre fino in fondo: «Avanti» bloccato finché il passo non è completo; a fine lezione domande e orale', () => {
-    for (const l of ALL_LESSONS) {
+  for (const l of ALL_LESSONS)
+  it(`${l.concept}: si percorre fino in fondo; «Avanti» bloccato finché il passo non è completo; a fine lezione domande e orale`, () => {
+    {
       const { unmount } = mount(<LessonPage id={l.concept} />);
       expect(screen.getByRole('heading', { name: l.title })).toBeTruthy();
       expect(screen.queryByRole('button', { name: 'chiaro' })).toBeNull(); // niente più giudizi sui passi
@@ -67,7 +68,7 @@ describe('lezione guidata', () => {
       expect(document.querySelectorAll('.lesson-after .recall').length).toBeGreaterThan(0);
       unmount();
     }
-  }, 120000);
+  }, 60000);
   it('la voce legge le formule della notazione in parole', () => {
     expect(mdToSpeech('$\\tens A\\vet v$')).toContain('tensore A');
     expect(mdToSpeech('$\\operatorname{tr}\\tens A = 0$')).toContain('traccia di');
