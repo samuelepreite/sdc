@@ -99,7 +99,7 @@ Le ipotesi sono due. La prima: l'asse $y$ è un **asse di simmetria** della sezi
         id: 'l71-4',
         kind: 'spiega',
         title: 'Dove deve passare il taglio: il centro di taglio',
-        md: `C'è una condizione in più, che la dispensa segnala con un'osservazione (§5.7.1). Perché la sezione si fletta senza torcersi, la retta d'azione del taglio deve passare per un punto preciso, il **centro di taglio** $C_T$ (la dispensa cita Sollazzo–Marzano). Se il taglio passa altrove, nasce anche una torsione. L'esempio tipico è il **profilo a C**: caricato nel suo piano medio, oltre a flettersi si torce.
+        md: `C'è una condizione in più, che la dispensa segnala con un'osservazione (§5.7.1). Perché la sezione si fletta senza torcersi, la retta d'azione del taglio deve passare per un punto preciso, il **centro di taglio** $C_T$ (la dispensa cita Sollazzo–Marzano). Se il taglio passa altrove, nasce anche una torsione. L'esempio tipico è il **profilo a C**: caricato verticalmente, oltre a flettersi si torce.
 
 Dove si trova il centro di taglio? La dispensa dà due regole che ci bastano:
 - il centro di taglio **giace su ogni asse di simmetria** della sezione;
@@ -135,17 +135,15 @@ Sul mantello, cioè sulla superficie laterale della trave, non agisce niente: è
           lines: [
             {
               tex: '\\int_{A_r}-\\sigma_z(z)\\,dA+\\int_{A_r}\\sigma_z(z+dz)\\,dA+\\int_{A_t}-\\tau_{yz}\\,dA=0',
-              why: 'Questo è l’equilibrio alla traslazione lungo $z$ del pezzetto. Il primo integrale è la forza sulla faccia di sinistra: ha il segno meno perché la normale uscente da quella faccia è $-\\hat e_z$. Il secondo è la forza sulla faccia di destra, con normale $+\\hat e_z$. Il terzo è la forza tangenziale sul rettangolo di taglio, la cui normale uscente punta verso il basso del pezzo, verso $-\\hat e_y$.',
+              why: 'Questo è l’equilibrio alla traslazione lungo $z$ del pezzetto. Il primo integrale è la forza sulla faccia di sinistra: ha il segno meno perché la normale uscente da quella faccia è $-\\hat e_z$. Il secondo è la forza sulla faccia di destra, con normale $+\\hat e_z$. Il terzo è la forza tangenziale sul rettangolo di taglio: il pezzo sta sotto la corda, quindi la normale uscente da quella faccia punta verso l’alto, cioè verso $-\\hat e_y$, perché nella dispensa l’asse $y$ è rivolto verso il basso (le fibre tese stanno a $y>0$).',
             },
             {
               tex: '\\sigma_z(z)=-\\frac{T_y(L-z)}{J_x}\\,y\\qquad\\Rightarrow\\qquad\\frac{\\partial\\sigma_z}{\\partial z}=\\frac{T_y}{J_x}\\,y',
               why: 'Ora ci serve sapere quanto cambia $\\sigma_z$ tra le due facce. La tensione normale è quella di Navier, $\\sigma_z=\\frac{M_x}{J_x}y$, con il momento che varia lungo l’asse, $M_x(z)=-T_y(L-z)$. Derivando rispetto a $z$, l’unico fattore che dipende da $z$ è $(L-z)$, la cui derivata è $-1$: i due segni meno si compensano.',
-              aggiunto: true,
             },
             {
               tex: '\\int_{A_r}\\big[\\sigma_z(z+dz)-\\sigma_z(z)\\big]dA=dz\\int_{A_r}\\frac{\\partial\\sigma_z}{\\partial z}\\,dA=\\int_{A_t}\\tau_{yz}\\,dA',
-              why: 'Abbiamo raccolto i due integrali su $A_r$ in uno solo e portato il terzo a destra. Poi, siccome $dz$ è piccolissimo, la differenza $\\sigma_z(z+dz)-\\sigma_z(z)$ è la derivata per $dz$ (sviluppo al primo ordine).',
-              aggiunto: true,
+              why: 'Abbiamo raccolto i due integrali su $A_r$ in uno solo e portato il terzo a destra. Poi, siccome $dz$ è piccolissimo, la differenza $\\sigma_z(z+dz)-\\sigma_z(z)$ è la derivata per $dz$ (sviluppo al primo ordine): i termini $\\sigma_z(z)$ si elidono.',
             },
             {
               tex: '\\frac{T_y}{J_x}dz\\int_{A_r}y\\,dA=dz\\int_{b_r}\\tau_{zy}\\,dx',
@@ -155,12 +153,11 @@ Sul mantello, cioè sulla superficie laterale della trave, non agisce niente: è
             {
               tex: '\\frac{T_y}{J_x}\\,S_x=b_r\\,\\bar\\tau_{zy},\\qquad S_x:=\\int_{A_r}y\\,dA,\\quad\\bar\\tau_{zy}:=\\frac1{b_r}\\int_{b_r}\\tau_{zy}\\,dx',
               why: 'Abbiamo semplificato $dz$ e dato un nome ai due integrali. Il primo è il **momento statico** $S_x$ dell’area sottesa rispetto all’asse $x$, che è l’asse neutro della flessione associata. Il secondo, diviso per $b_r$, è il **valore medio** $\\bar\\tau_{zy}$ della tangenziale sulla corda: l’equilibrio non ci dà la distribuzione lungo la corda, solo il suo integrale.',
-              aggiunto: true,
             },
             { tex: '\\bar\\tau_{zy}', why: 'Per controllo, ecco il valore medio calcolato dal motore sul campione: taglia la sezione alla quota della corda e calcola il momento statico dell’area sottesa.', val: (v) => { const p = rectPoly(v); return J.jourawski(p, v.T, yb(v), (v.B * v.H ** 3) / 12).tau; } },
             {
               tex: '=\\frac{T_y\\,S_x}{J_x\\,b_r}',
-              why: 'Basta dividere per $b_r$. Questa è la **formula di Jourawski**. Attenzione ai due momenti: $S_x$ è il momento statico della sola area sottesa, $J_x$ il momento d’inerzia di **tutta** la sezione. Per il rettangolo di base $B$ e altezza $H$, con la corda a quota $\\bar y$, $S_x=\\frac B2\\big(\\frac{H^2}4-\\bar y^2\\big)$, ed è questo che il campione usa.',
+              why: 'Basta dividere per $b_r$. Questa è la **formula di Jourawski**. Attenzione ai due momenti: $S_x$ è il momento statico della sola area sottesa, $J_x$ il momento d’inerzia di **tutta** la sezione. Per il rettangolo di base $B$ e altezza $H$, con la corda a quota $\\bar y$, $S_x=\\frac B2\\big(\\frac{H^2}4-\\bar y^2\\big)$, ed è questo che il campione usa (esempio aggiunto).',
               val: (v) => (v.T * (v.B / 2) * (v.H ** 2 / 4 - yb(v) ** 2)) / (((v.B * v.H ** 3) / 12) * v.B),
               eq: 'Teo 5.7.2',
             },
@@ -173,11 +170,11 @@ Sul mantello, cioè sulla superficie laterale della trave, non agisce niente: è
         title: 'Che cosa dice la formula, e un controllo sul rettangolo',
         md: `Rileggiamo la formula $\\bar\\tau_{zy}=\\frac{T_yS_x}{J_xb_r}$ a parole: la tensione tangenziale media su una corda è **proporzionale al taglio** e al momento statico dell'area che sta sotto la corda, ed è **inversamente proporzionale** al momento d'inerzia della sezione e alla lunghezza della corda. Una corda stretta concentra la stessa forza su meno materiale, quindi la tensione cresce.
 
-Controlliamola sul rettangolo di base $B$ e altezza $H$ (controllo aggiunto). Con $S_x=\\frac B2\\big(\\frac{H^2}4-\\bar y^2\\big)$, $J_x=\\frac{BH^3}{12}$ e $b_r=B$:
+Controlliamola sul rettangolo di base $B$ e altezza $H$ (esempio aggiunto). Con $S_x=\\frac B2\\big(\\frac{H^2}4-\\bar y^2\\big)$, $J_x=\\frac{BH^3}{12}$ e $b_r=B$:
 $$\\bar\\tau_{zy}=\\frac{6T_y}{BH^3}\\Big(\\frac{H^2}4-\\bar y^2\\Big).$$
-È una **parabola** in $\\bar y$: vale zero ai lembi, $\\bar y=\\pm H/2$, ed è massima sulla corda baricentrica, $\\bar y=0$, dove vale $\\frac32\\frac{T_y}{BH}$, cioè una volta e mezza la tensione media $T_y/A$ (passaggio aggiunto: il valore $\\frac32$ è il controllo classico, non è nella dispensa).
+È una **parabola** in $\\bar y$: vale zero ai lembi, $\\bar y=\\pm H/2$, ed è massima sulla corda baricentrica, $\\bar y=0$, dove vale $\\frac32\\frac{T_y}{BH}$, cioè una volta e mezza la tensione media $T_y/A$ (deduzione).
 
-È proprio la parabola che vedi nel diagramma a destra quando la sezione è il rettangolo. La formula servirà a dimensionare le anime delle travi e i loro collegamenti.`,
+È proprio la parabola che vedi nel diagramma a destra quando la sezione è il rettangolo. Tra poco vedremo che la formula serve anche a calcolare i collegamenti delle travi composte.`,
       },
       {
         id: 'l71-9',
@@ -192,7 +189,7 @@ $$\\bar\\tau_{zy}=\\frac{6T_y}{BH^3}\\Big(\\frac{H^2}4-\\bar y^2\\Big).$$
 
 La risposta della dispensa (§5.7.2, oss. 1) è: la media è rappresentativa solo se $\\tau_{zy}$ **varia poco lungo la corda**, e in particolare se non cambia segno. Una media di valori positivi e negativi può venire piccola anche quando le tensioni vere sono grandi.
 
-In pratica questo succede con le **corde parallele all'asse neutro**, cioè orizzontali nel nostro disegno: lungo di esse la tangenziale ha lo stesso verso, e la media è una buona stima. Con corde inclinate o verticali, invece, la media può essere fuorviante; ci torneremo nella prossima lezione con un esempio preciso. La figura di p. 128 della dispensa riassume la regola con un «OK» sulla corda orizzontale e un «NO» su quella obliqua.`,
+In pratica questo succede con le **corde parallele all'asse neutro**, cioè orizzontali nel nostro disegno: lungo di esse la tangenziale ha lo stesso verso, e la media è una buona stima. Con corde inclinate o verticali, invece, la media può essere fuorviante; ci torneremo nella lezione sulla componente $\\tau_{zx}$ e la regola delle tangenti (§5.7.3), con un esempio preciso. La figura di p. 128 della dispensa riassume la regola con un «OK» sulla corda orizzontale e un «NO» su quella obliqua.`,
       },
       {
         id: 'l71-11',
@@ -200,12 +197,9 @@ In pratica questo succede con le **corde parallele all'asse neutro**, cioè oriz
         title: 'Come varia S_x lungo l’altezza',
         md: `La formula ha due ingredienti che cambiano con la quota della corda, $S_x$ e $b_r$. Guardiamo prima il momento statico $S_x$ (§5.7.2, oss. 2).
 
-Per il teorema di Varignon il momento statico di un'area è l'area per la distanza del suo baricentro dall'asse: $S_x=A_r\\,y_{G_r}$, dove $y_{G_r}$ è l'ordinata del baricentro dell'area sottesa. Da qui si leggono i casi estremi:
-- se la corda sta sul **lembo inferiore**, l'area sottesa è nulla, quindi $S_x=0$;
-- se la corda sta sul **lembo superiore**, l'area sottesa è tutta la sezione, il cui baricentro sta sull'asse $x$: anche ora $S_x=0$;
-- in mezzo $S_x$ cresce e poi cala, ed è **massimo sulla corda baricentrica**.
+Per il teorema di Varignon il momento statico di un'area è l'area per la distanza del suo baricentro dall'asse: $S_x=A_r\\,y_{G_r}$, dove $y_{G_r}$ è l'ordinata del baricentro dell'area sottesa. Da qui si leggono i casi estremi. Se la corda sta sul **lembo inferiore**, l'area sottesa è nulla, quindi $S_x=0$. Se invece sta sul **lembo superiore**, l'area sottesa è tutta la sezione, il cui baricentro sta sull'asse $x$: anche ora $S_x=0$. Il momento statico parte quindi da zero e torna a zero; salendo dal lembo inferiore, finché la corda è sotto il baricentro si aggiungono strisce con $y>0$, che lo fanno crescere, e sopra il baricentro strisce con $y<0$, che lo fanno calare. Per questo $S_x$ è **massimo sulla corda baricentrica**.
 
-Di conseguenza anche $\\bar\\tau$ **si annulla ai due lembi**. Ma attenzione: lì si annulla anche $b_r$ in certe sezioni (pensa al cerchio), e potremmo avere uno zero diviso zero. La dispensa precisa che $S_x$ va a zero più velocemente di $b_r$, quindi il rapporto va comunque a zero. Infine il **segno** di $\\bar\\tau$ è quello di $T_y$, perché $S_x$, $J_x$ e $b_r$ sono positivi.`,
+Di conseguenza anche $\\bar\\tau$ **si annulla ai due lembi**. Ma attenzione: lì si annulla anche $b_r$ in certe sezioni (pensa al cerchio), e potremmo avere uno zero diviso zero. La dispensa precisa che $S_x$ va a zero più velocemente di $b_r$, quindi il rapporto va comunque a zero. Infine il **segno** di $\\bar\\tau$ è quello di $T_y$ (§5.7.2, oss. 2): $J_x$ e $b_r$ sono positivi, e lo è anche $S_x$, perché l'area sottesa sta dalla parte delle $y$ positive (deduzione).`,
       },
       {
         id: 'l71-12',
@@ -215,7 +209,7 @@ Di conseguenza anche $\\bar\\tau$ **si annulla ai due lembi**. Ma attenzione: l�
 
 Il massimo di $\\bar\\tau_{zy}$ come funzione della quota $y$ si trova annullando la derivata del rapporto $S_x/b_r$ (§5.7.2, oss. 3):
 $$\\frac{d\\bar\\tau_{zy}}{dy}=0\\iff S'_xb_r-S_xb'_r=0,$$
-dove l'apice indica la derivata rispetto alla quota. Sulla corda baricentrica $S_x$ è massimo, quindi $S'_x=0$ (deduzione: è la condizione di massimo di $S_x$), e la condizione si riduce a $b'_r=0$.
+dove l'apice indica la derivata rispetto alla quota. Sulla corda baricentrica $S_x$ è massimo, quindi $S'_x=0$, perché la derivata si annulla nel punto di massimo, e la condizione si riduce a $b'_r=0$.
 
 È il contenuto della **Prop 5.7.3**: il massimo di $\\bar\\tau$ sta sulla corda baricentrica **se e solo se** la corda baricentrica è massima, minima o stazionaria, cioè $b'_r(0)=0$. Esempi: il **cerchio** (corda baricentrica massima), la **clessidra** (minima), il **doppio T** (la larghezza dell'anima è costante, quindi stazionaria). Il **triangolo**, invece, ha la larghezza che cambia linearmente: la corda baricentrica non è stazionaria e il massimo sta altrove, va calcolato.`,
       },
@@ -240,9 +234,9 @@ Per questo nelle **travi composte** i collegamenti (chiodi, bulloni, saldature) 
         title: 'Disegnare i diagrammi senza fare conti',
         md: `Con quanto sappiamo si possono disegnare i diagrammi di $\\bar\\tau$ lungo l'altezza anche senza calcolarli (§5.7.2, oss. 5).
 
-**Sezione a T.** All'attacco tra ala e anima la corda passa di colpo dalla larghezza dell'ala $B$ a quella dell'anima $b$. Il momento statico $S_x$ non salta, perché l'area sottesa cambia con continuità; salta solo $b_r$. Quindi $\\bar\\tau$ fa un **salto** nel rapporto $B/b$: nell'anima la tensione è $B/b$ volte quella nell'ala. Il massimo sta sulla corda baricentrica, che cade nell'anima dove la larghezza è costante (stazionaria). Per tracciare il diagramma bastano dunque due corde: quella dell'attacco e quella baricentrica.
+**Sezione a T.** All'attacco tra ala e anima la corda passa di colpo dalla larghezza dell'ala $B$ a quella dell'anima $b$. Il momento statico $S_x$ non salta, perché l'area sottesa cambia con continuità; salta solo $b_r$. Quindi $\\bar\\tau$ fa un **salto** nel rapporto $B/b$: subito sotto l'attacco, nell'anima, la tensione è $B/b$ volte quella appena sopra, nell'ala. Il massimo sta sulla corda baricentrica, che cade nell'anima dove la larghezza è costante (stazionaria). Per tracciare il diagramma bastano dunque due corde: quella dell'attacco e quella baricentrica.
 
-**Sezione a croce.** Si hanno salti a ogni cambio di larghezza e un massimo relativo in $y=0$.
+**Sezione a croce.** Si hanno salti a ogni cambio di larghezza e un massimo relativo in $y=0$, dove la corda è stazionaria; la dispensa avverte che questo massimo relativo può coincidere o no con quello assoluto.
 
 **Triangolo.** Il massimo non sta sulla corda baricentrica: qui non si può indovinare, va calcolato.`,
       },
@@ -250,7 +244,7 @@ Per questo nelle **travi composte** i collegamenti (chiodi, bulloni, saldature) 
         id: 'l71-16',
         kind: 'numeri',
         title: 'Tre sezioni a confronto',
-        md: `Mettiamo dei numeri, calcolati dal motore con un taglio $T_y=100$ kN. Nel **rettangolo** 20×40 cm il massimo vale $${(J.shearDiagram('rettangolo', 100, 200).pts.reduce((a, b) => (b.tau > a.tau ? b : a)).tau * 10).toFixed(3).replace('.', ',')}$ MPa: è proprio $\\frac32\\frac TA$, il controllo classico che abbiamo visto prima (non è nella dispensa). Nel **doppio T** l'ala è larga 20 cm e l'anima 1,5 cm, quindi all'attacco ala–anima la tensione salta nel rapporto $20/1{,}5\\approx13{,}3$. Nel **triangolo** il massimo cade a ${Math.round(Math.abs(J.shearDiagram('triangolo', 100, 400).pts.reduce((a, b) => (b.tau > a.tau ? b : a)).y) * 10) / 10} cm dal baricentro, non sulla corda baricentrica, come prevede la Prop 5.7.3.`,
+        md: `Mettiamo dei numeri, calcolati dal motore con un taglio $T_y=100$ kN. Nel **rettangolo** 20×40 cm il massimo vale $${(J.shearDiagram('rettangolo', 100, 200).pts.reduce((a, b) => (b.tau > a.tau ? b : a)).tau * 10).toFixed(3).replace('.', ',')}$ MPa: è proprio $\\frac32\\frac TA$, il controllo che abbiamo visto prima (deduzione). Nel **doppio T** l'ala è larga 20 cm e l'anima 1,5 cm, quindi all'attacco ala–anima la tensione salta nel rapporto $20/1{,}5\\approx13{,}3$. Nel **triangolo** il massimo cade a ${Math.round(Math.abs(J.shearDiagram('triangolo', 100, 400).pts.reduce((a, b) => (b.tau > a.tau ? b : a)).y) * 10) / 10} cm dal baricentro, non sulla corda baricentrica, come prevede la Prop 5.7.3.`,
         values: { salto: Math.round((20 / 1.5) * 10) / 10 },
         visual: SVG('jourawski', { section: 'doppioT' }),
       },
@@ -334,7 +328,7 @@ La prima: il taglio lungo $x$ è nullo, $T_x=\\int_A\\tau_{zx}\\,dA=0$, perché 
 
 La seconda: sul bordo la tangenziale deve essere tangente al contorno, $\\boldsymbol\\tau_z\\cdot\\hat n=0$ (la condizione del mantello scarico, §5.2.3). Su una corda verticale questo obbliga $\\tau_{zx}$ ad avere versi diversi nella parte alta e nella parte bassa della sezione: **cambia segno** lungo la corda.
 
-E abbiamo visto nella lezione precedente che, quando la tensione cambia segno lungo la corda, il valore medio non è rappresentativo. Serve un'altra strada: la regola delle tangenti.`,
+E abbiamo visto nella lezione sulla formula di Jourawski (§5.7.2, oss. 1) che, quando la tensione cambia segno lungo la corda, il valore medio non è rappresentativo. Serve un'altra strada: la regola delle tangenti.`,
       },
       {
         id: 'l72-4',
@@ -362,17 +356,15 @@ Per la simmetria della sezione rispetto all'asse $y$, le tangenti al contorno in
             { tex: '\\boldsymbol\\tau_z\\cdot\\hat n=0\\ \\text{in }A\\text{ e }B', why: 'Punto di partenza: il mantello è scarico, quindi in ogni punto del contorno la tangenziale non ha componente lungo la normale $\\hat n$ al bordo. In altre parole è diretta lungo la tangente al contorno.' },
             {
               tex: '\\tau^A_{zx}=-\\bar\\tau_{zy}(\\bar y)\\tan\\alpha\',\\qquad\\tau^B_{zx}=\\bar\\tau_{zy}(\\bar y)\\tan\\alpha\'\\qquad(\\alpha\'\'=-\\alpha\')',
-              why: 'Prendiamo la componente verticale agli estremi uguale alla media di Jourawski. Se la tangente al contorno forma con la verticale l’angolo $\\alpha\'$, il rapporto tra componente orizzontale e verticale è $\\tan\\alpha\'$. Per la simmetria della sezione, in $A$ l’angolo è opposto, $\\alpha\'\'=-\\alpha\'$: le due componenti orizzontali sono uguali e opposte.',
+              why: 'Prendiamo la componente verticale agli estremi uguale alla media di Jourawski. Se la tangente al contorno forma con la verticale l’angolo $\\alpha\'$, il rapporto tra componente orizzontale e verticale è $\\tan\\alpha\'$. Per la simmetria della sezione, in $B$ l’angolo $\\alpha\'\'$ è opposto a quello in $A$, $\\alpha\'\'=-\\alpha\'$: la dispensa scrive $\\tau^B_{zx}=-\\bar\\tau_{zy}\\tan\\alpha\'\'=\\bar\\tau_{zy}\\tan\\alpha\'$, e le due componenti orizzontali sono uguali e opposte.',
             },
             {
               tex: '\\frac{\\partial\\tau_{zx}}{\\partial x}+\\frac{\\partial\\tau_{zy}}{\\partial y}+\\frac{\\partial\\sigma_z}{\\partial z}=0',
               why: 'Passiamo all’interno della corda. Questa è la terza equazione indefinita di equilibrio, quella lungo $z$, scritta con le componenti che il problema di Saint-Venant lascia diverse da zero.',
-              aggiunto: true,
             },
             {
               tex: '\\frac{\\partial\\tau_{zy}}{\\partial y}\\ \\text{e}\\ \\frac{\\partial\\sigma_z}{\\partial z}=\\frac{T_y}{J_x}y\\ \\text{non dipendono da }x',
-              why: 'Il secondo e il terzo termine non dipendono da $x$: nella teoria di Jourawski si prende $\\tau_{zy}$ uguale alla sua media $\\bar\\tau_{zy}$, che è funzione della sola $y$; e la derivata di $\\sigma_z$ rispetto a $z$, calcolata nella lezione precedente, dipende solo da $y$.',
-              aggiunto: true,
+              why: 'Il secondo e il terzo termine non dipendono da $x$: nella teoria di Jourawski si prende $\\tau_{zy}$ uguale alla sua media $\\bar\\tau_{zy}$, che è funzione della sola $y$; e la derivata di $\\sigma_z$ rispetto a $z$, calcolata nella dimostrazione della formula di Jourawski, dipende solo da $y$.',
             },
             {
               tex: '\\frac{\\partial^2\\tau_{zx}}{\\partial x^2}=0',
@@ -381,7 +373,7 @@ Per la simmetria della sezione rispetto all'asse $y$, le tangenti al contorno in
             },
             {
               tex: '\\tau_{zx}(x,\\bar y,z)=-2\\frac{\\bar\\tau_{zy}(\\bar y)\\tan\\alpha(\\bar y)}{b_r(\\bar y)}\\,x',
-              why: 'La retta deve assumere valori opposti nei due estremi, che stanno in $x=\\pm b_r/2$: passa quindi per lo zero in $x=0$ e ha pendenza pari alla differenza dei valori estremi divisa per la lunghezza $b_r$ della corda. Il segno davanti dipende da come la dispensa misura l’angolo $\\alpha(\\bar y)$ nella figura di p. 130; ciò che conta è che la retta valga zero al centro e valori opposti agli estremi.',
+              why: 'La retta è $\\tau_{zx}=a\\,x+b$. La dispensa pone $\\alpha\'=\\alpha$ e impone i valori agli estremi, che stanno in $x=\\pm b_r/2$: in $x=b_r/2$ vale $-\\bar\\tau_{zy}\\tan\\alpha$, in $x=-b_r/2$ vale $\\bar\\tau_{zy}\\tan\\alpha$. Siccome i due valori sono opposti, $b=0$: la retta passa per l’origine. La pendenza è la differenza dei valori estremi divisa per la lunghezza $b_r$ della corda, $a=-2\\bar\\tau_{zy}\\tan\\alpha/b_r$.',
               eq: '§5.7.4',
             },
           ],
@@ -412,7 +404,7 @@ Nel diagramma, scegli il triangolo e muovi la corda: le frecce agli estremi rest
 
 **Rettangolo.** I lati sono verticali a ogni quota: $\\tan\\alpha=0$ su ogni corda, quindi $\\tau_{zx}\\equiv0$ in tutta la sezione. Nel rettangolo la tangenziale è tutta verticale.
 
-**T sottile.** Nell'ala, lunga e sottile, le tensioni sono orizzontali; nell'anima sono verticali. La dispensa nota che si comportano **come un fluido** che scorre lungo le pareti: un'immagine che ritroveremo, in forma precisa, nella torsione.`,
+**T sottile.** Nell'ala, lunga e sottile, le tensioni sono orizzontali; nell'anima sono verticali. La dispensa nota che si comportano **come un fluido** che scorre lungo le pareti: un'immagine che ritroveremo, in forma precisa, nell'analogia idrodinamica della torsione (§5.8.7).`,
       },
       {
         id: 'l72-9',
@@ -443,7 +435,7 @@ Nel diagramma, scegli il triangolo e muovi la corda: le frecce agli estremi rest
         title: 'Attenzione a…',
         md: `Tre errori tipici su questo argomento.
 
-1. **Dimenticare la condizione sul bordo.** Sul contorno la tangenziale deve essere tangente al bordo, $\\boldsymbol\\tau_z\\cdot\\hat n=0$, perché il mantello è scarico. È facile scordarla perché la formula di Jourawski non la usa; ma è proprio da qui che nasce $\\tau_{zx}$, ed è l'unica informazione che la regola delle tangenti sfrutta.
+1. **Dimenticare la condizione sul bordo.** Sul contorno la tangenziale deve essere tangente al bordo, $\\boldsymbol\\tau_z\\cdot\\hat n=0$, perché il mantello è scarico. È facile scordarla perché la formula di Jourawski non la usa; ma è proprio da qui che nasce $\\tau_{zx}$: è l'informazione in più che la regola delle tangenti aggiunge alla media di Jourawski.
 2. **Pensare che $\\tau_{zx}$ sia costante sulla corda.** Viene spontaneo per analogia con $\\bar\\tau_{zy}$, che usiamo come costante sulla corda. Invece $\\tau_{zx}$ è lineare e antisimmetrica: ha valori opposti agli estremi e zero al centro.
 3. **Applicare la media di Jourawski a una corda verticale.** La formula vale per corde di qualsiasi direzione, ma su una corda verticale $\\tau_{zx}$ cambia segno e la media non rappresenta i valori veri.`,
       },
@@ -483,7 +475,7 @@ Le tappe sono quattro. Prima diciamo che cosa si intende per torsione e perché 
         title: 'Che cos’è la torsione, e perché si congetturano gli spostamenti',
         md: `Per la Def 5.8.1 si ha **torsione** quando le forze sulle due basi sono equivalenti a **due coppie uguali e opposte**, con momento diretto lungo l'asse del solido. Il momento torcente si indica con $M_z$.
 
-Nei casi del Modulo 6 il metodo semi-inverso partiva sempre da una congettura sulle **tensioni** (per esempio $\\sigma_z=Dy$ nella flessione) e da lì ricavava il resto. Nella torsione la dispensa segnala un'**eccezione**: si segue l'approccio di **Clebsch**, che congettura il campo di **spostamento**. Il motivo è che qui è più facile immaginare come si muove il solido che come si distribuiscono le tensioni: torcendo una gomma tra le dita vedi subito che le sezioni ruotano l'una rispetto all'altra.
+Nei casi del Modulo 6 il metodo semi-inverso partiva sempre da una congettura sulle **tensioni** (per esempio $\\sigma_z=Dy$ nella flessione) e da lì ricavava il resto. Nella torsione la dispensa segnala un'**eccezione**: si segue l'approccio di **Clebsch**, che congettura il campo di **spostamento**. Il motivo è che qui è più facile immaginare come si muove il solido che come si distribuiscono le tensioni: torcendo una gomma tra le dita vedi subito che le sezioni ruotano l'una rispetto all'altra (deduzione).
 
 Lo schema resta quello del metodo semi-inverso: si congettura una parte della soluzione, si ricava il resto, e se tutte le equazioni tornano il teorema di Kirchhoff garantisce che la soluzione trovata è l'unica.`,
       },
@@ -495,7 +487,7 @@ Lo schema resta quello del metodo semi-inverso: si congettura una parte della so
 
 La prima: ogni sezione **ruota** nel suo piano attorno all'asse, di un angolo $\\theta(z)$ che cambia da sezione a sezione. Di conseguenza le fibre longitudinali, che prima erano rette parallele all'asse, diventano **eliche**. Nel modello lo vedi sulle linee blu del mantello.
 
-La seconda: le sezioni non restano piane, ma si **ingobbano**, cioè i loro punti si spostano anche lungo l'asse $z$, uscendo dal piano della sezione. E si ingobbano **tutte allo stesso modo**: la forma dell'ingobbamento è descritta da una funzione $\\varphi(x,y)$, la **funzione d'ingobbamento**, che dipende dalla posizione nella sezione ma **non** da $z$. L'immagine della dispensa è una clip a C: torcendola, le sue estremità escono dal piano.
+La seconda: le sezioni non restano piane, ma si **ingobbano**, cioè i loro punti si spostano anche lungo l'asse $z$, uscendo dal piano della sezione. E si ingobbano **tutte allo stesso modo**: la forma dell'ingobbamento è descritta da una funzione $\\varphi(x,y)$, la **funzione d'ingobbamento**, che dipende dalla posizione nella sezione ma **non** da $z$. L'immagine della dispensa è una clip per fogli a C: torcendola, i suoi due lati non restano paralleli, uno viene avanti e l'altro va indietro.
 
 Nel modello guarda la base di destra: con il rettangolo la griglia disegnata sulla base si piega fuori dal piano. Il cursore dell'ingobbamento lo amplifica per renderlo visibile.`,
       },
@@ -509,7 +501,7 @@ La costante $\\gamma$ è l'**angolo unitario di torsione**: è la rotazione rela
 
 Ora traduciamo la rotazione in spostamenti. Un punto $P$ a distanza $r$ dall'asse, ruotando di $\\gamma z$, percorre un arco di lunghezza $r\\gamma z$. Siccome la rotazione è piccola, l'arco si confonde con la sua tangente: il punto si sposta di $PP'=r\\gamma z$ in direzione perpendicolare al raggio. Scomponendo questo spostamento lungo $x$ e $y$ si ottiene la **Def 5.8.2**:
 $$u=-\\gamma yz,\\qquad v=\\gamma xz,\\qquad w=\\gamma\\varphi(x,y).$$
-Le prime due sono la rotazione, la terza è l'ingobbamento, scritto con un fattore $\\gamma$ davanti per comodità.`,
+Le prime due sono la rotazione, la terza è l'ingobbamento, moltiplicato per $\\gamma$ per omogeneità, come dice la dispensa.`,
       },
       {
         id: 'l73-5',
@@ -534,12 +526,10 @@ Le prime due sono la rotazione, la terza è l'ingobbamento, scritto con un fatto
             {
               tex: 'E_{yz}=\\tfrac12\\gamma\\Big(x+\\frac{\\partial\\varphi}{\\partial y}\\Big)',
               why: 'Allo stesso modo, $\\partial v/\\partial z=\\gamma x$ e $\\partial w/\\partial y=\\gamma\\,\\partial\\varphi/\\partial y$. È l’altro scorrimento diverso da zero.',
-              aggiunto: true,
             },
             {
               tex: 'E_{xx}=E_{yy}=E_{zz}=E_{xy}=0\\qquad\\Rightarrow\\qquad\\Theta=\\operatorname{tr}\\tens E=0',
               why: 'Tutte le altre componenti sono nulle: $u$ non dipende da $x$, $v$ non dipende da $y$, $w$ non dipende da $z$, e in $E_{xy}$ i contributi $-\\gamma z$ e $+\\gamma z$ si elidono. In particolare la traccia di $\\tens E$, cioè la somma delle componenti sulla diagonale, che misura la variazione di volume, è nulla: la deformazione è **isocora** (§5.8.2).',
-              aggiunto: true,
             },
             {
               tex: 'T_{zx}=G\\gamma\\Big(-y+\\frac{\\partial\\varphi}{\\partial x}\\Big),\\qquad T_{zy}=G\\gamma\\Big(x+\\frac{\\partial\\varphi}{\\partial y}\\Big)',
@@ -576,7 +566,7 @@ Per tutte le altre sezioni, invece, serve conoscere $\\varphi$. Le prossime doma
         source: D(5, '5.8.2', 'Teo 5.8.3', '132–133'),
         der: {
           lines: [
-            { tex: '\\frac{\\partial T_{zx}}{\\partial x}+\\frac{\\partial T_{zy}}{\\partial y}=G\\gamma\\,\\nabla^2\\varphi=0\\ \\text{in }\\mathring A', why: 'L’equilibrio nell’interno della sezione $\\mathring A$. Le prime due equazioni indefinite sono soddisfatte da sole, perché le tensioni non dipendono da $z$. Resta la terza: sostituendo le tensioni, i termini $-y$ e $x$ hanno derivata nulla e restano le derivate seconde di $\\varphi$, cioè il suo laplaciano $\\nabla^2\\varphi=\\varphi_{,xx}+\\varphi_{,yy}$. Deve essere zero: è l’**equazione di Laplace**.' },
+            { tex: '\\frac{\\partial T_{zx}}{\\partial x}+\\frac{\\partial T_{zy}}{\\partial y}=G\\gamma\\,\\nabla^2\\varphi=0\\ \\text{in }\\mathring A', why: 'L’equilibrio nell’interno della sezione $\\mathring A$. Le prime due equazioni indefinite sono soddisfatte da sole, perché le tensioni non dipendono da $z$. Resta la terza: sostituendo le tensioni, i termini $-y$ e $x$ hanno derivata nulla e restano le derivate seconde di $\\varphi$, cioè il suo laplaciano $\\nabla^2\\varphi=\\varphi_{,xx}+\\varphi_{,yy}$. Qui usiamo una scrittura compatta: la **virgola in pedice** seguita da una variabile indica la derivata rispetto a quella variabile, quindi $\\varphi_{,x}=\\partial\\varphi/\\partial x$ e $\\varphi_{,xx}=\\partial^2\\varphi/\\partial x^2$. Deve essere zero: è l’**equazione di Laplace**.' },
             { tex: 'T_{zx}n_x+T_{zy}n_y=0\\ \\Rightarrow\\ \\frac{d\\varphi}{dn}=\\nabla\\varphi\\cdot\\hat n=yn_x-xn_y\\ \\text{su }\\partial A', why: 'Il mantello è scarico: sul contorno $\\partial A$ della sezione la tangenziale non ha componente lungo la normale $\\hat n=(n_x,n_y)$. Sostituendo le tensioni e portando a destra i termini senza $\\varphi$, si ottiene una condizione sulla **derivata normale** di $\\varphi$, cioè sulla sua derivata nella direzione perpendicolare al bordo.' },
             { tex: 'N=M_x=M_y=0,\\quad T_x=T_y=0,\\quad M_z=\\int_A(T_{zy}x-T_{zx}y)\\,dA', why: 'Restano le basi. Sforzo normale e momenti flettenti sono nulli perché $T_{zz}=0$. Che anche i due tagli siano nulli la dispensa lo afferma senza svolgerlo («si dimostra»). L’unica condizione che lavora è l’ultima: il momento torcente delle tensioni deve uguagliare quello applicato, e questo determina $\\gamma$.', eq: 'Teo 5.8.3' },
           ],
@@ -590,9 +580,9 @@ Per tutte le altre sezioni, invece, serve conoscere $\\varphi$. Le prossime doma
 $$\\nabla^2\\varphi=0\\ \\text{in }\\mathring A,\\qquad\\frac{d\\varphi}{dn}=yn_x-xn_y\\ \\text{su }\\partial A,$$
 e l'angolo unitario $\\gamma$ si ricava dal momento torcente $M_z$.
 
-Questo tipo di problema ha un nome. L'equazione di Laplace è un'equazione alle derivate del **secondo ordine**, e per individuare la soluzione basta assegnare sul contorno **o** la funzione **o** la sua derivata normale. Quando si assegna la funzione si parla di **problema di Dirichlet**; quando si assegna la derivata normale, di **problema di Neumann** (§5.8.2). Qui il dato è sulla derivata, quindi è un problema di **Neumann per l'equazione di Laplace**.
+Questo tipo di problema ha un nome. L'equazione di Laplace è un'equazione alle derivate del **secondo ordine**, e per individuare la soluzione basta assegnare sul contorno **o** la funzione **o** la sua derivata normale. Quando si assegna la funzione si parla di **problema di Dirichlet**; quando si assegna la derivata normale, di **problema di Neumann** (§5.8.2; il nome di Dirichlet la dispensa lo introduce in §5.8.3). Qui il dato è sulla derivata, quindi è un problema di **Neumann per l'equazione di Laplace**.
 
-Nota che il problema dipende solo dalla **forma della sezione**: il contorno e la sua normale. Il carico entra solo attraverso $\\gamma$. Nella prossima lezione trasformeremo questo problema in un altro, più comodo, con la funzione di Prandtl.`,
+Nota che il problema dipende solo dalla **forma della sezione**: il contorno e la sua normale. Il carico entra solo attraverso $\\gamma$ (deduzione). Nella prossima lezione trasformeremo questo problema in un altro, più comodo, con la funzione di Prandtl.`,
       },
       {
         id: 'l73-11',
@@ -618,7 +608,7 @@ Nota che il problema dipende solo dalla **forma della sezione**: il contorno e l
         title: 'Attenzione a…',
         md: `Tre errori tipici sulla torsione di Clebsch.
 
-1. **Pensare che in torsione le sezioni restino piane.** È tentante perché nella flessione valeva l'ipotesi di Bernoulli–Navier delle sezioni piane. In torsione, invece, le sezioni si ingobbano; l'unica eccezione è il cerchio (e, lo vedremo, il cerchio cavo).
+1. **Pensare che in torsione le sezioni restino piane.** È tentante perché nella flessione valeva l'ipotesi di Bernoulli–Navier delle sezioni piane. In torsione, invece, le sezioni in generale si ingobbano; tra i casi della dispensa l'eccezione è il cerchio, che resta piano (§5.8.5), e lo stesso vale per il cerchio cavo (deduzione).
 2. **Confondere Neumann e Dirichlet.** Il criterio è che cosa si assegna sul contorno: la derivata normale nel problema di Neumann, la funzione stessa nel problema di Dirichlet. Per $\\varphi$ si assegna la derivata, quindi è Neumann.
 3. **Dimenticare che qui la congettura è sugli spostamenti.** Nei casi del Modulo 6 si congetturavano le tensioni; in torsione, con Clebsch, si congetturano gli spostamenti, e tensioni e deformazioni se ne ricavano.`,
       },
@@ -647,7 +637,7 @@ Nota che il problema dipende solo dalla **forma della sezione**: il contorno e l
         id: 'l74-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente, con la congettura di Clebsch, abbiamo ridotto la torsione a un problema sulla funzione d'ingobbamento $\\varphi$: un **problema di Neumann** per l'equazione di Laplace, con la derivata normale di $\\varphi$ assegnata sul contorno (Teo 5.8.3). Resta però scomodo: il dato sul contorno dipende dalla normale punto per punto, e le tensioni si ottengono solo dopo aver derivato $\\varphi$.
+        md: `Nella lezione precedente, con la congettura di Clebsch, abbiamo ridotto la torsione a un problema sulla funzione d'ingobbamento $\\varphi$: un **problema di Neumann** per l'equazione di Laplace, con la derivata normale di $\\varphi$ assegnata sul contorno (Teo 5.8.3). Resta però scomodo: la dispensa osserva che trovare una funzione che soddisfi la condizione di Neumann sul contorno non è semplice, perché il dato dipende dalla normale punto per punto.
 
 Prandtl propone un cambio di funzione incognita. La domanda della lezione è: **quale funzione rende il problema più semplice, e come si ricava da essa il legame tra momento torcente e angolo di torsione?**
 
@@ -659,28 +649,28 @@ Le tappe sono tre. Definiamo la **funzione di Prandtl** $F$ e vediamo che con es
         title: 'L’idea: una funzione che soddisfa l’equilibrio per costruzione',
         md: `Ricordiamo l'equazione di equilibrio nell'interno della sezione: $\\frac{\\partial T_{zx}}{\\partial x}+\\frac{\\partial T_{zy}}{\\partial y}=0$. L'idea è scegliere le tensioni in modo che questa equazione sia vera **qualunque** sia la funzione da cui le ricaviamo.
 
-Il trucco è questo (spiegazione aggiunta). Se scriviamo $T_{zx}$ come derivata rispetto a $y$ di una funzione $F$, con il segno meno, e $T_{zy}$ come derivata rispetto a $x$ della stessa $F$, nella somma compaiono le due derivate seconde miste $F_{,yx}$ e $F_{,xy}$ con segni opposti. Per il **teorema di Schwarz** le derivate miste non dipendono dall'ordine di derivazione, quindi si cancellano.
+Il trucco è questo (passaggio aggiunto). Se scriviamo $T_{zx}$ come derivata rispetto a $y$ di una funzione $F$, con il segno meno, e $T_{zy}$ come derivata rispetto a $x$ della stessa $F$, nella somma compaiono le due derivate seconde miste di $F$ con segni opposti. Da qui in poi le scriviamo in forma compatta, con una **virgola in pedice** seguita dalle variabili rispetto a cui si deriva, nell'ordine: $F_{,x}=\\partial F/\\partial x$, e $F_{,yx}$ è la derivata di $F$ prima rispetto a $y$ e poi rispetto a $x$. Le due derivate miste sono quindi $F_{,yx}$ e $F_{,xy}$. Per il **teorema di Schwarz** le derivate miste non dipendono dall'ordine di derivazione, quindi si cancellano.
 
-Una funzione così si chiama **funzione delle tensioni**: invece di cercare due tensioni legate da un'equazione, cerchiamo una sola funzione, e l'equazione di equilibrio sparisce dal problema. Il prezzo da pagare è capire quali condizioni deve soddisfare $F$ perché le tensioni vengano davvero da un campo di spostamento di Clebsch.`,
+Una funzione così si chiama **funzione degli sforzi** (la dispensa la chiama «funzione degli sforzi di Prandtl», §5.8.3): gli sforzi si ottengono derivandola, come da un potenziale. Invece di cercare due tensioni legate da un'equazione, cerchiamo una sola funzione, e l'equazione di equilibrio sparisce dal problema. Il prezzo da pagare è capire quali condizioni deve soddisfare $F$ perché le tensioni vengano davvero da un campo di spostamento di Clebsch.`,
       },
       {
         id: 'l74-3',
         kind: 'derivazione',
         title: 'Da Neumann a Dirichlet: le equazioni per F',
-        md: 'Vogliamo arrivare al Teo 5.8.5: $\\nabla^2F=2$ nella sezione e $F=0$ sul contorno. Strategia: definiamo $F$ attraverso le sue derivate, confrontandole con le tensioni di Clebsch; poi traduciamo nell’ordine l’equilibrio, la condizione che $\\varphi$ esista e il mantello scarico. È una catena di passaggi logici.',
+        md: 'Vogliamo arrivare al Teo 5.8.5: $\\nabla^2F=2$ nella sezione e $F=0$ sul contorno. Strategia: definiamo $F$ attraverso le sue derivate, confrontandole con le tensioni di Clebsch; poi traduciamo nell’ordine l’equilibrio, la condizione che $\\varphi$ esista e il mantello scarico. Ricorda la notazione con la virgola: $F_{,x}=\\partial F/\\partial x$, $\\varphi_{,y}=\\partial\\varphi/\\partial y$, $F_{,xy}$ derivata prima rispetto a $x$ e poi rispetto a $y$. È una catena di passaggi logici.',
         source: D(5, '5.8.3', 'Def 5.8.4, Teo 5.8.5', '133–134'),
         der: {
           lines: [
             { tex: '\\frac{\\partial F}{\\partial x}=x+\\frac{\\partial\\varphi}{\\partial y},\\qquad\\frac{\\partial F}{\\partial y}=-\\Big(-y+\\frac{\\partial\\varphi}{\\partial x}\\Big)', why: 'È la definizione della funzione di Prandtl (Def 5.8.4): le sue derivate sono, a meno del fattore $G\\gamma$ e di un segno, le parentesi che compaiono nelle tensioni di Clebsch.' },
-            { tex: 'T_{zx}=-G\\gamma\\frac{\\partial F}{\\partial y},\\qquad T_{zy}=G\\gamma\\frac{\\partial F}{\\partial x}', why: 'Confrontiamo con le tensioni della lezione precedente, $T_{zx}=G\\gamma(-y+\\varphi_{,x})$ e $T_{zy}=G\\gamma(x+\\varphi_{,y})$: basta sostituire le parentesi con le derivate di $F$.', aggiunto: true },
+            { tex: 'T_{zx}=-G\\gamma\\frac{\\partial F}{\\partial y},\\qquad T_{zy}=G\\gamma\\frac{\\partial F}{\\partial x}', why: 'Confrontiamo con le tensioni ricavate da Clebsch (§5.8.2), $T_{zx}=G\\gamma(-y+\\varphi_{,x})$ e $T_{zy}=G\\gamma(x+\\varphi_{,y})$: basta sostituire le parentesi con le derivate di $F$. La dispensa scrive questa conseguenza nella stessa Def 5.8.4.' },
             { tex: '\\frac{\\partial T_{zx}}{\\partial x}+\\frac{\\partial T_{zy}}{\\partial y}=G\\gamma\\Big(-F_{,yx}+F_{,xy}\\Big)=0', why: 'L’equilibrio di campo: derivando le tensioni compaiono le due derivate miste di $F$ con segno opposto, che per il teorema di Schwarz sono uguali. L’equazione è soddisfatta **identicamente**, per qualunque $F$ regolare.' },
             {
               tex: '\\nabla^2F=\\frac{\\partial}{\\partial x}\\Big(x+\\varphi_{,y}\\Big)+\\frac{\\partial}{\\partial y}\\Big(y-\\varphi_{,x}\\Big)=2',
               why: 'Ora l’altra faccia della medaglia: le derivate di $F$ devono venire da una vera funzione $\\varphi$ (integrabilità). Calcoliamo il laplaciano di $F$, la somma delle derivate seconde, derivando la prima definizione rispetto a $x$ e la seconda rispetto a $y$. Restano $1+1=2$, più $\\varphi_{,yx}-\\varphi_{,xy}$, che si cancellano ancora per Schwarz, ora applicato a $\\varphi$.',
               ask: { q: 'Quanto vale il laplaciano della funzione di Prandtl?', options: ['2', '0', '1', '$-2$'], correct: 0, why: 'Derivando $x$ rispetto a $x$ e $y$ rispetto a $y$ si ottiene $1+1=2$, e le derivate miste di $\\varphi$ si cancellano (Teo 5.8.5). Zero è il laplaciano di $\\varphi$, non di $F$: è facile confonderli.' },
             },
-            { tex: 'T_{zx}n_x+T_{zy}n_y=G\\gamma\\big(-F_{,y}n_x+F_{,x}n_y\\big)=0', why: 'Il mantello scarico: sostituiamo nella condizione sul contorno le tensioni scritte con $F$.', aggiunto: true },
-            { tex: '\\frac{dF}{dt}=\\nabla F\\cdot\\hat t=0\\ \\text{su }\\partial A,\\qquad\\hat t=(-n_y,n_x)', why: 'Il vettore $\\hat t=(-n_y,n_x)$ è la normale ruotata di 90°, cioè la **tangente** al contorno. La condizione di prima, cambiata di segno, è proprio il prodotto scalare tra il gradiente di $F$ e $\\hat t$: la derivata di $F$ lungo il contorno è nulla.', aggiunto: true },
+            { tex: 'T_{zx}n_x+T_{zy}n_y=G\\gamma\\big(-F_{,y}n_x+F_{,x}n_y\\big)=0', why: 'Il mantello scarico: sostituiamo nella condizione sul contorno le tensioni scritte con $F$.' },
+            { tex: '\\frac{dF}{dt}=\\nabla F\\cdot\\hat t=0\\ \\text{su }\\partial A,\\qquad\\hat t=(-n_y,n_x)', why: 'Il vettore $\\hat t=(-n_y,n_x)$ è la normale ruotata di 90°, cioè la **tangente** al contorno. La condizione di prima, cambiata di segno, è proprio il prodotto scalare tra il gradiente di $F$ e $\\hat t$: la derivata di $F$ lungo il contorno è nulla.' },
             { tex: 'F=\\text{cost.}\\ \\text{su }\\partial A\\quad\\Rightarrow\\quad F=0\\ \\text{su }\\partial A', why: 'Se la derivata lungo il contorno è nulla, $F$ è costante sul contorno. La costante si può scegliere liberamente, perché le tensioni dipendono solo dalle derivate di $F$; per una sezione **semplicemente connessa**, che ha un solo contorno, si sceglie zero.', eq: 'Teo 5.8.5' },
           ],
         },
@@ -695,7 +685,7 @@ I nomi si leggono così: «Poisson» perché il laplaciano è uguale a un termin
 
 Confrontalo con il problema di Neumann per $\\varphi$. Lì il dato sul contorno cambiava punto per punto con la normale; qui è semplicemente **zero** su tutto il bordo. E l'equilibrio non va più controllato: è automatico.
 
-Questo suggerisce anche un modo di cercare la soluzione, che la dispensa indica come «primo tentativo»: se il contorno è descritto da un'equazione del tipo $g(x,y)=0$, allora $F=c\\,g(x,y)$ è nulla sul contorno per costruzione, e basta scegliere la costante $c$ perché il laplaciano valga 2. Lo useremo nella prossima lezione per il cerchio.`,
+Questo suggerisce anche da dove partire per cercare la soluzione. La dispensa osserva che l'equazione del contorno, diciamo $g(x,y)=0$, è un dato del problema e offre un **primo tentativo** per $F$: la funzione $g$ è nulla sul contorno per costruzione. Il tentativo va poi controllato sull'equazione di campo. Se il laplaciano di $g$ è una costante, come succede per il cerchio, basta moltiplicare $g$ per una costante scelta in modo che il laplaciano valga 2; se invece $\\nabla^2g$ varia da punto a punto, nessuna costante lo rende uguale a 2 ovunque, e il tentativo da solo non basta (deduzione). Lo useremo per il cerchio (§5.8.5).`,
       },
       {
         id: 'l74-5',
@@ -711,7 +701,7 @@ Questo suggerisce anche un modo di cercare la soluzione, che la dispensa indica 
         id: 'l74-7',
         kind: 'spiega',
         title: 'Come si «vede» F: il grafico sulla sezione',
-        md: `Il modello a destra mostra la funzione di Prandtl calcolata dal motore come una **superficie** sopra la sezione: l'altezza in ogni punto è $-F$. Questa rappresentazione è un aiuto per gli occhi: la dispensa usa invece, come immagine fisica, l'analogia idrodinamica che vedremo nella prossima lezione.
+        md: `Il modello a destra mostra la funzione di Prandtl calcolata dal motore come una **superficie** sopra la sezione: l'altezza in ogni punto è $-F$. Questa rappresentazione è un aiuto per gli occhi: la dispensa usa invece, come immagine fisica, l'analogia idrodinamica che vedremo nella prossima lezione (§5.8.7).
 
 Che cosa guardare? Tre cose, che si leggono dalle formule di questa lezione (deduzione).
 - La superficie è **nulla sul contorno** ($F=0$) e si alza all'interno: è una specie di cupola. Siccome $\\nabla^2F=2$ è positivo, $F$ è negativa all'interno, e $-F$ positiva.
@@ -740,7 +730,7 @@ Che cosa guardare? Tre cose, che si leggono dalle formule di questa lezione (ded
         der: {
           sample,
           lines: [
-            { tex: 'M_z=\\int_A\\big(T_{zy}\\,x-T_{zx}\\,y\\big)\\,dA', why: 'Il momento torcente è la somma dei momenti delle tensioni tangenziali rispetto al baricentro (Def 5.2.2 del Modulo 6).', aggiunto: true },
+            { tex: 'M_z=\\int_A\\big(T_{zy}\\,x-T_{zx}\\,y\\big)\\,dA', why: 'Il momento torcente è la somma dei momenti delle tensioni tangenziali rispetto al baricentro (Def 5.2.2 del Modulo 6). La dispensa parte proprio da qui, dalla condizione indebolita su $M_z$.' },
             {
               tex: '\\frac{M_z}{G\\gamma}=\\int_A\\Big(x\\frac{\\partial F}{\\partial x}+y\\frac{\\partial F}{\\partial y}\\Big)dA',
               why: 'Sostituiamo $T_{zy}=G\\gamma F_{,x}$ e $T_{zx}=-G\\gamma F_{,y}$: il segno meno davanti a $T_{zx}$ diventa un più. Poi dividiamo per $G\\gamma$, che è costante. Il motore calcola l’integrale con il gradiente esatto della $F$ dell’ellisse.',
@@ -759,7 +749,6 @@ Che cosa guardare? Tre cose, che si leggono dalle formule di questa lezione (ded
             {
               tex: '\\int_A\\operatorname{div}\\vet w\\,dA=\\oint_{\\partial A}\\vet w\\cdot\\hat n\\,ds=0',
               why: 'Il teorema della divergenza (Modulo 1) trasforma l’integrale della divergenza sull’area nell’integrale del flusso di $\\vet w$ attraverso il contorno. Ma sul contorno $F=0$, quindi $\\vet w=\\vet 0$ e l’integrale è nullo.',
-              aggiunto: true,
             },
             {
               tex: '=\\int_A(-2F)\\,dA',
@@ -777,7 +766,7 @@ Che cosa guardare? Tre cose, che si leggono dalle formule di questa lezione (ded
         id: 'l74-10',
         kind: 'spiega',
         title: 'Il fattore di torsione q e la rigidezza torsionale',
-        md: `Il risultato si legge così: il momento torcente è $G\\gamma$ per un numero, $\\int_A(-2F)\\,dA$, che dipende solo dalla **forma** della sezione. Siccome $F$ è negativa all'interno, l'integrale è positivo: momento e angolo hanno lo stesso segno.
+        md: `Il risultato si legge così: il momento torcente è $G\\gamma$ per un numero, $\\int_A(-2F)\\,dA$, che dipende solo dalla **forma** della sezione. Siccome $F$ è negativa all'interno, l'integrale è positivo: momento e angolo hanno lo stesso segno (deduzione).
 
 La dispensa confronta questo numero con il **momento polare d'inerzia** $J_0=\\int_A(x^2+y^2)\\,dA$ e definisce (Def 5.8.6) il **fattore di torsione**
 $$q:=\\frac{J_0}{\\int_A(-2F)\\,dA}\\ge1,$$
@@ -796,7 +785,7 @@ dove $K_t$ è la **rigidezza torsionale**. Il fattore $q$ è un **fattore di eff
 
 Per quali sezioni si sa risolvere il problema? La dispensa le divide in tre gruppi:
 - **esatte in forma chiusa**: il cerchio e l'ellisse, anche cavi, e il triangolo equilatero;
-- **esatte in serie**: il rettangolo e il quadrato;
+- **esatte in serie**: il rettangolo e il quadrato (nella pratica ci si ferma a un numero finito di termini, e la soluzione diventa approssimata);
 - **approssimate**: le sezioni sottili, chiuse e aperte.
 
 Le prossime due lezioni percorrono proprio questo elenco.`,
@@ -814,12 +803,12 @@ Le prossime due lezioni percorrono proprio questo elenco.`,
 
 1. **Dimenticare il 2 in $\\nabla^2F=2$.** È facile confondere l'equazione di $F$ con quella di $\\varphi$, che è $\\nabla^2\\varphi=0$. Il 2 viene da $\\partial x/\\partial x+\\partial y/\\partial y$: senza di esso, con $F=0$ sul bordo, la soluzione sarebbe $F\\equiv0$ e non ci sarebbe alcuna tensione.
 2. **Pensare che $q$ possa essere minore di 1.** Il cerchio è la sezione più efficiente: $q=1$ per il cerchio e $q>1$ per tutte le altre.
-3. **Scambiare i segni nelle formule delle tensioni.** La regola è $T_{zx}=-G\\gamma F_{,y}$ e $T_{zy}=G\\gamma F_{,x}$: il segno meno sta sulla componente lungo $x$, che si ottiene derivando rispetto a $y$. Scambiandoli, l'equilibrio non sarebbe più automatico.`,
+3. **Scambiare i segni nelle formule delle tensioni.** La regola è $T_{zx}=-G\\gamma F_{,y}$ e $T_{zy}=G\\gamma F_{,x}$: il segno meno sta sulla componente lungo $x$, che si ottiene derivando rispetto a $y$. Se sbagli uno solo dei due segni, oppure scambi le derivate (per esempio $T_{zx}$ con $F_{,x}$), l'equilibrio non è più automatico. Se invece inverti entrambi i segni, l'equilibrio regge ancora per il teorema di Schwarz, ma si invertono il verso di tutte le tensioni e il segno di $M_z$ (deduzione).`,
       },
       {
         id: 'l74-14',
         kind: 'riassunto',
-        md: `**Il filo della lezione.** Per rendere più semplice il problema di Neumann su $\\varphi$, Prandtl introduce una funzione delle tensioni $F$, le cui derivate danno le due tangenziali. Con questa scelta l'equilibrio è automatico per il teorema di Schwarz; l'esistenza di $\\varphi$ impone $\\nabla^2F=2$, e il mantello scarico impone che $F$ sia costante sul contorno, cioè nulla per una sezione semplicemente connessa: è un problema di Dirichlet per Poisson. Il momento torcente, con il teorema della divergenza, risulta $G\\gamma\\int(-2F)$; confrontando con il momento polare si definisce il fattore di torsione $q\\ge1$, uguale a 1 solo per il cerchio, e la rigidezza torsionale $K_t=GJ_0/q$.
+        md: `**Il filo della lezione.** Per rendere più semplice il problema di Neumann su $\\varphi$, Prandtl introduce una funzione degli sforzi $F$, le cui derivate danno le due tangenziali. Con questa scelta l'equilibrio è automatico per il teorema di Schwarz; l'esistenza di $\\varphi$ impone $\\nabla^2F=2$, e il mantello scarico impone che $F$ sia costante sul contorno, cioè nulla per una sezione semplicemente connessa: è un problema di Dirichlet per Poisson. Il momento torcente, con il teorema della divergenza, risulta $G\\gamma\\int(-2F)$; confrontando con il momento polare si definisce il fattore di torsione $q\\ge1$, uguale a 1 solo per il cerchio, e la rigidezza torsionale $K_t=GJ_0/q$.
 
 - Funzione di Prandtl: $T_{zx}=-G\\gamma F_{,y}$, $T_{zy}=G\\gamma F_{,x}$ (Def 5.8.4).
 - Problema di Dirichlet per Poisson: $\\nabla^2F=2$ in $\\mathring A$, $F=0$ su $\\partial A$ (Teo 5.8.5).
@@ -845,7 +834,7 @@ Le prossime due lezioni percorrono proprio questo elenco.`,
 
 Ora usiamo questo strumento sulle sezioni concrete. Le domande sono due: **dove si trova la tensione massima nelle sezioni più comuni, e che cosa insegnano i risultati sulla forma da dare a un pezzo che lavora a torsione?**
 
-Le tappe: prima risolviamo esattamente il **cerchio**, che è il caso più semplice e l'unico senza ingobbamento; poi guardiamo i risultati della dispensa per ellisse, triangolo e rettangolo. Quindi introduciamo l'**analogia idrodinamica**, che permette di indovinare dove la tensione è grande o piccola senza fare conti. Infine confrontiamo un tubo chiuso con lo stesso tubo tagliato, e vediamo il cerchio cavo.`,
+Le tappe: prima risolviamo esattamente il **cerchio**, che è il caso più semplice e non si ingobba; poi guardiamo i risultati della dispensa per ellisse, triangolo e rettangolo. Quindi introduciamo l'**analogia idrodinamica**, che permette di indovinare dove la tensione è grande o piccola senza fare conti. Infine confrontiamo un tubo chiuso con lo stesso tubo tagliato, e vediamo il cerchio cavo.`,
       },
       {
         id: 'l75-2',
@@ -889,7 +878,7 @@ Poi il fattore di torsione. Il momento polare è $J_0=\\pi R^4/2$; l'integrale d
         id: 'l75-4',
         kind: 'spiega',
         title: 'Le tensioni nel cerchio',
-        md: `Con $F=\\frac{x^2+y^2-R^2}2$ le derivate sono semplicemente $F_{,x}=x$ e $F_{,y}=y$. Sostituendo nelle formule di Prandtl ed eliminando $G\\gamma$ con $\\gamma=M_z/(GJ_0)$ si ottiene (§5.8.5):
+        md: `Con $F=\\frac{x^2+y^2-R^2}2$ le derivate sono semplicemente $F_{,x}=x$ e $F_{,y}=y$, dove la virgola in pedice indica la derivata rispetto alla variabile che la segue ($F_{,x}=\\partial F/\\partial x$). Sostituendo nelle formule di Prandtl ed eliminando $G\\gamma$ con $\\gamma=M_z/(GJ_0)$ si ottiene (§5.8.5):
 $$\\tau_{zx}=-\\frac{M_z}{J_0}\\,y,\\qquad\\tau_{zy}=\\frac{M_z}{J_0}\\,x,\\qquad|\\tau_z|=\\frac{2M_z}{\\pi R^4}\\,r,\\qquad|\\tau_z|_{\\max}=\\frac{2M_z}{\\pi R^3}.$$
 
 Leggiamole a parole. La tangenziale è:
@@ -964,9 +953,9 @@ Nel diagramma le curve sono le linee di tensione (le curve di livello di $F$) e 
         title: 'Che cosa insegna l’analogia: spigoli e raccordi',
         md: `Con l'immagine del fluido si prevedono i punti critici di una sezione (§5.8.7).
 
-Negli **spigoli convessi**, quelli che sporgono verso l'esterno come gli angoli di un quadrato, il fluido ristagna: $\\tau\\to0$. Negli **spigoli concavi**, quelli rientranti come l'angolo interno di una L, il fluido deve girare di colpo e le linee si addensano: la tensione diventa **massima**, in teoria illimitata se lo spigolo è vivo. In generale la tensione è nulla sulla linea media della sezione e massima al contorno.
+Negli **spigoli convessi**, quelli che sporgono verso l'esterno come gli angoli di un quadrato, il fluido ristagna: $\\tau\\to0$. Negli **spigoli concavi**, quelli rientranti come l'angolo interno di una L, il fluido deve girare di colpo e le linee si addensano: la tensione diventa **massima**. In generale la tensione è nulla sulla linea media della sezione e massima al contorno.
 
-Le conseguenze pratiche sono importanti. In uno spigolo vivo concavo il materiale si **plasticizza** anche con momenti modesti; l'esempio della dispensa è la gola di scarico di un albero. Per questo gli spigoli concavi si **raccordano**, cioè si arrotondano: anche i profilati a doppio T hanno raccordi tra anima e ali. Questi picchi di tensione contano soprattutto per la **fatica**, cioè la rottura sotto carichi ripetuti.`,
+Le conseguenze pratiche sono importanti. In uno spigolo vivo concavo la tensione sarebbe così alta da raggiungere lo snervamento anche con momenti torcenti bassi: il materiale si **plasticizza**, le linee di tensione si regolarizzano e la tensione si ridistribuisce (la dispensa parla di «gola di scarico»). Per questo gli spigoli concavi si **raccordano**, cioè si arrotondano: anche i profilati a doppio T hanno raccordi tra anima e ali. Questi picchi di tensione contano soprattutto per la **fatica**, cioè la rottura sotto carichi ripetuti.`,
       },
       {
         id: 'l75-12',
@@ -1026,13 +1015,13 @@ All'orale esponi il ragionamento della dispensa e, se serve, precisa il fattore.
         id: 'l75-17',
         kind: 'spiega',
         title: 'Il cerchio cavo',
-        md: `Ultimo caso esatto: il **cerchio cavo**, cioè una corona circolare di raggi $R_i$ e $R_e$ (§5.8.8). La sezione non è più semplicemente connessa, perché ha due contorni, e la scelta $F=0$ su tutto il bordo non è più garantita.
+        md: `Ultimo caso esatto: il **cerchio cavo**, cioè una corona circolare di raggi $R_i$ e $R_e$ (§5.8.8). La sezione non è più semplicemente connessa, perché ha due contorni, e la scelta $F=0$ su tutto il bordo non è più possibile: sul bordo esterno si prende $F=0$, mentre su quello interno $F$ deve essere costante, ma con un'altra costante, non più nulla.
 
 L'analogia idrodinamica suggerisce la soluzione. Nel cerchio pieno le linee di flusso sono circonferenze concentriche; il **bordo interno** del cerchio cavo è una di queste circonferenze. Togliere il materiale interno è come mettere una parete lungo una linea di flusso: il fluido non se ne accorge. In termini di $F$: la funzione del cerchio pieno è costante sul bordo interno, e questo basta perché il mantello interno sia scarico.
 
 Quindi **la stessa $F$ del cerchio pieno risolve il problema**, e le tensioni hanno la stessa forma:
 $$\\tau_z=\\frac{M_z}{J_0}\\,r,\\quad r\\in[R_i,R_e],\\qquad J_0=\\frac{\\pi(R_e^4-R_i^4)}2.$$
-Cambia solo il momento polare, quello della corona. Il cerchio cavo, come il pieno, non si ingobba. La dispensa nota che lo stesso ragionamento vale per l'ellisse cava.`,
+Cambia solo il momento polare, quello della corona. Il cerchio cavo, come il pieno, non si ingobba (deduzione: ha la stessa $F$). La dispensa nota che lo stesso ragionamento vale per l'ellisse cava.`,
       },
       {
         id: 'l75-18',
@@ -1040,14 +1029,14 @@ Cambia solo il momento polare, quello della corona. Il cerchio cavo, come il pie
         title: 'Attenzione a…',
         md: `Tre errori tipici su queste sezioni.
 
-1. **Dire che anche il quadrato non si ingobba.** Il quadrato ha la stessa simmetria in tutte e quattro le direzioni, e sembra «quasi un cerchio». Ma l'ingobbamento è nullo **solo** per il cerchio, pieno o cavo: l'ellisse, il quadrato e il rettangolo si ingobbano.
+1. **Dire che anche il quadrato non si ingobba.** Il quadrato ha la stessa simmetria in tutte e quattro le direzioni, e sembra «quasi un cerchio». Ma la dispensa mostra che il cerchio non si ingobba e che l'ellisse, invece, si ingobba; anche il quadrato e il rettangolo si ingobbano, come vedi nel modello della lezione su Clebsch (deduzione).
 2. **Mettere il massimo negli spigoli del rettangolo.** È tentante perché gli spigoli sono i punti più lontani dal centro, e nel cerchio la tensione cresce con la distanza. Ma gli spigoli sono convessi e lì $\\tau\\to0$; il massimo è ai punti medi dei lati lunghi.
 3. **Usare per una sezione aperta la formula di Bredt.** La formula di Bredt, che vedremo nella prossima lezione, vale per le sezioni sottili **chiuse**, dove la tensione può girare tutta attorno. Nelle aperte la tensione cambia verso nello spessore e serve la formula dei rettangoli allungati.`,
       },
       {
         id: 'l75-19',
         kind: 'riassunto',
-        md: `**Il filo della lezione.** Per il cerchio il primo tentativo con l'equazione del contorno, diviso per 2, risolve il problema di Dirichlet: la sezione non si ingobba, $q=1$, e la tangenziale è ortogonale al raggio, lineare con esso e massima sul bordo. Ellisse, triangolo equilatero e rettangolo hanno soluzioni esatte, con il massimo nei punti del contorno più vicini al centro, e si ingobbano. L'analogia idrodinamica traduce le tensioni nelle velocità di un fluido: si annullano negli spigoli convessi e si concentrano in quelli concavi, che vanno raccordati. Lo stesso ragionamento mostra che un tubo chiuso resiste a torsione decine di volte meglio dello stesso tubo tagliato; il cerchio cavo si risolve con la $F$ del pieno.
+        md: `**Il filo della lezione.** Per il cerchio il primo tentativo con l'equazione del contorno, diviso per 2, risolve il problema di Dirichlet: la sezione non si ingobba, $q=1$, e la tangenziale è ortogonale al raggio, lineare con esso e massima sul bordo. Ellisse, triangolo equilatero e rettangolo hanno soluzioni esatte, con il massimo nei punti del contorno più vicini al centro; l'ellisse, a differenza del cerchio, si ingobba. L'analogia idrodinamica traduce le tensioni nelle velocità di un fluido: si annullano negli spigoli convessi e si concentrano in quelli concavi, che vanno raccordati. Lo stesso ragionamento mostra che un tubo chiuso resiste a torsione decine di volte meglio dello stesso tubo tagliato; il cerchio cavo si risolve con la $F$ del pieno.
 
 - Cerchio: $F=\\frac{x^2+y^2-R^2}2$, $|\\tau_z|=\\frac{2M_z}{\\pi R^4}r$, $|\\tau_z|_{\\max}=\\frac{2M_z}{\\pi R^3}$ (§5.8.5).
 - Ellisse $\\frac{2M_z}{\\pi ab^2}$; triangolo equilatero $\\frac{20M_z}{a^3}$ (§5.8.6).
@@ -1080,23 +1069,23 @@ Le tappe sono due. Prima le sezioni sottili **aperte**, che si trattano come ins
         id: 'l76-2',
         kind: 'spiega',
         title: 'Sottili aperte: una somma di rettangoli allungati',
-        md: `Partiamo dal risultato della lezione precedente per il **rettangolo molto allungato**: con $\\alpha=\\frac13$ la tensione massima è $3\\frac{M_z}{b^2h}$, con $b$ spessore e $h$ lunghezza. Una sezione sottile aperta, come una L o un doppio T, è fatta di più rettangoli allungati uniti fra loro.
+        md: `Partiamo dal risultato della lezione sulle sezioni esatte (§5.8.6) per il **rettangolo molto allungato**: con $\\alpha=\\frac13$ la tensione massima è $3\\frac{M_z}{b^2h}$, con $b$ spessore e $h$ lunghezza. Una sezione sottile aperta, come una L o un doppio T, è fatta di più rettangoli allungati uniti fra loro.
 
 La dispensa (§5.8.9) la tratta proprio così: $n$ rettangoli, il generico con spessore $b_i$ e lunghezza $h_i$. La tensione massima nel rettangolo $i$-esimo è
 $$\\tau^i_{z,\\max}=\\frac{3M_z}{\\sum_jb_j^3h_j}\\,b_i,$$
 dove la somma al denominatore corre su tutti i rettangoli. Di conseguenza la tensione massima in assoluto sta nel rettangolo **più spesso**:
 $$(\\tau_{z,\\max})_{\\max}=\\frac{3M_z}{\\sum_jb_j^3h_j}\\,b_{\\max}.$$
-Con un solo rettangolo ritrovi $3M_z/(b^2h)$ (deduzione). La formula dà una **piccola sovrastima**, cioè è a favore di sicurezza; negli spigoli, dove i rettangoli si uniscono, servono metodi numerici.`,
+Con un solo rettangolo ritrovi $3M_z/(b^2h)$ (deduzione). La dispensa avverte che la formula dà una **piccola sovrastima**, con errore trascurabile: attribuisce la tensione massima a tutta la parete, mentre le differenze vere stanno solo dove le linee di tensione cambiano direzione. Negli spigoli, dove i rettangoli si uniscono, servono metodi numerici.`,
       },
       {
         id: 'l76-3',
         kind: 'spiega',
         title: 'Perché il massimo sta nel rettangolo più spesso?',
-        md: `Il risultato può sorprendere: verrebbe da pensare che la parete più sottile sia la più sollecitata. Ragioniamo sulla formula (spiegazione aggiunta, dalla formula della dispensa).
+        md: `Il risultato può sorprendere: verrebbe da pensare che la parete più sottile sia la più sollecitata. La dispensa si limita a dire che il denominatore è lo stesso per tutti i rettangoli, quindi la tensione cresce con lo spessore $b_i$; il ragionamento che segue è nostro, ricavato dalla formula.
 
-Al denominatore c'è $\\sum b_j^3h_j$, che misura la rigidezza torsionale dell'intera sezione: ogni rettangolo contribuisce con il **cubo** del suo spessore. Il momento torcente si ripartisce tra i rettangoli in proporzione alla loro rigidezza, quindi un rettangolo spesso ne assorbe una quota molto maggiore. Al numeratore, poi, la tensione massima del rettangolo è proporzionale al suo spessore $b_i$, perché in una parete aperta la tensione varia linearmente nello spessore e il valore sulla faccia cresce con esso.
+Al denominatore c'è $\\sum b_j^3h_j$, in cui ogni rettangolo contribuisce con il **cubo** del suo spessore: possiamo leggerla come una misura della rigidezza torsionale dell'intera sezione (deduzione). Il momento torcente si ripartisce allora tra i rettangoli in proporzione alla loro rigidezza, quindi un rettangolo spesso ne assorbe una quota molto maggiore (deduzione). Al numeratore, poi, la tensione massima del rettangolo è proporzionale al suo spessore $b_i$: in una parete aperta la tensione varia linearmente nello spessore, e il valore sulla faccia cresce con esso (deduzione).
 
-L'altra conseguenza riguarda la rigidezza: siccome conta il cubo dello spessore, le sezioni aperte sottili sono **molto deformabili** a torsione. È lo stesso messaggio del tubo tagliato, visto dall'altra parte.`,
+L'altra conseguenza riguarda la rigidezza: siccome conta il cubo dello spessore, le sezioni aperte sottili sono **molto deformabili** a torsione (deduzione). È lo stesso messaggio del tubo tagliato, visto dall'altra parte.`,
       },
       {
         id: 'l76-4',
@@ -1110,12 +1099,12 @@ L'altra conseguenza riguarda la rigidezza: siccome conta il cubo dello spessore,
         md: `Passiamo alle sezioni sottili **chiuse**, come un tubo di forma qualsiasi (§5.8.10). Descriviamo la parete con la sua **linea media** $\\Gamma$, una curva chiusa e regolare; su di essa usiamo l'ascissa curvilinea $s$, cioè la lunghezza misurata lungo la curva, e chiamiamo $h(s)$ lo **spessore** della parete nel punto $s$, che può variare.
 
 La teoria di Bredt fa queste ipotesi:
-- lo spessore è piccolo rispetto alle dimensioni della sezione, $h/D\\ll1$, con $D$ il diametro;
+- lo spessore è piccolo rispetto alle dimensioni della sezione, $h/D\\ll1$, con $D$ il diametro della sezione, cioè del più piccolo cerchio in cui è inscrivibile;
 - si usa **solo l'equilibrio alla rotazione**;
 - la tangenziale si confonde con il suo **valore medio** $\\bar\\tau_z$ sulla corda che attraversa lo spessore, ed è **parallela alla tangente** alla linea media;
 - **ipotesi di Bredt**: il prodotto $\\bar\\tau_z\\,h$ è **costante** lungo la linea media.
 
-L'ultima ipotesi è il cuore della teoria, e l'analogia idrodinamica la rende naturale: in un condotto chiuso la **portata** è la stessa in ogni sezione. Il prodotto $\\bar\\tau_zh$, chiamato **flusso** di tensione, è come la portata: dove la parete si stringe, la tensione cresce.`,
+L'ultima ipotesi è il cuore della teoria, e l'analogia idrodinamica la rende naturale: in un condotto chiuso la **portata** è la stessa in ogni sezione. Il prodotto $\\bar\\tau_zh$, che chiameremo **flusso** di tensione (passaggio aggiunto: il nome non è della dispensa), è come la portata: dove la parete si stringe, la tensione cresce.`,
       },
       {
         id: 'l76-6',
@@ -1127,7 +1116,7 @@ L'ultima ipotesi è il cuore della teoria, e l'analogia idrodinamica la rende na
           sample,
           lines: [
             { tex: 'd\\vet F=\\bar\\tau_z(s)\\,h(s)\\,\\hat t(s)\\,ds', why: 'Il primo passo è la forza su un tratto di parete di lunghezza $ds$. La tensione media $\\bar\\tau_z$ agisce sulla corda di lunghezza $h$, quindi la forza è tensione per area, $\\bar\\tau_zh\\,ds$, ed è diretta lungo il versore $\\hat t$ tangente alla linea media.' },
-            { tex: 'M_z=\\oint_\\Gamma\\big[(P(s)-G)\\wedge d\\vet F\\big]\\cdot\\hat e_z', why: 'Il momento torcente è la somma, su tutta la linea media chiusa, dei momenti di queste forze rispetto a un polo $G$: il prodotto vettoriale tra il braccio $P(s)-G$ e la forza, di cui si prende la componente lungo l’asse $z$.', aggiunto: true },
+            { tex: 'M_z=\\oint_\\Gamma\\big[(P(s)-G)\\wedge d\\vet F\\big]\\cdot\\hat e_z', why: 'Il momento torcente è la somma, su tutta la linea media chiusa, dei momenti di queste forze rispetto al baricentro $G$ (la dispensa scrive l’equilibrio alla rotazione attorno a $G$): il prodotto vettoriale tra il braccio $P(s)-G$ e la forza, di cui si prende la componente lungo l’asse $z$.' },
             { tex: '=\\bar\\tau_zh\\oint_\\Gamma\\big[(P-G)\\wedge\\hat t\\big]\\cdot\\hat e_z\\,ds', why: 'Sostituiamo $d\\vet F$. Per l’ipotesi di Bredt il flusso $\\bar\\tau_zh$ è lo stesso in ogni punto, quindi è una costante e può uscire dall’integrale. Senza questa ipotesi resterebbe dentro e non sapremmo andare avanti.' },
             {
               tex: '\\oint_\\Gamma\\big[(P-G)\\wedge\\hat t\\big]\\cdot\\hat e_z\\,ds',
@@ -1157,7 +1146,7 @@ L'ultima ipotesi è il cuore della teoria, e l'analogia idrodinamica la rende na
             },
             {
               tex: '=2\\Omega',
-              why: '…e lo interpretiamo. Il prodotto misto $[(P-G)\\wedge\\hat t\\,ds]\\cdot\\hat e_z$ è il doppio dell’area del triangolino di vertici $G$, $P(s)$, $P(s+ds)$: il prodotto vettoriale di due lati dà infatti il doppio dell’area del triangolo. Sommando i triangolini su tutto il giro si copre esattamente l’area $\\Omega$ racchiusa dalla linea media, qualunque sia il polo $G$.',
+              why: '…e lo interpretiamo. Il prodotto misto $[(P-G)\\wedge\\hat t\\,ds]\\cdot\\hat e_z$ è il doppio dell’area del triangolino di vertici $G$, $P(s)$, $P(s+ds)$: il prodotto vettoriale di due lati dà infatti il doppio dell’area del triangolo. Sommando i triangolini su tutto il giro si copre esattamente l’area $\\Omega$ racchiusa dalla linea media. Il campione prende $G$ in un punto interno qualsiasi e trova lo stesso valore: il risultato non dipende dal polo (deduzione).',
               ask: { q: 'Che cosa rappresenta $\\frac12[(P-G)\\wedge\\hat t]\\cdot\\hat e_z\\,ds$?', options: ['L’area del triangolino $G$, $P(s)$, $P(s+ds)$', 'La lunghezza dell’arco $ds$', 'Il momento d’inerzia del tratto di parete', 'La forza sul tratto di parete'], correct: 0, why: 'Metà del prodotto vettoriale di due lati di un triangolo è la sua area; qui i lati sono $P(s)-G$ e $\\hat t\\,ds$ (§5.8.10). La forza sul tratto è $d\\vet F$, che abbiamo già portato fuori; momento d’inerzia e lunghezza non c’entrano.' },
               val: (v) => 2 * v.a * v.b,
             },
@@ -1172,8 +1161,8 @@ L'ultima ipotesi è il cuore della teoria, e l'analogia idrodinamica la rende na
         md: `Leggiamo $\\bar\\tau_z(s)=\\frac{M_z}{2\\Omega h(s)}$ con le osservazioni della dispensa (Teo 5.8.7).
 
 1. **La tensione è massima dove lo spessore è minimo.** Il numeratore e $\\Omega$ sono gli stessi per tutta la sezione, quindi la tensione dipende solo da $h(s)$: dove la parete è più sottile, la tensione è più grande. È la portata costante dell'analogia: in una strettoia il fluido accelera.
-2. **Conta l'area racchiusa, non l'area del materiale.** A parità di materiale, conviene «gonfiare» la sezione, allontanando la parete dal centro: $\\Omega$ cresce e la tensione cala.
-3. **Bredt dà la media nello spessore.** Per un tubo circolare la soluzione esatta (il cerchio cavo della lezione precedente) è lineare nello spessore; Bredt ne dà il valore medio, con un errore trascurabile se lo spessore è sottile.
+2. **Conta l'area racchiusa, non l'area del materiale.** A parità di materiale, conviene «gonfiare» la sezione, allontanando la parete dal centro: $\\Omega$ cresce e la tensione cala (deduzione).
+3. **Bredt dà la media nello spessore.** Per un tubo circolare la soluzione esatta (il cerchio cavo, §5.8.8) è lineare nello spessore; Bredt ne dà il valore medio, con un errore trascurabile se lo spessore è sottile.
 4. **Con gli spigoli l'approssimazione peggiora.** Se la linea media non è regolare, per esempio in un tubo quadrato, negli spigoli la tensione si concentra: servono coefficienti di sicurezza maggiori o un'analisi locale, per esempio con il metodo degli elementi finiti (FEM).
 
 Un controllo (deduzione): per un tubo circolare sottile di raggio medio $R$ e spessore $h$, $\\Omega=\\pi R^2$ e $\\bar\\tau_z=\\frac{M_z}{2\\pi R^2h}$; è ciò che dà $\\frac{M_z}{J_0}R$ con il momento polare della corona sottile, $J_0\\simeq2\\pi R^3h$.`,
@@ -1192,7 +1181,7 @@ Un controllo (deduzione): per un tubo circolare sottile di raggio medio $R$ e sp
         id: 'l76-10',
         kind: 'numeri',
         title: 'Il tubolare in numeri',
-        md: `Torniamo al tubolare quadrato della lezione precedente, con lato $B=100$ mm, spessore $t=2$ mm e momento $M_z=1$ kN·m. Con la formula di Bredt (area racchiusa $\\Omega=(B-t)^2$) la sezione chiusa ha $\\tau\\approx${(TUBE.closed * 10).toFixed(1).replace('.', ',')}$ MPa. Tagliata e trattata come un unico rettangolo allungato di lunghezza $4(B-t)$, la sezione aperta ha $\\tau_{\\max}\\approx${(TUBE.open * 10).toFixed(0)}$ MPa. Sono valori di esempio calcolati dal motore, e il loro rapporto è quello del confronto omogeneo visto prima.`,
+        md: `Torniamo al tubolare quadrato del confronto tra chiusa e aperta (§5.8.7), con lato $B=100$ mm e spessore $t=2$ mm come nella dispensa, e un momento $M_z=1$ kN·m che è invece un valore d'esempio, non della dispensa. Con la formula di Bredt (area racchiusa $\\Omega=(B-t)^2$) la sezione chiusa ha $\\tau\\approx${(TUBE.closed * 10).toFixed(1).replace('.', ',')}$ MPa. Tagliata e trattata come un unico rettangolo allungato di lunghezza $4(B-t)$, la sezione aperta ha $\\tau_{\\max}\\approx${(TUBE.open * 10).toFixed(0)}$ MPa. Le due tensioni le calcola il motore, e il loro rapporto è quello del confronto omogeneo visto nella lezione sulle sezioni esatte (passaggio aggiunto, NF-14).`,
         values: { chiusa: Math.round(TUBE.closed * 100) / 10, aperta: Math.round(TUBE.open * 10) },
         visual: SVG('torsione', { tab: 'sottili' }),
       },
