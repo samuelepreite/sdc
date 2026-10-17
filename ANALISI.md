@@ -133,7 +133,7 @@ Scelte: il Cap. 4 è diviso in due moduli (legami generali / isotropia e problem
 | c8.2 | Criteri di resistenza e tensione ideale | 6.3 | Def 6.3.1 | 147–148 | c8.1, c3.7 | — |
 | c8.3 | Criteri di Galileo, Tresca, Grashof | 6.4.1–6.4.3 | — | 148–150 | c8.2, c3.9, c5.2 | tensioni ideali |
 | c8.4 | Beltrami e confutazione di Huber | 6.4.4–6.4.5 | — | 150–151 | c8.3, c5.3 | σ_id di Beltrami; h_L |
-| c8.5 | Secondo teorema di decomposizione e von Mises | 6.5 | Teo 6.5.1, Def 6.5.2, Teo 6.5.3 | 151–154 | c8.4 | φ_d; σ_id di von Mises |
+| c8.5 | Secondo teorema di decomposizione e von Mises | 6.5 | Teo 6.5.1, Def 6.5.2, Teo 6.5.3 | 151–154 | c8.4 | proprietà della decomposizione e separazione del legame (una riga ciascuna, «Infatti…»); φ_d; σ_id di von Mises |
 | c8.6 | Criterio di Mohr–Coulomb | 6.6 | — | 154–155 | c8.2, c3.9 | verifica con il cerchio massimo |
 | c8.7 | Tensioni ideali alla Saint-Venant, travature, verifica e progetto | 6.7–6.9 | — | 155–158 | c8.5, c8.3, c7.1, c6.7 | σ_id alla Saint-Venant |
 
