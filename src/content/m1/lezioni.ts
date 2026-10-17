@@ -92,7 +92,7 @@ La dispensa usa solo riferimenti **ortonormali**, cioè con versori lunghi 1 e p
 
 Un versore lungo 1 per sé stesso dà 1: $\\hat e_1\\cdot\\hat e_1=1$, e lo stesso $\\hat e_2\\cdot\\hat e_2=1$, $\\hat e_3\\cdot\\hat e_3=1$. Due versori diversi sono perpendicolari, quindi danno zero: $\\hat e_1\\cdot\\hat e_2=0$, $\\hat e_1\\cdot\\hat e_3=0$, $\\hat e_2\\cdot\\hat e_3=0$.
 
-La regola è: **1 se gli indici sono uguali, 0 se sono diversi**. Il simbolo che la esprime si chiama **delta di Kronecker**, $\\delta_{ij}$. Per esempio $\\delta_{11}=1$, $\\delta_{22}=1$, $\\delta_{12}=0$, $\\delta_{31}=0$. Con questo simbolo le nove uguaglianze di sopra diventano una sola:
+La regola è: **1 se gli indici sono uguali, 0 se sono diversi**. Il simbolo che la esprime si chiama **delta di Kronecker**, $\\delta_{ij}$. Per esempio $\\delta_{11}=1$, $\\delta_{22}=1$, $\\delta_{12}=0$, $\\delta_{31}=0$. Con questo simbolo le uguaglianze di sopra, insieme a quelle con gli indici scambiati, nove in tutto, diventano una sola:
 
 $$\\hat e_i\\cdot\\hat e_j=\\delta_{ij}.$$
 
@@ -113,7 +113,7 @@ $$v_i:=\\vet v\\cdot\\hat e_i.$$
 
 Il simbolo $:=$ significa «è uguale per definizione»: non è un risultato, è il nome che diamo a quella quantità (§1.1.2). Il vettore si ricostruisce sommando i versori, ciascuno moltiplicato per la sua componente: $\\vet v=\\sum_iv_i\\hat e_i$.
 
-Un controllo con il delta (passaggio aggiunto): la componente 1 del versore $\\hat e_2$ è $\\hat e_2\\cdot\\hat e_1=\\delta_{21}=0$, la componente 2 è $\\delta_{22}=1$. Quindi $\\hat e_2$ ha componenti $(0;1;0)$, come ti aspetti.
+Un controllo con il delta (esempio aggiunto): la componente 1 del versore $\\hat e_2$ è $\\hat e_2\\cdot\\hat e_1=\\delta_{21}=0$, la componente 2 è $\\delta_{22}=1$. Quindi $\\hat e_2$ ha componenti $(0;1;0)$, come ti aspetti.
 
 La dispensa distingue due modi di scrivere. La **notazione assoluta** definisce gli oggetti senza riferimento, come «la freccia $\\vet v$». La **notazione in componenti** usa i numeri $v_i$ e sottintende sempre «fissato un riferimento» (§1.1.2).`,
       },
@@ -126,7 +126,7 @@ La dispensa distingue due modi di scrivere. La **notazione assoluta** definisce 
 - **Scalari**, ordine 0: un solo numero ($3^0=1$). Si scrivono con lettere greche minuscole, come $\\alpha,\\lambda$.
 - **Vettori**, ordine 1: tre componenti $v_i$. Minuscole sottosegnate, come $\\vet u$.
 - **Tensori del II ordine**: nove componenti, con due indici. Maiuscole con la tilde sotto, come $\\tens A$.
-- **Tensori del IV ordine**: $3^4=81$ componenti, con quattro indici. Maiuscole «filettate», come $\\mathbb A$; li incontreremo nella lezione 6.
+- **Tensori del IV ordine**: $3^4=81$ componenti, con quattro indici. Maiuscole «filettate», come $\\mathbb A$; li incontreremo nella lezione sui tensori del IV ordine (§1.7).
 
 La notazione ti dice a colpo d'occhio con che cosa hai a che fare: quando vedi la tilde sotto una lettera, è un tensore del II ordine.`,
       },
@@ -203,7 +203,7 @@ La componente $i$ del risultato si ottiene moltiplicando la riga $i$ della matri
         title: 'Due tensori notevoli, e il tensore senza la matrice',
         md: `Due tensori meritano un nome (§1.2.3). L'**identità** $\\tens I$ lascia ogni vettore com'è, $\\tens I\\vet v=\\vet v$. Le sue componenti sono $I_{ij}=\\tens I\\hat e_j\\cdot\\hat e_i=\\hat e_j\\cdot\\hat e_i=\\delta_{ij}$ (passaggio aggiunto): è la tabella del delta di Kronecker, 1 sulla diagonale e 0 altrove. Il **tensore nullo** $\\tens O$ manda ogni vettore nel vettore nullo, $\\tens O\\vet v=\\vet 0$, e ha tutte le componenti nulle.
 
-Un'ultima idea, la più importante per l'orale. La definizione di tensore come trasformazione lineare è in **notazione assoluta**: non nomina nessun riferimento. La matrice $[\\tens A]$, invece, dipende dal riferimento: se scegli versori diversi, i nove numeri cambiano. Il tensore no: la freccia che esce da un dato vettore resta la stessa.
+Un'ultima idea, la più importante per l'orale. La definizione di tensore come trasformazione lineare è in **notazione assoluta**: non nomina nessun riferimento. La matrice $[\\tens A]$, invece, dipende dal riferimento: se scegli versori diversi, i nove numeri in generale cambiano. Il tensore no: la freccia che esce da un dato vettore resta la stessa.
 
 È come una persona descritta in due lingue diverse: le parole cambiano, la persona no (deduzione).`,
       },
@@ -214,7 +214,7 @@ Un'ultima idea, la più importante per l'orale. La definizione di tensore come t
         md: `Su questa definizione si sbaglia in tre modi, e conviene vederli subito.
 
 1. **Leggere le operazioni nell'ordine sbagliato.** La scrittura $\\tens A\\hat e_j\\cdot\\hat e_i$ si legge $(\\tens A\\hat e_j)\\cdot\\hat e_i$. La regola della dispensa (box Attenzione, p. 3) è: prima si applica l'ente di ordine superiore a quello di ordine inferiore, poi si fa il prodotto scalare, che va fatto tra grandezze omogenee, vettore con vettore. La lettura $\\tens A(\\hat e_j\\cdot\\hat e_i)$ è tentante perché il punto sembra «legare» i due versori, ma non ha senso: $\\hat e_j\\cdot\\hat e_i$ è un numero, e il tensore opera sui vettori, non sui numeri.
-2. **Confondere il tensore con la sua matrice.** Se cambi riferimento cambiano i versori, quindi cambiano i nove numeri; la trasformazione, cioè che cosa succede a ogni freccia, resta la stessa.
+2. **Confondere il tensore con la sua matrice.** Se cambi riferimento cambiano i versori, quindi in generale cambiano i nove numeri; la trasformazione, cioè che cosa succede a ogni freccia, resta la stessa.
 3. **Scambiare righe e colonne.** È la colonna $j$, non la riga, a contenere $\\tens A\\hat e_j$: l'indice del versore che entra nella macchina è il secondo.`,
       },
       {
@@ -276,7 +276,7 @@ Cominciamo dalla diade. Immaginala come una macchina in due tempi, costruita con
 
 $$(\\vet a\\otimes\\vet b)\\vet u=(\\vet b\\cdot\\vet u)\\,\\vet a\\quad\\forall\\vet u.$$
 
-Il simbolo $\\otimes$ si legge «diade» (o prodotto tensoriale). Qualunque vettore le dai, il risultato è **parallelo ad $\\vet a$**, con intensità proporzionale alla componente di $\\vet u$ lungo $\\vet b$. Nel modello c'è una diade: le tre immagini dei versori stanno sulla stessa retta e il cubo si schiaccia su un segmento.`,
+Il simbolo $\\otimes$ si legge «diade» (la dispensa parla anche di prodotto diadico tra vettori, §1.2.4). Qualunque vettore le dai, il risultato è **parallelo ad $\\vet a$**, con intensità proporzionale alla componente di $\\vet u$ lungo $\\vet b$. Nel modello c'è una diade: le tre immagini dei versori stanno sulla stessa retta e il cubo si schiaccia su un segmento.`,
       },
       {
         id: 'l12-2',
@@ -296,6 +296,7 @@ Il simbolo $\\otimes$ si legge «diade» (o prodotto tensoriale). Qualunque vett
             {
               tex: '=\\big[(\\vet b\\cdot\\hat e_j)\\,\\vet a\\big]\\cdot\\hat e_i',
               why: 'Abbiamo sostituito $(\\vet a\\otimes\\vet b)\\hat e_j$ con ciò che dice la definizione di diade, prendendo $\\vet u=\\hat e_j$: esce il vettore $\\vet a$ moltiplicato per il numero $\\vet b\\cdot\\hat e_j$.',
+              aggiunto: true,
               ask: { q: 'Quanto vale $(\\vet a\\otimes\\vet b)\\hat e_j$?', options: ['$(\\vet b\\cdot\\hat e_j)\\,\\vet a$', '$(\\vet a\\cdot\\hat e_j)\\,\\vet b$', '$\\vet a\\wedge\\vet b$', '$a_jb_j$'], correct: 0, why: 'Per definizione $(\\vet a\\otimes\\vet b)\\vet u=(\\vet b\\cdot\\vet u)\\vet a$, con $\\vet u=\\hat e_j$. La seconda opzione scambia i ruoli: è $\\vet b$ a misurare e $\\vet a$ a dare la direzione. Le ultime due non sono nemmeno vettori del tipo giusto: il prodotto vettoriale non c\'entra, e $a_jb_j$ è un numero.' },
               val: (v) => T.dotv(T.scalev(vec(v, 'a'), T.dotv(vec(v, 'b'), T.basis(v.j))), T.basis(v.i)),
             },
@@ -309,7 +310,7 @@ Il simbolo $\\otimes$ si legge «diade» (o prodotto tensoriale). Qualunque vett
         title: 'Che cosa dice il risultato $a_ib_j$',
         md: `Il risultato $(\\vet a\\otimes\\vet b)_{ij}=a_ib_j$ si legge così: il numero in riga $i$ e colonna $j$ è il prodotto della componente $i$ di $\\vet a$ per la componente $j$ di $\\vet b$. Quindi la colonna $j$ della matrice è il vettore $\\vet a$ moltiplicato per il numero $b_j$ (deduzione): tutte e tre le colonne sono multipli di $\\vet a$. È la conferma, in numeri, di quello che hai visto nel modello: le tre immagini dei versori stanno tutte sulla retta di $\\vet a$.
 
-Un caso particolare che ci servirà subito (passaggio aggiunto). Prendi $\\vet a=\\hat e_1$ e $\\vet b=\\hat e_2$. Le componenti di $\\hat e_1$ sono $(1;0;0)$, quelle di $\\hat e_2$ sono $(0;1;0)$, quindi l'unico prodotto $a_ib_j$ diverso da zero è quello con $i=1$ e $j=2$. La matrice di $\\hat e_1\\otimes\\hat e_2$ ha un solo 1, in riga 1 e colonna 2, e zeri altrove.
+Un caso particolare che ci servirà subito (esempio aggiunto). Prendi $\\vet a=\\hat e_1$ e $\\vet b=\\hat e_2$. Le componenti di $\\hat e_1$ sono $(1;0;0)$, quelle di $\\hat e_2$ sono $(0;1;0)$, quindi l'unico prodotto $a_ib_j$ diverso da zero è quello con $i=1$ e $j=2$. La matrice di $\\hat e_1\\otimes\\hat e_2$ ha un solo 1, in riga 1 e colonna 2, e zeri altrove.
 
 Allo stesso modo la diade $\\hat e_i\\otimes\\hat e_j$ ha un solo 1, nel posto $(i,j)$. Tieni a mente queste nove «matrici con un solo 1»: sono i mattoni della prossima tappa.`,
       },
@@ -369,7 +370,7 @@ Si dice che le diadi $\\hat e_i\\otimes\\hat e_j$ sono una **base** di $\\mathrm
               why: 'Abbiamo raccolto i termini con lo stesso versore $\\hat e_i$: davanti a ciascuno resta la somma $\\sum_jA_{ij}u_j$, che è la regola righe per colonna della lezione precedente, cioè la componente $i$ di $\\tens A\\vet u$.',
               val: (v) => T.apply(mat(v, 'A'), vec(v, 'u'))[v.k],
             },
-            { tex: '=(\\tens A\\vet u)_k', why: 'Una somma di componenti per versori è il vettore stesso (Def 1.1.1): $\\sum_i(\\tens A\\vet u)_i\\hat e_i=\\tens A\\vet u$, e la sua componente $k$ è $(\\tens A\\vet u)_k$. Siccome $k$ e $\\vet u$ erano qualunque, la somma delle diadi fa su ogni vettore ciò che fa $\\tens A$: è $\\tens A$.', eq: 'Prop 1.2.4', aggiunto: true, val: (v) => T.apply(mat(v, 'A'), vec(v, 'u'))[v.k] },
+            { tex: '=(\\tens A\\vet u)_k', why: 'Una somma di componenti per versori è il vettore stesso (Def 1.1.1): $\\sum_i(\\tens A\\vet u)_i\\hat e_i=\\tens A\\vet u$, e la sua componente $k$ è $(\\tens A\\vet u)_k$. Siccome $k$ e $\\vet u$ erano qualunque, la somma delle diadi fa su ogni vettore ciò che fa $\\tens A$: è $\\tens A$.', eq: 'Prop 1.2.4', val: (v) => T.apply(mat(v, 'A'), vec(v, 'u'))[v.k] },
           ],
         },
       },
@@ -523,7 +524,7 @@ Le tappe: prima definiamo il trasposto, l'operazione che serve per parlare di si
 
 $$(\\tens A\\vet u)\\cdot\\vet v=(\\tens A^T\\vet v)\\cdot\\vet u\\quad\\forall\\vet u,\\vet v.$$
 
-Ricorda questa definizione come una regola di spostamento: un tensore può passare da un lato all'altro del prodotto scalare purché diventi il suo trasposto. La useremo moltissimo, già nella prossima lezione.
+Ricorda questa definizione come una regola di spostamento: un tensore può passare da un lato all'altro del prodotto scalare purché diventi il suo trasposto. La useremo moltissimo, già nella lezione sui tensori ortogonali (§1.5).
 
 In componenti il trasposto scambia gli indici, $A^T_{ij}=A_{ji}$: la matrice si ribalta rispetto alla diagonale. Valgono quattro proprietà (§1.3.1):
 - $(\\tens A+\\tens B)^T=\\tens A^T+\\tens B^T$;
@@ -571,7 +572,7 @@ L'enunciato contiene due affermazioni distinte, e vanno dimostrate entrambe. **E
         id: 'l13-3',
         kind: 'derivazione',
         title: 'I teorema di decomposizione: esistenza',
-        md: 'Dobbiamo verificare tre cose: che $\\tens E$ sia simmetrico, che $\\tens W$ sia antisimmetrico, e che la loro somma sia $\\tens A$. Le prime due sono controllate sotto, nelle verifiche; qui sviluppiamo la terza su una componente qualunque, usando $A^T_{pq}=A_{qp}$.',
+        md: 'Dobbiamo verificare tre cose: che $\\tens E$ sia simmetrico, che $\\tens W$ sia antisimmetrico, e che la loro somma sia $\\tens A$. Le prime due sono controllate sotto, nelle verifiche. Per la terza la dispensa scrive direttamente $\\tens E+\\tens W=\\tens A$; qui la sviluppiamo su una componente qualunque, usando $A^T_{pq}=A_{qp}$ (passaggio aggiunto).',
         source: D(1, '1.3.3', 'Teo 1.3.3', 5),
         der: {
           sample: (r) => {
@@ -584,6 +585,7 @@ L'enunciato contiene due affermazioni distinte, e vanno dimostrate entrambe. **E
             {
               tex: '=\\tfrac12(A_{pq}+A_{qp})+\\tfrac12(A_{pq}-A_{qp})',
               why: 'Abbiamo scritto le due definizioni in componenti. L\'unica cosa da ricordare è che la componente $pq$ del trasposto è la componente $qp$ del tensore: $A^T_{pq}=A_{qp}$.',
+              aggiunto: true,
               val: (v) => {
                 const A = mat(v, 'A');
                 return 0.5 * (T.at(A, v.p, v.q) + T.at(A, v.q, v.p)) + 0.5 * (T.at(A, v.p, v.q) - T.at(A, v.q, v.p));
@@ -629,7 +631,7 @@ L'esistenza è dimostrata: abbiamo esibito due tensori con le proprietà richies
               why: 'Abbiamo portato le parti simmetriche a sinistra e quelle antisimmetriche a destra, sottraendo $\\tens E\'$ e $\\tens W$ da entrambi i membri.',
               ask: { q: 'Che cosa ha di speciale il tensore $\\tens E-\\tens E\'=\\tens W\'-\\tens W$?', options: ['È simmetrico e antisimmetrico insieme', 'È ortogonale', 'Ha determinante nullo', 'È sferico'], correct: 0, why: 'A sinistra è differenza di due simmetrici, quindi simmetrico (il trasposto di una differenza è la differenza dei trasposti); a destra è differenza di due antisimmetrici, quindi antisimmetrico. Le altre proprietà non hanno motivo di valere.' },
             },
-            { tex: '(\\tens E-\\tens E\')^T=\\tens E-\\tens E\'=-(\\tens E-\\tens E\')', why: 'Chiamiamo $\\tens S$ questo tensore. Essere simmetrico dice $\\tens S^T=\\tens S$; essere antisimmetrico dice $\\tens S^T=-\\tens S$. Messe insieme: $\\tens S$ è uguale al proprio opposto.', aggiunto: true },
+            { tex: '(\\tens E-\\tens E\')^T=\\tens E-\\tens E\'=-(\\tens E-\\tens E\')', why: 'Chiamiamo $\\tens S$ questo tensore. Essere simmetrico dice $\\tens S^T=\\tens S$; essere antisimmetrico dice $\\tens S^T=-\\tens S$. Messe insieme: $\\tens S$ è uguale al proprio opposto.' },
             { tex: '\\tens E-\\tens E\'=\\tens O\\ \\Rightarrow\\ \\tens E=\\tens E\',\\ \\ \\tens W=\\tens W\'', why: 'Un tensore uguale al proprio opposto ha ogni componente uguale alla propria opposta, quindi nulla: è il tensore nullo $\\tens O$. Allora $\\tens E=\\tens E\'$ e, dalla seconda riga, $\\tens W=\\tens W\'$: le due decomposizioni coincidono.', eq: 'Teo 1.3.3' },
           ],
         },
@@ -654,7 +656,7 @@ Ci resta da capire che cosa fa geometricamente la parte antisimmetrica. Ha solo 
         tasks: [
           'Con «generico»: la diagonale di $\\operatorname{skw}\\tens A$ è nulla, quella di $\\operatorname{sym}\\tens A$ è la diagonale di $\\tens A$.',
           'Premi «simmetrico»: la parte antisimmetrica sparisce del tutto, come previsto dalle formule.',
-          'Premi «antisimmetrico»: sparisce quella simmetrica, e nel pannello compare il vettore assiale.',
+          'Premi «antisimmetrico»: sparisce quella simmetrica, e nel pannello leggi il suo vettore assiale.',
           'Cambia $A_{12}$ e $A_{21}$ in modo diverso: la loro media va in $\\operatorname{sym}\\tens A$, la loro semidifferenza in $\\operatorname{skw}\\tens A$.',
         ],
         visual: SVG('matrici', { focus: 'decomposizione' }),
@@ -684,7 +686,7 @@ Primo: $\\tens W\\vet w=\\vet w\\wedge\\vet w=\\vet 0$, perché il prodotto vett
 
 Secondo: $\\tens W\\vet u$ è **perpendicolare sia a $\\vet u$ sia a $\\vet w$**, perché il prodotto vettoriale è perpendicolare a entrambi i suoi fattori.
 
-Mettile insieme e prova a immaginare un corpo rigido che gira attorno a un asse diretto come $\\vet w$. Le velocità dei suoi punti sono perpendicolari all'asse e alla congiungente con l'asse, e i punti sull'asse non si muovono. È lo stesso schema: per questo la dispensa dice che il prodotto vettoriale «richiama la rotazione», che vedremo nel §1.5. Nel modello $\\vet w$ è verde scuro, $\\vet u$ viola e $\\tens W\\vet u$ arancione.`,
+Mettile insieme e prova a immaginare un corpo rigido che gira attorno a un asse diretto come $\\vet w$: le velocità dei suoi punti sono perpendicolari all'asse e alla congiungente con l'asse, e i punti sull'asse non si muovono (esempio aggiunto). È lo stesso schema, e infatti la dispensa osserva che il prodotto vettoriale richiama l'idea di rotazione, che vedremo nel §1.5. Nel modello $\\vet w$ è verde scuro, $\\vet u$ viola e $\\tens W\\vet u$ arancione.`,
         visual: LAB({ mode: 'assiale', controls: ['dir', 'wLen', 'u'] }),
       },
       {
@@ -702,7 +704,7 @@ Mettile insieme e prova a immaginare un corpo rigido che gira attorno a un asse 
       {
         id: 'l13-8',
         kind: 'domanda',
-        q: { id: 'l13-q3', kind: 'scelta', q: 'Se $\\vet w$ è il vettore assiale di $\\tens W$, quanto vale $\\tens W\\vet w$?', options: ['$\\vet 0$', '$\\vet w$', '$|\\vet w|^2\\hat e_1$', 'Dipende dal riferimento'], correct: 0, why: '$\\tens W\\vet w=\\vet w\\wedge\\vet w=\\vet 0$: il vettore assiale sta nel nucleo di $\\tens W$. Rispondere $\\vet w$ significa confondere «direzione che non si muove» (sarà l\'asse di una rotazione, nella prossima lezione) con «direzione mandata in zero». Il risultato non dipende dal riferimento, perché è una proprietà del prodotto vettoriale.' },
+        q: { id: 'l13-q3', kind: 'scelta', q: 'Se $\\vet w$ è il vettore assiale di $\\tens W$, quanto vale $\\tens W\\vet w$?', options: ['$\\vet 0$', '$\\vet w$', '$|\\vet w|^2\\hat e_1$', 'Dipende dal riferimento'], correct: 0, why: '$\\tens W\\vet w=\\vet w\\wedge\\vet w=\\vet 0$: il vettore assiale sta nel nucleo di $\\tens W$. Rispondere $\\vet w$ significa confondere «direzione che non si muove» (sarà l\'asse di una rotazione, §1.5.2) con «direzione mandata in zero». Il risultato non dipende dal riferimento, perché è una proprietà del prodotto vettoriale.' },
       },
       {
         id: 'l13-8b',
@@ -741,7 +743,7 @@ Mettile insieme e prova a immaginare un corpo rigido che gira attorno a un asse 
         title: 'Dove siamo e dove andiamo',
         md: `Nella lezione precedente abbiamo smontato un tensore in una parte simmetrica e una antisimmetrica, e abbiamo intuito che la parte antisimmetrica ha a che fare con le rotazioni. Ora diamo forma precisa a quell'intuizione.
 
-Il percorso ha tre tappe. Prima il **determinante**, un numero che dice di quanto un tensore ingrandisce o rimpicciolisce i volumi, e l'**inverso**, cioè la trasformazione che disfa quella data. Poi i **tensori ortogonali**, le trasformazioni rigide che non alterano lunghezze e angoli; dimostreremo le loro due proprietà fondamentali e li divideremo in rotazioni e riflessioni. Infine la **formula di Eulero**, che scrive ogni rotazione con il tensore antisimmetrico della lezione precedente, e la sua versione per angoli piccoli, le **rotazioni infinitesime**, che useremo in tutto il Cap. 2.
+Il percorso ha tre tappe. Prima il **determinante**, un numero che dice di quanto un tensore ingrandisce o rimpicciolisce i volumi, e l'**inverso**, cioè la trasformazione che disfa quella data. Poi i **tensori ortogonali**, le trasformazioni rigide che non alterano lunghezze e angoli; dimostreremo le loro due proprietà fondamentali e li divideremo in rotazioni e riflessioni. Infine la **formula di Eulero**, che scrive ogni rotazione con il tensore antisimmetrico della lezione precedente, e la sua versione per angoli piccoli, le **rotazioni infinitesime**, che ritroveremo nel Cap. 2.
 
 Le domande d'orale 6 e 7 della dispensa coprono proprio queste dimostrazioni.`,
       },
@@ -749,13 +751,13 @@ Le domande d'orale 6 e 7 della dispensa coprono proprio queste dimostrazioni.`,
         id: 'l14-1',
         kind: 'spiega',
         title: 'Il determinante misura come cambiano i volumi',
-        md: `Parti da un'immagine: tre vettori $\\vet u,\\vet v,\\vet w$ non complanari individuano un parallelepipedo. Il suo volume, con un segno, è il **prodotto misto** $\\vet u\\cdot\\vet v\\wedge\\vet w$: il prodotto vettoriale $\\vet v\\wedge\\vet w$ ha per modulo l'area della base, e il prodotto scalare con $\\vet u$ moltiplica per l'altezza. Il segno è positivo se la terna è destrorsa.
+        md: `Parti da un'immagine: tre vettori $\\vet u,\\vet v,\\vet w$ non complanari individuano un parallelepipedo. Il suo volume, con un segno, è il **prodotto misto** $\\vet u\\cdot\\vet v\\wedge\\vet w$: il prodotto vettoriale $\\vet v\\wedge\\vet w$ ha per modulo l'area della base, e il prodotto scalare con $\\vet u$ moltiplica per l'altezza. Il segno è positivo se la terna è destrorsa (deduzione).
 
 Ora trasforma i tre vettori con $\\tens A$: ottieni un nuovo parallelepipedo. Il **determinante** è il rapporto tra il nuovo volume e quello vecchio (Def 1.4.1):
 
 $$\\det\\tens A:=\\frac{\\tens A\\vet u\\cdot\\tens A\\vet v\\wedge\\tens A\\vet w}{\\vet u\\cdot\\vet v\\wedge\\vet w}\\quad\\text{per }\\vet u,\\vet v,\\vet w\\text{ linearmente indipendenti}.$$
 
-La richiesta di indipendenza serve a non dividere per zero: tre vettori complanari hanno volume nullo. La dispensa precisa che il rapporto **non dipende dalla terna** scelta: qualunque parallelepipedo prendi, $\\tens A$ moltiplica il suo volume per lo stesso fattore. Quindi $\\det\\tens A$ è il fattore con cui $\\tens A$ moltiplica i volumi, **con segno**: se è negativo, la terna trasformata è diventata sinistrorsa, come un oggetto visto allo specchio.
+La richiesta di indipendenza serve a non dividere per zero: tre vettori complanari hanno volume nullo. La dispensa precisa che il rapporto **non dipende dalla terna** scelta: qualunque parallelepipedo prendi, $\\tens A$ moltiplica il suo volume per lo stesso fattore. Quindi $\\det\\tens A$ è il fattore con cui $\\tens A$ moltiplica i volumi, **con segno**: se è negativo, la terna trasformata è diventata sinistrorsa, come un oggetto visto allo specchio (deduzione).
 
 Nel modello vedi il cubo unitario e il suo trasformato.`,
       },
@@ -766,7 +768,7 @@ Nel modello vedi il cubo unitario e il suo trasformato.`,
         md: 'Cambia tensore e leggi nel pannello $\\det\\tens A$ e il volume del cubo trasformato. Per ogni caso chiediti: che cosa succede al volume, e la terna resta destrorsa?',
         tasks: [
           `Sferico $1{,}3\\,\\tens I$: $\\det=${f(NUMERI_M1.det.sferico, 4)}=1{,}3^3$. Ogni spigolo si allunga di 1,3, il volume del cubo di $1{,}3^3$.`,
-          `Taglio: il cubo si inclina ma $\\det=${f(NUMERI_M1.det.taglio)}$: base e altezza non cambiano, quindi neanche il volume.`,
+          `Taglio: il cubo si inclina ma $\\det=${f(NUMERI_M1.det.taglio)}$: base e altezza non cambiano, quindi neanche il volume (deduzione).`,
           `Riflessione: $\\det=${f(NUMERI_M1.det.riflessione)}$; il solido diventa arancione: la terna immagine è sinistrorsa.`,
           `Singolare: $\\det=${f(NUMERI_M1.det.singolare)}$, il cubo si schiaccia su un piano e il volume si annulla.`,
         ],
@@ -797,7 +799,7 @@ Il box Attenzione di p. 6 segnala invece che il determinante **non è lineare**.
 
 $$\\tens A\\tens A^{-1}=\\tens A^{-1}\\tens A=\\tens I.$$
 
-La dispensa dà la condizione necessaria e sufficiente: l'inverso esiste **se e solo se** $\\det\\tens A\\neq0$. Il caso singolare del modello mostra perché serve. Quando il cubo si schiaccia su un piano, vettori diversi finiscono nello stesso punto del piano, e nessuna trasformazione può sapere da quale dei due venivano: un volume schiacciato non torna indietro.
+La dispensa dà la condizione necessaria e sufficiente: l'inverso esiste **se e solo se** $\\det\\tens A\\neq0$. Il caso singolare del modello mostra perché serve. Quando il cubo si schiaccia su un piano, vettori diversi finiscono nello stesso punto del piano, e nessuna trasformazione può sapere da quale dei due venivano: un volume schiacciato non torna indietro (deduzione).
 
 Un'ultima proprietà: trasporre e invertire si possono fare in qualunque ordine, $(\\tens A^{-1})^T=(\\tens A^T)^{-1}$, e la dispensa chiama questo tensore $\\tens A^{-T}$.`,
       },
@@ -818,7 +820,7 @@ La **Prop 1.5.2** dice due cose su questi tensori: a) $\\det\\tens Q=\\pm1$; b) 
         id: 'l14-5',
         kind: 'derivazione',
         title: 'Il trasposto di un ortogonale è l’inverso',
-        md: 'Vogliamo arrivare a $\\tens Q^T\\tens Q=\\tens I$. Strategia: scriviamo lo stesso prodotto scalare $\\tens Q\\vet u\\cdot\\tens Q\\vet v$ in due modi, una volta con la regola di spostamento del trasposto (lezione precedente) e una volta con la definizione di ortogonale, e confrontiamo.',
+        md: 'Vogliamo arrivare a $\\tens Q^T\\tens Q=\\tens I$. Strategia: scriviamo lo stesso prodotto scalare $\\tens Q\\vet u\\cdot\\tens Q\\vet v$ in due modi, una volta con la regola di spostamento del trasposto (Def 1.3.1) e una volta con la definizione di ortogonale, e confrontiamo.',
         source: D(1, '1.5.1', 'Prop 1.5.2', 7),
         der: {
           sample: (r) => {
@@ -837,11 +839,15 @@ La **Prop 1.5.2** dice due cose su questi tensori: a) $\\det\\tens Q=\\pm1$; b) 
               ask: { q: 'Come sposto $\\tens Q$ dall\'altra parte del prodotto scalare?', options: ['Con il trasposto: $\\tens Q^T\\tens Q\\vet u\\cdot\\vet v$', 'Con l\'inverso: $\\tens Q^{-1}\\tens Q\\vet u\\cdot\\vet v$', 'Non si può', 'Con il determinante'], correct: 0, why: 'La regola di spostamento è la definizione di trasposto (Def 1.3.1) e vale per ogni tensore. Usare l\'inverso sarebbe un circolo vizioso: che il trasposto sia l\'inverso è proprio quello che vogliamo dimostrare.' },
               val: (v) => T.dotv(T.apply(T.mul(T.transpose(mat(v, 'Q')), mat(v, 'Q')), vec(v, 'u')), vec(v, 'v')),
             },
-            { tex: '=\\vet u\\cdot\\vet v', why: 'Ora usiamo l\'ipotesi: il primo membro, $\\tens Q\\vet u\\cdot\\tens Q\\vet v$, è uguale a $\\vet u\\cdot\\vet v$ perché $\\tens Q$ è ortogonale (Def 1.5.1).', val: (v) => T.dotv(vec(v, 'u'), vec(v, 'v')) },
-            { tex: '(\\tens Q^T\\tens Q-\\tens I)\\vet u\\cdot\\vet v=0\\quad\\forall\\vet u,\\vet v', why: 'Abbiamo portato tutto a sinistra, scrivendo $\\vet u\\cdot\\vet v$ come $\\tens I\\vet u\\cdot\\vet v$ e raccogliendo $\\vet u$.', aggiunto: true },
-            { tex: '\\tens Q^T\\tens Q=\\tens I', why: 'Il vettore $(\\tens Q^T\\tens Q-\\tens I)\\vet u$ ha prodotto scalare nullo con **ogni** $\\vet v$, quindi è nullo (basta prendere $\\vet v$ uguale a lui stesso); e questo per ogni $\\vet u$, quindi il tensore tra parentesi è $\\tens O$. Ne segue $\\tens Q^{-1}=\\tens Q^T$, e quindi vale anche $\\tens Q\\tens Q^T=\\tens I$.', eq: 'Prop 1.5.2' },
+            { tex: '=\\vet u\\cdot\\vet v', why: 'Ora usiamo l\'ipotesi: il primo membro, $\\tens Q\\vet u\\cdot\\tens Q\\vet v$, è uguale a $\\vet u\\cdot\\vet v$ perché $\\tens Q$ è ortogonale (Def 1.5.1).', aggiunto: true, val: (v) => T.dotv(vec(v, 'u'), vec(v, 'v')) },
+            { tex: '(\\tens Q^T\\tens Q-\\tens I)\\vet u\\cdot\\vet v=0\\quad\\forall\\vet u,\\vet v', why: 'Abbiamo portato tutto a sinistra, scrivendo $\\vet u\\cdot\\vet v$ come $\\tens I\\vet u\\cdot\\vet v$ e raccogliendo $\\vet u$.' },
+            { tex: '\\tens Q^T\\tens Q=\\tens I', why: 'Il vettore $(\\tens Q^T\\tens Q-\\tens I)\\vet u$ ha prodotto scalare nullo con **ogni** $\\vet v$, quindi è nullo (basta prendere $\\vet v$ uguale a lui stesso); e questo per ogni $\\vet u$, quindi il tensore tra parentesi è $\\tens O$.', eq: 'Prop 1.5.2' },
+            { tex: '\\tens Q^T=\\tens Q^{-1},\\qquad \\tens Q\\tens Q^T=\\tens I', why: 'La riga prima dice soltanto che $\\tens Q^T$, messo a sinistra di $\\tens Q$, dà l\'identità: è un inverso «sinistro». Per dire che è l\'inverso serve un passo in più (passaggio aggiunto). Prima di tutto $\\det\\tens Q\\neq0$: prendendo il determinante di $\\tens Q^T\\tens Q=\\tens I$ si trova $(\\det\\tens Q)^2=1$, come vedremo nella prossima derivazione; quindi $\\tens Q^{-1}$ esiste (Def 1.4.2). Moltiplicando $\\tens Q^T\\tens Q=\\tens I$ a destra per $\\tens Q^{-1}$ si ha $\\tens Q^T=\\tens Q^{-1}$, e allora $\\tens Q\\tens Q^T=\\tens Q\\tens Q^{-1}=\\tens I$. La dispensa scrive questa conclusione: «ne segue $\\tens Q^{-1}=\\tens Q^T$ e quindi anche $\\tens Q\\tens Q^T=\\tens I$».', eq: 'Prop 1.5.2' },
           ],
-          checks: [{ what: 'componente $pq$ di $\\tens Q^T\\tens Q$ uguale a $\\delta_{pq}$', f: (v) => [T.mul(T.transpose(mat(v, 'Q')), mat(v, 'Q'))[3 * v.p + v.q], v.p === v.q ? 1 : 0] }],
+          checks: [
+            { what: 'componente $pq$ di $\\tens Q^T\\tens Q$ uguale a $\\delta_{pq}$', f: (v) => [T.mul(T.transpose(mat(v, 'Q')), mat(v, 'Q'))[3 * v.p + v.q], v.p === v.q ? 1 : 0] },
+            { what: 'componente $pq$ di $\\tens Q\\tens Q^T$ uguale a $\\delta_{pq}$', f: (v) => [T.mul(mat(v, 'Q'), T.transpose(mat(v, 'Q')))[3 * v.p + v.q], v.p === v.q ? 1 : 0] },
+          ],
         },
       },
       {
@@ -868,7 +874,7 @@ La **Prop 1.5.2** dice due cose su questi tensori: a) $\\det\\tens Q=\\pm1$; b) 
               val: (v) => T.det(T.transpose(mat(v, 'Q'))) * T.det(mat(v, 'Q')),
             },
             { tex: '=(\\det\\tens Q)^2', why: 'Trasporre non cambia il determinante, $\\det\\tens Q^T=\\det\\tens Q$: i due fattori sono uguali.', val: (v) => T.det(mat(v, 'Q')) ** 2 },
-            { tex: '\\Rightarrow\\ \\det\\tens Q=\\pm1', why: 'Un numero il cui quadrato è 1 vale $+1$ o $-1$. Geometricamente: un tensore ortogonale non cambia i volumi, al più ne inverte il segno.', eq: 'Prop 1.5.2' },
+            { tex: '\\Rightarrow\\ \\det\\tens Q=\\pm1', why: 'Un numero il cui quadrato è 1 vale $+1$ o $-1$. Geometricamente: un tensore ortogonale non cambia i volumi, al più ne inverte il segno (deduzione).', eq: 'Prop 1.5.2' },
           ],
         },
       },
@@ -880,9 +886,9 @@ La **Prop 1.5.2** dice due cose su questi tensori: a) $\\det\\tens Q=\\pm1$; b) 
 
 $$\\mathrm{Rot}:=\\{\\tens R\\in\\mathrm{Orth}\\mid\\det\\tens R=1\\},\\qquad \\mathrm{Rfl}:=\\{\\tens P\\in\\mathrm{Orth}\\mid\\det\\tens P=-1\\}.$$
 
-Le **rotazioni** conservano l'orientamento: una terna destrorsa resta destrorsa. Le **riflessioni** lo invertono, come uno specchio. Nel modello, con «riflessione $z\\to-z$», il cubo resta un cubo unitario ma si colora di arancione: la terna immagine è sinistrorsa.
+Le **rotazioni** conservano l'orientamento: una terna destrorsa resta destrorsa. Le **riflessioni** lo invertono, come uno specchio (deduzione). Nel modello, con «riflessione $z\\to-z$», il cubo resta un cubo unitario ma si colora di arancione: la terna immagine è sinistrorsa.
 
-La dispensa sottolinea che le riflessioni sono un'operazione analoga alla rotazione che però **non si ottiene da una rotazione per continuità**. Pensa a un guanto destro: puoi girarlo come vuoi, con continuità, ma non diventerà mai un guanto sinistro. Il motivo matematico (deduzione): durante un movimento continuo il determinante varia con continuità, ma può valere solo $+1$ o $-1$, quindi non può saltare dall'uno all'altro. L'identità $\\tens I$ è una rotazione, quella di ampiezza nulla.`,
+La dispensa sottolinea che le riflessioni sono un'operazione analoga alla rotazione che però **non si ottiene da una rotazione per continuità**. Pensa a un guanto destro: puoi girarlo come vuoi, con continuità, ma non diventerà mai un guanto sinistro. Il motivo matematico (deduzione): durante un movimento continuo il determinante varia con continuità, ma può valere solo $+1$ o $-1$, quindi non può saltare dall'uno all'altro. Infine la dispensa nota che l'identità $\\tens I$ è una rotazione (§1.5.1).`,
       },
       {
         id: 'l14-d2',
@@ -899,12 +905,11 @@ $$\\tens R=\\tens I+(1-\\cos\\varphi)\\,\\tens W^2+\\sin\\varphi\\,\\tens W\\tag
 
 dove $\\tens W$ è il tensore antisimmetrico che ha per vettore assiale proprio l'asse, cioè $\\tens W\\vet v=\\hat e\\wedge\\vet v$ (Teo 1.3.4), e $\\tens W^2:=\\tens W\\tens W$ è la sua composizione con sé stesso.
 
-Per leggere i tre termini ricorda la scomposizione con i proiettori della lezione 2: $\\vet v$ ha una parte lungo l'asse e una parte nel piano perpendicolare. Un calcolo con il prodotto vettoriale (passaggio aggiunto) mostra che $\\tens W^2\\vet v=\\hat e\\wedge(\\hat e\\wedge\\vet v)$ è proprio l'opposto della parte di $\\vet v$ nel piano, cioè $\\tens W^2=-(\\tens I-\\hat e\\otimes\\hat e)$. Allora:
-- $\\tens I+\\tens W^2$ lascia solo la parte lungo l'asse, che non ruota;
-- $-\\cos\\varphi\\,\\tens W^2$ riporta la parte nel piano, accorciata di $\\cos\\varphi$;
-- $\\sin\\varphi\\,\\tens W$ aggiunge una parte nel piano, perpendicolare alla precedente, di peso $\\sin\\varphi$.
+Per leggere i tre termini ricorda la scomposizione con i proiettori della lezione sulla diade e i proiettori (§1.2.5): $\\vet v$ ha una parte lungo l'asse e una parte nel piano perpendicolare. Un calcolo con il prodotto vettoriale (passaggio aggiunto) mostra che $\\tens W^2\\vet v=\\hat e\\wedge(\\hat e\\wedge\\vet v)$ è proprio l'opposto della parte di $\\vet v$ nel piano, cioè $\\tens W^2=-(\\tens I-\\hat e\\otimes\\hat e)$.
 
-Coseno lungo una direzione e seno lungo quella perpendicolare: è una rotazione di ampiezza $\\varphi$ nel piano, la stessa che faresti in due dimensioni (deduzione).`,
+Con questo fatto la (1.1) si legge un termine alla volta (passaggio aggiunto). Sommando $\\tens I$ e la parte $\\tens W^2$ si ottiene $\\hat e\\otimes\\hat e$, quindi di $\\vet v$ resta soltanto la parte lungo l'asse, che non ruota. Il termine rimasto, $-\\cos\\varphi\\,\\tens W^2$, restituisce allora la parte di $\\vet v$ nel piano, moltiplicata per $\\cos\\varphi$. Infine $\\sin\\varphi\\,\\tens W$ aggiunge, sempre nel piano, il vettore $\\hat e\\wedge\\vet v$, che è perpendicolare a quella parte, moltiplicato per $\\sin\\varphi$.
+
+Coseno lungo una direzione e seno lungo quella perpendicolare: è la rotazione di ampiezza $\\varphi$ che faresti in due dimensioni. È proprio ciò che afferma la dispensa: $\\tens R$ fa ruotare $\\vet v$ dell'angolo $\\varphi$ attorno all'asse $\\hat e$ (p. 8).`,
         visual: LAB({ mode: 'eulero', controls: ['dir', 'angle'], angle: 60 }),
       },
       {
@@ -954,7 +959,7 @@ Nel modello vedi l'asse $\\hat e$, il vettore $\\vet v$ in viola e $\\tens R\\ve
               ask: { q: 'Quale termine della (1.1) diventa trascurabile per $\\varphi\\ll1$?', options: ['$(1-\\cos\\varphi)\\tens W^2$', '$\\sin\\varphi\\,\\tens W$', '$\\tens I$', 'Nessuno'], correct: 0, why: '$1-\\cos\\varphi\\simeq\\varphi^2/2$ è di ordine superiore rispetto a $\\sin\\varphi\\simeq\\varphi$. Il termine $\\sin\\varphi\\,\\tens W$ è del primo ordine e resta; $\\tens I$ non dipende da $\\varphi$ e resta anch\'esso.' },
             },
             { tex: '\\tens R-\\tens I=\\varphi\\,\\tens W+o(\\varphi)', why: 'Abbiamo portato $\\tens I$ a sinistra e sostituito $\\sin\\varphi$ con $\\varphi$; tutto ciò che è più piccolo di $\\varphi$, compreso il termine in $\\tens W^2$, è raccolto nel simbolo $o(\\varphi)$, che si legge «o piccolo di $\\varphi$».' },
-            { tex: '\\tens R\\vet v\\simeq\\vet v+\\varphi\\,\\tens W\\vet v', why: 'Abbiamo applicato l\'uguaglianza a un vettore $\\vet v$, trascurando $o(\\varphi)$ e usando $\\tens I\\vet v=\\vet v$.', aggiunto: true },
+            { tex: '\\tens R\\vet v\\simeq\\vet v+\\varphi\\,\\tens W\\vet v', why: 'Abbiamo applicato l\'uguaglianza a un vettore $\\vet v$, trascurando $o(\\varphi)$ e usando $\\tens I\\vet v=\\vet v$.' },
             { tex: '\\tens R\\vet v\\simeq\\vet v+\\varphi\\,\\hat e\\wedge\\vet v', why: 'Infine abbiamo scritto $\\tens W\\vet v$ con il vettore assiale: $\\tens W\\vet v=\\hat e\\wedge\\vet v$ (Teo 1.3.4).', eq: '§1.5.2' },
           ],
           checks: [
@@ -1045,7 +1050,7 @@ Questo fatto sembra astratto, ma nel Cap. 4 farà sparire la parte rotazionale d
 
 $$\\operatorname{tr}(\\vet a\\otimes\\vet b):=\\vet a\\cdot\\vet b.$$
 
-Perché basta? Perché dalla seconda lezione sappiamo che le diadi dei versori sono una base: ogni tensore è $\\tens A=\\sum_{ij}A_{ij}\\,\\hat e_i\\otimes\\hat e_j$ (Prop 1.2.4). La linearità permette di portare la traccia dentro la somma (passaggio aggiunto):
+Perché basta? Perché dalla lezione sulla diade sappiamo che le diadi dei versori sono una base: ogni tensore è $\\tens A=\\sum_{ij}A_{ij}\\,\\hat e_i\\otimes\\hat e_j$ (Prop 1.2.4). La linearità permette di portare la traccia dentro la somma (passaggio aggiunto):
 
 $$\\operatorname{tr}\\tens A=\\textstyle\\sum_{ij}A_{ij}\\operatorname{tr}(\\hat e_i\\otimes\\hat e_j)=\\sum_{ij}A_{ij}\\,\\hat e_i\\cdot\\hat e_j=\\sum_{ij}A_{ij}\\,\\delta_{ij}.$$
 
@@ -1055,12 +1060,12 @@ Il delta di Kronecker uccide tutti i termini con $i\\neq j$, e resta $\\operator
         id: 'l15-1b',
         kind: 'spiega',
         title: 'Le proprietà della traccia',
-        md: `La dispensa elenca sei proprietà (§1.6.1). Quattro sono quasi delle osservazioni.
+        md: `La dispensa elenca sei proprietà (§1.6.1). Le prime cinque, raccolte qui in quattro punti, sono quasi delle osservazioni.
 
 - $\\operatorname{tr}\\tens A=\\operatorname{tr}\\tens A^T$: trasporre ribalta la matrice rispetto alla diagonale, e la diagonale resta dov'è.
 - $\\operatorname{tr}(\\tens A+\\tens B)=\\operatorname{tr}\\tens A+\\operatorname{tr}\\tens B$, e più in generale è lineare.
 - $\\operatorname{tr}\\tens I=3$: la diagonale dell'identità è fatta di tre 1.
-- $\\operatorname{tr}(\\tens A\\tens B)=\\operatorname{tr}(\\tens B\\tens A)$: anche se in generale $\\tens A\\tens B\\neq\\tens B\\tens A$ (seconda lezione), le due composizioni hanno la stessa traccia. In componenti (passaggio aggiunto) entrambe valgono $\\sum_{ik}A_{ik}B_{ki}$.
+- $\\operatorname{tr}(\\tens A\\tens B)=\\operatorname{tr}(\\tens B\\tens A)$: anche se in generale $\\tens A\\tens B\\neq\\tens B\\tens A$ (Def 1.2.7), le due composizioni hanno la stessa traccia. In componenti (passaggio aggiunto) entrambe valgono $\\sum_{ik}A_{ik}B_{ki}$.
 
 La sesta, $\\operatorname{tr}\\tens W=0$ per ogni antisimmetrico, la dimostriamo, perché il ragionamento è un modello che riuseremo tra poco. Tieni a mente in particolare la prima e la quarta: saranno i due attrezzi della dimostrazione principale.`,
       },
@@ -1082,12 +1087,11 @@ La sesta, $\\operatorname{tr}\\tens W=0$ per ogni antisimmetrico, la dimostriamo
             {
               tex: '=\\operatorname{tr}(-\\tens W)',
               why: 'Abbiamo sostituito $\\tens W^T$ con $-\\tens W$: è la definizione di antisimmetrico (Def 1.3.2).',
-              ask: { q: 'Quanto vale $\\tens W^T$ se $\\tens W$ è antisimmetrico?', options: ['$-\\tens W$', '$\\tens W$', '$\\tens W^{-1}$', '$\\tens O$'], correct: 0, why: 'È la definizione di $\\mathrm{Skw}$. $\\tens W^T=\\tens W$ vale per i simmetrici; l\'uguaglianza tra trasposto e inverso vale per gli ortogonali; e $\\tens W^T$ è nullo solo se $\\tens W$ stesso è nullo.' },
-              aggiunto: true,
+              ask: { q: 'Quanto vale $\\tens W^T$ se $\\tens W$ è antisimmetrico?', options: ['$-\\tens W$', '$\\tens W$', '$\\tens W^{-1}$', '$\\tens O$'], correct: 0, why: 'È la definizione di $\\mathrm{Skw}$, l\'insieme degli antisimmetrici. $\\tens W^T=\\tens W$ vale per i simmetrici; l\'uguaglianza tra trasposto e inverso vale per gli ortogonali; e $\\tens W^T$ è nullo solo se $\\tens W$ stesso è nullo.' },
               val: (v) => T.trace(T.scale(T.skw(mat(v, 'A')), -1)),
             },
             { tex: '=-\\operatorname{tr}\\tens W', why: 'La traccia è lineare, quindi il segno meno esce.', val: (v) => -T.trace(T.skw(mat(v, 'A'))) },
-            { tex: '\\Rightarrow\\ \\operatorname{tr}\\tens W=0', why: 'Confrontando la prima e l\'ultima riga, $\\operatorname{tr}\\tens W$ è un numero uguale al proprio opposto: è zero. In componenti è la diagonale nulla della lezione precedente, $W_{ii}=0$.', eq: '§1.6.1', val: () => 0 },
+            { tex: '\\Rightarrow\\ \\operatorname{tr}\\tens W=0', why: 'Confrontando la prima e l\'ultima riga, $\\operatorname{tr}\\tens W$ è un numero uguale al proprio opposto: è zero. In componenti è la diagonale nulla vista nella lezione sul simmetrico e l\'antisimmetrico (§1.3.2), $W_{ii}=0$.', eq: '§1.6.1', val: () => 0 },
           ],
         },
       },
@@ -1122,7 +1126,7 @@ La seconda dice come si fa il prodotto scalare con una diade:
 
 $$\\tens A\\cdot(\\vet a\\otimes\\vet b)=\\tens A\\vet b\\cdot\\vet a.$$
 
-Leggila così: trasformi $\\vet b$ con $\\tens A$ e misuri il risultato lungo $\\vet a$. Nota la somiglianza con la definizione di componente della prima lezione: con $\\vet a=\\hat e_i$ e $\\vet b=\\hat e_j$ si ottiene $\\tens A\\cdot(\\hat e_i\\otimes\\hat e_j)=\\tens A\\hat e_j\\cdot\\hat e_i=A_{ij}$ (deduzione). La componente $A_{ij}$ è il prodotto scalare di $\\tens A$ con il mattone $\\hat e_i\\otimes\\hat e_j$, esattamente come $v_i=\\vet v\\cdot\\hat e_i$ per i vettori. Questa forma tornerà per i tensori del IV ordine.
+Leggila così: trasformi $\\vet b$ con $\\tens A$ e misuri il risultato lungo $\\vet a$. Nota la somiglianza con la definizione di componente di un tensore (Def 1.2.2): con $\\vet a=\\hat e_i$ e $\\vet b=\\hat e_j$ si ottiene $\\tens A\\cdot(\\hat e_i\\otimes\\hat e_j)=\\tens A\\hat e_j\\cdot\\hat e_i=A_{ij}$ (deduzione). La componente $A_{ij}$ è il prodotto scalare di $\\tens A$ con il mattone $\\hat e_i\\otimes\\hat e_j$, esattamente come $v_i=\\vet v\\cdot\\hat e_i$ per i vettori. Questa forma tornerà per i tensori del IV ordine.
 
 La terza, $\\tens E\\cdot\\tens W=0$, è il cuore della lezione e le dedichiamo una derivazione a parte. Prima dimostriamo la seconda.`,
       },
@@ -1130,7 +1134,7 @@ La terza, $\\tens E\\cdot\\tens W=0$, è il cuore della lezione e le dedichiamo 
         id: 'l15-4',
         kind: 'derivazione',
         title: 'Prodotto scalare con una diade',
-        md: 'Vogliamo $\\tens A\\cdot(\\vet a\\otimes\\vet b)=\\tens A\\vet b\\cdot\\vet a$. Strategia: passiamo in componenti, usiamo le componenti della diade (seconda lezione) e riconosciamo dentro la somma la regola righe per colonna.',
+        md: 'Vogliamo $\\tens A\\cdot(\\vet a\\otimes\\vet b)=\\tens A\\vet b\\cdot\\vet a$. Strategia: passiamo in componenti, usiamo le componenti della diade (Def 1.2.3) e riconosciamo dentro la somma la regola righe per colonna.',
         source: D(1, '1.6.2', 'Prop 1.6.3', 9),
         der: {
           sample: (r) => {
@@ -1160,9 +1164,9 @@ La terza, $\\tens E\\cdot\\tens W=0$, è il cuore della lezione e le dedichiamo 
         title: 'Simmetrici e antisimmetrici sono perpendicolari: l’idea',
         md: `Arriviamo al risultato principale: se $\\tens E$ è simmetrico e $\\tens W$ è antisimmetrico, allora $\\tens E\\cdot\\tens W=0$ (Prop 1.6.3).
 
-In componenti lo si intuisce subito (deduzione). Nella somma $\\sum_{ij}E_{ij}W_{ij}$ i termini diagonali sono nulli perché $W_{ii}=0$; quelli fuori diagonale vanno a coppie, $E_{12}W_{12}$ ed $E_{21}W_{21}$, e siccome $E_{21}=E_{12}$ mentre $W_{21}=-W_{12}$, ogni coppia si cancella.
+In componenti se ne capisce il motivo (deduzione). Nella somma $\\sum_{ij}E_{ij}W_{ij}$ i termini diagonali sono nulli perché $W_{ii}=0$; quelli fuori diagonale vanno a coppie, $E_{12}W_{12}$ ed $E_{21}W_{21}$, e siccome $E_{21}=E_{12}$ mentre $W_{21}=-W_{12}$, ogni coppia si cancella.
 
-La dispensa però dimostra il risultato in notazione assoluta, con la traccia, ed è questa dimostrazione che all'orale ci si aspetta. L'idea è la stessa della traccia di $\\tens W$: calcolare lo stesso numero in **due modi diversi** e scoprire che è uguale al proprio opposto. Gli attrezzi sono quelli che ti ho chiesto di tenere a mente: la traccia non cambia trasponendo, e la traccia di una composizione non cambia scambiando i fattori. Serve anche una proprietà del trasposto della lezione precedente: $(\\tens A\\tens B)^T=\\tens B^T\\tens A^T$, l'ordine si inverte.`,
+La dispensa però dimostra il risultato in notazione assoluta, con la traccia, ed è questa dimostrazione che all'orale ci si aspetta. L'idea è la stessa della traccia di $\\tens W$: calcolare lo stesso numero in **due modi diversi** e scoprire che è uguale al proprio opposto. Gli attrezzi sono quelli che ti ho chiesto di tenere a mente: la traccia non cambia trasponendo, e la traccia di una composizione non cambia scambiando i fattori. Serve anche una proprietà del trasposto (§1.3.1): $(\\tens A\\tens B)^T=\\tens B^T\\tens A^T$, l'ordine si inverte.`,
       },
       {
         id: 'l15-5',
@@ -1180,12 +1184,11 @@ La dispensa però dimostra il risultato in notazione assoluta, con la traccia, e
           lines: [
             { tex: '\\tens E\\cdot\\tens W=\\operatorname{tr}(\\tens E\\tens W^T)', why: 'Definizione di prodotto scalare tra tensori (Def 1.6.2), con $\\tens E$ simmetrico e $\\tens W$ antisimmetrico.', val: (v) => T.ddot(T.sym(mat(v, 'A')), T.skw(mat(v, 'B'))) },
             { tex: '=-\\operatorname{tr}(\\tens E\\tens W)', why: 'Primo modo. Abbiamo sostituito $\\tens W^T=-\\tens W$ e portato fuori il segno meno per la linearità della traccia.', val: (v) => -T.trace(T.mul(T.sym(mat(v, 'A')), T.skw(mat(v, 'B')))) },
-            { tex: '\\operatorname{tr}(\\tens E\\tens W^T)=\\operatorname{tr}\\big((\\tens E\\tens W^T)^T\\big)', why: 'Secondo modo: ripartiamo da $\\operatorname{tr}(\\tens E\\tens W^T)$ e trasponiamo il suo argomento, cosa lecita perché la traccia non cambia trasponendo.', aggiunto: true, val: (v) => T.trace(T.transpose(T.mul(T.sym(mat(v, 'A')), T.transpose(T.skw(mat(v, 'B')))))) },
+            { tex: '\\operatorname{tr}(\\tens E\\tens W^T)=\\operatorname{tr}\\big((\\tens E\\tens W^T)^T\\big)', why: 'Secondo modo: ripartiamo da $\\operatorname{tr}(\\tens E\\tens W^T)$ e trasponiamo il suo argomento, cosa lecita perché la traccia non cambia trasponendo.', val: (v) => T.trace(T.transpose(T.mul(T.sym(mat(v, 'A')), T.transpose(T.skw(mat(v, 'B')))))) },
             {
               tex: '=\\operatorname{tr}(\\tens W\\tens E)',
               why: 'Abbiamo calcolato il trasposto: l\'ordine si inverte, $(\\tens E\\tens W^T)^T=(\\tens W^T)^T\\tens E^T=\\tens W\\tens E^T$, e $\\tens E^T=\\tens E$ perché $\\tens E$ è simmetrico.',
               ask: { q: 'Quanto vale $(\\tens E\\tens W^T)^T$?', options: ['$\\tens W\\tens E$', '$\\tens E\\tens W$', '$\\tens E^T\\tens W$', '$-\\tens E\\tens W$'], correct: 0, why: '$(\\tens A\\tens B)^T=\\tens B^T\\tens A^T$: $(\\tens E\\tens W^T)^T=\\tens W\\tens E^T=\\tens W\\tens E$ perché $\\tens E$ è simmetrico. La seconda e la terza opzione dimenticano che l\'ordine si inverte; la quarta usa l\'antisimmetria, ma qui il trasposto di $\\tens W^T$ è semplicemente $\\tens W$.' },
-              aggiunto: true,
               val: (v) => T.trace(T.mul(T.skw(mat(v, 'B')), T.sym(mat(v, 'A')))),
             },
             { tex: '=\\operatorname{tr}(\\tens E\\tens W)', why: 'La traccia di una composizione non cambia scambiando i fattori: $\\operatorname{tr}(\\tens W\\tens E)=\\operatorname{tr}(\\tens E\\tens W)$.', val: (v) => T.trace(T.mul(T.sym(mat(v, 'A')), T.skw(mat(v, 'B')))) },
@@ -1197,7 +1200,7 @@ La dispensa però dimostra il risultato in notazione assoluta, con la traccia, e
         id: 'l15-6',
         kind: 'spiega',
         title: 'Lin = Sym ⊕ Skw: lo spazio dei tensori in due pezzi perpendicolari',
-        md: `Mettiamo insieme due risultati. Dalla lezione precedente sappiamo che ogni tensore si scrive in un solo modo come $\\tens E+\\tens W$, e che l'unico tensore comune a $\\mathrm{Sym}$ e $\\mathrm{Skw}$ è $\\tens O$. Ora sappiamo anche che le due famiglie sono **perpendicolari**: ogni simmetrico è ortogonale a ogni antisimmetrico.
+        md: `Mettiamo insieme due risultati. Dalla lezione sul simmetrico e l'antisimmetrico (Teo 1.3.3) sappiamo che ogni tensore si scrive in un solo modo come $\\tens E+\\tens W$, e che l'unico tensore comune a $\\mathrm{Sym}$ e $\\mathrm{Skw}$, gli insiemi dei simmetrici e degli antisimmetrici, è $\\tens O$. Ora sappiamo anche che le due famiglie sono **perpendicolari**: ogni simmetrico è ortogonale a ogni antisimmetrico.
 
 La dispensa riassume tutto scrivendo $\\mathrm{Lin}=\\mathrm{Sym}\\oplus\\mathrm{Skw}$, una **somma diretta ortogonale**, con $9=6+3$ componenti (Oss. §1.6). L'immagine geometrica è quella di un vettore dello spazio scomposto nella sua parte su un piano e in quella sulla retta perpendicolare, come con i proiettori: qui lo «spazio» ha 9 dimensioni, il «piano» dei simmetrici ne ha 6 e la «retta» degli antisimmetrici 3.
 
@@ -1267,9 +1270,9 @@ Le tappe: prima la definizione e le 81 componenti, costruite come abbiamo fatto 
         id: 'l16-1',
         kind: 'spiega',
         title: 'Una macchina che trasforma tensori, e le sue 81 componenti',
-        md: `La **Def 1.7.1** è la copia, un gradino più su, della definizione della prima lezione: un tensore del IV ordine $\\mathbb A$ è una trasformazione **lineare** di $\\mathrm{Lin}$ in $\\mathrm{Lin}$, che a ogni tensore $\\tens A$ associa un tensore $\\mathbb A\\tens A=\\tens B$. L'insieme di questi oggetti si chiama $\\mathbb{L}\\mathrm{in}$.
+        md: `La **Def 1.7.1** è la copia, un gradino più su, della definizione di tensore del II ordine (Def 1.2.1): un tensore del IV ordine $\\mathbb A$ è una trasformazione **lineare** di $\\mathrm{Lin}$ in $\\mathrm{Lin}$, che a ogni tensore $\\tens A$ associa un tensore $\\mathbb A\\tens A=\\tens B$. L'insieme di questi oggetti si chiama $\\mathbb{L}\\mathrm{in}$.
 
-Anche le componenti si costruiscono imitando la prima lezione. Là facevamo entrare un versore $\\hat e_j$ e misuravamo l'uscita lungo $\\hat e_i$. Qui i «versori» dello spazio dei tensori sono le diadi dei versori, i mattoni della seconda lezione: facciamo entrare il mattone $\\hat e_h\\otimes\\hat e_k$ e misuriamo l'uscita lungo il mattone $\\hat e_i\\otimes\\hat e_j$ con il prodotto scalare tra tensori della lezione precedente:
+Anche le componenti si costruiscono imitando la Def 1.2.2. Là facevamo entrare un versore $\\hat e_j$ e misuravamo l'uscita lungo $\\hat e_i$. Qui i «versori» dello spazio dei tensori sono le diadi dei versori, i mattoni della Prop 1.2.4: facciamo entrare il mattone $\\hat e_h\\otimes\\hat e_k$ e misuriamo l'uscita lungo il mattone $\\hat e_i\\otimes\\hat e_j$ con il prodotto scalare tra tensori della lezione precedente:
 
 $$\\mathbb A_{ijhk}:=\\big[\\mathbb A(\\hat e_h\\otimes\\hat e_k)\\big]\\cdot(\\hat e_i\\otimes\\hat e_j).$$
 
@@ -1277,13 +1280,15 @@ Gli indici sono quattro, ciascuno da 1 a 3: $3^4=81$ componenti. E l'applicazion
 
 $$(\\mathbb A\\tens A)_{ij}=\\textstyle\\sum_{h,k}\\mathbb A_{ijhk}A_{hk}.$$
 
+Attenzione alla notazione della dispensa: $\\mathbb A$, maiuscola «filettata», è il tensore del IV ordine, mentre $\\tens A$, con la tilde, è il tensore del II ordine su cui agisce. Sono due oggetti diversi con la stessa lettera.
+
 Conviene pensare ai quattro indici come a **due coppie**: la prima $(ij)$ dice quale componente del risultato stai calcolando, la seconda $(hk)$ quale componente dell'argomento stai usando.`,
       },
       {
         id: 'l16-2',
         kind: 'spiega',
         title: 'Il trasposto e la simmetria maggiore',
-        md: `Anche il trasposto si definisce come nella lezione 3, con la regola di spostamento attraverso il prodotto scalare, ora tra tensori (Def 1.7.2):
+        md: `Anche il trasposto si definisce come per il II ordine (Def 1.3.1), con la regola di spostamento attraverso il prodotto scalare, ora tra tensori (Def 1.7.2):
 
 $$\\mathbb A\\tens A\\cdot\\tens B=\\mathbb A^T\\tens B\\cdot\\tens A\\quad\\forall\\tens A,\\tens B,\\qquad \\mathbb A^T_{ijhk}=\\mathbb A_{hkij}.$$
 
@@ -1301,15 +1306,15 @@ A parole: puoi scambiare i ruoli dei due tensori $\\tens A$ e $\\tens B$ senza c
         title: 'Le due simmetrie minori: uscite simmetriche e argomenti visti a metà',
         md: `Con quattro indici ci sono altre simmetrie, che scambiano gli indici **dentro** una coppia. Si chiamano minori.
 
-La **prima simmetria minore** (Def 1.7.4) riguarda l'uscita: $\\mathbb A\\tens A$ è **sempre simmetrico**, qualunque sia $\\tens A$. In simboli $\\mathbb A:\\mathrm{Lin}\\to\\mathrm{Sym}$, e in componenti $\\mathbb A_{ijhk}=\\mathbb A_{jihk}$: scambiando gli indici della prima coppia non cambia nulla, perché il risultato ha componenti $ij$ e $ji$ uguali.
+La **prima simmetria minore** (Def 1.7.4) riguarda l'uscita: $\\mathbb A\\tens A$ è **sempre simmetrico**, qualunque sia $\\tens A$. In simboli $\\mathbb A:\\mathrm{Lin}\\to\\mathrm{Sym}$, cioè $\\mathbb A$ porta un tensore qualunque nell'insieme $\\mathrm{Sym}$ dei simmetrici; in componenti $\\mathbb A_{ijhk}=\\mathbb A_{jihk}$: scambiando gli indici della prima coppia non cambia nulla, perché il risultato ha componenti $ij$ e $ji$ uguali.
 
 La **seconda simmetria minore** (Def 1.7.5) riguarda l'ingresso: $\\mathbb A$ **«vede» solo la parte simmetrica** del suo argomento,
 
 $$\\mathbb A\\tens A=\\mathbb A[\\operatorname{sym}\\tens A]\\iff\\mathbb A\\tens W=\\tens O\\ \\ \\forall\\tens W\\in\\mathrm{Skw}.$$
 
-Perché le due forme sono equivalenti? Con la decomposizione della lezione 3, $\\tens A=\\operatorname{sym}\\tens A+\\operatorname{skw}\\tens A$, e per linearità $\\mathbb A\\tens A=\\mathbb A[\\operatorname{sym}\\tens A]+\\mathbb A[\\operatorname{skw}\\tens A]$ (passaggio aggiunto): dire che conta solo la parte simmetrica equivale a dire che la parte antisimmetrica viene mandata in zero. In simboli $\\mathbb A:\\mathrm{Sym}\\to\\mathrm{Lin}$, e in componenti $\\mathbb A_{ijhk}=\\mathbb A_{ijkh}$.
+Perché le due forme sono equivalenti? Con il I teorema di decomposizione (Teo 1.3.3), $\\tens A=\\operatorname{sym}\\tens A+\\operatorname{skw}\\tens A$, e per linearità $\\mathbb A\\tens A=\\mathbb A[\\operatorname{sym}\\tens A]+\\mathbb A[\\operatorname{skw}\\tens A]$ (passaggio aggiunto): dire che conta solo la parte simmetrica equivale a dire che la parte antisimmetrica viene mandata in zero. In simboli $\\mathbb A:\\mathrm{Sym}\\to\\mathrm{Lin}$, cioè basta conoscere $\\mathbb A$ sui tensori simmetrici; in componenti $\\mathbb A_{ijhk}=\\mathbb A_{ijkh}$.
 
-Per il tensore elastico questo avrà un significato fisico chiaro: una rotazione rigida, descritta da un antisimmetrico, non produce tensione.`,
+Per il tensore elastico questo avrà un significato fisico: nel Cap. 4 la dispensa osserva che ai fini dello sforzo conta solo la parte simmetrica del gradiente di spostamento; la parte antisimmetrica, la rotazione rigida infinitesima, non produce tensione (deduzione).`,
       },
       {
         id: 'l16-d0',
@@ -1355,11 +1360,11 @@ I numeri ${NUMERI_M1.count.tutte}$, ${NUMERI_M1.count.minori}$, ${NUMERI_M1.coun
 
 $$\\mathbb A\\tens A\\cdot\\tens A>0\\quad\\forall\\tens A\\neq\\tens O.$$
 
-A parole: il tensore trasformato forma sempre un «angolo acuto» con quello di partenza, cioè ha prodotto scalare positivo con esso (deduzione). Nel Cap. 4 questa condizione dirà che per deformare un corpo elastico bisogna spendere lavoro.
+A parole: il tensore trasformato forma sempre un «angolo acuto» con quello di partenza, cioè ha prodotto scalare positivo con esso (deduzione). Nel Cap. 4 questa condizione garantirà che l'energia specifica di deformazione sia positiva per ogni deformazione non nulla (§4.9.4).
 
 La seconda è l'**invertibilità** (Def 1.7.7): $\\mathbb A$ è invertibile se esiste $\\mathbb A^{-1}$ con $\\mathbb A\\mathbb A^{-1}=\\mathbb A^{-1}\\mathbb A=\\mathbb I$, dove $\\mathbb I$ è l'identità del IV ordine, $\\mathbb I\\tens A=\\tens A$.
 
-Le due proprietà sono legate, ma in una direzione sola. Per vederlo serve un criterio che la dispensa usa senza nominarlo: una trasformazione lineare è invertibile quando l'unico elemento che manda in zero è lo zero, cioè quando il suo **nucleo** è banale (passaggio aggiunto). È la stessa idea del caso singolare della lezione 4: se vettori diversi finiscono nello stesso punto, non si torna indietro.`,
+Le due proprietà sono legate, ma in una direzione sola. Per vederlo serve un criterio che la dispensa usa senza dimostrarlo: una trasformazione lineare è invertibile quando l'unico elemento che manda in zero è lo zero, cioè quando il suo **nucleo** è banale (passaggio aggiunto). È la stessa idea del caso singolare visto con il determinante (§1.4.2): se vettori diversi finiscono nello stesso punto, non si torna indietro.`,
       },
       {
         id: 'l16-5',
@@ -1376,7 +1381,7 @@ Le due proprietà sono legate, ma in una direzione sola. Per vederlo serve un cr
               ask: { q: 'Che cosa ci dice $\\mathbb A\\tens A\\cdot\\tens A=0$, sapendo che $\\mathbb A\\in\\mathrm{Pos}^+$?', options: ['che $\\tens A=\\tens O$', 'niente', 'che $\\mathbb A=\\mathbb O$', 'che $\\tens A$ è antisimmetrico'], correct: 0, why: 'Per un definito positivo $\\mathbb A\\tens A\\cdot\\tens A>0$ per ogni $\\tens A\\neq\\tens O$: se il numero è zero, $\\tens A$ non può essere diverso da $\\tens O$. Il risultato riguarda $\\tens A$, non $\\mathbb A$; e un antisimmetrico non nullo darebbe comunque un numero positivo.' },
             },
             { tex: '\\Rightarrow\\ \\tens A=\\tens O:\\ \\text{nucleo banale, }\\mathbb A\\text{ invertibile}', why: 'L\'unico tensore mandato in zero è $\\tens O$: il nucleo è banale e $\\mathbb A$ è invertibile. La definita positività è quindi **sufficiente** per l\'invertibilità.', eq: 'Def 1.7.6' },
-            { tex: '-\\mathbb I:\\ \\text{invertibile, ma }-\\mathbb I\\tens A\\cdot\\tens A=-\\|\\tens A\\|^2<0', why: 'Ma **non è necessaria**. Il controesempio della dispensa è $-\\mathbb I$, che cambia segno a ogni tensore: è invertibile, perché è l\'inverso di sé stesso, ma $-\\mathbb I\\tens A\\cdot\\tens A=-\\tens A\\cdot\\tens A=-\\|\\tens A\\|^2$ è negativo per ogni $\\tens A\\neq\\tens O$, quindi non è definito positivo.' },
+            { tex: '-\\mathbb I:\\ \\text{invertibile, ma }-\\mathbb I\\tens A\\cdot\\tens A=-\\|\\tens A\\|^2<0', why: 'Ma **non è necessaria**. Il controesempio della dispensa è $-\\mathbb I$, che cambia segno a ogni tensore: è invertibile, perché è l\'inverso di sé stesso (deduzione), ma $-\\mathbb I\\tens A\\cdot\\tens A=-\\tens A\\cdot\\tens A=-\\|\\tens A\\|^2$ è negativo per ogni $\\tens A\\neq\\tens O$ (passaggio aggiunto), quindi non è definito positivo.' },
           ],
         },
       },
@@ -1423,7 +1428,7 @@ Su questa lezione ricorrono tre errori.
         id: 'l17-0',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Finora vettori e tensori erano oggetti fissi. In un corpo che si deforma, però, lo spostamento cambia da punto a punto, e così la tensione: ci servono **campi**, cioè regole che a ogni punto $X$ di una regione associano un vettore $\\vet u(X)$ o un tensore $\\tens A(X)$. La dispensa li considera in un **dominio regolare** $D$, una regione con il bordo liscio.
+        md: `Finora vettori e tensori erano oggetti fissi. In un corpo che si deforma, però, lo spostamento cambia da punto a punto, e così la tensione: ci servono **campi**, cioè regole che a ogni punto $X$ di una regione associano un vettore $\\vet u(X)$ o un tensore $\\tens A(X)$. La dispensa li considera definiti in un **dominio regolare** $D$, cioè in una regione dello spazio.
 
 Per i campi servono le derivate, e questa lezione introduce i tre operatori dell'analisi tensoriale: **gradiente**, **divergenza** e **rotore**. Poi enuncia il **teorema della divergenza**, che lega ciò che esce dal bordo di una regione a ciò che succede dentro.
 
@@ -1441,7 +1446,7 @@ Il simbolo $\\nabla$ si legge «nabla» o «gradiente». Nella matrice la **riga
 
 $$[\\nabla\\vet u]=\\begin{bmatrix}\\partial_1u_1&\\partial_2u_1&\\partial_3u_1\\\\\\partial_1u_2&\\partial_2u_2&\\partial_3u_2\\\\\\partial_1u_3&\\partial_2u_3&\\partial_3u_3\\end{bmatrix},$$
 
-dove $\\partial_j$ abbrevia $\\partial/\\partial x_j$. Il gradiente è un tensore, e per la prima lezione un tensore trasforma vettori: qui trasforma un piccolo spostamento dal punto nella variazione del campo, al primo ordine (deduzione). Nel Cap. 2 il gradiente di spostamento sarà proprio il tensore $\\tens H$.
+dove $\\partial_j$ abbrevia $\\partial/\\partial x_j$. Il gradiente è un tensore, e un tensore trasforma vettori (Def 1.2.1): qui trasforma un piccolo spostamento dal punto nella variazione del campo, al primo ordine (deduzione). Nel Cap. 2 il gradiente di spostamento sarà proprio il tensore $\\tens H$.
 
 La dispensa fa un'osservazione generale (§1.8): il gradiente **alza di uno** l'ordine del campo, la divergenza lo **abbassa di uno**, il rotore lo **lascia invariato**. Da un vettore, ordine 1, il gradiente produce un tensore, ordine 2.`,
       },
@@ -1449,7 +1454,7 @@ La dispensa fa un'osservazione generale (§1.8): il gradiente **alza di uno** l'
         id: 'l17-1b',
         kind: 'spiega',
         title: 'La divergenza di un vettore: quanto il campo «esce» da un punto',
-        md: `Dal gradiente, che ha nove numeri, possiamo estrarne uno solo prendendo la traccia della lezione 5, la somma della diagonale. Così si definisce la **divergenza** di un campo vettoriale (Def 1.8.2):
+        md: `Dal gradiente, che ha nove numeri, possiamo estrarne uno solo prendendo la traccia (Def 1.6.1), cioè la somma della diagonale. Così si definisce la **divergenza** di un campo vettoriale (Def 1.8.2):
 
 $$\\operatorname{div}\\vet u:=\\operatorname{tr}\\nabla\\vet u=\\dfrac{\\partial u_1}{\\partial x_1}+\\dfrac{\\partial u_2}{\\partial x_2}+\\dfrac{\\partial u_3}{\\partial x_3}.$$
 
@@ -1457,7 +1462,7 @@ Il risultato è uno scalare: l'ordine è sceso da 1 a 0, come dice l'osservazion
 
 Che cosa misura? Ciascun termine dice quanto la componente $i$ del campo cresce spostandosi nella direzione $i$, cioè quanto il campo «si allarga» in quella direzione. Immagina il campo come la velocità di un fluido (deduzione): divergenza positiva vuol dire che in quel punto il fluido si espande, come vicino a una sorgente; divergenza nulla che tanto entra quanto esce. Il teorema della divergenza, tra qualche passo, renderà precisa questa immagine.
 
-Un esempio che userai sul modello: il campo piano $\\vet u=(x,y)$ ha $\\partial_1u_1=1$ e $\\partial_2u_2=1$, quindi divergenza 2 ovunque; il campo $\\vet u=(-y,x)$, una rotazione rigida, ha divergenza nulla (passaggio aggiunto).`,
+Un esempio che userai sul modello: il campo piano $\\vet u=(x,y)$ ha $\\partial_1u_1=1$ e $\\partial_2u_2=1$, quindi divergenza 2 ovunque; il campo $\\vet u=(-y,x)$, una rotazione rigida, ha divergenza nulla (esempio aggiunto).`,
       },
       {
         id: 'l17-2',
@@ -1529,7 +1534,7 @@ Per esempio la prima componente è $\\partial_1A_{11}+\\partial_2A_{12}+\\partia
 
 Un controllo di coerenza (deduzione): se $\\tens A$ è costante nello spazio, tutte le derivate sono nulle e $\\operatorname{div}\\tens A=\\vet 0$, come la divergenza di un vettore costante.
 
-Perché ci teniamo a «per righe»? Perché con un'altra convenzione, la divergenza per colonne, si otterrebbe un vettore diverso. Nel Cap. 3 la divergenza del tensore delle tensioni comparirà nelle equazioni indefinite di equilibrio, $\\operatorname{div}\\tens T+\\vet b=\\vet 0$, e lì il tensore è simmetrico, quindi le due convenzioni danno lo stesso risultato (deduzione); ma in generale no.`,
+Perché ci teniamo a «per righe»? Perché con un'altra convenzione, la divergenza per colonne, si otterrebbe in generale un vettore diverso (deduzione). Nel Cap. 3 la divergenza del tensore delle tensioni comparirà nelle equazioni indefinite di equilibrio, $\\operatorname{div}\\tens T+\\vet b=\\vet 0$, e lì il tensore è simmetrico, quindi le due convenzioni danno lo stesso risultato (deduzione); ma in generale no.`,
       },
       {
         id: 'l17-d1',
@@ -1548,11 +1553,11 @@ $$\\int_{\\partial D}\\vet u\\cdot\\hat n\\,dA=\\int_D\\operatorname{div}\\vet u
 
 È la versione precisa dell'immagine del passo sulla divergenza: ciò che esce dal bordo è la somma di quanto il campo «si allarga» in ogni punto dell'interno. Il teorema trasforma un integrale di superficie, $dA$ è l'elemento d'area, in un integrale di volume, $dV$ è l'elemento di volume.
 
-Esiste anche una versione tensoriale, che è quella usata nel corso:
+Esiste anche una versione tensoriale, che è quella che useremo nel Cap. 3:
 
 $$\\int_{\\partial D}\\tens A\\hat n\\,dA=\\int_D\\operatorname{div}\\tens A\\,dV.$$
 
-A sinistra c'è un vettore: in ogni punto del bordo il tensore trasforma la normale, e si sommano i risultati. Nel Cap. 3 $\\tens A$ sarà il tensore delle tensioni e $\\tens T\\hat n$ la forza per unità di superficie sul bordo.`,
+A sinistra c'è un vettore: in ogni punto del bordo il tensore trasforma la normale, e si sommano i risultati. Nel Cap. 3 al posto di $\\tens A$ ci sarà il tensore delle tensioni $\\tens T$, e $\\tens T\\hat n$ sarà la forza per unità di superficie sul bordo.`,
       },
       {
         id: 'l17-4b',
@@ -1562,13 +1567,13 @@ A sinistra c'è un vettore: in ogni punto del bordo il tensore trasforma la norm
 
 Il campo $\\tens A^T\\vet a$ è vettoriale, quindi il teorema vettoriale dice che $\\int_{\\partial D}\\tens A^T\\vet a\\cdot\\hat n\\,dA=\\int_D\\operatorname{div}(\\tens A^T\\vet a)\\,dV$.
 
-A sinistra usiamo la regola di spostamento del trasposto (lezione 3): $\\tens A^T\\vet a\\cdot\\hat n=\\tens A\\hat n\\cdot\\vet a$. A destra usiamo la definizione della divergenza di un tensore: $\\operatorname{div}(\\tens A^T\\vet a)=\\vet a\\cdot\\operatorname{div}\\tens A$. Siccome $\\vet a$ è costante, esce da entrambi gli integrali:
+A sinistra usiamo la regola di spostamento del trasposto (Def 1.3.1): $\\tens A^T\\vet a\\cdot\\hat n=\\tens A\\hat n\\cdot\\vet a$. A destra usiamo la definizione della divergenza di un tensore: $\\operatorname{div}(\\tens A^T\\vet a)=\\vet a\\cdot\\operatorname{div}\\tens A$. Siccome $\\vet a$ è costante, esce da entrambi gli integrali:
 
 $$\\vet a\\cdot\\int_{\\partial D}\\tens A\\hat n\\,dA=\\vet a\\cdot\\int_D\\operatorname{div}\\tens A\\,dV.$$
 
 Questo vale per ogni $\\vet a$, quindi i due vettori sono uguali: è la versione tensoriale.
 
-Nel diagramma a destra c'è un campo piano su un quadrato. Il campo non dipende da $z$ e non ha componente $z$: su un cubo il flusso dalle facce $z=$ costante sarebbe nullo, e il teorema si legge sul quadrato.`,
+Nel diagramma a destra c'è un campo piano su un quadrato. Il campo non dipende da $z$ e non ha componente $z$: su un cubo il flusso dalle facce $z=$ costante sarebbe nullo, e il teorema si legge sul quadrato (deduzione).`,
       },
       {
         id: 'l17-5',
@@ -1587,7 +1592,7 @@ Nel diagramma a destra c'è un campo piano su un quadrato. Il campo non dipende 
         id: 'l17-6',
         kind: 'spiega',
         title: 'Il rotore: la parte rotazionale del gradiente',
-        md: `L'ultimo operatore è il rotore, e lo costruiamo con un attrezzo della lezione 3. Il gradiente $\\nabla\\vet u$ è un tensore, quindi ha una parte antisimmetrica; e ogni antisimmetrico agisce come un prodotto vettoriale per il suo vettore assiale (Teo 1.3.4). Il **rotore** di $\\vet u$ è definito proprio in questo modo (Def 1.8.5): è il campo vettoriale tale che
+        md: `L'ultimo operatore è il rotore, e lo costruiamo con un attrezzo del §1.3.4, il vettore assiale. Il gradiente $\\nabla\\vet u$ è un tensore, quindi ha una parte antisimmetrica; e ogni antisimmetrico agisce come un prodotto vettoriale per il suo vettore assiale (Teo 1.3.4). Il **rotore** di $\\vet u$ è definito proprio in questo modo (Def 1.8.5): è il campo vettoriale tale che
 
 $$\\operatorname{rot}\\vet u\\wedge\\vet a=(\\nabla\\vet u-\\nabla\\vet u^T)\\vet a\\quad\\forall\\vet a.$$
 
