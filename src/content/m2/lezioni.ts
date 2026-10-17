@@ -132,7 +132,7 @@ In componenti si scrive $x_i=f_i(X_1,X_2,X_3)$: ciascuna coordinata finale può 
 $$\\vet u(X)=x-X=f(X)-X.$$
 In componenti, $u_i=f_i(X_1,X_2,X_3)-X_i$.
 
-Deformazione e spostamento sono entrambi **campi vettoriali**: a ogni punto $X$ assegnano qualcosa. Ma rispondono a domande diverse. Un esempio lo rende chiaro *(esempio aggiunto)*: se il corpo resta perfettamente fermo, ogni punto rimane dov'era, quindi $f(X)=X$. La deformazione allora è la funzione identità, **non** zero; lo spostamento invece è nullo, $\\vet u=\\vet 0$.
+Deformazione e spostamento sono entrambi **campi vettoriali**: a ogni punto $X$ assegnano qualcosa. Ma rispondono a domande diverse. Un esempio lo rende chiaro (esempio aggiunto): se il corpo resta perfettamente fermo, ogni punto rimane dov'era, quindi $f(X)=X$. La deformazione allora è la funzione identità, **non** zero; lo spostamento invece è nullo, $\\vet u=\\vet 0$.
 
 Nel modello a destra vedi due punti, $X$ e $Y$, e le frecce dei loro spostamenti: ogni punto ha la sua freccia, ed è questo che fa di $\\vet u$ un campo.`,
       },
