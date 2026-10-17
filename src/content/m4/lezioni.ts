@@ -82,7 +82,7 @@ Nello spazio c'è anche una terza famiglia, quella tangente alle direzioni della
         title: 'Come si leggono: come le curve di livello',
         md: `Abbiamo costruito le curve; ora chiediamoci che cosa ci dicono. La dispensa usa un paragone con le **curve di livello** di una carta topografica: dove il terreno è ripido le curve si infittiscono, dove è pianeggiante si diradano. Allo stesso modo le isostatiche sono **più fitte dove la tensione è maggiore**.
 
-Per questo il disegno delle isostatiche mostra come i carichi «fluiscono» dentro il corpo, da dove sono applicati fino ai vincoli. Ed è un'informazione utile per progettare: dove le linee si addensano conviene addensare anche la materia, per usarla in modo efficiente. L'esempio della dispensa è il telaio di una moto, i cui tubi seguono le direzioni lungo cui passano gli sforzi.`,
+Per questo il disegno delle isostatiche mostra come i carichi «fluiscono» dentro il corpo, da dove sono applicati fino ai vincoli. Ed è un'informazione utile per progettare: dove le linee si addensano conviene addensare anche la materia, per usarla in modo efficiente. L'esempio della dispensa è il telaio di una moto, in cui si mette quanto più materiale possibile lungo le isostatiche generate dalla forma e dai carichi.`,
       },
       {
         id: 'l40-5',
@@ -182,7 +182,7 @@ Infine $\\tens H=\\nabla\\vet u$ è il gradiente di spostamento del capitolo 2. 
         title: 'Che cosa dice il lemma, e un controllo',
         md: `Rileggiamo il risultato a parole: l'integrale sulla frontiera di $\\tens T\\hat n\\cdot\\vet u$ si scrive come la somma di due integrali sul volume, uno con la divergenza di $\\tens T$ e uno con il prodotto scalare $\\tens T\\cdot\\tens H$. Nota che nella dimostrazione non abbiamo mai usato l'equilibrio, né un legame tra $\\tens T$ e $\\vet u$: è un'identità che vale per campi qualsiasi.
 
-Facciamo un controllo su un caso semplice (deduzione): prendi $\\tens T=\\tens I$, l'identità, costante. Allora $\\operatorname{div}\\tens I=\\vet 0$ perché le sue componenti non variano, e $\\tens I\\cdot\\tens H=\\operatorname{tr}\\tens H=\\operatorname{div}\\vet u$. Il lemma diventa $\\int_{\\partial\\mathcal B}\\vet u\\cdot\\hat n\\,dA=\\int_{\\mathcal B}\\operatorname{div}\\vet u\\,dV$: è di nuovo il teorema della divergenza. Il lemma, quindi, ne è una generalizzazione con un tensore «in mezzo».
+Facciamo un controllo su un caso semplice (esempio aggiunto): prendi $\\tens T=\\tens I$, l'identità, costante. Allora $\\operatorname{div}\\tens I=\\vet 0$ perché le sue componenti non variano, e $\\tens I\\cdot\\tens H=\\operatorname{tr}\\tens H=\\operatorname{div}\\vet u$. Il lemma diventa $\\int_{\\partial\\mathcal B}\\vet u\\cdot\\hat n\\,dA=\\int_{\\mathcal B}\\operatorname{div}\\vet u\\,dV$: è di nuovo il teorema della divergenza. Il lemma, quindi, ne è una generalizzazione con un tensore «in mezzo».
 
 A che cosa servirà? Fra poco sostituiremo a $\\tens T$ un tensore in equilibrio, e i tre termini diventeranno tre lavori.`,
       },
@@ -251,6 +251,7 @@ Con i due sistemi si definiscono due lavori (**Def 4.3.3**): il **lavoro virtual
             {
               tex: '\\int_{\\partial\\mathcal B}\\hat{\\vet s}\\cdot\\vet u\\,dA=-\\int_{\\mathcal B}\\vet b\\cdot\\vet u\\,dV+\\int_{\\mathcal B}\\tens T\\cdot\\tens H\\,dV',
               why: `Nel primo integrale di volume usiamo la prima condizione di FT: nell'interno $\\operatorname{div}\\tens T+\\vet b=\\vet 0$, cioè $\\operatorname{div}\\tens T=-\\vet b$. Ecco comparire, con il segno meno, il lavoro delle forze di volume.`,
+              aggiunto: true,
             },
             {
               tex: '\\tens T\\cdot\\tens H=\\tens T\\cdot(\\tens E+\\tens W)=\\tens T\\cdot\\tens E+\\tens T\\cdot\\tens W',
@@ -264,8 +265,7 @@ Con i due sistemi si definiscono due lavori (**Def 4.3.3**): il **lavoro virtual
             },
             {
               tex: '\\int_{\\partial\\mathcal B}\\hat{\\vet s}\\cdot\\vet u\\,dA=-\\int_{\\mathcal B}\\vet b\\cdot\\vet u\\,dV+\\int_{\\mathcal B}\\tens T\\cdot\\tens E\\,dV',
-              why: `Sostituiamo $\\tens T\\cdot\\tens E$ al posto di $\\tens T\\cdot\\tens H$ nell'ultimo integrale. Ora l'ultimo termine è il lavoro virtuale interno della Def 4.3.3.`,
-              aggiunto: true,
+              why: `Sostituiamo $\\tens T\\cdot\\tens E$ al posto di $\\tens T\\cdot\\tens H$ nell'ultimo integrale. Ora l'ultimo termine è il lavoro virtuale interno della Def 4.3.3. È la riga che la dispensa scrive dopo «Sostituendo».`,
             },
             { tex: '\\int_{\\partial\\mathcal B}\\hat{\\vet s}\\cdot\\vet u\\,dA+\\int_{\\mathcal B}\\vet b\\cdot\\vet u\\,dV=\\int_{\\mathcal B}\\tens T\\cdot\\tens E\\,dV', why: `Portiamo a sinistra il lavoro delle forze di volume. A sinistra c'è $L_v^{EST}$, a destra $L_v^{INT}$: il teorema è dimostrato, per qualsiasi FT equilibrato e SD congruente.`, eq: 'Teo 4.3.4' },
           ],
@@ -351,7 +351,7 @@ In questa lezione non scriviamo ancora il legame in tutta la sua generalità; fa
         id: 'l42-2',
         kind: 'spiega',
         title: 'Perché il materiale conta: il barile sulle tre travi',
-        md: `L'esempio della dispensa è questo. Prendi tre travi identiche nella forma, una di legno, una di acciaio, una di ferro, e appoggia su ciascuna lo stesso barile da 100 kg. Le tre travi si deformano in modo diverso (§4.4).
+        md: `L'esempio della dispensa è questo. Prendi tre travi identiche nella forma, una di legno, una di acciaio, una di ferro, e appendi a ciascuna, con gli stessi vincoli, lo stesso barile da 100 kg. Le tre travi si deformano in modo diverso (§4.4).
 
 Eppure, per tutte e tre, le equazioni di equilibrio del capitolo 3 sono le stesse, perché la geometria e i carichi sono gli stessi; e anche le relazioni di congruenza del capitolo 2 sono le stesse. Quello che cambia è soltanto il materiale. Ecco perché equilibrio e congruenza, da soli, non bastano a dire quanto si deforma un corpo.
 
@@ -361,7 +361,7 @@ Un'immagine che forse conosci (esempio aggiunto): una molla. La forza e l'allung
         id: 'l42-3',
         kind: 'spiega',
         title: 'Guardare il materiale da lontano: la descrizione fenomenologica',
-        md: `Per descrivere il materiale ci sono due strade. La **micromeccanica** guarda come atomi, cristalli e fibre producono la deformazione; la **macromeccanica**, che è la strada della meccanica dei continui, osserva il comportamento del materiale «da fuori», come risposta a prove di laboratorio, e lo descrive con campi definiti in ogni punto (§4.4.1). Questa seconda descrizione si dice **fenomenologica**: si basa sui fenomeni osservati, non sui loro meccanismi interni.
+        md: `Per descrivere il materiale ci sono due strade. La **micromeccanica** guarda come le forze a livello atomico o cristallino producono la deformazione del reticolo; la **macromeccanica**, che è la strada della meccanica dei continui, osserva il comportamento del materiale «da fuori», come risposta a prove di laboratorio, e lo descrive con campi definiti in ogni punto (§4.4.1). Questa seconda descrizione si dice **fenomenologica**: si basa sui fenomeni osservati, non sui loro meccanismi interni.
 
 Il prezzo è un'ipotesi: la materia è trattata come un **mezzo continuo**, senza vuoti e senza struttura interna. Ma la materia vera ha una struttura (grani, fibre, mattoni). Quando possiamo far finta che non ci sia? La risposta è nel prossimo passo.`,
       },
@@ -412,10 +412,10 @@ Una precisazione importante della dispensa: vedere una curva di carico crescente
         title: 'Elastico lineare: la legge di Hooke',
         md: `Tra i materiali elastici, i più semplici sono quelli in cui la funzione $\\hat{\\tens T}$ è **lineare**: raddoppiando la deformazione raddoppia la tensione.
 
-**Def 4.4.3.** Un materiale è **elastico lineare** se vale la legge di Hooke, che la dispensa cita nella forma latina originale *ut tensio sic vis* («come l'allungamento, così la forza»):
+**Def 4.4.3.** Un materiale è **elastico lineare** se vale la legge di Hooke, che la dispensa cita nella forma latina originale «ut tensio sic vis» («come l'allungamento, così la forza»):
 $$\\tens T=\\mathbb A\\tens E.$$
 
-Il simbolo $\\mathbb A$ è il **tensore elastico**, un tensore del IV ordine. Ricorda dal Modulo 1 che cosa vuol dire: un tensore del IV ordine è una macchina lineare che riceve un tensore del II ordine (qui la deformazione $\\tens E$) e restituisce un altro tensore del II ordine (qui la tensione $\\tens T$). È l'analogo, nel continuo, della rigidezza della molla. Lo studieremo a fondo due lezioni più avanti.`,
+Il simbolo $\\mathbb A$ è il **tensore elastico**, un tensore del IV ordine. Ricorda dal Modulo 1 che cosa vuol dire: un tensore del IV ordine è una macchina lineare che riceve un tensore del II ordine (qui la deformazione $\\tens E$) e restituisce un altro tensore del II ordine (qui la tensione $\\tens T$). È l'analogo, nel continuo, della rigidezza della molla. Lo studieremo a fondo nella lezione sul tensore elastico (§4.8).`,
       },
       {
         id: 'l42-9',
@@ -425,7 +425,7 @@ Il simbolo $\\mathbb A$ è il **tensore elastico**, un tensore del IV ordine. Ri
 
 **Def 4.4.4.** Un materiale è **iperelastico** se, oltre alla reversibilità meccanica, ha anche la reversibilità **termodinamica**: l'energia spesa per deformarlo viene interamente restituita allo scarico, senza perdite.
 
-Nella modellazione standard i materiali si assumono iperelastici, perché in campo elastico la dissipazione è bassa. La differenza tra elastico e iperelastico sembra sottile, ma avrà conseguenze precise sul tensore elastico: lo vedremo nella lezione sull'energia specifica, dove scopriremo che l'iperelasticità riduce il numero di costanti da misurare.`,
+Nella modellazione standard i materiali si assumono quasi sempre iperelastici: a rigore la reversibilità termodinamica non esiste, ma nei materiali da costruzione la dissipazione è molto bassa. La differenza tra elastico e iperelastico sembra sottile, ma avrà conseguenze precise sul tensore elastico: lo vedremo nella lezione sull'energia specifica, dove scopriremo che l'iperelasticità riduce il numero di costanti da misurare.`,
       },
       {
         id: 'l42-10',
@@ -440,7 +440,7 @@ Nella modellazione standard i materiali si assumono iperelastici, perché in cam
 
 **Def 4.4.5.** Un materiale è **elasto-plastico** se la sua risposta è indipendente dal tempo ma la deformazione è irreversibile: allo scarico rientra solo una parte dell'allungamento, la parte **elastica** $\\Delta L_e$, mentre un'altra parte, quella **plastica**, persiste come allungamento residuo $\\Delta L_{res}$. Se allo scarico non rientra nulla, il comportamento si dice **plastico**: l'allungamento massimo raggiunto resta tutto, $\\Delta L_{\\max}=\\Delta L_{res}$.
 
-Guarda la figura di p. 71: le curve $F$–$\\Delta L$ mostrano lo scarico che scende parallelo al tratto iniziale e si ferma su $\\Delta L_{res}$. Nota che qui il tempo continua a non contare: conta la storia di carico, non quanto velocemente la si percorre.`,
+Guarda la figura di p. 71: nelle curve $F$–$\\Delta L$ lo scarico non torna all'origine e si ferma su $\\Delta L_{res}$; nel caso plastico $\\Delta L_{\\max}=\\Delta L_{res}$. Nota che qui il tempo continua a non contare: conta la storia di carico, non quanto velocemente la si percorre (deduzione).`,
       },
       {
         id: 'l42-12',
@@ -529,7 +529,7 @@ All'inizio la curva è una **retta**: forza e allungamento sono proporzionali. L
         title: 'Lo snervamento: il materiale cede a carico costante',
         md: `Raggiunto $F_y$, il comportamento cambia bruscamente. Con qualche oscillazione, il provino continua ad allungarsi **senza che la forza aumenti**. Sembra che il materiale abbia perso rigidezza, dove per rigidezza si intende il carico necessario per ottenere un allungamento unitario.
 
-Se ora scarichi, la curva non torna all'origine: scende parallela al tratto elastico e lascia una **deformazione residua**. È il modello elasto-plastico della lezione precedente. E c'è un effetto di memoria: se hai caricato fino a una forza $F_x$ maggiore di $F_y$, hai scaricato e poi ricarichi, il provino si comporta elasticamente fino a $F_x$ e ricomincia a snervare solo lì. Il materiale «ricorda» il carico massimo raggiunto.`,
+Se ora scarichi, la curva non torna all'origine: scende parallela al tratto elastico e lascia una **deformazione residua**: la dispensa dice che qui il materiale si comporta secondo il modello plastico della lezione sui legami costitutivi (§4.5). E c'è un effetto di memoria: se hai caricato fino a una forza $F_x$ maggiore di $F_y$, hai scaricato e poi ricarichi, il provino si comporta elasticamente fino a $F_x$ e ricomincia a snervare solo lì. Il materiale «ricorda» il carico massimo raggiunto.`,
       },
       {
         id: 'l43-4',
@@ -571,7 +571,7 @@ Perché proprio 45°? La risposta viene dal cerchio di Mohr del capitolo 3. In t
         id: 'l43-9',
         kind: 'spiega',
         title: 'La strizione: la deformazione si localizza',
-        md: `Vicino al carico di rottura compare un secondo fenomeno visibile (§4.5.2). Il materiale reale non è perfettamente uniforme: contiene piccole **inclusioni** che lo indeboliscono localmente. Finché il carico è basso non conta; ma ora alcuni tratti del provino cominciano a deformarsi molto più degli altri: è la **localizzazione della deformazione**.
+        md: `Vicino al carico di rottura compare un secondo fenomeno visibile (§4.5.2). Il materiale reale non è perfettamente uniforme: contiene piccole **inclusioni** che lo indeboliscono localmente. Vicino alla rottura alcuni tratti del provino cominciano a deformarsi molto più degli altri: è la **localizzazione della deformazione**.
 
 Nella zona più debole la sezione si restringe visibilmente e si forma un **collo** (in inglese necking, da neck): è lì che avverrà la rottura. Dove si formerà il collo non è prevedibile a priori, perché dipende da dove stanno le inclusioni.
 
@@ -595,14 +595,14 @@ dove la costante $E$, la pendenza della retta, è il **modulo di Young**. Per gl
         title: 'La curva della norma non è la curva reale',
         md: `Il diagramma $\\sigma$–$\\varepsilon$ appena costruito ha due approssimazioni nascoste (§4.5.3). La prima: la sezione **si riduce** durante la prova, quindi la tensione vera $\\sigma_R=F/A$, con l'area attuale $A$, è maggiore di $F/A_0$. La seconda: $\\Delta L/L_0$ è una deformazione **media** sul tratto utile, che ignora la localizzazione nel collo.
 
-Se si corregge per entrambe, la curva reale cambia aspetto: la tensione **cresce sempre**, fino alla rottura. Questo si chiama **hardening** (indurimento); il ramo che scende dopo il picco nella curva della norma non è un vero softening, ma un effetto dell'aver diviso per $A_0$. La figura di p. 75 mostra la curva reale sopra quella della norma, con la stessa pendenza iniziale $E$.
+Se si corregge per entrambe, la curva reale cambia aspetto: la tensione **cresce sempre**, fino alla rottura. Questo si chiama **hardening** (indurimento); l'acciaio non presenta softening (§4.5.3). Il ramo che scende dopo il picco nella curva della norma è quindi un effetto dell'aver diviso per $A_0$ e di aver usato una deformazione media (deduzione). La figura di p. 75 mostra la curva reale sopra quella della norma, con la stessa pendenza iniziale $E$.
 
 Perché allora la norma usa $A_0$? Perché vuole una procedura **ripetibile in qualunque laboratorio**, senza strumenti speciali, che fornisca parametri di confronto universali.`,
       },
       {
         id: 'l43-12',
         kind: 'domanda',
-        q: { id: 'l43-q1', kind: 'vf', q: 'La curva σ–ε reale dell’acciaio mostra softening dopo il picco.', answer: false, why: `Con la sezione reale la tensione cresce sempre: hardening (§4.5.3). Il ramo discendente che si vede nella curva della norma nasce dall'aver diviso la forza per l'area iniziale $A_0$ mentre la sezione vera si restringeva.` },
+        q: { id: 'l43-q1', kind: 'vf', q: 'La curva σ–ε reale dell’acciaio mostra softening dopo il picco.', answer: false, why: `Con la sezione reale la tensione cresce sempre: hardening (§4.5.3). Il ramo discendente che si vede nella curva della norma nasce dall'aver diviso la forza per l'area iniziale $A_0$ mentre la sezione vera si restringeva (deduzione).` },
       },
       {
         id: 'l43-13',
@@ -635,7 +635,7 @@ In questi acciai lo snervamento non si vede: non c'è il tratto orizzontale a ca
         title: 'Softening e rottura fragile',
         md: `Perché il softening è così importante? Perché spiega come si rompono le strutture in materiale lapideo (§4.6).
 
-Immagina un punto di una struttura in calcestruzzo che ha superato il picco. Continua a deformarsi, ma porta **meno** carico di prima. Il carico che non porta più non sparisce: passa ai punti vicini, che così si caricano di più, superano a loro volta il picco ed entrano in crisi, cedendo carico ad altri ancora. La crisi si propaga **a catena**, e la struttura cede senza grandi deformazioni che la preannuncino: è la **rottura fragile**.
+Immagina, come fa la dispensa, un punto di una muratura che ha superato il picco. Continua a deformarsi, ma porta **meno** carico di prima. Il carico che non porta più non sparisce: passa ai punti vicini, che così si caricano di più, superano a loro volta il picco ed entrano in crisi, cedendo carico ad altri ancora. La crisi si propaga **a catena**, e la struttura cede senza grandi deformazioni che la preannuncino: è la **rottura fragile**.
 
 L'acciaio, invece, ha una rottura **duttile**: prima di rompersi si deforma molto (snervamento, incrudimento, strizione), e questo è un segnale d'allarme ben visibile.`,
       },
@@ -690,7 +690,7 @@ Infine, la dispensa ricorda che esistono accoppiamenti termomeccanici, chimici, 
         id: 'l44-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Due lezioni fa abbiamo dato un nome al legame più semplice, quello elastico lineare, $\\tens T=\\mathbb A\\tens E$ (Def 4.4.3). Nella lezione di laboratorio l'abbiamo visto in una dimensione, nel tratto rettilineo della prova di trazione: $\\sigma=E\\varepsilon$, con una sola costante. Ora torniamo in tre dimensioni e prendiamo sul serio quella formula.
+        md: `Nella lezione sui legami costitutivi abbiamo dato un nome al legame più semplice, quello elastico lineare, $\\tens T=\\mathbb A\\tens E$ (Def 4.4.3). Nella lezione di laboratorio l'abbiamo visto in una dimensione, nel tratto rettilineo della prova di trazione: $\\sigma=E\\varepsilon$, con una sola costante. Attenzione alle lettere: lì $E$ è un numero, il modulo di Young (§4.5); qui $\\tens E$ è il tensore di deformazione infinitesima. Ora torniamo in tre dimensioni e prendiamo sul serio quella formula.
 
 Le domande sono tre. Che cosa vogliono dire, esattamente, le parole «elastico» e «lineare»? Quante costanti contiene il tensore elastico $\\mathbb A$, e sono davvero tutte da misurare? Che cosa succede nella configurazione da cui partiamo? Alla fine saprai spiegare perché le costanti scendono da 81 a 36, e perché una rotazione rigida non genera tensioni.`,
       },
@@ -714,7 +714,7 @@ Insieme, queste due richieste dicono che per conoscere la tensione in un punto b
 1. **Piccoli spostamenti**, $|\\vet u|\\ll1$ rispetto alle dimensioni del corpo. Grazie a questa ipotesi la tensione si può riferire ai punti della configurazione di riferimento $\\mathcal B$, senza preoccuparsi di dove sono finiti dopo la deformazione: è l'equilibrio referenziale.
 2. **Piccole deformazioni**, $\\|\\tens H\\|\\ll1$, con $\\tens H$ il gradiente di spostamento. Grazie a questa ipotesi si può usare come misura di deformazione il tensore infinitesimo $\\tens E$, anziché il tensore di deformazione finita.
 
-Senza una delle due il problema diventa non lineare anche se il materiale è elastico. Per questo «elastico lineare» non è solo una proprietà del materiale: è anche un'ipotesi sulla geometria del problema.`,
+Senza una delle due il problema diventa non lineare anche se il materiale è elastico. Per questo «elastico lineare» non è solo una proprietà del materiale: è anche un'ipotesi sulla geometria del problema (deduzione).`,
       },
       {
         id: 'l44-4',
@@ -732,7 +732,7 @@ $$\\tens T(x)=\\mathbb A(x)\\big[\\tens E(x)\\big].$$
 Ricorda dal Modulo 1 che un tensore del IV ordine è una mappa lineare che trasforma un tensore del II ordine in un altro. $\\mathbb A$ può cambiare da punto a punto, per esempio in una roccia stratificata; se il corpo è **omogeneo**, $\\mathbb A$ è lo stesso in tutti i punti.
 
 In componenti
-$$T_{ij}=\\textstyle\\sum_{h,k}A_{ijhk}E_{hk}:$$
+$$T_{ij}=\\textstyle\\sum_{h,k}\\mathbb A_{ijhk}E_{hk}:$$
 ogni componente della tensione è una combinazione di tutte le nove componenti della deformazione. Gli indici sono quattro, ciascuno da 1 a 3, quindi le componenti di $\\mathbb A$ sono $3^4=81$: si chiamano **moduli elastici**. Prima di andare in laboratorio a misurarli, conviene chiedersi se sono davvero 81 indipendenti.`,
       },
       {
@@ -742,7 +742,7 @@ ogni componente della tensione è una combinazione di tutte le nove componenti d
         md: `La prima riduzione viene dal capitolo 3: il tensore degli sforzi $\\tens T$ è **simmetrico**, $T_{ij}=T_{ji}$. Quindi $\\mathbb A$, qualunque deformazione riceva, deve restituire un tensore simmetrico.
 
 Nel Modulo 1 questa proprietà ha un nome: **prima simmetria minore** (Def 1.7.4), che vuol dire proprio «$\\mathbb A\\tens A$ è simmetrico per ogni $\\tens A$». In componenti si scrive scambiando i primi due indici:
-$$A_{ijhk}=A_{jihk}.$$
+$$\\mathbb A_{ijhk}=\\mathbb A_{jihk}.$$
 Leggila così: la riga che produce $T_{ij}$ e quella che produce $T_{ji}$ devono essere uguali, perché $T_{ij}$ e $T_{ji}$ sono lo stesso numero (§4.8.1).`,
       },
       {
@@ -752,7 +752,8 @@ Leggila così: la riga che produce $T_{ij}$ e quella che produce $T_{ji}$ devono
         md: `La seconda riduzione riguarda ciò che $\\mathbb A$ riceve. Il legame è scritto con $\\tens E$, la parte simmetrica del gradiente di spostamento $\\tens H=\\tens E+\\tens W$; la parte antisimmetrica $\\tens W$, la rotazione rigida infinitesima, non deve contare.
 
 È la **seconda simmetria minore** (Def 1.7.5): $\\mathbb A$ «vede» solo la parte simmetrica del suo argomento, il che equivale a dire che annulla ogni tensore antisimmetrico. In componenti si scambiano gli ultimi due indici:
-$$A_{ijhk}=A_{ijkh},\\qquad\\mathbb A\\tens W=\\tens O\\quad\\forall\\tens W\\in\\mathrm{Skw}.$$
+$$\\mathbb A_{ijhk}=\\mathbb A_{ijkh},\\qquad\\mathbb A\\tens W=\\tens O\\quad\\forall\\tens W\\in\\mathrm{Skw},$$
+dove $\\mathrm{Skw}$ è l'insieme dei tensori antisimmetrici.
 
 **Per l'orale** la dispensa sottolinea il significato fisico: applicando $\\mathbb A$ a $\\tens H$ si ottiene lo stesso risultato che applicandolo a $\\tens E$. Una rototraslazione rigida infinitesima, cioè una traslazione più una piccola rotazione, **non genera tensione**: per far nascere uno sforzo serve una deformazione (§4.8.1).`,
       },
@@ -765,9 +766,9 @@ $$A_{ijhk}=A_{ijkh},\\qquad\\mathbb A\\tens W=\\tens O\\quad\\forall\\tens W\\in
         id: 'l44-9',
         kind: 'spiega',
         title: 'Contare: da 81 a 36',
-        md: `Mettiamo insieme le due simmetrie. La prima dice che la coppia di indici $(i,j)$ conta solo come coppia non ordinata: $(1,2)$ e $(2,1)$ sono la stessa cosa. Le coppie distinte sono allora sei: $(1,1)$, $(2,2)$, $(3,3)$, $(2,3)$, $(3,1)$, $(1,2)$. La seconda simmetria dice la stessa cosa per la coppia $(h,k)$: anche lei prende sei valori distinti.
+        md: `La dispensa afferma che con entrambe le simmetrie minori le componenti indipendenti passano da 81 a 36 (§4.8.1). Ecco il conto (passaggio aggiunto). La prima simmetria dice che la coppia di indici $(i,j)$ conta solo come coppia non ordinata: $(1,2)$ e $(2,1)$ sono la stessa cosa. Le coppie distinte sono allora sei: $(1,1)$, $(2,2)$, $(3,3)$, $(2,3)$, $(3,1)$, $(1,2)$. La seconda simmetria dice la stessa cosa per la coppia $(h,k)$: anche lei prende sei valori distinti.
 
-Una componente indipendente è quindi individuata da una delle sei coppie $(ij)$ e da una delle sei coppie $(hk)$: in tutto $6\\times6=$ **36** componenti indipendenti (§4.8.1). In pratica il tensore elastico si può pensare come una tabella 6 per 6; questa idea diventerà la notazione di Voigt due lezioni più avanti.
+Una componente indipendente è quindi individuata da una delle sei coppie $(ij)$ e da una delle sei coppie $(hk)$: in tutto $6\\times6=$ **36** componenti indipendenti. In pratica il tensore elastico si può pensare come una tabella 6 per 6; questa idea diventerà la notazione di Voigt nella lezione sulle simmetrie materiali (§4.11).
 
 Nella prossima lezione una terza simmetria, la **maggiore**, ridurrà ancora il conto.`,
       },
@@ -809,8 +810,8 @@ nella configurazione di riferimento **non ci sono sforzi residui**. Una configur
         kind: 'riassunto',
         md: `**Il filo della lezione.** «Elastico» vuol dire che la tensione in un punto dipende solo dalla deformazione attuale in quel punto, senza storia, senza effetti non locali e senza tempo; «lineare» aggiunge piccoli spostamenti e piccole deformazioni. Con queste ipotesi la tensione è una funzione lineare della deformazione nello stesso punto, tramite il tensore elastico $\\mathbb A$, che ha 81 componenti. Poiché la tensione è simmetrica e conta solo la parte simmetrica del gradiente di spostamento, $\\mathbb A$ ha le due simmetrie minori: le costanti scendono a 36 e una rototraslazione rigida non genera tensione. Infine si assume che la configurazione di riferimento sia naturale, senza sforzi residui.
 
-- Elasticità lineare: $\\tens T(x)=\\mathbb A(x)[\\tens E(x)]$, $T_{ij}=\\sum_{h,k}A_{ijhk}E_{hk}$ (Def 4.8.1).
-- Simmetrie minori: $A_{ijhk}=A_{jihk}=A_{ijkh}$, quindi 36 costanti (§4.8.1).
+- Elasticità lineare: $\\tens T(x)=\\mathbb A(x)[\\tens E(x)]$, $T_{ij}=\\sum_{h,k}\\mathbb A_{ijhk}E_{hk}$ (Def 4.8.1).
+- Simmetrie minori: $\\mathbb A_{ijhk}=\\mathbb A_{jihk}=\\mathbb A_{ijkh}$, quindi 36 costanti (§4.8.1).
 - Nessuna tensione dai moti rigidi: $\\mathbb A\\tens W=\\tens O$ per ogni $\\tens W\\in\\mathrm{Skw}$ (§4.8.1).
 - Configurazione naturale: $\\tens T_0=\\tens T(\\tens E=\\tens O)=\\tens O$ (§4.8.1).`,
         orale: ['Elasticità lineare: ipotesi, tensore elastico, simmetrie minori (81 → 36), $\\mathbb A\\tens W=\\tens O$, configurazione naturale. (dispensa, domanda 7)'],
@@ -829,7 +830,7 @@ nella configurazione di riferimento **non ci sono sforzi residui**. Una configur
         id: 'l45-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo scritto il legame elastico lineare $\\tens T=\\mathbb A\\tens E$ e ridotto le costanti del tensore elastico $\\mathbb A$ da 81 a 36. Nella lezione sui legami costitutivi avevamo anche incontrato i materiali **iperelastici**, quelli che restituiscono tutta l'energia spesa per deformarli (Def 4.4.4). Ora rendiamo precisa questa idea.
+        md: `Nella lezione sul tensore elastico abbiamo scritto il legame elastico lineare $\\tens T=\\mathbb A\\tens E$ e ridotto le costanti del tensore elastico $\\mathbb A$ da 81 a 36. Nella lezione sui legami costitutivi avevamo anche incontrato i materiali **iperelastici**, quelli che restituiscono tutta l'energia spesa per deformarli (Def 4.4.4). Ora rendiamo precisa questa idea.
 
 Pensa a una molla (esempio aggiunto): la tiri, spendi lavoro, e quel lavoro resta immagazzinato nella molla come energia; quando la lasci, te lo restituisce. In questa lezione costruiamo l'equivalente per un solido: l'**energia specifica di deformazione** $\\varphi$. Le tappe: la definizione; la dimostrazione che il lavoro per deformare non dipende dal percorso seguito; il significato di $\\varphi$; il teorema che, per un materiale lineare, collega l'esistenza di $\\varphi$ alla simmetria maggiore di $\\mathbb A$ (da 36 a 21 costanti) e alla formula $\\varphi=\\frac12\\mathbb A\\tens E\\cdot\\tens E$.`,
       },
@@ -837,7 +838,7 @@ Pensa a una molla (esempio aggiunto): la tiri, spendi lavoro, e quel lavoro rest
         id: 'l45-2',
         kind: 'spiega',
         title: 'Prima in una dimensione',
-        md: `Prima dei tensori, guardiamo il caso più semplice (esempio aggiunto): una barra in trazione con legame $\\sigma=E\\varepsilon$, quello del tratto lineare della prova di laboratorio.
+        md: `Prima dei tensori, guardiamo il caso più semplice (esempio aggiunto): una barra in trazione con legame $\\sigma=E\\varepsilon$, quello del tratto lineare della prova di laboratorio. Attenzione alle lettere: qui $E$ è un **numero**, il modulo di Young della prova di trazione (§4.5); non va confuso con il **tensore** di deformazione $\\tens E$, che useremo nel resto della lezione.
 
 Per allungare un cubetto unitario di materiale da $\\varepsilon=0$ a un valore $\\varepsilon$, il lavoro per unità di volume è la somma dei piccoli lavori $\\sigma\\,d\\varepsilon$, cioè l'area sotto la retta $\\sigma$–$\\varepsilon$: un triangolo di base $\\varepsilon$ e altezza $E\\varepsilon$, di area $\\frac12E\\varepsilon^2$. Chiamiamo questa quantità $\\varphi(\\varepsilon)=\\frac12E\\varepsilon^2$. Nota due cose: derivandola si ritrova la tensione, $d\\varphi/d\\varepsilon=E\\varepsilon=\\sigma$; e il lavoro dipende solo dall'allungamento finale.
 
@@ -863,7 +864,7 @@ Due osservazioni della dispensa. L'iperelasticità si definisce indipendentement
 
 Siccome il materiale è elastico, a ogni deformazione corrisponde una tensione: al cammino di deformazione corrisponde quindi un **cammino di tensione** $\\hat{\\tens T}(\\alpha)=\\mathbb A\\hat{\\tens E}(\\alpha)$. La figura di p. 79 li disegna uno accanto all'altro, nello spazio delle deformazioni e in quello delle tensioni.
 
-Il **lavoro elementare** per unità di volume, quando la deformazione cambia di $d\\tens E$, è $dw=\\tens T\\cdot d\\tens E$: è la stessa integranda del lavoro interno nel teorema dei lavori virtuali.`,
+Il **lavoro elementare** per unità di volume, quando la deformazione cambia di $d\\tens E$, è $dw=\\tens T\\cdot d\\tens E$ (§4.9.1): ha la stessa forma dell'integranda $\\tens T\\cdot\\tens E$ del lavoro interno nel teorema dei lavori virtuali, con l'incremento $d\\tens E$ al posto della deformazione virtuale (deduzione).`,
       },
       {
         id: 'l45-5',
@@ -883,13 +884,12 @@ Il **lavoro elementare** per unità di volume, quando la deformazione cambia di 
             {
               tex: '=\\int_{\\alpha_1}^{\\alpha_2}\\dfrac{\\partial\\varphi}{\\partial\\tens E}\\Big|_{\\hat{\\tens E}(\\alpha)}\\cdot\\dfrac{d\\hat{\\tens E}}{d\\alpha}\\,d\\alpha',
               why: `Usiamo l'ipotesi: il materiale è iperelastico, quindi in ogni punto del cammino la tensione è la derivata di $\\varphi$, calcolata nella deformazione $\\hat{\\tens E}(\\alpha)$ in cui ci troviamo.`,
-              ask: { q: `Che cosa ci autorizza a sostituire $\\hat{\\tens T}(\\alpha)$ con una derivata di $\\varphi$?`, options: ['L\'esistenza di $\\varphi$ con $\\tens T=\\partial\\varphi/\\partial\\tens E$', 'La linearità del legame', 'La simmetria di $\\tens E$', 'Il fatto che il cammino sia rettilineo'], correct: 0, why: `È la definizione di materiale iperelastico (Def 4.9.1). La linearità non serve: il risultato vale anche per legami non lineari. La simmetria di $\\tens E$ è sempre vera e non basta; e il cammino qui è qualsiasi, anche curvo.` },
+              ask: { q: `Che cosa ci autorizza a sostituire $\\hat{\\tens T}(\\alpha)$ con una derivata di $\\varphi$?`, options: ['L\'esistenza di $\\varphi$ con $\\tens T=\\partial\\varphi/\\partial\\tens E$', 'La linearità del legame', 'La simmetria di $\\tens E$', 'Il fatto che il cammino sia rettilineo'], correct: 0, why: `È la definizione di materiale iperelastico (Def 4.9.1). La linearità non serve in questo passaggio, perché l'iperelasticità si definisce indipendentemente da essa (deduzione). La simmetria di $\\tens E$ è sempre vera e non basta; e il cammino qui è qualsiasi, anche curvo.` },
               val: (v) => workQuad(A81(v), mat(v, 'P'), mat(v, 'Q'), mat(v, 'C')),
             },
             {
               tex: '=\\int_{\\alpha_1}^{\\alpha_2}\\dfrac{d}{d\\alpha}\\varphi\\big(\\hat{\\tens E}(\\alpha)\\big)\\,d\\alpha',
               why: `Riconosciamo la regola della catena: la derivata in $\\alpha$ della funzione composta $\\varphi(\\hat{\\tens E}(\\alpha))$ è $\\sum_{ij}\\frac{\\partial\\varphi}{\\partial E_{ij}}\\frac{d\\hat E_{ij}}{d\\alpha}$, cioè proprio il prodotto scalare della riga prima. L'integranda è la derivata di una funzione: un differenziale esatto.`,
-              aggiunto: true,
               val: (v) => workQuad(A81(v), mat(v, 'P'), mat(v, 'Q'), mat(v, 'C')),
             },
             { tex: '=\\varphi(\\tens E_2)-\\varphi(\\tens E_1)', why: `Teorema fondamentale del calcolo: l'integrale della derivata è la differenza dei valori agli estremi, $\\hat{\\tens E}(\\alpha_2)=\\tens E_2$ e $\\hat{\\tens E}(\\alpha_1)=\\tens E_1$. Tutto ciò che stava «in mezzo» al cammino è sparito.`, val: (v) => El.energy(A81(v), mat(v, 'Q')) - El.energy(A81(v), mat(v, 'P')), eq: '§4.9.1' },
@@ -904,7 +904,7 @@ Il **lavoro elementare** per unità di volume, quando la deformazione cambia di 
 
 Ne segue un caso particolare importante: il **cammino chiuso**. Se parti da $\\tens E_1$, vai fino a un'altra deformazione e torni a $\\tens E_1$, il lavoro totale è $\\varphi(\\tens E_1)-\\varphi(\\tens E_1)=0$. L'energia spesa all'andata viene tutta restituita al ritorno: è la reversibilità termodinamica della Def 4.4.4, ora scritta in formule.
 
-Controllo in una dimensione (deduzione): con $\\varphi=\\frac12E\\varepsilon^2$, andare da $0$ a $\\varepsilon$ costa $\\frac12E\\varepsilon^2$, tornare da $\\varepsilon$ a $0$ restituisce $\\frac12E\\varepsilon^2$; la somma è zero.`,
+Controllo in una dimensione (deduzione): con $\\varphi=\\frac12E\\varepsilon^2$, dove $E$ è ancora il modulo di Young e non il tensore $\\tens E$, andare da $0$ a $\\varepsilon$ costa $\\frac12E\\varepsilon^2$, tornare da $\\varepsilon$ a $0$ restituisce $\\frac12E\\varepsilon^2$; la somma è zero.`,
       },
       {
         id: 'l45-8',
@@ -929,7 +929,7 @@ Questo funziona perché il riferimento è naturale, senza sforzi residui. Se il 
 
 Due ultime osservazioni della dispensa. L'energia di tutto il corpo si ottiene sommando su tutti i punti:
 $$\\Phi=\\int_{\\mathcal B}\\varphi\\big(\\tens E(x)\\big)\\,dV.$$
-E $\\varphi$, se esiste, è **unica**: due funzioni con la stessa derivata differiscono per una costante, e la condizione $\\varphi(\\tens O)=0$ fissa quella costante a zero (deduzione).`,
+E $\\varphi$, se esiste, è **unica**: è il lavoro per passare da $\\tens O$ a $\\tens E$, e questo lavoro non dipende dal cammino. Un altro modo di vederlo (deduzione): due funzioni con la stessa derivata differiscono per una costante, e la condizione $\\varphi(\\tens O)=0$ fissa quella costante a zero.`,
       },
       {
         id: 'l45-11',
@@ -942,28 +942,28 @@ E $\\varphi$, se esiste, è **unica**: due funzioni con la stessa derivata diffe
 - b) $\\mathbb A=\\mathbb A^T$, la **simmetria maggiore**;
 - c) $\\varphi=\\frac12\\mathbb A\\tens E\\cdot\\tens E$.
 
-Ricorda dal Modulo 1 (Def 1.7.3) che cosa vuol dire simmetria maggiore: $\\mathbb A\\tens A\\cdot\\tens B=\\mathbb A\\tens B\\cdot\\tens A$ per ogni coppia di tensori, cioè in componenti $A_{ijhk}=A_{hkij}$: si può scambiare la prima coppia di indici con la seconda. Pensando $\\mathbb A$ come la tabella 6 per 6 della lezione scorsa, vuol dire che la tabella è simmetrica: restano le 6 caselle della diagonale più le 15 sopra la diagonale, cioè **21** costanti.
+Ricorda dal Modulo 1 (Def 1.7.3) che cosa vuol dire simmetria maggiore: $\\mathbb A\\tens A\\cdot\\tens B=\\mathbb A\\tens B\\cdot\\tens A$ per ogni coppia di tensori, cioè in componenti $\\mathbb A_{ijhk}=\\mathbb A_{hkij}$: si può scambiare la prima coppia di indici con la seconda. La dispensa dice che con la simmetria maggiore le costanti passano da 36 a **21**. Il conto (passaggio aggiunto): pensando $\\mathbb A$ come la tabella 6 per 6 della lezione sul tensore elastico, la simmetria maggiore rende la tabella simmetrica, e restano le 6 caselle della diagonale più le 15 sopra la diagonale, cioè 21.
 
-La strategia della dispensa: dimostrare a ⇒ b, poi b ⇒ c, e infine chiudere il cerchio.`,
+La strategia della dispensa: dimostrare che a) implica b), poi che b) implica c), e infine chiudere il cerchio.`,
       },
       {
         id: 'l45-12',
         kind: 'derivazione',
         title: 'Teorema sull’energia: a ⇒ b',
-        md: `**Dove vogliamo arrivare:** dall'esistenza di $\\varphi$ alla simmetria maggiore $A_{ijhk}=A_{hkij}$. **L'idea:** calcolare le derivate seconde di $\\varphi$ in due ordini diversi; ciascuna dà una componente di $\\mathbb A$, e il teorema di Schwarz dice che l'ordine non conta.`,
+        md: `**Dove vogliamo arrivare:** dall'esistenza di $\\varphi$ alla simmetria maggiore $\\mathbb A_{ijhk}=\\mathbb A_{hkij}$. **L'idea:** calcolare le derivate seconde di $\\varphi$ in due ordini diversi; ciascuna dà una componente di $\\mathbb A$, e il teorema di Schwarz dice che l'ordine non conta.`,
         source: D(4, '4.9.3', 'Teo 4.9.2', 81),
         der: {
           lines: [
             { tex: 'T_{ij}=\\dfrac{\\partial\\varphi}{\\partial E_{ij}}', why: `Ipotesi a): $\\varphi$ esiste, quindi ogni componente della tensione è la derivata di $\\varphi$ rispetto alla componente corrispondente della deformazione (Def 4.9.1).` },
-            { tex: '\\dfrac{\\partial\\varphi}{\\partial E_{ij}}=\\textstyle\\sum_{h,k}A_{ijhk}E_{hk}', why: `Il materiale è anche lineare: la stessa componente $T_{ij}$ è data da $\\mathbb A\\tens E$ in componenti (Def 4.8.1). Uguagliando le due espressioni di $T_{ij}$ otteniamo questa riga.`, aggiunto: true },
+            { tex: '\\dfrac{\\partial\\varphi}{\\partial E_{ij}}=\\textstyle\\sum_{h,k}\\mathbb A_{ijhk}E_{hk}', why: `Il materiale è anche lineare: la stessa componente $T_{ij}$ è data da $\\mathbb A\\tens E$ in componenti (Def 4.8.1). Uguagliando le due espressioni di $T_{ij}$ otteniamo questa riga.` },
             {
-              tex: '\\dfrac{\\partial^2\\varphi}{\\partial E_{ij}\\partial E_{hk}}=A_{ijhk}',
-              why: `Deriviamo entrambi i membri rispetto a $E_{hk}$. A destra, nella somma, tutti i termini sono costanti rispetto a $E_{hk}$ tranne quello che lo contiene, il cui coefficiente è $A_{ijhk}$: le componenti di $\\mathbb A$ non dipendono dalla deformazione.`,
-              ask: { q: `Deriviamo $\\sum_{p,q}A_{ijpq}E_{pq}$ rispetto a $E_{hk}$. Che cosa resta?`, options: ['$A_{ijhk}$', '$A_{hkij}$', '$\\sum_{p,q}A_{ijpq}$', 'Zero'], correct: 0, why: `Nella somma l'unico termine che contiene $E_{hk}$ è quello con $p=h$, $q=k$, di coefficiente $A_{ijhk}$. $A_{hkij}$ ha gli indici scambiati, ed è proprio quello che vogliamo dimostrare uguale; la somma di tutti i coefficienti e lo zero dimenticano che uno e un solo termine sopravvive.` },
+              tex: '\\dfrac{\\partial^2\\varphi}{\\partial E_{ij}\\partial E_{hk}}=\\mathbb A_{ijhk}',
+              why: `Deriviamo entrambi i membri rispetto a $E_{hk}$. A destra, nella somma, tutti i termini sono costanti rispetto a $E_{hk}$ tranne quello che lo contiene, il cui coefficiente è $\\mathbb A_{ijhk}$: le componenti di $\\mathbb A$ non dipendono dalla deformazione.`,
+              ask: { q: `Deriviamo $\\sum_{p,q}\\mathbb A_{ijpq}E_{pq}$ rispetto a $E_{hk}$. Che cosa resta?`, options: ['$\\mathbb A_{ijhk}$', '$\\mathbb A_{hkij}$', '$\\sum_{p,q}\\mathbb A_{ijpq}$', 'Zero'], correct: 0, why: `Nella somma l'unico termine che contiene $E_{hk}$ è quello con $p=h$, $q=k$, di coefficiente $\\mathbb A_{ijhk}$. $\\mathbb A_{hkij}$ ha gli indici scambiati, ed è proprio quello che vogliamo dimostrare uguale; la somma di tutti i coefficienti e lo zero dimenticano che uno e un solo termine sopravvive.` },
             },
-            { tex: '\\dfrac{\\partial^2\\varphi}{\\partial E_{hk}\\partial E_{ij}}=A_{hkij}', why: `Facciamo lo stesso conto con le coppie di indici scambiate: partiamo da $T_{hk}=\\partial\\varphi/\\partial E_{hk}=\\sum_{i,j}A_{hkij}E_{ij}$ e deriviamo rispetto a $E_{ij}$. La dispensa lo dice con una parola: «analogamente».`, aggiunto: true },
+            { tex: '\\dfrac{\\partial^2\\varphi}{\\partial E_{hk}\\partial E_{ij}}=\\mathbb A_{hkij}', why: `Facciamo lo stesso conto con le coppie di indici scambiate: partiamo da $T_{hk}=\\partial\\varphi/\\partial E_{hk}=\\sum_{i,j}\\mathbb A_{hkij}E_{ij}$ e deriviamo rispetto a $E_{ij}$: nella somma sopravvive solo il termine che contiene $E_{ij}$. La dispensa scrive anche questo conto, introducendolo con «allo stesso modo».` },
             {
-              tex: '\\Rightarrow\\ A_{ijhk}=A_{hkij},\\qquad\\mathbb A=\\mathbb A^T=\\dfrac{\\partial^2\\varphi}{\\partial\\tens E^2}',
+              tex: '\\Rightarrow\\ \\mathbb A_{ijhk}=\\mathbb A_{hkij},\\qquad\\mathbb A=\\mathbb A^T=\\dfrac{\\partial^2\\varphi}{\\partial\\tens E^2}',
               why: `Le due righe precedenti sono la stessa derivata seconda mista, fatta in due ordini. Per il teorema di Schwarz, per una funzione regolare l'ordine di derivazione è indifferente: quindi i due secondi membri sono uguali. È la simmetria maggiore, e in più abbiamo scoperto che $\\mathbb A$ è la derivata seconda di $\\varphi$.`,
               ask: { q: 'Quale teorema chiude la dimostrazione?', options: ['Schwarz (derivate miste)', 'Divergenza', 'Spettrale', 'Kirchhoff'], correct: 0, why: `Il teorema di Schwarz garantisce che le derivate seconde miste di una funzione regolare non dipendono dall'ordine. Il teorema della divergenza trasforma integrali di superficie in integrali di volume, quello spettrale riguarda autovalori: qui non servono.` },
               eq: 'Teo 4.9.2, a ⇒ b',
@@ -977,9 +977,9 @@ La strategia della dispensa: dimostrare a ⇒ b, poi b ⇒ c, e infine chiudere 
         title: 'Che cosa abbiamo ottenuto',
         md: `Il risultato si legge così: **se esiste un'energia, il tensore elastico è la sua derivata seconda**, $\\mathbb A=\\partial^2\\varphi/\\partial\\tens E^2$; e le derivate seconde, per Schwarz, sono simmetriche nello scambio delle variabili. Ecco da dove viene la simmetria maggiore: non è un'ipotesi in più, è una conseguenza dell'esistenza di $\\varphi$.
 
-Controllo in una dimensione (deduzione): con $\\varphi=\\frac12E\\varepsilon^2$ la derivata seconda è $d^2\\varphi/d\\varepsilon^2=E$, proprio il modulo di Young, il «tensore elastico» a una componente.
+Controllo in una dimensione (deduzione): con $\\varphi=\\frac12E\\varepsilon^2$ la derivata seconda è $d^2\\varphi/d\\varepsilon^2=E$, proprio il modulo di Young, il «tensore elastico» a una componente. Ricorda che questa $E$ è un numero, da non confondere con il tensore di deformazione $\\tens E$ che compare in $\\partial^2\\varphi/\\partial\\tens E^2$.
 
-Conseguenza pratica: un materiale elastico lineare e iperelastico ha **21** costanti indipendenti, non 36. In laboratorio, 15 misure in meno.`,
+Conseguenza pratica: un materiale elastico lineare e iperelastico ha **21** costanti indipendenti, non 36 (§4.9). In laboratorio, 15 misure in meno (deduzione).`,
       },
       {
         id: 'l45-14',
@@ -995,7 +995,7 @@ Conseguenza pratica: un materiale elastico lineare e iperelastico ha **21** cost
         der: {
           sample: (r) => { const o: R = {}; for (let k = 0; k < 81; k++) o[`A${k}`] = 2 * r() - 1; putMat(o, 'E', T.sym(T.randMat(r))); return o; },
           lines: [
-            { tex: 'w=\\int_0^1\\hat{\\tens T}(\\alpha)\\cdot\\dfrac{d\\hat{\\tens E}}{d\\alpha}\\,d\\alpha', why: `È la formula del lavoro lungo un cammino del §4.9.1, scritta per il nostro cammino, con $\\alpha$ che va da 0 a 1.`, aggiunto: true, val: (v) => workQuad(A81(v), T.O3, mat(v, 'E'), T.O3) },
+            { tex: 'w=\\int_0^1\\hat{\\tens T}(\\alpha)\\cdot\\dfrac{d\\hat{\\tens E}}{d\\alpha}\\,d\\alpha', why: `È la formula del lavoro lungo un cammino del §4.9.1, scritta per il nostro cammino, con $\\alpha$ che va da 0 a 1.`, val: (v) => workQuad(A81(v), T.O3, mat(v, 'E'), T.O3) },
             { tex: '=\\int_0^1\\mathbb A(\\alpha\\tens E^*)\\cdot\\tens E^*\\,d\\alpha', why: `Sul cammino rettilineo $\\hat{\\tens E}(\\alpha)=\\alpha\\tens E^*$, quindi la sua derivata è $d\\hat{\\tens E}/d\\alpha=\\tens E^*$; e la tensione è $\\hat{\\tens T}=\\mathbb A\\hat{\\tens E}=\\mathbb A(\\alpha\\tens E^*)$.`, val: (v) => workQuad(A81(v), T.O3, mat(v, 'E'), T.O3) },
             { tex: '=\\int_0^1\\alpha\\,\\mathbb A\\tens E^*\\cdot\\tens E^*\\,d\\alpha', why: `$\\mathbb A$ è lineare, quindi $\\mathbb A(\\alpha\\tens E^*)=\\alpha\\,\\mathbb A\\tens E^*$; e il numero $\\alpha$ esce anche dal prodotto scalare.`, aggiunto: true, val: (v) => T.ddot(T.apply4(A81(v), mat(v, 'E')), mat(v, 'E')) * 0.5 },
             { tex: '=\\mathbb A\\tens E^*\\cdot\\tens E^*\\int_0^1\\alpha\\,d\\alpha', why: `Il numero $\\mathbb A\\tens E^*\\cdot\\tens E^*$ non dipende da $\\alpha$: è una costante e si porta fuori dall'integrale.`, val: (v) => T.ddot(T.apply4(A81(v), mat(v, 'E')), mat(v, 'E')) * 0.5 },
@@ -1013,11 +1013,13 @@ Conseguenza pratica: un materiale elastico lineare e iperelastico ha **21** cost
         id: 'l45-16',
         kind: 'spiega',
         title: 'Leggere la formula, e chiudere il cerchio',
-        md: `La formula $\\varphi=\\frac12\\mathbb A\\tens E\\cdot\\tens E$ è la versione tensoriale del triangolo del secondo passo: in una dimensione diventa $\\frac12E\\varepsilon^2=\\frac12\\sigma\\varepsilon$ (deduzione). Il ½ c'è perché il carico è applicato gradualmente.
+        md: `La formula $\\varphi=\\frac12\\mathbb A\\tens E\\cdot\\tens E$ è la versione tensoriale del triangolo del secondo passo: in una dimensione, dove al posto del tensore $\\tens E$ c'è la dilatazione $\\varepsilon$ e al posto di $\\mathbb A$ il modulo di Young $E$ (un numero), diventa $\\frac12E\\varepsilon^2=\\frac12\\sigma\\varepsilon$ (deduzione). Il ½ c'è perché il carico è applicato gradualmente.
 
-Ora un punto delicato, che la dispensa segnala con un «Attenzione» (p. 81). Rileggi l'ultima riga: per dire che il lavoro sulla retta **è** $\\varphi(\\tens E^*)$ abbiamo usato a), cioè l'esistenza di $\\varphi$. La catena «a ⇒ b ⇒ c» degli appunti, quindi, non è ancora una dimostrazione di equivalenza: bisogna chiudere il cerchio.
-- **c ⇒ a** è immediato: se $\\varphi$ è data dalla formula c), allora una $\\varphi$ esiste.
-- **b ⇒ a**: con la simmetria maggiore, la derivata di $\\frac12\\mathbb A\\tens E\\cdot\\tens E$ rispetto a $\\tens E$ è $\\mathbb A\\tens E=\\tens T$, quindi quella funzione è un'energia. Perché serve la simmetria? (passaggio aggiunto) In generale la derivata di $\\frac12\\mathbb A\\tens E\\cdot\\tens E$ è $\\frac12(\\mathbb A+\\mathbb A^T)\\tens E$, che coincide con $\\mathbb A\\tens E$ solo se $\\mathbb A=\\mathbb A^T$.`,
+Ora un punto delicato, che la dispensa segnala con un «Attenzione» (p. 81). Rileggi l'ultima riga: per dire che il lavoro sulla retta **è** $\\varphi(\\tens E^*)$ abbiamo usato a), cioè l'esistenza di $\\varphi$. La catena «a implica b, b implica c» degli appunti, quindi, non è ancora una dimostrazione di equivalenza: bisogna chiudere il cerchio, e la dispensa lo fa in due mosse.
+
+La prima: c) implica a). L'affermazione c) dice che l'energia esiste e vale $\\frac12\\mathbb A\\tens E\\cdot\\tens E$; quindi, in particolare, esiste, ed è proprio a). Che quella funzione sia davvero un'energia, cioè che la sua derivata dia $\\tens T$, è però un'altra questione, e richiede b).
+
+La seconda: b) implica a). Con la simmetria maggiore la derivata di $\\frac12\\mathbb A\\tens E\\cdot\\tens E$ rispetto a $\\tens E$ è $\\mathbb A\\tens E=\\tens T$, quindi quella funzione è un'energia. Perché serve la simmetria? In generale la derivata di $\\frac12\\mathbb A\\tens E\\cdot\\tens E$ è $\\frac12(\\mathbb A+\\mathbb A^T)\\tens E$, che coincide con $\\mathbb A\\tens E$ solo se $\\mathbb A=\\mathbb A^T$ (passaggio aggiunto).`,
       },
       {
         id: 'l45-17',
@@ -1029,10 +1031,10 @@ Ora un punto delicato, che la dispensa segnala con un «Attenzione» (p. 81). Ri
         kind: 'spiega',
         title: 'Definita positività: deformare costa energia',
         md: `Che segno ha $\\varphi$? Dal Modulo 1 (Def 1.7.6) ricordi che un tensore del IV ordine è **definito positivo**, $\\mathbb A\\in\\mathrm{Pos}^+$, se $\\mathbb A\\tens A\\cdot\\tens A>0$ per ogni tensore $\\tens A$ diverso da zero. Per il tensore elastico, grazie alle simmetrie minori, basta controllarlo sulle deformazioni simmetriche (§4.9.4):
-$$\\mathbb A\\tens E\\cdot\\tens E>0\\quad\\forall\\tens E\\in\\mathrm{Sym}\\setminus\\{\\tens O\\}.$$
-Con la formula appena trovata, $\\varphi=\\frac12\\mathbb A\\tens E\\cdot\\tens E$, questo vuol dire semplicemente
+$$\\mathbb A\\tens E\\cdot\\tens E>0\\quad\\forall\\tens E\\in\\mathrm{Sym}\\setminus\\{\\tens O\\},$$
+cioè per ogni deformazione simmetrica ($\\mathrm{Sym}$ è l'insieme dei tensori simmetrici) diversa dal tensore nullo. Con la formula appena trovata, $\\varphi=\\frac12\\mathbb A\\tens E\\cdot\\tens E$, questo vuol dire semplicemente
 $$\\varphi(\\tens E)>0\\quad\\text{per ogni }\\tens E\\ne\\tens O:$$
-qualunque deformazione non nulla richiede di **spendere** energia. È quello che ci si aspetta da un materiale fisicamente sensato: non si può ottenere energia deformandolo. Le conseguenze sulle costanti si vedranno nel Modulo 5, con le restrizioni di plausibilità fisica.`,
+qualunque deformazione non nulla richiede di **spendere** energia. È quello che ci si aspetta da un materiale fisicamente sensato: non si può ottenere energia deformandolo (deduzione). Le conseguenze sulle costanti si vedranno nel Modulo 5, con le restrizioni di plausibilità fisica (§4.15).`,
       },
       {
         id: 'l45-19',
@@ -1040,7 +1042,7 @@ qualunque deformazione non nulla richiede di **spendere** energia. È quello che
         title: 'Quando il legame non è lineare: il tensore tangente',
         md: `Abbiamo detto che l'iperelasticità non richiede la linearità. Che cosa diventa allora il tensore elastico (§4.9.5)? Se la curva tensione–deformazione non è una retta, non c'è più un'unica pendenza; ma in ogni punto del cammino se ne può definire una **locale**, la pendenza della tangente:
 $$\\mathbb A=\\frac{\\partial\\tens T}{\\partial\\tens E}=\\frac{\\partial^2\\varphi}{\\partial\\tens E^2}.$$
-È il **tensore elastico tangente**, che descrive la risposta a piccoli incrementi di deformazione attorno allo stato attuale (la figura di p. 82 lo disegna come tangente alla curva). Nota che è la stessa formula trovata in a ⇒ b, solo che ora $\\mathbb A$ cambia lungo il cammino. Con deformazioni finite, infine, $\\tens E$ andrebbe sostituito con altre misure di deformazione.`,
+È il **tensore elastico tangente**, che descrive la risposta a piccoli incrementi di deformazione attorno allo stato attuale (la figura di p. 82 lo disegna come tangente alla curva). Nota che è la stessa formula trovata dimostrando che a) implica b), solo che ora $\\mathbb A$ cambia lungo il cammino. Con deformazioni finite, infine, $\\tens E$ andrebbe sostituito con altre misure di deformazione.`,
       },
       {
         id: 'l45-20',
@@ -1050,7 +1052,7 @@ $$\\mathbb A=\\frac{\\partial\\tens T}{\\partial\\tens E}=\\frac{\\partial^2\\va
 
 1. **Dire che ogni materiale elastico è iperelastico.** L'elasticità chiede la reversibilità meccanica; l'iperelasticità anche quella termodinamica, cioè l'esistenza di $\\varphi$. Nel caso lineare la differenza è la simmetria maggiore. Per gli isotropi le due cose coincidono, come vedrai nel Modulo 5 (§4.12).
 2. **Non saper spiegare il fattore ½.** Viene dall'integrale $\\int_0^1\\alpha\\,d\\alpha$: lungo il cammino la tensione cresce insieme alla deformazione, perché il carico è applicato gradualmente.
-3. **Presentare a ⇒ b ⇒ c come se bastasse.** Nel passo b ⇒ c si usa a), per identificare il lavoro con $\\varphi$; per avere l'equivalenza bisogna chiudere il cerchio con c ⇒ a e b ⇒ a (Attenzione della dispensa, p. 81).`,
+3. **Presentare la catena «a implica b, b implica c» come se bastasse.** Nel passo da b) a c) si usa a), per identificare il lavoro con $\\varphi$; per avere l'equivalenza bisogna chiudere il cerchio mostrando che c) implica a) e che b) implica a) (Attenzione della dispensa, p. 81).`,
       },
       {
         id: 'l45-21',
@@ -1106,7 +1108,7 @@ Come si scoprono le simmetrie in pratica (§4.10.1)? Il modo tradizionale è rit
       {
         id: 'l46-4',
         kind: 'domanda',
-        q: { id: 'l46-q2', kind: 'scelta', q: 'Nella prova su CFRP 0/90, quale provino si comporta diversamente dagli altri due?', options: ['Quello a 45°, più deformabile', 'Quello a 0°, più rigido', 'Quello a 90°, più deformabile', 'Nessuno: le tre curve coincidono'], correct: 0, why: `Le fibre a 0° e a 90° sono uguali, quindi i provini 1 e 3 coincidono; quello a 45° non ha fibre allineate al carico ed è più deformabile (§4.10). Le tre curve coincidono per l'acciaio, non per il composito; «0° più rigido» descrive il legno.` },
+        q: { id: 'l46-q2', kind: 'scelta', q: 'Nella prova su CFRP 0/90, quale provino si comporta diversamente dagli altri due?', options: ['Quello a 45°, più deformabile', 'Quello a 0°, più rigido', 'Quello a 90°, più deformabile', 'Nessuno: le tre curve coincidono'], correct: 0, why: `Le fibre a 0° e a 90° sono uguali, quindi i provini 1 e 3 coincidono; quello a 45°, in direzione intermedia, è più deformabile (§4.10): non ha fibre allineate al carico (deduzione). Le tre curve coincidono per l'acciaio, non per il composito; «0° più rigido» descrive il legno.` },
       },
       {
         id: 'l46-5',
@@ -1124,10 +1126,10 @@ $$\\tens T^*=\\mathbb A\\big[\\tens Q\\tens E\\tens Q^T\\big].$$`,
         kind: 'spiega',
         title: 'La condizione: la stessa risposta, ruotata',
         md: `Quando diciamo che il materiale risponde «allo stesso modo» nella direzione ruotata, non vogliamo dire che $\\tens T^*$ è uguale a $\\tens T$: la prova è ruotata, quindi ci aspettiamo la tensione di prima, **ruotata allo stesso modo**: $\\tens T^*=\\tens Q\\tens T\\tens Q^T$. Uguagliando le due espressioni di $\\tens T^*$ si ottiene la condizione
-$$\\mathbb A\\big[\\tens Q\\tens E\\tens Q^T\\big]=\\tens Q(\\mathbb A\\tens E)\\tens Q^T\\quad\\forall\\tens E\\in\\mathrm{Sym}.$$
-A parole: ruotare la deformazione e poi applicare il materiale dà lo stesso risultato che applicare il materiale e poi ruotare la tensione.
+$$\\mathbb A\\big[\\tens Q\\tens E\\tens Q^T\\big]=\\tens Q(\\mathbb A\\tens E)\\tens Q^T\\quad\\forall\\tens E\\in\\mathrm{Sym},$$
+cioè per ogni deformazione simmetrica. A parole: ruotare la deformazione e poi applicare il materiale dà lo stesso risultato che applicare il materiale e poi ruotare la tensione.
 
-**Def 4.10.1.** Un tensore ortogonale $\\tens Q\\in\\mathrm{Orth}$ (che conserva lunghezze e angoli) è una **trasformazione di simmetria materiale** se soddisfa questa condizione per ogni $\\tens E$. L'insieme di tutte le trasformazioni di simmetria è il **gruppo di simmetria materiale** $\\mathcal G\\subseteq\\mathrm{Orth}$. Nota che la definizione ammette anche le riflessioni, non solo le rotazioni: serviranno per gli ortotropi. Un gruppo grande obbliga $\\mathbb A$ ad avere una forma specifica.`,
+**Def 4.10.1.** Un tensore ortogonale $\\tens Q\\in\\mathrm{Orth}$ (che conserva lunghezze e angoli) è una **trasformazione di simmetria materiale** se soddisfa questa condizione per ogni $\\tens E$. L'insieme di tutte le trasformazioni di simmetria è il **gruppo di simmetria materiale** $\\mathcal G\\subseteq\\mathrm{Orth}$. Nota che la definizione ammette anche le riflessioni, non solo le rotazioni: serviranno per gli ortotropi (deduzione). Un particolare gruppo di simmetria obbliga $\\mathbb A$ ad avere una forma specifica: alcune componenti devono essere uguali tra loro, altre nulle.`,
       },
       {
         id: 'l46-7',
@@ -1151,7 +1153,7 @@ Leggi la tabella dall'alto in basso: il gruppo si allarga, le costanti calano. P
         id: 'l46-9',
         kind: 'spiega',
         title: 'Il gruppo degli anisotropi non è vuoto',
-        md: `Un dettaglio che la dispensa segnala con un «Attenzione» (p. 84): per gli anisotropi gli appunti scrivevano $\\mathcal G=\\emptyset$, ma non è corretto. Il gruppo contiene sempre almeno $\\{\\tens I,-\\tens I\\}$. Per $\\tens I$ è chiaro: non ruotare nulla non cambia nulla. Per $-\\tens I$ (deduzione): con $\\tens Q=-\\tens I$ si ha $\\tens Q\\tens E\\tens Q^T=\\tens E$ e $\\tens Q\\tens T\\tens Q^T=\\tens T$, quindi la condizione è soddisfatta da qualunque $\\mathbb A$. «Nessuna simmetria» vuol dire allora «solo quelle banali».
+        md: `Un dettaglio che la dispensa segnala con un «Attenzione» (p. 84): per gli anisotropi gli appunti scrivevano $\\mathcal G=\\emptyset$, ma non è corretto. Il gruppo contiene sempre almeno $\\{\\tens I,-\\tens I\\}$. Per $\\tens I$ è chiaro: non ruotare nulla non cambia nulla. Per $-\\tens I$ la dispensa dà il motivo: $(-\\tens I)\\tens E(-\\tens I)^T=\\tens E$. Allo stesso modo anche la tensione resta la stessa, $\\tens Q\\tens T\\tens Q^T=\\tens T$, quindi la condizione è soddisfatta da qualunque $\\mathbb A$ (deduzione). «Nessuna simmetria» vuol dire allora «solo quelle banali».
 
 Altre tre osservazioni della dispensa. Gli oggetti prodotti con la stampa 3D (manifattura additiva) sono fortemente anisotropi. Gli isotropi sono **sempre iperelastici**: elastico e iperelastico hanno 2 costanti entrambi, e lo dimostreremo nel Modulo 5 (§4.12); per questo chi lavora solo con l'acciaio fatica a vedere la differenza. Infine, con gli ultrasuoni si procede in due tempi: prima la **classificazione** (quale gruppo?), poi la **rappresentazione** (quanto valgono i moduli?).`,
       },
@@ -1210,7 +1212,7 @@ Ora prova sul modello.`,
         title: 'Ortotropi e trasversalmente isotropi',
         md: `Ecco le strutture della dispensa (§4.11.1).
 
-**Ortotropi**, nel riferimento principale di ortotropia: i blocchi NE e SW sono nulli, quindi dilatazioni e scorrimenti non si mescolano; il blocco SE è diagonale, con $C_{44}$, $C_{55}$, $C_{66}$. Ogni tensione tangenziale dipende solo dal suo scorrimento, per esempio $\\tau_{23}=C_{44}\\gamma_{23}$. Restano il blocco NW pieno (9 costanti) e le 3 diagonali: 12; con la simmetria maggiore $C_{12}=C_{21}$ e simili, e si scende a 9.
+**Ortotropi**, nel riferimento principale di ortotropia: i blocchi NE e SW sono nulli, quindi dilatazioni e scorrimenti non si mescolano; il blocco SE è diagonale, con $C_{44}$, $C_{55}$, $C_{66}$. Ogni tensione tangenziale dipende solo dal suo scorrimento, per esempio $\\tau_{23}=C_{44}\\gamma_{23}$. Le costanti sono 12 (il conto, per deduzione: il blocco NW pieno ne ha 9, più le 3 diagonali di SE); con la simmetria maggiore $C_{12}=C_{21}$, $C_{13}=C_{31}$, $C_{23}=C_{32}$, e si scende a 9.
 
 **Trasversalmente isotropi**, con asse di isotropia $\\hat e_3$:
 $$[\\mathbb A]=\\begin{bmatrix}C_{11}&C_{12}&C_{13}&0&0&0\\\\C_{12}&C_{11}&C_{13}&0&0&0\\\\C_{31}&C_{31}&C_{33}&0&0&0\\\\0&0&0&C_{44}&0&0\\\\0&0&0&0&C_{44}&0\\\\0&0&0&0&0&\\frac{C_{11}-C_{12}}2\\end{bmatrix}.$$
@@ -1236,7 +1238,7 @@ Le due costanti $\\mu$ e $\\lambda$ sono le **costanti di Lamé**. Nota il **dis
         md: `Tre errori tipici su questo argomento.
 
 1. **Leggere le semplificazioni di $[\\mathbb A]$ in un riferimento qualunque.** I blocchi vuoti dell'ortotropo e la struttura del trasversalmente isotropo valgono nel riferimento solidale alle direzioni di simmetria; in un altro riferimento la matrice si riempie. Solo per l'isotropo il riferimento non conta.
-2. **Dimenticare il fattore 2 negli scorrimenti.** Nella notazione di Voigt la colonna delle deformazioni contiene $\\gamma_{ij}=2E_{ij}$, non $E_{ij}$: sbagliare qui altera tutte le costanti del blocco SE.
+2. **Dimenticare il fattore 2 negli scorrimenti.** Nella notazione di Voigt la colonna delle deformazioni contiene $\\gamma_{ij}=2E_{ij}$, non $E_{ij}$: sbagliare qui altera tutte le costanti del blocco SE (deduzione).
 3. **Dire che per gli anisotropi il gruppo di simmetria è vuoto.** Un gruppo contiene sempre l'identità, e qui anche $-\\tens I$ (Attenzione, p. 84).`,
       },
       {
