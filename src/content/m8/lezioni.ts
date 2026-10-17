@@ -86,7 +86,7 @@ Tieni a mente questa differenza, perché tornerà in ogni criterio del capitolo:
         title: 'Il caso facile: una sola tensione normale',
         md: `Ora che sappiamo che serve un confronto con gli esperimenti, chiediamoci in quale caso il confronto è semplice.
 
-Lo stato di tensione prodotto in esercizio dai carichi si chiama **stato tensionale di esercizio** e si scrive $\\tens T_{es}(P)$, dove $P$ è il punto. L'esempio della dispensa è il telaio di una moto: i carichi sono quelli di chi la guida, e in ogni punto del telaio nasce un certo $\\tens T_{es}$. La verifica si fa **punto per punto** (§6.2.1): in tutti i punti, oppure in quelli che, se verificati, garantiscono anche gli altri.
+Lo stato di tensione prodotto in esercizio dai carichi si chiama **stato tensionale di esercizio** e si scrive $\\tens T_{es}(P)$, dove $P$ è il punto. L'esempio della dispensa è il telaio di una moto: in ogni punto del telaio i carichi producono un certo $\\tens T_{es}$. La verifica si fa **punto per punto** (§6.2.1): in tutti i punti, oppure in quelli che, se verificati, garantiscono anche gli altri.
 
 Il caso facile è quello **monoassiale**, in cui nel riferimento giusto la matrice è
 $$[\\tens T_{es}]=\\operatorname{diag}(\\sigma_{es},0,0),$$
@@ -99,7 +99,7 @@ cioè c'è una sola tensione normale $\\sigma_{es}$ e tutto il resto è zero. È
         md: `Per confrontare ci serve un numero preso dalla prova: la **tensione limite** $\\sigma_L$ (§6.2.2). Quale numero scegliere dipende dal tipo di materiale.
 
 - Per un **duttile** si prende $\\sigma_L=\\sigma_y$, la tensione di snervamento, e non quella di rottura. Il motivo è che in esercizio non si accettano deformazioni permanenti: una struttura che dopo ogni carico resta un po' storta non è accettabile, anche se non si è rotta.
-- Per un **fragile** si prende $\\sigma_L=\\sigma_R$, la tensione di rottura, perché un fragile si rompe senza un vero snervamento prima.
+- Per un **fragile** si prende $\\sigma_L=\\sigma_R$, la tensione di rottura, perché un fragile si rompe senza un vero snervamento prima (deduzione).
 
 Siccome trazione e compressione possono dare valori diversi, la dispensa scrive $\\sigma_L^t$ per la tensione limite di trazione e $\\sigma_L^c$ per quella di compressione. Con la convenzione del corso, trazione positiva, $\\sigma_L^c$ è un numero **negativo**.`,
       },
@@ -156,7 +156,7 @@ Per fare un conto (esempio aggiunto): con $\\sigma_y=235$ MPa, il valore usato n
 - calcestruzzo: 3;
 - muratura: 4–10.
 
-La regola che la dispensa mette in evidenza è una: il coefficiente è **più basso per i duttili**. Il motivo è che un duttile, dopo lo snervamento, ha ancora una **riserva**: prima di rompersi si deforma molto, e quindi avvisa e ridistribuisce. Un fragile invece cede di colpo, e il margine deve essere più ampio.
+La regola che la dispensa mette in evidenza è una: il coefficiente è **più basso per i duttili**. Il motivo, dice la dispensa, è la loro capacità di resistenza anche quando si supera lo snervamento: un duttile ha ancora una **riserva**. Un fragile invece cede di colpo, senza preavviso, e il margine deve essere più ampio (deduzione).
 
 Nota anche l'ampiezza dell'intervallo per la muratura: più il materiale è incerto, più il margine cresce (deduzione). Per l'orale ricorda la regola e l'ordine di grandezza, non serve ricordare ogni valore.`,
       },
@@ -168,7 +168,7 @@ Nota anche l'ampiezza dell'intervallo per la muratura: più il materiale è ince
         tasks: [
           'Con l\'acciaio porta σ_es tra la tensione ammissibile e la tensione limite: il pallino cambia colore perché la resistenza è verificata ma la sicurezza no. È proprio la zona del margine.',
           'Passa al calcestruzzo: nota quanto è corto il dominio dalla parte della trazione rispetto a quella della compressione. È la fragilità vista sul dominio.',
-          'Sempre con il calcestruzzo, prova una trazione piccola, di pochi MPa: già esce dal dominio di sicurezza, mentre una compressione dieci volte più grande è ancora accettata.',
+          'Sempre con il calcestruzzo, prova una trazione di 2 MPa: esce già dal dominio di sicurezza, mentre una compressione di 8 MPa, quattro volte più grande, è ancora accettata.',
         ],
         visual: SVG('criteri', { tab: 'verifica' }),
       },
@@ -212,7 +212,7 @@ Nota anche l'ampiezza dell'intervallo per la muratura: più il materiale è ince
         id: 'l82-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo verificato uno stato **monoassiale**: una sola tensione normale, confrontata con il segmento che va da $\\sigma_L^c$ a $\\sigma_L^t$. Il problema è che in una struttura vera lo stato monoassiale è un'eccezione. Già in una trave inflessa e tagliata, in un punto della sezione agiscono insieme una tensione normale $\\sigma_z$ e delle tangenziali.
+        md: `Nella lezione precedente, «Dalla risposta alla verifica: resistenza e sicurezza», abbiamo verificato uno stato **monoassiale**: una sola tensione normale, confrontata con il segmento che va da $\\sigma_L^c$ a $\\sigma_L^t$. Il problema è che in una struttura vera lo stato monoassiale è un'eccezione. Già in una trave inflessa e tagliata, in un punto della sezione agiscono insieme una tensione normale $\\sigma_z$ e delle tangenziali.
 
 La domanda di questa lezione è quindi: **come si confronta uno stato di tensione qualunque con una prova che è monoassiale?** Vedremo prima perché il confronto diretto non funziona; poi l'idea che risolve il problema, la **tensione ideale**; infine la procedura concreta per i materiali isotropi, che useremo con ogni criterio nelle lezioni successive.`,
       },
@@ -222,7 +222,7 @@ La domanda di questa lezione è quindi: **come si confronta uno stato di tension
         title: 'Che cosa servirebbe davvero: un dominio a sei dimensioni',
         md: `Il tensore delle tensioni $\\tens T$ è simmetrico, quindi è determinato da **sei** numeri: le tre normali $\\sigma_x,\\sigma_y,\\sigma_z$ e le tre tangenziali $\\tau_{xy},\\tau_{yz},\\tau_{zx}$. Uno stato di tensione è allora un punto in uno spazio a sei dimensioni.
 
-Generalizzando il segmento della lezione precedente, la cosa più naturale sarebbe determinare con gli esperimenti il **dominio limite** in questo spazio: l'insieme di tutti gli stati che il materiale sopporta (§6.3.1). Ma per tracciarlo bisognerebbe sottoporre provini a tutte le combinazioni possibili delle sei componenti. La dispensa lo dice **proibitivo**: già le prove biassiali, con due tensioni insieme, si fanno solo nella ricerca. Le prove di routine sono monoassiali.`,
+Generalizzando il segmento della lezione precedente, la cosa più naturale sarebbe determinare con gli esperimenti il **dominio limite** in questo spazio: l'insieme di tutti gli stati che il materiale sopporta (§6.3.1). Ma per tracciarlo bisognerebbe sottoporre provini a tutte le combinazioni possibili delle sei componenti. La dispensa dice che in pratica è **molto difficile**: già le prove biassiali, con due tensioni insieme, si fanno solo a scopi di ricerca, o dove l'investimento economico giustifica prove lunghe e costose. Nella pratica le informazioni sperimentali vengono da prove monoassiali.`,
       },
       {
         id: 'l82-3',
@@ -272,7 +272,7 @@ Siccome ogni congettura è diversa, criteri diversi danno tensioni ideali divers
 
 Ricordiamo dal Cap. 3 che per ogni stato di tensione esiste un riferimento, quello **principale**, in cui la matrice di $\\tens T$ è diagonale. Sulla diagonale ci sono le **tensioni principali**, ordinate come $s_1\\ge s_2\\ge s_3$. La dispensa ne conclude che si può lavorare nel riferimento principale e scrivere la funzione di crisi come
 $$F(s_1,s_2,s_3):$$
-le variabili passano da sei a tre. Il motivo, detto a parole, è che per un materiale e una crisi isotropi conta solo «quanto» si tira o si comprime, non «in quale direzione» (deduzione). Ed è per questo che tutti i criteri del capitolo si disegnano nello **spazio delle tensioni principali**, con tre assi $s_1,s_2,s_3$.`,
+le variabili passano da sei a tre. Il motivo lo dà la dispensa: se materiale e crisi sono isotropi, si può cambiare riferimento senza influenzare il problema, e conviene scegliere quello in cui lo stato di tensione è più semplice, cioè il principale. Detto a parole, conta solo «quanto» si tira o si comprime, non «in quale direzione». Senza questa ipotesi, per esempio nei materiali compositi, il cambio di riferimento non è «gratuito». Ed è per questo che tutti i criteri del capitolo si disegnano nello **spazio delle tensioni principali**, con tre assi $s_1,s_2,s_3$.`,
       },
       {
         id: 'l82-9',
@@ -291,7 +291,7 @@ le variabili passano da sei a tre. Il motivo, detto a parole, è che per un mate
               ask: { q: 'Da dove viene il secondo membro della verifica?', options: ['Dalla prova monoassiale al limite', 'Dal calcolo strutturale', 'Dalla norma tecnica', 'Dal legame costitutivo'], correct: 0, why: 'Il secondo membro è la funzione di crisi valutata nella prova, cioè nello stato $(\\sigma_L,0,0)$ (§6.3.3). Il calcolo strutturale dà invece il primo membro, attraverso $\\tens T_{es}$; il legame costitutivo può servire per scrivere $F$, ma non dà il valore limite.' },
               eq: '(⋆) §6.3.3',
             },
-            { tex: '\\sigma_{id}(s_1,s_2,s_3)\\le\\sigma_L', why: 'Infine si risolve la disuguaglianza rispetto a $\\sigma_L$, in modo che a destra resti solo la tensione limite. Quello che resta a sinistra è, per definizione, la tensione ideale del criterio.', aggiunto: true },
+            { tex: '\\sigma_{id}(s_1,s_2,s_3)\\le\\sigma_L', why: 'Infine, **se** la disuguaglianza si può manipolare in modo che a destra resti solo la tensione limite, quello che resta a sinistra è, per definizione, la tensione ideale del criterio. Non sempre si può: per Mohr–Coulomb, come vedremo, una tensione ideale semplice non c\'è.' },
           ],
         },
       },
@@ -301,7 +301,7 @@ le variabili passano da sei a tre. Il motivo, detto a parole, è che per un mate
         title: 'Leggiamo la procedura su due casi',
         md: `La procedura dice, in parole: «calcola quanto è pericoloso lo stato secondo il criterio, calcola quanto è pericolosa la prova al limite secondo lo stesso criterio, e confronta».
 
-Controlliamola sul caso che conosciamo già (deduzione). Se lo stato di esercizio è una trazione semplice, $(\\sigma,0,0)$, la verifica diventa $F(\\sigma,0,0)\\le F(\\sigma_L,0,0)$: lo stesso stato della prova, con un valore diverso. Per ogni criterio del capitolo questo dà $\\sigma_{id}=\\sigma$, e torniamo esattamente alla verifica monoassiale della lezione precedente. Un criterio è dunque un modo coerente di estendere il segmento a tutti gli stati.
+Controlliamola sul caso che conosciamo già (deduzione). Se lo stato di esercizio è una trazione semplice, $(\\sigma,0,0)$, la verifica diventa $F(\\sigma,0,0)\\le F(\\sigma_L,0,0)$: lo stesso stato della prova, con un valore diverso. Per ogni criterio del capitolo che ha una tensione ideale (cioè tutti tranne Mohr–Coulomb) questo dà $\\sigma_{id}=\\sigma$ in trazione semplice, e torniamo esattamente alla verifica monoassiale della lezione precedente. Un criterio è dunque un modo coerente di estendere il segmento a tutti gli stati.
 
 La dispensa aggiunge due osservazioni.
 1. Se le resistenze in trazione e compressione sono diverse, $\\sigma_L^t\\ne\\sigma_L^c$, servono **due funzioni**, $F^t$ e $F^c$, e **due disuguaglianze**.
@@ -324,7 +324,7 @@ Infine, il criterio si sceglie **in base agli esperimenti** sul materiale: non n
       {
         id: 'l82-12',
         kind: 'domanda',
-        q: { id: 'l82-q3', kind: 'scelta', q: 'Quando si può scrivere la funzione di crisi come $F(s_1,s_2,s_3)$?', options: ['Quando il materiale è isotropo fino alla crisi e la crisi è isotropa', 'Sempre, per qualunque materiale', 'Solo per i materiali duttili', 'Solo quando lo stato è monoassiale'], correct: 0, why: 'La riduzione da sei a tre variabili richiede che né il materiale né la crisi abbiano direzioni privilegiate (§6.3.3). Per un materiale anisotropo, come il legno, la direzione dello stato conta e le sole principali non bastano. Duttilità e monoassialità non c\'entrano.' },
+        q: { id: 'l82-q3', kind: 'scelta', q: 'Quando si può scrivere la funzione di crisi come $F(s_1,s_2,s_3)$?', options: ['Quando il materiale è isotropo fino alla crisi e la crisi è isotropa', 'Sempre, per qualunque materiale', 'Solo per i materiali duttili', 'Solo quando lo stato è monoassiale'], correct: 0, why: 'La riduzione da sei a tre variabili richiede che né il materiale né la crisi abbiano direzioni privilegiate (§6.3.3). Per un materiale in cui la crisi dipende dalla direzione, come i compositi citati dalla dispensa, la direzione dello stato conta e le sole principali non bastano. Duttilità e monoassialità non c\'entrano.' },
       },
       {
         id: 'l82-13',
@@ -359,7 +359,7 @@ Infine, il criterio si sceglie **in base agli esperimenti** sul materiale: non n
         id: 'l83-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo costruito lo schema di ogni criterio: una congettura sulla causa della crisi, una funzione di crisi $F(s_1,s_2,s_3)$, il confronto con la prova $F(\\sigma_L,0,0)$ e infine la tensione ideale $\\sigma_{id}\\le\\sigma_L$.
+        md: `Nella lezione precedente, «Perché servono i criteri: la tensione ideale», abbiamo costruito lo schema di ogni criterio: una congettura sulla causa della crisi, una funzione di crisi $F(s_1,s_2,s_3)$, il confronto con la prova $F(\\sigma_L,0,0)$ e infine la tensione ideale $\\sigma_{id}\\le\\sigma_L$.
 
 Ora riempiamo lo schema con tre congetture diverse, una per ciascuna grandezza «locale» che conosciamo:
 - **Galileo**: conta la **tensione normale** più grande;
@@ -374,7 +374,7 @@ Per ogni criterio ci chiederemo sempre le stesse quattro cose: qual è l'idea fi
         title: 'Galileo: la crisi dipende dalla tensione normale',
         md: `Il criterio più antico risale a Galileo, a metà del Seicento, e si usa nella forma data da Navier; si chiama anche criterio delle **massime tensioni normali** (§6.4.1). L'idea fisica è la più semplice possibile: il materiale cede quando la tensione normale, su qualche giacitura, diventa troppo grande in trazione o troppo grande in compressione.
 
-Dal Cap. 3 sappiamo che, al variare della giacitura, la tensione normale sta sempre tra la minima e la massima principale: $s_3\\le\\sigma_m\\le s_1$ (Prop 3.13.1). Quindi la tensione normale massima è $s_1$ e la minima è $s_3$, e la congettura dà subito
+Dal Cap. 3 sappiamo che, al variare della giacitura, la tensione normale sta sempre tra la minima e la massima principale: $s_3\\le\\sigma_m\\le s_1$ (Prop 3.13.1), dove $\\sigma_m$ è la tensione normale sulla giacitura di normale $\\hat m$. Quindi la tensione normale massima è $s_1$ e la minima è $s_3$, e la congettura dà subito
 $$\\sigma_{id}^t=s_1\\le\\sigma_L^t,\\qquad\\sigma_{id}^c=s_3\\ge\\sigma_L^c.$$
 Nota che il criterio usa due disuguaglianze, una per la trazione e una per la compressione: per questo **ammette resistenze diverse**. Nota anche che in ciascuna compare una sola tensione principale: le altre due non contano.`,
       },
@@ -418,10 +418,9 @@ Da qui la congettura: **la crisi arriva quando la tangenziale massima supera una
             {
               tex: 'F(\\sigma_L,0,0)=\\frac{\\sigma_L-0}2=\\frac{\\sigma_L}2',
               why: 'Applichiamo la stessa formula alla prova al limite, che ha principali $\\sigma_L$, 0, 0: la massima è $\\sigma_L$ e la minima è 0. È il cerchio di Mohr della figura a p. 149, con $s_1=\\sigma_L$ e raggio $\\sigma_L/2$.',
-              aggiunto: true,
               ask: { q: 'Quanto vale la tangenziale massima nella prova di trazione al limite?', options: ['$\\sigma_L/2$', '$\\sigma_L$', '0', '$2\\sigma_L$'], correct: 0, why: 'Nella prova le principali sono $\\sigma_L$, 0, 0, e la tangenziale massima è $(\\sigma_L-0)/2$, il raggio del cerchio di Mohr. $\\sigma_L$ è la tensione normale, non la tangenziale; 0 è la tangenziale sulla sezione trasversale, che è una giacitura principale.' },
             },
-            { tex: '\\frac{s_1-s_3}2\\le\\frac{\\sigma_L}2', why: 'Ora confrontiamo, come nella disuguaglianza $(\\star)$: la tangenziale massima dello stato non deve superare quella della prova al limite.', val: (v) => C.tresca(S3(v)) / 2, aggiunto: true },
+            { tex: '\\frac{s_1-s_3}2\\le\\frac{\\sigma_L}2', why: 'Ora confrontiamo, come nella disuguaglianza $(\\star)$: la tangenziale massima dello stato non deve superare quella della prova al limite.', val: (v) => C.tresca(S3(v)) / 2 },
             { tex: '\\sigma_{id}=s_1-s_3\\le\\sigma_L', why: 'Moltiplichiamo entrambi i membri per 2, che è positivo e quindi non cambia il verso della disuguaglianza. A destra resta $\\sigma_L$, e a sinistra la tensione ideale di Tresca.', eq: '§6.4.2' },
           ],
         },
@@ -481,7 +480,7 @@ Per passare dalle dilatazioni alle tensioni serve però un legame costitutivo, e
 
 Questo lo garantisce la **coassialità** (Teo 4.12.4): in un materiale elastico lineare isotropo le direzioni principali di deformazione e di tensione coincidono. Nel riferimento principale comune sia $[\\tens E]$ sia $[\\tens T]$ sono diagonali, e il legame inverso con i moduli tecnici (Cap. 4, §4.13.4) collega direttamente gli elementi diagonali:
 $$e_1=\\frac1E\\big[s_1-\\nu(s_2+s_3)\\big].$$
-Qui $E$ è il modulo di Young e $\\nu$ è il **coefficiente di Poisson**, non il coefficiente di sicurezza. Senza coassialità non potremmo scrivere questa relazione così semplice, ed è per questo che l'ipotesi di elasticità lineare isotropa fino alla crisi è essenziale.`,
+Qui $E$ è il modulo di Young e $\\nu$ è il **coefficiente di Poisson**, non il coefficiente di sicurezza. Attenzione anche alla lettera $E$: il modulo di Young $E$, in corsivo, non va confuso con il tensore di deformazione $\\tens E$, in grassetto, che compare nello stesso ragionamento. Senza coassialità non potremmo scrivere questa relazione così semplice, ed è per questo che l'ipotesi di elasticità lineare isotropa fino alla crisi è essenziale.`,
       },
       {
         id: 'l83-13',
@@ -493,11 +492,12 @@ Qui $E$ è il modulo di Young e $\\nu$ è il **coefficiente di Poisson**, non il
           sample,
           lines: [
             { tex: 'F^t=\\max\\varepsilon_n=e_1', why: 'Traduciamo la congettura: la funzione di crisi a trazione è la dilatazione massima, cioè la dilatazione principale più grande.' },
-            { tex: 'e_1\\le\\frac{\\sigma_L^t}E', why: 'Nella prova al limite le tensioni principali sono $\\sigma_L^t$, 0, 0, e il legame inverso dà $e_1=\\sigma_L^t/E$. La verifica $(\\star)$ chiede che la dilatazione dello stato non superi questo valore.', aggiunto: true, ask: { q: 'Quanto vale la dilatazione principale massima nella prova monoassiale al limite?', options: ['$\\sigma_L^t/E$', '$\\sigma_L^t$', '$-\\nu\\sigma_L^t/E$', '0'], correct: 0, why: 'Con principali $\\sigma_L^t$, 0, 0 il legame inverso dà $e_1=\\frac1E[\\sigma_L^t-\\nu(0+0)]=\\sigma_L^t/E$. $-\\nu\\sigma_L^t/E$ è la contrazione trasversale, cioè $e_2=e_3$; $\\sigma_L^t$ è una tensione, non una dilatazione.' } },
+            { tex: 'e_1\\le\\frac{\\sigma_L^t}E', why: 'Nella prova al limite le tensioni principali sono $\\sigma_L^t$, 0, 0, e il legame inverso dà $e_1=\\sigma_L^t/E$. La verifica $(\\star)$ chiede che la dilatazione dello stato non superi questo valore.', ask: { q: 'Quanto vale la dilatazione principale massima nella prova monoassiale al limite?', options: ['$\\sigma_L^t/E$', '$\\sigma_L^t$', '$-\\nu\\sigma_L^t/E$', '0'], correct: 0, why: 'Con principali $\\sigma_L^t$, 0, 0 il legame inverso dà $e_1=\\frac1E[\\sigma_L^t-\\nu(0+0)]=\\sigma_L^t/E$. $-\\nu\\sigma_L^t/E$ è la contrazione trasversale, cioè $e_2=e_3$; $\\sigma_L^t$ è una tensione, non una dilatazione.' } },
             {
               tex: 'e_1\\,E\\le\\sigma_L^t',
               why: 'Moltiplichiamo per $E$, che è positivo per le restrizioni di plausibilità (§4.15): il verso non cambia, e a destra resta la tensione limite. Il campione calcola $e_1E$ con il legame del motore.',
               val: (v) => El.strainIso(v.E, v.nu, diag(S3(v)))[0] * v.E,
+              aggiunto: true,
             },
             {
               tex: '\\sigma_{id}^t=s_1-\\nu(s_2+s_3)\\le\\sigma_L^t',
@@ -576,7 +576,7 @@ Due controlli. Trazione semplice $(\\sigma,0,0)$: $\\sigma_{id}^t=\\sigma$. Puro
         id: 'l84-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente le tre congetture guardavano ciascuna una sola grandezza locale: una tensione normale, una tangenziale, una dilatazione. Nel 1885 Beltrami propone un'idea diversa: guardare **tutto insieme**, attraverso l'energia che il materiale accumula deformandosi.
+        md: `Nella lezione precedente, «Galileo, Tresca, Grashof», le tre congetture guardavano ciascuna una sola grandezza locale: una tensione normale, una tangenziale, una dilatazione. Nel 1885 Beltrami propone un'idea diversa: guardare **tutto insieme**, attraverso l'energia che il materiale accumula deformandosi.
 
 In questa lezione faremo due cose. Prima ricaveremo la tensione ideale di Beltrami. Poi vedremo come un esperimento, quello di **Huber** del 1904, la mette in crisi: è il primo esempio di come un criterio si confronta con la realtà, e ci porterà direttamente al criterio di von Mises nella prossima lezione.`,
         visual: SPAZIO('generico', ['beltrami']),
@@ -590,7 +590,7 @@ In questa lezione faremo due cose. Prima ricaveremo la tensione ideale di Beltra
 Beltrami prende proprio questa come funzione di crisi: $F=\\varphi$ (§6.4.4). La congettura è che **il materiale vada in crisi quando l'energia accumulata in un punto supera una soglia**. È il primo **criterio energetico** della storia.
 
 Le ipotesi sono due:
-- il materiale è **elastico lineare isotropo**, quindi anche iperelastico (lo abbiamo visto nel Cap. 4), e l'energia $\\varphi$ esiste;
+- il materiale è **elastico lineare isotropo fino alla crisi**, quindi anche iperelastico (lo abbiamo visto nel Cap. 4), e l'energia $\\varphi$ esiste;
 - la resistenza è **uguale in trazione e compressione**.`,
       },
       {
@@ -618,10 +618,10 @@ Nota una proprietà che spiega la seconda ipotesi (deduzione): se cambi segno a 
           sample,
           lines: [
             { tex: '\\varphi(s_1,s_2,s_3)=\\frac1{2E}(s_1^2+s_2^2+s_3^2)-\\frac\\nu E(s_1s_2+s_2s_3+s_3s_1)', why: 'Partiamo dalla funzione di crisi, cioè l\'energia specifica scritta con le tensioni principali dello stato di esercizio.' },
-            { tex: '\\varphi(\\sigma_L,0,0)=\\frac{\\sigma_L^2}{2E}', why: 'Valutiamo la stessa formula sulla prova al limite: con principali $\\sigma_L$, 0, 0 sopravvive solo il quadrato $\\sigma_L^2$, e tutti i prodotti a due a due contengono uno zero.', aggiunto: true, ask: { q: 'Quanto vale l\'energia di Beltrami nella prova monoassiale al limite?', options: ['$\\sigma_L^2/(2E)$', '$\\sigma_L^2/E$', '$\\sigma_L/(2E)$', '$(1-2\\nu)\\sigma_L^2/(2E)$'], correct: 0, why: 'Con $s_1=\\sigma_L$ e $s_2=s_3=0$ resta $\\frac1{2E}\\sigma_L^2$: il termine con $\\nu$ sparisce perché ogni prodotto contiene uno zero. Il fattore $(1-2\\nu)$ comparirebbe solo se le tre tensioni fossero uguali.' } },
-            { tex: '\\varphi(s_1,s_2,s_3)\\le\\frac{\\sigma_L^2}{2E}', why: 'La verifica $(\\star)$: l\'energia dello stato non deve superare quella della prova al limite.', aggiunto: true },
+            { tex: '\\varphi(\\sigma_L,0,0)=\\frac{\\sigma_L^2}{2E}', why: 'Valutiamo la stessa formula sulla prova al limite: con principali $\\sigma_L$, 0, 0 sopravvive solo il quadrato $\\sigma_L^2$, e tutti i prodotti a due a due contengono uno zero.', ask: { q: 'Quanto vale l\'energia di Beltrami nella prova monoassiale al limite?', options: ['$\\sigma_L^2/(2E)$', '$\\sigma_L^2/E$', '$\\sigma_L/(2E)$', '$(1-2\\nu)\\sigma_L^2/(2E)$'], correct: 0, why: 'Con $s_1=\\sigma_L$ e $s_2=s_3=0$ resta $\\frac1{2E}\\sigma_L^2$: il termine con $\\nu$ sparisce perché ogni prodotto contiene uno zero. Il fattore $(1-2\\nu)$ comparirebbe solo se le tre tensioni fossero uguali.' } },
+            { tex: '\\varphi(s_1,s_2,s_3)\\le\\frac{\\sigma_L^2}{2E}', why: 'La verifica $(\\star)$: l\'energia dello stato non deve superare quella della prova al limite.' },
             { tex: 's_1^2+s_2^2+s_3^2-2\\nu(s_1s_2+s_2s_3+s_3s_1)\\le\\sigma_L^2', why: 'Moltiplichiamo entrambi i membri per $2E$, che è positivo: il verso resta, a destra rimane $\\sigma_L^2$ e a sinistra il fattore $\\frac\\nu E$ diventa $2\\nu$.', aggiunto: true },
-            { tex: '\\sqrt{2E\\,\\varphi}', why: 'Per avere una tensione e non il suo quadrato prendiamo la radice. È lecito perché entrambi i membri sono positivi: $\\varphi>0$ per le restrizioni di plausibilità del Cap. 4. Il campione calcola $\\sqrt{2E\\varphi}$ con il motore.', val: (v) => Math.sqrt(2 * v.E * El.energyPrincipal(v.E, v.nu, S3(v))) },
+            { tex: '\\sqrt{2E\\,\\varphi}', why: 'Per avere una tensione e non il suo quadrato prendiamo la radice. È lecito perché entrambi i membri non sono negativi: $\\varphi\\ge0$ per le restrizioni di plausibilità del Cap. 4. Il campione calcola $\\sqrt{2E\\varphi}$ con il motore.', val: (v) => Math.sqrt(2 * v.E * El.energyPrincipal(v.E, v.nu, S3(v))), aggiunto: true },
             {
               tex: '=\\sqrt{s_1^2+s_2^2+s_3^2-2\\nu(s_1s_2+s_2s_3+s_3s_1)}=\\sigma_{id}\\le\\sigma_L',
               why: 'Scritta con le principali, la radice è la tensione ideale di Beltrami, con $\\nu$ di Poisson; a destra della disuguaglianza la radice di $\\sigma_L^2$ è $\\sigma_L$.',
@@ -682,14 +682,14 @@ Che cosa dice Beltrami di questo punto? Facciamo il conto.`,
             { tex: 's_1=s_2=s_3=-\\rho gh', why: 'Lo stato di Huber: compressione idrostatica, tre principali uguali e negative.' },
             { tex: '\\sigma_{id}^B', why: 'Vogliamo la tensione ideale di Beltrami di questo stato; il campione la calcola con il motore.', val: (v) => C.beltrami([-v.p, -v.p, -v.p], v.nu) },
             { tex: 's_1^2+s_2^2+s_3^2=3(\\rho gh)^2,\\qquad s_1s_2+s_2s_3+s_3s_1=3(\\rho gh)^2', why: 'Calcoliamo separatamente le due somme. Attenzione ai segni: ogni prodotto è $(-\\rho gh)(-\\rho gh)$, cioè il prodotto di due numeri negativi, quindi è **positivo**. I tre quadrati e i tre prodotti valgono tutti $(\\rho gh)^2$.', aggiunto: true },
-            { tex: '=\\sqrt{3(\\rho gh)^2-2\\nu\\cdot3(\\rho gh)^2}', why: 'Sostituiamo le due somme nella formula di Beltrami.', val: (v) => Math.sqrt(3 * v.p ** 2 - 2 * v.nu * 3 * v.p ** 2), aggiunto: true },
+            { tex: '=\\sqrt{3(\\rho gh)^2-2\\nu\\cdot3(\\rho gh)^2}', why: 'Sostituiamo le due somme nella formula di Beltrami.', val: (v) => Math.sqrt(3 * v.p ** 2 - 2 * v.nu * 3 * v.p ** 2) },
             {
               tex: '=\\rho gh\\sqrt{3-6\\nu}',
               why: 'Raccogliamo $(\\rho gh)^2$ sotto radice e lo portiamo fuori come $\\rho gh$, che è positivo. La tensione ideale cresce in proporzione alla profondità.',
               ask: { q: 'Che cosa prevede Beltrami aumentando la profondità?', options: ['La crisi oltre una profondità finita $h_L$', 'Mai la crisi', 'La crisi a qualsiasi profondità', 'La crisi solo in trazione'], correct: 0, why: '$\\sigma_{id}$ cresce linearmente con $h$ e prima o poi raggiunge $\\sigma_L$ (§6.4.5). «Mai la crisi» è ciò che Huber osserverà, non ciò che prevede Beltrami; e a profondità piccola $\\sigma_{id}$ è ancora sotto $\\sigma_L$.' },
               val: (v) => v.p * Math.sqrt(3 - 6 * v.nu),
             },
-            { tex: '\\rho gh_L\\sqrt{3-6\\nu}=\\sigma_L', why: 'La crisi è prevista quando la tensione ideale raggiunge la tensione limite; chiamiamo $h_L$ la profondità in cui succede.', aggiunto: true },
+            { tex: '\\rho gh_L\\sqrt{3-6\\nu}=\\sigma_L', why: 'La crisi è prevista quando la tensione ideale raggiunge la tensione limite; chiamiamo $h_L$ la profondità in cui succede.' },
             { tex: 'h_L=\\frac{\\sigma_L}{\\rho g\\sqrt{3-6\\nu}}', why: 'Dividiamo per $\\rho g\\sqrt{3-6\\nu}$, positivo perché $\\nu<1/2$. Questa è la profondità finita a cui, secondo Beltrami, il punto dovrebbe andare in crisi.', eq: '§6.4.5' },
           ],
         },
@@ -755,7 +755,7 @@ C'è anche una lezione più costruttiva (deduzione). Una pressione uniforme camb
         id: 'l85-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `L'esperimento di Huber, nella lezione precedente, ha fatto cadere Beltrami: una pressione uniforme accumula energia nel materiale ma non lo porta in crisi. Viene allora l'idea di **dividere l'energia in due parti**, quella dovuta al cambiamento di volume e quella dovuta al cambiamento di forma, e di usare come funzione di crisi solo la seconda.
+        md: `L'esperimento di Huber, nella lezione precedente («Beltrami e l’esperimento di Huber»), ha fatto cadere Beltrami: una pressione uniforme accumula energia nel materiale ma non lo porta in crisi. Viene allora l'idea di **dividere l'energia in due parti**, quella dovuta al cambiamento di volume e quella dovuta al cambiamento di forma, e di usare come funzione di crisi solo la seconda.
 
 Per farlo serve uno strumento matematico: il **secondo teorema di decomposizione**, che spezza ogni tensore in una parte «di volume» e una parte «di forma», un po' come il primo teorema del Cap. 1 lo spezzava in parte simmetrica e antisimmetrica. Le tappe sono: il teorema; che cosa rappresentano le due parti per la deformazione e per la tensione; come si separano legame ed energia in un materiale isotropo; l'energia distorcente e il criterio; infine le osservazioni della dispensa su quando usarlo.`,
       },
@@ -763,19 +763,19 @@ Per farlo serve uno strumento matematico: il **secondo teorema di decomposizione
         id: 'l85-2',
         kind: 'spiega',
         title: 'Von Mises e Hencky: due strade per lo stesso criterio',
-        md: `Un po' di storia aiuta a capire il nome del criterio (§6.5). Nel 1913 **von Mises** propone come funzione di crisi un invariante della parte deviatorica della tensione, che nei testi si chiama spesso «$J_2$»; non ci serve la sua definizione, ci basta sapere che è un numero che non dipende dal riferimento. Nel 1924 **Hencky** mostra che usare quell'invariante equivale a usare l'**energia distorcente** $\\varphi_d$, cioè la parte dell'energia legata alla **variazione di forma** e non a quella di volume.
+        md: `Un po' di storia aiuta a capire il nome del criterio (§6.5). Nel 1913 **von Mises** propone come funzione di crisi un invariante della parte deviatorica della tensione, il secondo, che la dispensa chiama «$J_2$»; non ci serve la sua definizione, ci basta sapere che è un numero che non dipende dal riferimento. Nel 1924 **Hencky** mostra che usare quell'invariante equivale a usare l'**energia distorcente** $\\varphi_d$, cioè la parte dell'energia legata alla **variazione di forma** e non a quella di volume.
 
-È la strada energetica di Hencky quella che segue la dispensa, ed è quella che faremo noi. Le ipotesi sono le stesse di Beltrami: materiale **elastico lineare isotropo** e **uguale resistenza** in trazione e compressione.`,
+È la strada energetica di Hencky quella che segue la dispensa, ed è quella che faremo noi. Le ipotesi sono le stesse di Beltrami: materiale **elastico lineare isotropo fino alla crisi** e **uguale resistenza** in trazione e compressione.`,
       },
       {
         id: 'l85-3',
         kind: 'spiega',
         title: 'Il secondo teorema di decomposizione',
-        md: `Ricordiamo che la **traccia** di un tensore, $\\operatorname{tr}\\tens A$, è la somma degli elementi sulla diagonale della sua matrice. Un tensore **sferico** è un multiplo dell'identità, $\\lambda\\tens I$: agisce allo stesso modo in tutte le direzioni.
+        md: `Ricordiamo che la **traccia** di un tensore, $\\operatorname{tr}\\tens A$, è la somma degli elementi sulla diagonale della sua matrice. Un tensore **sferico** è un multiplo dell'identità $\\tens I$, cioè un numero per $\\tens I$: agisce allo stesso modo in tutte le direzioni.
 
 **Teo 6.5.1.** Per ogni tensore $\\tens A$ esistono e sono unici
 $$\\tens A_s=\\operatorname{sph}\\tens A:=\\tfrac13(\\operatorname{tr}\\tens A)\\tens I,\\qquad\\tens A_d=\\operatorname{dev}\\tens A:=\\tens A-\\tfrac13(\\operatorname{tr}\\tens A)\\tens I,$$
-con $\\tens A=\\tens A_s+\\tens A_d$. La prima è la **parte sferica**, che appartiene all'insieme $\\mathrm{Sph}$ dei tensori sferici; la seconda è la **parte deviatorica**, che appartiene all'insieme $\\mathrm{Dev}$.
+con $\\tens A=\\tens A_s+\\tens A_d$. La prima è la **parte sferica**, che appartiene all'insieme $\\mathrm{Sph}$ dei tensori sferici, cioè dei multipli dell'identità; la seconda è la **parte deviatorica**, che appartiene all'insieme $\\mathrm{Dev}$ dei tensori **deviatorici**, cioè dei tensori a **traccia nulla**.
 
 In parole: la parte sferica è l'identità moltiplicata per **la media degli elementi diagonali**; la parte deviatorica è tutto ciò che resta. Proviamo ora le due proprietà che rendono utile questa scomposizione.`,
       },
@@ -783,16 +783,16 @@ In parole: la parte sferica è l'identità moltiplicata per **la media degli ele
         id: 'l85-4',
         kind: 'derivazione',
         title: 'Le proprietà della decomposizione',
-        md: 'Dove vogliamo arrivare: mostrare che la parte deviatorica ha **traccia nulla** e che le due parti sono **ortogonali**. L\'idea è usare due fatti del Cap. 1: la traccia è lineare, e il prodotto scalare di un tensore con l\'identità è la sua traccia. Il campione prende un tensore simmetrico a caso.',
+        md: 'Dove vogliamo arrivare: mostrare che la parte deviatorica ha **traccia nulla** e che le due parti sono **ortogonali**. L\'idea è usare due fatti del Cap. 1: la traccia è lineare, e il prodotto scalare di un tensore con l\'identità è la sua traccia (il prodotto scalare tra due tensori è la somma dei prodotti delle componenti corrispondenti). La dispensa svolge le due prove in una riga ciascuna («Infatti…»); le righe che non sono nella dispensa sono marcate come aggiunte. Il campione prende un tensore simmetrico a caso.',
         source: D(6, '6.5.1', 'Teo 6.5.1', '151–152'),
         der: {
           sample,
           lines: [
-            { tex: '\\operatorname{tr}\\tens A_s', why: 'Calcoliamo prima la traccia della parte sferica.', val: (v) => T.trace(C.sph(Esym(v))) },
+            { tex: '\\operatorname{tr}\\tens A_s', why: 'Calcoliamo prima la traccia della parte sferica: la dispensa enuncia la proprietà $\\operatorname{tr}\\tens A=\\operatorname{tr}\\tens A_s$ senza conto, e il passaggio della riga successiva è aggiunto.', val: (v) => T.trace(C.sph(Esym(v))) },
             { tex: '=\\tfrac13(\\operatorname{tr}\\tens A)\\,\\operatorname{tr}\\tens I', why: 'La parte sferica è il numero $\\tfrac13\\operatorname{tr}\\tens A$ per $\\tens I$; la traccia è lineare, quindi il numero esce fuori.', val: (v) => (T.trace(Esym(v)) / 3) * 3, aggiunto: true },
             { tex: '=\\operatorname{tr}\\tens A', why: 'La traccia dell\'identità è $1+1+1=3$, che semplifica il $\\tfrac13$: la parte sferica ha la stessa traccia del tensore di partenza.', val: (v) => T.trace(Esym(v)), eq: 'Teo 6.5.1' },
-            { tex: '\\operatorname{tr}\\tens A_d=\\operatorname{tr}\\tens A-\\operatorname{tr}\\tens A_s=0', why: 'Di conseguenza la parte deviatorica, che è la differenza, ha traccia nulla: tutta la traccia sta nella parte sferica.', aggiunto: true },
-            { tex: '\\tens A_s\\cdot\\tens A_d=\\lambda\\tens I\\cdot\\tens A_d=\\lambda\\operatorname{tr}\\tens A_d=0', why: 'Infine il prodotto scalare tra le due parti. Scriviamo la parte sferica come $\\lambda\\tens I$; il prodotto scalare di $\\tens I$ con un tensore ne dà la traccia (Cap. 1), e la traccia della parte deviatorica è zero. Le due parti sono **ortogonali**: è una decomposizione ortogonale.', aggiunto: true },
+            { tex: '\\operatorname{tr}\\tens A_d=\\operatorname{tr}\\tens A-\\tfrac13(\\operatorname{tr}\\tens A)\\operatorname{tr}\\tens I=\\operatorname{tr}\\tens A-\\operatorname{tr}\\tens A=0', why: 'Ora la parte deviatorica, come fa la dispensa: prendiamo la traccia della sua definizione, $\\tens A-\\tfrac13(\\operatorname{tr}\\tens A)\\tens I$, usiamo la linearità e $\\operatorname{tr}\\tens I=3$. Il risultato è zero: tutta la traccia sta nella parte sferica, e quindi $\\tens A_d$ appartiene davvero a $\\mathrm{Dev}$.' },
+            { tex: '\\tens A_s\\cdot\\tens A_d=\\lambda\\tens I\\cdot\\tens A_d=\\lambda\\operatorname{tr}\\tens A_d=0', why: 'Infine il prodotto scalare tra le due parti. Scriviamo la parte sferica come $\\lambda\\tens I$: **attenzione**, qui $\\lambda$ è solo il numero che moltiplica l\'identità (per $\\tens A_s$ vale $\\tfrac13\\operatorname{tr}\\tens A$), ed è la lettera che usa la dispensa; nella derivazione sulla separazione del legame la stessa lettera sarà la costante di Lamé, che è un\'altra cosa. Il prodotto scalare di $\\tens I$ con un tensore ne dà la traccia (Cap. 1), e la traccia della parte deviatorica è zero. Le due parti sono **ortogonali**: è una decomposizione ortogonale.' },
           ],
           checks: [
             { what: '$\\tens A_s\\cdot\\tens A_d=\\lambda\\operatorname{tr}\\tens A_d=0$: decomposizione ortogonale', f: (v) => [T.ddot(C.sph(Esym(v)), C.dev(Esym(v))), 0] },
@@ -804,7 +804,7 @@ In parole: la parte sferica è l'identità moltiplicata per **la media degli ele
         id: 'l85-5',
         kind: 'spiega',
         title: 'Le due parti della deformazione: volume e forma',
-        md: `Applichiamo la decomposizione al tensore di deformazione infinitesima $\\tens E$. La sua traccia è la **dilatazione cubica** $\\Theta=\\operatorname{tr}\\tens E$, cioè la variazione relativa di volume (Cap. 2). Quindi
+        md: `Applichiamo la decomposizione al tensore di deformazione infinitesima $\\tens E$. La sua traccia è il **coefficiente di dilatazione volumica** $\\Theta=\\operatorname{tr}\\tens E$, cioè la variazione relativa di volume (Cap. 2). Quindi
 $$\\tens E_s=\\tfrac13\\Theta\\,\\tens I,\\qquad\\tens E_d=\\tens E-\\tfrac13\\Theta\\,\\tens I.$$
 
 La parte sferica ha la stessa traccia di $\\tens E$, quindi **porta tutta la variazione di volume**. È una deformazione **omotetica**, con l'autovalore $\\Theta/3$ triplo: ogni fibra si allunga allo stesso modo, e una sfera resta una sfera, solo più grande o più piccola.
@@ -830,24 +830,24 @@ Ora rileggi lo stato di Huber, $\\tens T=-\\rho gh\\,\\tens I$. È già sferico:
         id: 'l85-8',
         kind: 'derivazione',
         title: 'Legame ed energia si separano (isotropi)',
-        md: 'Dove vogliamo arrivare: per un materiale isotropo la parte sferica della tensione dipende solo dalla parte sferica della deformazione, e la deviatorica solo dalla deviatorica, con $\\tens T_d=2\\mu\\tens E_d$. In generale non è così: da $\\tens T_s+\\tens T_d=\\mathbb A\\tens E_s+\\mathbb A\\tens E_d$, dove $\\mathbb A$ è il tensore elastico, non si possono separare gli addendi. L\'idea è calcolare con il legame di Lamé dove finiscono $\\mathbb A\\tens E_s$ e $\\mathbb A\\tens E_d$, e poi usare l\'unicità della decomposizione. Il campione usa $\\mu$, $\\lambda$ e una deformazione a caso.',
+        md: 'Dove vogliamo arrivare: per un materiale isotropo la parte sferica della tensione dipende solo dalla parte sferica della deformazione, e la deviatorica solo dalla deviatorica, con $\\tens T_d=2\\mu\\tens E_d$. In generale non è così: da $\\tens T_s+\\tens T_d=\\mathbb A\\tens E_s+\\mathbb A\\tens E_d$, dove $\\mathbb A$ è il tensore elastico, non si possono separare gli addendi. L\'idea è calcolare con il legame di Lamé dove finiscono $\\mathbb A\\tens E_s$ e $\\mathbb A\\tens E_d$, e poi usare l\'unicità della decomposizione. La dispensa fa il conto in una riga; le righe che non sono nella dispensa sono marcate come aggiunte. **Attenzione al simbolo:** qui $\\mu$ e $\\lambda$ sono le **costanti di Lamé** del Cap. 4, mentre nella derivazione sulle proprietà della decomposizione $\\lambda$ era solo il numero che moltiplica $\\tens I$ in un tensore sferico; la dispensa usa la stessa lettera per tutti e due. Il campione usa $\\mu$, $\\lambda$ e una deformazione a caso.',
         source: D(6, '6.5.1', undefined, 152),
         der: {
           sample,
           lines: [
-            { tex: '\\mathbb A\\tens E_s=2\\mu\\tens E_s+\\lambda(\\operatorname{tr}\\tens E_s)\\tens I\\in\\mathrm{Sph}', why: 'Applichiamo il legame di Lamé, $\\mathbb A\\tens E=2\\mu\\tens E+\\lambda(\\operatorname{tr}\\tens E)\\tens I$ (Teo 4.12.1), alla parte sferica. Entrambi i termini sono multipli dell\'identità, quindi il risultato è sferico.', aggiunto: true },
+            { tex: '\\mathbb A\\tens E_s=2\\mu\\tens E_s+\\lambda(\\operatorname{tr}\\tens E_s)\\tens I\\in\\mathrm{Sph}', why: 'Applichiamo il legame di Lamé, $\\mathbb A\\tens E=2\\mu\\tens E+\\lambda(\\operatorname{tr}\\tens E)\\tens I$ (Teo 4.12.1), alla parte sferica. Entrambi i termini sono multipli dell\'identità, quindi il risultato è sferico, cioè sta in $\\mathrm{Sph}$.' },
             {
               tex: '\\mathbb A\\tens E_d=2\\mu\\tens E_d+\\lambda(\\operatorname{tr}\\tens E_d)\\tens I=2\\mu\\tens E_d\\in\\mathrm{Dev}',
-              why: 'Ora la parte deviatorica. Il termine con $\\lambda$ sparisce perché la traccia di $\\tens E_d$ è zero, e resta $2\\mu\\tens E_d$, che ha anch\'esso traccia nulla: il risultato è deviatorico.',
-              aggiunto: true,
+              why: 'Ora la parte deviatorica. Il termine con $\\lambda$ sparisce perché la traccia di $\\tens E_d$ è zero, e resta $2\\mu\\tens E_d$, che ha anch\'esso traccia nulla: il risultato è deviatorico, cioè sta in $\\mathrm{Dev}$.',
               ask: { q: 'Perché $\\mathbb A\\tens E_d=2\\mu\\tens E_d$?', options: ['Perché nel legame di Lamé il termine con la traccia si annulla: $\\operatorname{tr}\\tens E_d=0$', 'Perché $\\lambda=0$', 'Perché $\\tens E_d$ è sferico', 'Per la coassialità'], correct: 0, why: 'Il termine $\\lambda(\\operatorname{tr}\\tens E_d)\\tens I$ è nullo perché la parte deviatorica ha traccia nulla, non perché $\\lambda$ sia zero. $\\tens E_d$ è deviatorico, non sferico; la coassialità riguarda le direzioni principali e qui non serve.' },
             },
-            { tex: '\\tens T_s+\\tens T_d=\\underbrace{\\mathbb A\\tens E_s}_{\\in\\mathrm{Sph}}+\\underbrace{\\mathbb A\\tens E_d}_{\\in\\mathrm{Dev}}\\ \\Rightarrow\\ \\tens T_s=\\mathbb A\\tens E_s,\\quad\\tens T_d=2\\mu\\tens E_d', why: 'A destra abbiamo un tensore sferico più uno deviatorico. Ma la decomposizione di $\\tens T$ in sferico più deviatorico è **unica** (Teo 6.5.1): quindi i pezzi devono coincidere uno a uno.', aggiunto: true },
-            { tex: '(\\tens T_d)_{11}', why: 'Controlliamo il risultato su una componente: la componente 11 della parte deviatorica della tensione di Lamé, calcolata dal motore.', val: (v) => C.dev(El.stressIso(v.mu, v.la, Esym(v)))[0] },
+            { tex: '\\tens T_s+\\tens T_d=\\underbrace{\\mathbb A\\tens E_s}_{\\in\\mathrm{Sph}}+\\underbrace{\\mathbb A\\tens E_d}_{\\in\\mathrm{Dev}}\\ \\Rightarrow\\ \\tens T_s=\\mathbb A\\tens E_s,\\quad\\tens T_d=2\\mu\\tens E_d', why: 'A destra abbiamo un tensore sferico più uno deviatorico. Ma la decomposizione di $\\tens T$ in sferico più deviatorico è **unica** (Teo 6.5.1): quindi i pezzi devono coincidere uno a uno. Perché l\'unicità vale? (passaggio aggiunto) Se $a\\tens I+\\tens D=a\'\\tens I+\\tens D\'$, con $\\tens D$ e $\\tens D\'$ a traccia nulla, prendendo la traccia di entrambi i membri si ha $3a=3a\'$, cioè $a=a\'$; togliendo $a\\tens I$ da entrambi i membri resta anche $\\tens D=\\tens D\'$.' },
+            { tex: '(\\tens T_d)_{11}', why: 'Controlliamo il risultato su una componente (controllo numerico, non nella dispensa): la componente 11 della parte deviatorica della tensione di Lamé, calcolata dal motore.', val: (v) => C.dev(El.stressIso(v.mu, v.la, Esym(v)))[0], aggiunto: true },
             {
               tex: '=2\\mu(\\tens E_d)_{11}',
               why: 'È proprio $2\\mu$ per la componente 11 della parte deviatorica della deformazione.',
               val: (v) => 2 * v.mu * C.dev(Esym(v))[0],
+              aggiunto: true,
               eq: '§6.5.1',
             },
           ],
@@ -870,7 +870,7 @@ L'energia è la somma di un'energia di volume e di un'energia di forma. La secon
 
 **Def 6.5.2 (energia distorcente).** $\\varphi_d:=\\tfrac12\\mathbb A\\tens E_d\\cdot\\tens E_d$.
 
-Per un materiale anisotropo questo non funziona: $\\mathbb A\\tens E_s$ potrebbe non essere sferico, e le due parti resterebbero accoppiate.`,
+Per un materiale elastico lineare generico questo non funziona: la dispensa avverte che da $\\tens T_s+\\tens T_d=\\mathbb A\\tens E_s+\\mathbb A\\tens E_d$ non si può dedurre l'uguaglianza a coppie, perché $\\mathbb A\\tens E_s$ potrebbe non essere sferico, e le due parti resterebbero accoppiate (deduzione).`,
       },
       {
         id: 'l85-10',
@@ -887,7 +887,7 @@ Per un materiale anisotropo questo non funziona: $\\mathbb A\\tens E_s$ potrebbe
           sample,
           lines: [
             { tex: '\\varphi_d=\\tfrac12\\mathbb A\\tens E_d\\cdot\\tens E_d', why: 'Partiamo dalla definizione (Def 6.5.2).', val: (v) => El.energy(El.lameTensor(v.mu, v.la), C.dev(Esym(v))) },
-            { tex: '=\\tfrac12\\tens T_d\\cdot\\tens E_d', why: 'Abbiamo appena visto che $\\mathbb A\\tens E_d=\\tens T_d$ per un isotropo.', val: (v) => 0.5 * T.ddot(C.dev(El.stressIso(v.mu, v.la, Esym(v))), C.dev(Esym(v))), aggiunto: true },
+            { tex: '=\\tfrac12\\tens T_d\\cdot\\tens E_d', why: 'Abbiamo appena visto che $\\mathbb A\\tens E_d=\\tens T_d$ per un isotropo.', val: (v) => 0.5 * T.ddot(C.dev(El.stressIso(v.mu, v.la, Esym(v))), C.dev(Esym(v))) },
             { tex: '=\\frac1{4\\mu}\\tens T_d\\cdot\\tens T_d', why: 'Ora eliminiamo la deformazione: da $\\tens T_d=2\\mu\\tens E_d$ si ha $\\tens E_d=\\tens T_d/(2\\mu)$, e $\\frac12\\cdot\\frac1{2\\mu}=\\frac1{4\\mu}$.', val: (v) => C.phiD(El.stressIso(v.mu, v.la, Esym(v)), v.mu) },
             {
               tex: '=\\frac1{4\\mu}\\Big[\\tens T\\cdot\\tens T-\\tfrac23(\\operatorname{tr}\\tens T)\\,\\tens T\\cdot\\tens I+\\tfrac19(\\operatorname{tr}\\tens T)^2\\,\\tens I\\cdot\\tens I\\Big]',
@@ -908,12 +908,11 @@ Per un materiale anisotropo questo non funziona: $\\mathbb A\\tens E_s$ potrebbe
             },
             {
               tex: '=\\frac1{4\\mu}\\Big[s_1^2+s_2^2+s_3^2-\\tfrac13(s_1+s_2+s_3)^2\\Big]',
-              why: 'Passiamo al riferimento principale, dove $[\\tens T]$ è diagonale: $\\tens T\\cdot\\tens T$ è la somma dei quadrati delle principali e la traccia è la loro somma. Il campione usa le principali calcolate dal motore.',
+              why: 'Passiamo al riferimento principale, dove $[\\tens T]$ è diagonale: $\\tens T\\cdot\\tens T$ è la somma dei quadrati delle principali e la traccia è la loro somma. Cambiare riferimento è lecito perché $\\tens T\\cdot\\tens T$ e $\\operatorname{tr}\\tens T$ sono **invarianti**: hanno lo stesso valore in ogni riferimento. Il campione usa le principali calcolate dal motore.',
               val: (v) => {
                 const s = eigSym(El.stressIso(v.mu, v.la, Esym(v))).values;
                 return (s[0] ** 2 + s[1] ** 2 + s[2] ** 2 - (s[0] + s[1] + s[2]) ** 2 / 3) / (4 * v.mu);
               },
-              aggiunto: true,
             },
             {
               tex: '=\\frac1{12\\mu}\\big[2(s_1^2+s_2^2+s_3^2)-2(s_1s_2+s_2s_3+s_3s_1)\\big]',
@@ -922,7 +921,6 @@ Per un materiale anisotropo questo non funziona: $\\mathbb A\\tens E_s$ potrebbe
                 const s = eigSym(El.stressIso(v.mu, v.la, Esym(v))).values;
                 return (2 * (s[0] ** 2 + s[1] ** 2 + s[2] ** 2) - 2 * (s[0] * s[1] + s[1] * s[2] + s[2] * s[0])) / (12 * v.mu);
               },
-              aggiunto: true,
             },
             {
               tex: '=\\frac1{12\\mu}\\big[(s_1-s_2)^2+(s_2-s_3)^2+(s_3-s_1)^2\\big]',
@@ -947,8 +945,8 @@ Per un materiale anisotropo questo non funziona: $\\mathbb A\\tens E_s$ potrebbe
               why: 'Nella prova al limite le principali sono $\\sigma_L$, 0, 0: le differenze valgono $\\sigma_L$, 0 e $-\\sigma_L$, quindi la somma dei loro quadrati è $2\\sigma_L^2$.',
               ask: { q: 'Nella prova $(\\sigma_L,0,0)$, quanto vale $(s_1-s_2)^2+(s_2-s_3)^2+(s_3-s_1)^2$?', options: ['$2\\sigma_L^2$', '$\\sigma_L^2$', '$3\\sigma_L^2$', '0'], correct: 0, why: 'Le tre differenze sono $\\sigma_L-0$, $0-0$ e $0-\\sigma_L$: due quadrati valgono $\\sigma_L^2$ e uno zero. $\\sigma_L^2$ dimentica la terza differenza; zero sarebbe lo stato di Huber.' },
             },
-            { tex: '\\varphi_d(s_1,s_2,s_3)\\le\\frac{\\sigma_L^2}{6\\mu}', why: 'La verifica $(\\star)$: l\'energia distorcente dello stato non deve superare quella della prova al limite.', aggiunto: true },
-            { tex: '\\sqrt{6\\mu\\,\\varphi_d(s_1,s_2,s_3)}', why: 'Moltiplichiamo per $6\\mu>0$, così a destra resta $\\sigma_L^2$, e prendiamo la radice di entrambi i membri, che sono positivi.', val: (v) => Math.sqrt(6 * v.mu * C.phiDprincipal(S3(v), v.mu)) },
+            { tex: '\\varphi_d(s_1,s_2,s_3)\\le\\frac{\\sigma_L^2}{6\\mu}', why: 'La verifica $(\\star)$: l\'energia distorcente dello stato non deve superare quella della prova al limite.' },
+            { tex: '\\sqrt{6\\mu\\,\\varphi_d(s_1,s_2,s_3)}', why: 'Moltiplichiamo per $6\\mu>0$, così a destra resta $\\sigma_L^2$, e prendiamo la radice di entrambi i membri, che non sono negativi.', val: (v) => Math.sqrt(6 * v.mu * C.phiDprincipal(S3(v), v.mu)), aggiunto: true },
             {
               tex: '=\\sqrt{\\tfrac12\\big[(s_1-s_2)^2+(s_2-s_3)^2+(s_3-s_1)^2\\big]}=\\sigma_{id}\\le\\sigma_L',
               why: 'Sostituiamo l\'espressione di $\\varphi_d$: $6\\mu\\cdot\\frac1{12\\mu}=\\frac12$, e $\\mu$ sparisce. È la tensione ideale di von Mises.',
@@ -986,8 +984,8 @@ Nello spazio delle principali questo ha una forma precisa (deduzione): il domini
         title: 'Cilindro ed esagono',
         md: 'Nel modello sono accesi il cilindro di von Mises e il prisma di Tresca. Sono disegnati con $\\sigma_L$ uguale in trazione e compressione, l\'ipotesi di entrambi i criteri.',
         tasks: [
-          'Scegli la vista «lungo l\'asse idrostatico»: vedi un esagono inscritto in un cerchio. I sei vertici, dove i due si toccano, corrispondono agli stati monoassiali, dove i due criteri danno lo stesso valore.',
-          'Scegli il puro taglio e leggi la tabella: Tresca dà 2τ, von Mises √3 τ. Il taglio cade a metà di un lato dell\'esagono, dove esagono e cerchio sono più distanti.',
+          'Scegli la vista «lungo l\'asse idrostatico»: vedi un esagono inscritto in un cerchio. I sei vertici, dove i due si toccano, corrispondono agli stati monoassiali, dove i due criteri danno lo stesso valore (deduzione).',
+          'Scegli il puro taglio e leggi la tabella: Tresca dà 2τ, von Mises √3 τ. Il taglio cade a metà di un lato dell\'esagono, dove esagono e cerchio sono più distanti (deduzione).',
           'Scegli lo stato di Huber e aumenta la pressione: il punto scorre lungo l\'asse, e le tensioni ideali di Tresca e von Mises restano zero.',
         ],
         visual: SPAZIO('taglio', ['vonMises', 'tresca']),
@@ -1005,7 +1003,7 @@ Da qui la **procedura per l'orale**: calcola la tensione normale media $\\sigma_
       {
         id: 'l85-17',
         kind: 'domanda',
-        q: { id: 'l85-q1', kind: 'scelta', q: 'Con trazione media positiva ($\\sigma_m>0$), quale criterio indica la dispensa?', options: ['Beltrami', 'von Mises', 'Tresca', 'Galileo'], correct: 0, why: 'Con trazione prevalente il rischio è la rottura per decoesione, che von Mises non vede: per una trazione uniforme darebbe $\\sigma_{id}=0$. Beltrami, che conta anche l\'energia di volume, la coglie (§6.5.3). Tresca ha lo stesso difetto di von Mises, perché anch\'esso dipende solo dalle differenze.' },
+        q: { id: 'l85-q1', kind: 'scelta', q: 'Con trazione media positiva ($\\sigma_m>0$), quale criterio indica la dispensa?', options: ['Beltrami', 'von Mises', 'Tresca', 'Galileo'], correct: 0, why: 'Con trazione prevalente il rischio è la rottura per decoesione, che von Mises non vede: per una trazione uniforme darebbe $\\sigma_{id}=0$. Beltrami, che conta anche l\'energia di volume, la coglie (§6.5.3). Tresca ha lo stesso difetto di von Mises, perché anch\'esso dipende solo dalle differenze (deduzione).' },
       },
       {
         id: 'l85-18',
@@ -1015,7 +1013,7 @@ Da qui la **procedura per l'orale**: calcola la tensione normale media $\\sigma_
 
 1. **Dimenticare che le parti sferica e deviatorica sono ortogonali.** È proprio l'ortogonalità, insieme al legame di Lamé, che annulla i termini di accoppiamento e permette di separare l'energia di volume da quella di forma.
 2. **Pensare che von Mises sia adatto alla trazione idrostatica.** Dà $\\sigma_{id}=0$ per ogni trazione uniforme, mentre nella realtà il materiale si rompe per decoesione: per $\\sigma_m>0$ la dispensa indica Beltrami.
-3. **Confondere von Mises con Tresca.** Entrambi dipendono dalle differenze delle principali e sono insensibili alla pressione, ma non coincidono: nel puro taglio Tresca dà $2\\tau$ e von Mises $\\sqrt3\\,\\tau$; coincidono negli stati monoassiali.`,
+3. **Confondere von Mises con Tresca.** Entrambi dipendono dalle differenze delle principali e sono insensibili alla pressione, ma non coincidono: nel puro taglio Tresca dà $2\\tau$ e von Mises $\\sqrt3\\,\\tau$; coincidono negli stati monoassiali (deduzione).`,
       },
       {
         id: 'l85-19',
@@ -1043,7 +1041,7 @@ Da qui la **procedura per l'orale**: calcola la tensione normale media $\\sigma_
         id: 'l86-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo visto che Tresca e von Mises sono insensibili alla pressione: una compressione uniforme non cambia nulla. Ci sono però materiali per cui la compressione **conta, e aiuta**: più li comprimi, più resistono allo scorrimento. La dispensa parla di una crisi di natura **attritiva** (§6.6).
+        md: `Nella lezione precedente, «Energia distorcente e criterio di von Mises», abbiamo visto che Tresca e von Mises sono insensibili alla pressione: una compressione uniforme non cambia nulla. Ci sono però materiali per cui la compressione **conta, e aiuta**: più li comprimi, più resistono allo scorrimento. La dispensa parla di una crisi di natura **attritiva** (§6.6).
 
 Il criterio di **Mohr–Coulomb** descrive questa crisi con **due parametri**, la **coesione** $c$ e l'**angolo di attrito interno** $\\phi$. A differenza dei criteri precedenti, non lo disegneremo nello spazio delle tensioni principali ma nel **piano di Mohr** del Cap. 3, quello con la tensione normale $\\sigma$ in ascissa e la tangenziale $\\tau$ in ordinata. Le tappe: l'attrito, la coesione, il dominio nel piano di Mohr, la verifica con il cerchio massimo e la forma in tensioni principali.`,
       },
@@ -1130,6 +1128,7 @@ Il confronto tra cerchio massimo e semirette ha tre esiti:
             {
               tex: 'd=\\frac{|C\\tan\\phi-c|}{\\sqrt{1+\\tan^2\\phi}}',
               why: 'Distanza del centro $(C,0)$ dalla retta: si sostituisce il punto nell\'equazione, si prende il valore assoluto e si divide per la radice della somma dei quadrati dei coefficienti di $\\sigma$ e $\\tau$, cioè $\\tan\\phi$ e 1.',
+              aggiunto: true,
               val: (v) => {
                 const s = S3(v);
                 const Cc = (s[0] + s[2]) / 2;
@@ -1138,7 +1137,7 @@ Il confronto tra cerchio massimo e semirette ha tre esiti:
             },
             { tex: '=\\frac{c-C\\tan\\phi}{\\sqrt{1+\\tan^2\\phi}}', why: 'Togliamo il valore assoluto prendendo la distanza con il segno: è positiva quando il centro sta dalla parte del dominio, che è il caso che ci interessa. Il campione usa la stessa convenzione.', val: (v) => (v.co - ((S3(v)[0] + S3(v)[2]) / 2) * Math.tan(v.phi)) / Math.sqrt(1 + Math.tan(v.phi) ** 2), aggiunto: true },
             { tex: '=\\Big(c-\\frac{s_1+s_3}2\\tan\\phi\\Big)\\cos\\phi', why: 'Per la trigonometria $1+\\tan^2\\phi=1/\\cos^2\\phi$, quindi dividere per la radice equivale a moltiplicare per $\\cos\\phi$; e al posto di $C$ scriviamo la sua espressione.', val: (v) => (v.co - ((S3(v)[0] + S3(v)[2]) / 2) * Math.tan(v.phi)) * Math.cos(v.phi) },
-            { tex: 'd\\ge R\\iff\\frac{s_1-s_3}2\\le\\Big(c-\\frac{s_1+s_3}2\\tan\\phi\\Big)\\cos\\phi', why: 'Imponiamo la condizione geometrica: distanza almeno uguale al raggio. Per la simmetria del dominio, la semiretta inferiore dà la stessa condizione.', aggiunto: true },
+            { tex: 'd\\ge R\\iff\\frac{s_1-s_3}2\\le\\Big(c-\\frac{s_1+s_3}2\\tan\\phi\\Big)\\cos\\phi', why: 'Imponiamo la condizione geometrica: distanza almeno uguale al raggio. Per la simmetria del dominio, la semiretta inferiore dà la stessa condizione (deduzione).' },
             { tex: 's_1-s_3\\le2c\\cos\\phi-(s_1+s_3)\\tan\\phi\\cos\\phi', why: 'Moltiplichiamo per 2 entrambi i membri e distribuiamo il $\\cos\\phi$.', aggiunto: true },
             {
               tex: '(s_1-s_3)+(s_1+s_3)\\sin\\phi\\le2c\\cos\\phi',
@@ -1161,7 +1160,7 @@ Il confronto tra cerchio massimo e semirette ha tre esiti:
         title: 'La forma generale in tensioni principali',
         md: `La dispensa scrive il criterio in tensioni principali in forma simmetrica:
 $$F=\\max_{i,j}\\big\\{|s_i-s_j|+(s_i+s_j)\\sin\\phi\\big\\}\\le2c\\cos\\phi.$$
-Il massimo è preso su tutte le coppie di tensioni principali, cioè sui tre cerchi di Mohr; la verifica che abbiamo appena fatto mostra che la coppia $(1,3)$, il cerchio massimo, dà il massimo. La dispensa dà questa formula senza dimostrazione e ne fa solo la verifica (nota NF-11).
+Il massimo è preso su tutte le coppie di tensioni principali, cioè sui tre cerchi di Mohr; la dispensa osserva che è la coppia $(1,3)$, cioè il cerchio massimo, a dare il massimo, e per quella coppia la formula è la condizione che abbiamo appena ricavato. La dispensa dà questa formula senza dimostrazione e ne fa solo la verifica (nota NF-11).
 
 Nota che **non c'è una tensione ideale semplice**: a sinistra non resta una tensione da confrontare con $\\sigma_L$, ma una combinazione che dipende da $\\phi$. Leggiamo però due casi (deduzione). In trazione semplice $(\\sigma,0,0)$ la condizione diventa $\\sigma(1+\\sin\\phi)\\le2c\\cos\\phi$; in compressione semplice, di intensità $\\sigma$, diventa $\\sigma(1-\\sin\\phi)\\le2c\\cos\\phi$. Siccome $1-\\sin\\phi<1+\\sin\\phi$, il materiale **resiste di più a compressione che a trazione**: il criterio descrive da solo resistenze diverse.`,
       },
@@ -1227,7 +1226,7 @@ Guarda le prime due righe della matrice: hanno entrambe zero nelle prime due pos
             { tex: 's_{\\max}', why: 'Prendiamo la più grande delle radici; il campione la calcola con il motore spettrale sulla matrice $[\\tens T_{es}]$.', val: (v) => eigSym([0, 0, v.tx, 0, 0, v.ty, v.tx, v.ty, v.sz]).values[0] },
             {
               tex: '=\\frac{\\sigma_z}2+\\frac12\\sqrt{\\sigma_z^2+4\\tau_z^2}',
-              why: 'La formula risolutiva di $s^2-\\sigma_zs-\\tau_z^2=0$ dà $\\frac{\\sigma_z}2\\pm\\frac12\\sqrt{\\sigma_z^2+4\\tau_z^2}$; il segno più dà la radice maggiore. Il discriminante è sempre positivo, quindi le due radici sono reali e distinte (se $\\tau_z\\ne0$).',
+              why: 'La formula risolutiva di $s^2-\\sigma_zs-\\tau_z^2=0$ dà $\\frac{\\sigma_z}2\\pm\\frac12\\sqrt{\\sigma_z^2+4\\tau_z^2}$; il segno più dà la radice maggiore. Il discriminante $\\sigma_z^2+4\\tau_z^2$ non è mai negativo, quindi le radici sono reali (deduzione).',
               val: (v) => C.svPrincipal(v.sz, v.tx, v.ty).a,
               eq: '§6.7',
             },
@@ -1261,7 +1260,6 @@ Perché sta tra le due? Il prodotto delle radici dell'equazione di secondo grado
                 const p = C.svPrincipal(v.sz, v.tx, v.ty);
                 return C.vonMises(C.sortS([p.a, 0, p.b]));
               },
-              aggiunto: true,
             },
             {
               tex: '=\\sqrt{s_1^2+s_2^2-s_1s_2}',
@@ -1322,7 +1320,7 @@ La dispensa avverte che negli appunti originali i coefficienti di Grashof erano 
 
 Con **sola tensione normale**, $\\tau_z=0$: Tresca e von Mises danno $|\\sigma_z|$; Grashof a trazione dà $\\frac{1-\\nu}2\\sigma_z+\\frac{1+\\nu}2\\sigma_z=\\sigma_z$ per $\\sigma_z>0$ (passaggio aggiunto). Torniamo alla verifica monoassiale.
 
-Con **solo taglio**, $\\sigma_z=0$: Tresca dà $2\\tau_z$, von Mises $\\sqrt3\\,\\tau_z$, Grashof $(1+\\nu)\\tau_z$. Sono gli stessi valori trovati nelle lezioni sui singoli criteri.
+Con **solo taglio**, $\\sigma_z=0$: Tresca dà $2\\tau_z$, von Mises $\\sqrt3\\,\\tau_z$, Grashof $(1+\\nu)\\tau_z$. Sono gli stessi valori trovati nelle lezioni «Galileo, Tresca, Grashof» e «Energia distorcente e criterio di von Mises».
 
 Nota anche che, a parità di dati, Tresca dà sempre un valore almeno pari a quello di von Mises, perché sotto radice c'è $4\\tau_z^2$ invece di $3\\tau_z^2$ (deduzione): Tresca è il più prudente dei due. Quanto ai materiali, la dispensa conclude: **Tresca e von Mises per i duttili, Grashof per i fragili**.`,
       },
@@ -1349,9 +1347,9 @@ Nel solido di Saint-Venant, invece, il mantello è scarico e le forze di volume 
         id: 'l87-10',
         kind: 'spiega',
         title: 'La regola: le parti regolari e le stesse caratteristiche della sollecitazione',
-        md: `La dispensa risolve il problema con una regola da ricordare per l'orale. **Non** si assimila la struttura a un solido di Saint-Venant. Si osserva invece che nelle **parti regolari** della struttura, che la dispensa chiama **regioni B** (le stesse del Cap. 5, lontane da vincoli, carichi concentrati e curvature forti), lo stato di tensione di una sezione è quello della sezione di un solido di Saint-Venant soggetto alle **stesse caratteristiche della sollecitazione** (in breve CdS: sforzo normale, tagli, momenti flettenti e torcente).
+        md: `La dispensa risolve il problema con una regola da ricordare per l'orale. **Non** si assimila la struttura a un solido di Saint-Venant. Si osserva invece che nelle **parti regolari** della struttura, che la dispensa chiama **regioni B** (le stesse del Cap. 5, lontane da brusche variazioni di sezione, carichi concentrati e curvature forti), lo stato di tensione di una sezione è quello della sezione di un solido di Saint-Venant soggetto alle **stesse caratteristiche della sollecitazione** (in breve CdS: sforzo normale, tagli, momenti flettenti e torcente).
 
-Dove la struttura non è regolare, per esempio nei nodi o sotto un carico concentrato, servono **procedimenti specifici**. L'esempio della dispensa: gli irrigidimenti dell'anima di una trave a doppio T sotto un macchinario, dimensionati con le norme o con calcoli dedicati.
+Dove la struttura non è regolare, per esempio nei nodi o sotto un carico concentrato, servono **procedimenti specifici**. L'esempio della dispensa: in una trave a doppio T su cui poggia un macchinario pesante, in corrispondenza degli appoggi le ali sono irrigidite da profili trasversali, che si dimensionano secondo le norme (regole di dettaglio costruttivo) o con calcoli specifici.
 
 Da qui l'**atteggiamento** da tenere, sempre:
 1. si calcolano le CdS con l'**analisi strutturale**;
@@ -1369,7 +1367,7 @@ Da qui l'**atteggiamento** da tenere, sempre:
         title: 'Verifica e progetto: due problemi diversi',
         md: `Sappiamo ora calcolare e verificare le tensioni in ogni sezione. La dispensa distingue due tipi di problema (§6.9).
 
-- Nella **verifica** tutto è assegnato: geometria, sezioni, materiale, carichi. Si controlla che in **ogni punto di ogni sezione** lo stato $\\tens T$ sia compatibile con la resistenza. Nella tecnica si verificano anche la deformabilità e la stabilità, che però non sono argomento del corso.
+- Nella **verifica** tutto è assegnato: geometria, sezioni, materiale, carichi. Si controlla che in **ogni punto di ogni sezione** lo stato $\\tens T$ sia compatibile con la resistenza. Nella tecnica, avverte la dispensa, si considerano anche la deformabilità e la stabilità.
 - Nel **progetto** si deve **dimensionare**: la forma della sezione è assegnata **a meno di un parametro** $a$, e bisogna trovarne il valore. Per esempio, un doppio T con ali di $6a\\times a$ e anima alta $20a$: tutte le dimensioni sono multipli di $a$.
 
 La traccia tipo d'esame è un **portale** di luce $L$ e altezza $H$, con un carico distribuito $q$ sul traverso, sezione a T con dimensioni proporzionali ad $a$ e tensione ammissibile $\\sigma_{adm}$ assegnata (figura a p. 157).`,
@@ -1381,7 +1379,7 @@ La traccia tipo d'esame è un **portale** di luce $L$ e altezza $H$, con un cari
         md: `La verifica di un telaio si fa in quattro passi. I primi due servono a non dover controllare infinite sezioni.
 
 1. **Caratteristiche della sollecitazione.** Con l'analisi strutturale si tracciano i diagrammi di sforzo normale $N$, taglio $T$ e momento $M$.
-2. **Sezioni critiche.** Si cercano, asta per asta, le sezioni dove le CdS sono più gravose. Per il portale ABCD della dispensa: sul ritto AB le sezioni A e B$_A$ (cioè B vista dal ritto); sul traverso B$_C$, la sezione K dove il momento è massimo, e C$_B$; sull'altro ritto C$_D$ e D. Le **simmetrie** della struttura e del carico permettono di dimezzare il lavoro.
+2. **Sezioni critiche.** Si cercano, asta per asta, le sezioni dove le CdS sono più gravose. Per il portale ABCD della dispensa: sul ritto AB le sezioni A e B$_A$ (cioè B vista dal ritto); sul traverso B$_C$, la sezione K dove il momento è massimo, e C$_B$; sull'altro ritto C$_D$ e D. Per **simmetria** alcune di queste sezioni si possono omettere.
 
 Una volta scelte le sezioni critiche, bisogna decidere **in quali punti** di ciascuna sezione verificare: è il passo successivo, e lì serve quello che sappiamo su flessione e taglio.`,
       },
@@ -1391,7 +1389,7 @@ Una volta scelte le sezioni critiche, bisogna decidere **in quali punti** di cia
         title: 'Lo schema della verifica: punti pericolosi e tabella',
         md: `3. **Punti pericolosi.** In ogni sezione critica si tracciano i diagrammi di $\\sigma_z$, dovuta a $N$ e $M$, della $\\tau_{zy}$ nell'anima con la formula di Jourawski, e della $\\tau_{zx}$ nell'ala. Per una sezione a T i punti da guardare sono tre:
    - i **lembi**, dove $\\sigma_z$ è massima e la tangenziale è nulla;
-   - l'**attacco ala–anima**, appena prima e appena dopo il salto della tangenziale: qui $\\sigma_z$ è ancora grande e $\\tau$ cambia bruscamente, quindi possono essere grandi entrambe;
+   - l'**attacco ala–anima**, appena prima e appena dopo il salto della tangenziale: qui $\\sigma_z$ è ancora grande e $\\tau$ cambia bruscamente, quindi possono essere grandi entrambe (deduzione);
    - la **corda baricentrica**, dove la tangenziale è massima.
 4. **Verifiche di sicurezza.** Punto per punto si applica un criterio, per esempio Tresca, con le formule alla Saint-Venant, e si riassume tutto in una tabella con $\\sigma_z$, $\\tau_{zx}$, $\\tau_{zy}$ e $\\sigma_{id}$ da confrontare con $\\sigma_{adm}$.`,
       },
@@ -1403,7 +1401,7 @@ Una volta scelte le sezioni critiche, bisogna decidere **in quali punti** di cia
         tasks: [
           'Porta la corda al lembo: la tangenziale è nulla. Lì conta solo σ_z, che con la flessione è massima.',
           'Porta la corda all\'attacco tra ala e anima e spostala appena sopra e appena sotto: la tangenziale salta, perché la larghezza della corda cambia di colpo. Per questo la verifica si fa in entrambi i punti.',
-          'Porta la corda al baricentro: la tangenziale è massima, mentre la σ_z dovuta al momento è nulla, perché lì passa l\'asse neutro della flessione retta (deduzione dal Cap. 5).',
+          'Porta la corda al baricentro: la tangenziale è massima, mentre la σ_z dovuta al momento è nulla, perché lì passa l\'asse neutro della flessione retta (deduzione).',
         ],
         visual: SVG('jourawski', { section: 'T' }),
       },
@@ -1415,7 +1413,7 @@ Una volta scelte le sezioni critiche, bisogna decidere **in quali punti** di cia
 
 Si prende la sezione con il momento massimo in valore assoluto, $|M|_{\\max}$, e si considera solo la flessione. Per una sezione a T, che non è simmetrica rispetto all'asse neutro, le fibre superiori e inferiori hanno distanze diverse dal baricentro, e quindi due **moduli di resistenza** diversi, $W'$ e $W''$:
 $$\\sigma'_z=\\frac M{W'},\\qquad\\sigma''_z=\\frac M{W''}.$$
-Siccome $W'$ e $W''$ dipendono da $a$, imponendo $|\\sigma_z|_{\\max}\\le\\sigma_{adm}$ si trova il valore minimo $a_{\\min}$; nell'esempio della dispensa è 14,81 mm. Poi si **aumenta** $a$, di circa il 10% fino a un valore comodo (nell'esempio 17 mm), perché la flessione da sola non dice tutto. Infine si fa la **verifica completa** con i passi 3 e 4, considerando anche una sezione in cui il taglio non è nullo.`,
+Siccome $W'$ e $W''$ dipendono da $a$, imponendo $|\\sigma_z|_{\\max}\\le\\sigma_{adm}$ si trova il valore minimo $a_{\\min}$; nell'esempio della dispensa è 14,81 mm. Poi si **aumenta** $a$, di circa il 10% fino a un valore comodo (nell'esempio 17 mm), perché la flessione da sola non dice tutto (deduzione). Infine si fa la **verifica completa** con i passi 3 e 4, considerando anche una sezione in cui il taglio non è nullo.`,
       },
       {
         id: 'l87-17',
