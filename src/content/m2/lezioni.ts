@@ -76,7 +76,7 @@ I punti di $\\mathcal B$ si chiamano **punti materiali**. La differenza rispetto
         title: 'Perché possiamo dimenticare la massa',
         md: `Abbiamo appena detto che i punti materiali hanno massa. Eppure nel corso la massa non entra quasi mai nei conti. Come mai?
 
-Ragioniamo sull'esempio dell'auto. Se dei passeggeri saltano dentro di colpo, la scocca sobbalza: ci sono accelerazioni, e dove c'è un'accelerazione la massa produce forze d'inerzia. Se invece i passeggeri salgono **molto lentamente**, la scocca si adatta piano piano, le accelerazioni sono quasi nulle e quindi anche le forze d'inerzia sono trascurabili.
+Ragioniamo sull'esempio dell'auto. Se dei passeggeri saltano dentro di colpo, la scocca sobbalza: ci sono accelerazioni, e dove c'è un'accelerazione la massa produce forze d'inerzia (esempio aggiunto). Se invece i passeggeri salgono **molto lentamente**, la scocca si adatta piano piano, le accelerazioni sono quasi nulle e quindi anche le forze d'inerzia sono trascurabili.
 
 Lo studio **statico**, quello del corso, è proprio il caso limite di un fenomeno così lento che le accelerazioni tendono a zero (§2.1.1). In quel limite il tempo non conta più, e con lui sparisce il ruolo della massa. Ecco perché possiamo «fare astrazione dal tempo», come dice la dispensa.`,
       },
@@ -107,7 +107,7 @@ Il punto di vista **lagrangiano** parte dal prima: prendi un punto $X$ del corpo
 
 Il punto di vista **euleriano** parte dal dopo: guardi un punto $x$ della configurazione attuale e ti chiedi da dove viene. Serve quando ciò che conta è la forma finale. L'esempio della dispensa è la vela: la spinta del vento dipende dalla forma che la vela ha adesso, gonfia, non da quella che aveva quando era ripiegata.
 
-Le due descrizioni portano a risultati diversi solo quando spostamenti e deformazioni sono **grandi**. Noi lavoreremo con spostamenti e deformazioni piccoli, quindi scegliere il punto di vista lagrangiano non ci fa perdere nulla (§2.1.2).`,
+Le due descrizioni portano a risultati diversi solo quando spostamenti e deformazioni sono **grandi**. Noi lavoreremo con spostamenti e deformazioni piccoli, quindi scegliere il punto di vista lagrangiano non ci fa perdere nulla (deduzione, da §2.1.2).`,
       },
       {
         id: 'l21-7',
@@ -174,7 +174,7 @@ Nel modello a destra vedi due punti, $X$ e $Y$, e le frecce dei loro spostamenti
         id: 'l22-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo dato un nome al cambiamento di forma: la **deformazione** $f$, che porta ogni punto $X$ della configurazione di riferimento nel punto $x=f(X)$ della configurazione attuale, e lo **spostamento** $\\vet u=f(X)-X$.
+        md: `Nella lezione precedente, «Configurazioni, deformazione, spostamento», abbiamo dato un nome al cambiamento di forma: la **deformazione** $f$, che porta ogni punto $X$ della configurazione di riferimento nel punto $x=f(X)$ della configurazione attuale, e lo **spostamento** $\\vet u=f(X)-X$.
 
 Ora ci chiediamo due cose. La prima: **qualunque funzione $f$ va bene per descrivere un corpo reale?** Vedremo di no, e fisseremo tre requisiti. La seconda: **come si descrive il modo in cui $f$ cambia da un punto all'altro?** Per questo useremo il gradiente, lo strumento del Modulo 1 che dice quanto rapidamente varia un campo.
 
@@ -209,7 +209,7 @@ L'altro fenomeno escluso è la **frattura**: un punto che si «sdoppia» e gener
         title: 'Secondo requisito: punti vicini restano vicini',
         md: `Il secondo requisito, **bicontinuità e regolarità** (Def 2.2.2), chiede che sia $f$ sia la sua inversa $f^{-1}$ siano continue, e che $f$ abbia derivata prima continua.
 
-La continuità esprime il **principio di continuità**: punti vicini prima della deformazione restano vicini dopo. Chiederla anche per $f^{-1}$ vuol dire che vale anche al contrario: punti vicini nella configurazione attuale venivano da punti vicini.
+La continuità esprime il **principio di continuità**: punti vicini prima della deformazione restano vicini dopo. Chiederla anche per $f^{-1}$ vuol dire che vale anche al contrario: punti vicini nella configurazione attuale venivano da punti vicini (deduzione).
 
 La derivata prima continua aggiunge qualcosa di più fine. Una **fibra**, cioè una linea di materia tracciata nel corpo, dopo la deformazione diventa una curva **regolare**, senza spigoli: la tangente non fa salti. In altre parole si escludono i gradienti discontinui.
 
@@ -229,7 +229,7 @@ $$\\tens F(X):=\\nabla f(X),\\qquad F_{ij}=\\frac{\\partial f_i}{\\partial X_j}\
 
 Leggi la componente così: $F_{ij}$ dice quanto cambia la coordinata $i$ della posizione finale quando sposti di poco il punto di partenza lungo la direzione $j$. Per esempio $F_{12}$ misura quanto il punto si muove lungo l'asse 1 se lo prendi un po' più in là lungo l'asse 2.
 
-Un caso di controllo, che riprende la lezione precedente: se il corpo resta fermo, $f(X)=X$, ogni coordinata finale coincide con quella iniziale, quindi $F_{ij}$ vale 1 se $i=j$ e 0 altrimenti. Cioè $\\tens F=\\tens I$, il tensore identità (passaggio aggiunto). Tieni a mente questo fatto: «niente deformazione» corrisponde a $\\tens F=\\tens I$, non a $\\tens F$ nullo.`,
+Un caso di controllo, che riprende l'esempio del corpo fermo della lezione «Configurazioni, deformazione, spostamento»: se $f(X)=X$, ogni coordinata finale coincide con quella iniziale, quindi $F_{ij}$ vale 1 se $i=j$ e 0 altrimenti. Cioè $\\tens F=\\tens I$, il tensore identità: la dispensa lo nota per la configurazione di riferimento (§2.2). Tieni a mente questo fatto: «niente deformazione» corrisponde a $\\tens F=\\tens I$, non a $\\tens F$ nullo.`,
       },
       {
         id: 'l22-7',
@@ -239,7 +239,7 @@ Un caso di controllo, che riprende la lezione precedente: se il corpo resta ferm
 
 Per capirlo ricordiamo dal Modulo 1 (Def 1.4.1) che il determinante di un tensore è il rapporto tra il prodotto misto dei tre vettori della base trasformati e quello dei vettori originali:
 $$\\det\\tens F=\\frac{\\tens F\\hat e_1\\wedge\\tens F\\hat e_2\\cdot\\tens F\\hat e_3}{\\hat e_1\\wedge\\hat e_2\\cdot\\hat e_3}.$$
-Il prodotto misto è il volume, con segno, del parallelepipedo costruito sui tre vettori. Se $\\det\\tens F>0$, la terna trasformata è ancora **destrorsa**, anche se in generale non è più ortogonale.
+La Def 1.4.1 scrive il prodotto misto come $\\vet u\\cdot\\vet v\\wedge\\vet w$, qui la dispensa lo scrive $\\vet a\\wedge\\vet b\\cdot\\vet c$: è lo stesso numero, perché scambiando di posto il prodotto scalare e quello vettoriale il prodotto misto non cambia (deduzione). Il prodotto misto è il volume, con segno, del parallelepipedo costruito sui tre vettori. Se $\\det\\tens F>0$, la terna trasformata è ancora **destrorsa**, anche se in generale non è più ortogonale.
 
 Più avanti (§2.5.5) dimostreremo che $\\det\\tens F=dv/dV$, il rapporto tra il volume di un pezzetto dopo e prima. Con questa lettura si vede che cosa si esclude: $\\det\\tens F=0$ vuol dire un volume finito che diventa nullo, l'**implosione**; $\\det\\tens F\\to+\\infty$ vuol dire un volume nullo che diventa finito, l'**esplosione**.`,
       },
@@ -251,7 +251,7 @@ Più avanti (§2.5.5) dimostreremo che $\\det\\tens F=dv/dV$, il rapporto tra il
 
 Nella configurazione di riferimento il corpo non è ancora deformato, quindi $\\tens F=\\tens I$ e $\\det\\tens F=1$. Mentre il corpo evolve, $\\det\\tens F$ cambia con continuità. La figura di p. 18 mostra proprio questo andamento: una curva che parte da 1 e resta sempre nella regione positiva. Per diventare negativo, $\\det\\tens F$ dovrebbe attraversare lo zero, e passare per lo zero vorrebbe dire implodere. Quindi chiedere $\\det\\tens F>0$ significa: **partendo da 1, il determinante non attraversa mai lo zero**.
 
-C'è una conseguenza che useremo alla fine della lezione: un determinante negativo corrisponde a una terna trasformata sinistrorsa, cioè a un corpo «rovesciato come in uno specchio». Anche questo è escluso, e tra poco vedremo che riguarda le riflessioni.`,
+C'è una conseguenza che useremo alla fine della lezione: un determinante negativo corrisponderebbe a una terna trasformata sinistrorsa, cioè a un corpo «rovesciato come in uno specchio» (deduzione). Anche questo è escluso, e tra poco vedremo che riguarda le riflessioni.`,
       },
       {
         id: 'l22-9',
@@ -267,7 +267,7 @@ $$\\tens H(X):=\\nabla\\vet u(X),\\qquad H_{ij}=\\frac{\\partial u_i}{\\partial 
 
 Mentre $\\tens F$ dice come varia la **posizione** finale da punto a punto, $\\tens H$ dice come varia lo **spostamento**. Sono due informazioni molto vicine, perché lo spostamento è la posizione finale meno quella iniziale, $\\vet u=f(X)-X$. Ci aspettiamo quindi che $\\tens F$ e $\\tens H$ differiscano per qualcosa che viene dal termine $-X$.
 
-Il prossimo passo ricava questo legame. Vedremo che è semplicissimo da scrivere, ma è uno dei più usati del corso: ogni volta che diremo «deformazioni piccole» parleremo di $\\tens H$ piccolo, e il legame ci dirà subito che cosa succede a $\\tens F$.`,
+Il prossimo passo ricava questo legame. Vedremo che si scrive in una riga, ma è uno dei più usati del corso: ogni volta che diremo «deformazioni piccole» parleremo di $\\tens H$ piccolo, e il legame ci dirà subito che cosa succede a $\\tens F$.`,
       },
       {
         id: 'l22-11',
@@ -323,7 +323,6 @@ Il prossimo passo ricava questo legame. Vedremo che è semplicissimo da scrivere
             {
               tex: '\\tens H=\\tens F-\\tens I',
               why: `La relazione vale per ogni coppia di indici $(i,j)$, quindi vale tra i tensori interi: $\\tens H$ è $\\tens F$ meno l'identità.`,
-              aggiunto: true,
             },
             { tex: '\\Rightarrow\\ \\tens F=\\tens I+\\tens H', why: `Portiamo $\\tens I$ dall'altra parte: è l'identità cinematica fondamentale, nella forma in cui la scrive la dispensa.`, eq: 'Teo 2.3.2' },
           ],
@@ -376,7 +375,7 @@ $$|f(X)-f(Y)|=|X-Y|\\qquad\\forall X,Y.$$
 
 Il Teo 2.3.4, che la dispensa enuncia senza dimostrazione, dice com'è fatta ogni deformazione rigida: $f$ è rigida **se e solo se** esiste un tensore ortogonale $\\tens Q$ tale che
 $$f(X)=f(X_0)+\\tens Q(X-X_0),\\qquad\\tens Q\\in\\mathrm{Orth}.$$
-Ricorda che un tensore ortogonale conserva le lunghezze dei vettori: per questo la distanza non cambia.
+Qui $\\mathrm{Orth}$ è l'insieme dei tensori ortogonali del Modulo 1. Ricorda che un tensore ortogonale conserva le lunghezze dei vettori: per questo la distanza non cambia.
 
 Aggiungendo e togliendo $X_0$ la formula si legge come una **rototraslazione**: $f(X)=\\big[f(X_0)-X_0\\big]+\\big[X_0+\\tens Q(X-X_0)\\big]$. Il primo pezzo è la traslazione del punto $X_0$; il secondo è una rotazione (o una riflessione) attorno a $X_0$.`,
       },
@@ -386,7 +385,7 @@ Aggiungendo e togliendo $X_0$ la formula si legge come una **rototraslazione**: 
         title: 'Le riflessioni: rigide ma escluse',
         md: `Il teorema include tutti i $\\tens Q$ ortogonali, e tra questi ci sono tre famiglie. Con $\\tens Q=\\tens I$ si ottiene una **traslazione**. Con $\\tens Q$ ortogonale e $\\det\\tens Q=+1$ si ottiene una **rotazione**. Con $\\det\\tens Q=-1$ si ottiene una **riflessione**, come l'immagine in uno specchio.
 
-Le riflessioni conservano le distanze, quindi sono rigide a pieno titolo. Però in una deformazione rigida il gradiente è proprio $\\tens F=\\tens Q$ (passaggio aggiunto), e con $\\det\\tens Q=-1$ il determinante di $\\tens F$ è negativo. Il terzo requisito di plausibilità le esclude (§2.3.2): un corpo reale non può trasformarsi nella sua immagine speculare con un movimento continuo.
+Le riflessioni conservano le distanze, quindi sono rigide a pieno titolo. Però in una deformazione rigida il gradiente è proprio $\\tens F=\\tens Q$ (passaggio aggiunto), e con $\\det\\tens Q=-1$ il determinante di $\\tens F$ è negativo. Il terzo requisito di plausibilità le esclude (§2.3.2): un corpo reale non può trasformarsi nella sua immagine speculare con un movimento continuo (deduzione: $\\det\\tens F$ dovrebbe passare da $+1$ a $-1$ attraversando lo zero).
 
 Qui si chiude il cerchio con il passo sul determinante: $\\det\\tens F>0$ non esclude soltanto l'implosione, esclude anche l'inversione dell'orientazione.`,
       },
@@ -430,7 +429,7 @@ Qui si chiude il cerchio con il passo sul determinante: $\\det\\tens F>0$ non es
         id: 'l23-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo introdotto il gradiente di deformazione $\\tens F=\\nabla f$ e abbiamo visto che cosa chiediamo a una deformazione plausibile. Resta un problema pratico: la funzione $f$ in generale **non è lineare**, e studiare funzioni non lineari in tre dimensioni è difficile.
+        md: `Nella lezione precedente, «Deformazioni plausibili, gradienti F e H, moti rigidi», abbiamo introdotto il gradiente di deformazione $\\tens F=\\nabla f$ e abbiamo visto che cosa chiediamo a una deformazione plausibile. Resta un problema pratico: la funzione $f$ in generale **non è lineare**, e studiare funzioni non lineari in tre dimensioni è difficile.
 
 L'idea di questa lezione è guardare il corpo **da vicino**, in un piccolo intorno di un punto. Lì la deformazione, anche se complicata, si comporta in modo semplice: diventa un tensore che agisce su un vettore. In altre parole lo studio locale trasforma uno studio analitico, fatto di funzioni, in uno studio **algebrico**, fatto di prodotti tensore per vettore (§2.4).
 
@@ -525,9 +524,9 @@ La domanda è: **come si ottiene $d\\vet x$ da $d\\vet X$?** Nel caso a una dime
         title: 'Che cosa abbiamo ottenuto',
         md: `Il risultato $d\\vet x=\\tens F\\,d\\vet X$ (eq. 2.1) dice: per sapere dove va a finire una fibra piccola uscente da $X$, basta **applicare il tensore $\\tens F$ al vettore della fibra**. Non serve più conoscere la funzione $f$ in tutti i punti: basta il suo gradiente nel centro.
 
-Due controlli. Se il corpo trasla soltanto, $\\tens F=\\tens I$ e quindi $d\\vet x=d\\vet X$: la fibra si sposta ma resta identica, come ci aspettiamo. In una dimensione $\\tens F$ si riduce al numero $f'(X_0)$ e ritroviamo $dx\\simeq f'(X_0)\\,dX$, la tangente da cui siamo partiti.
+Due controlli. Se il corpo trasla soltanto, $\\tens F=\\tens I$ e quindi $d\\vet x=d\\vet X$: la fibra si sposta ma resta identica, come ci aspettiamo. In una dimensione $\\tens F$ si riduce al numero $f'(X_0)$ e ritroviamo $dx\\simeq f'(X_0)\\,dX$, la tangente da cui siamo partiti (deduzione, per entrambi i controlli).
 
-Questa è la base di tutto ciò che segue nel capitolo: la prossima lezione misurerà quanto si allunga una fibra, quanto si chiude un angolo, quanto cambia un volume, e lo farà sempre partendo da $d\\vet x=\\tens F\\,d\\vet X$.`,
+Questa è la base di tutto ciò che segue nel capitolo: la lezione sui parametri di misura (§2.5) misurerà quanto si allunga una fibra, quanto si chiude un angolo, quanto cambia un volume, e lo farà sempre partendo da $d\\vet x=\\tens F\\,d\\vet X$.`,
       },
       {
         id: 'l23-7',
@@ -535,7 +534,7 @@ Questa è la base di tutto ciò che segue nel capitolo: la prossima lezione misu
         title: 'Perché «omogenea» e perché «tangente»',
         md: `La (2.1) descrive la **deformazione omogenea tangente**, e i due aggettivi hanno un significato preciso.
 
-**Omogenea**, perché il tensore $\\tens F$, calcolato nel centro $X$, è lo stesso per tutti i punti dell'intorno. Nel passo sui tipi speciali della lezione precedente abbiamo chiamato omogenee le deformazioni con $\\tens F$ costante: qui $\\tens F$ è costante, ma solo nell'intorno, perché abbiamo deciso di usare quello del centro.
+**Omogenea**, perché il tensore $\\tens F$, calcolato nel centro $X$, è lo stesso per tutti i punti dell'intorno. Nella lezione «Deformazioni plausibili, gradienti F e H, moti rigidi» (§2.3.1) abbiamo chiamato omogenee le deformazioni con $\\tens F$ costante: qui $\\tens F$ è costante, ma solo nell'intorno, perché abbiamo deciso di usare quello del centro.
 
 **Tangente**, per analogia con l'approssimazione della curva con la sua retta tangente: abbiamo tenuto solo il termine di primo ordine dello sviluppo.
 
@@ -552,7 +551,7 @@ Il riquadro «Per l'orale» di p. 20 riassume il punto chiave: limitandosi a un 
         title: 'Perché serve la regolarità di f',
         md: `C'è un'ipotesi nascosta in tutto il ragionamento: abbiamo dato per buono che il punto $y=f(Y)$ stia vicino a $x=f(X)$, cioè che la fibra deformata sia ancora piccola. Senza questa proprietà parlare di «intorno» dopo la deformazione non avrebbe senso.
 
-Qui tornano i requisiti di plausibilità della lezione precedente. La dispensa sottolinea che serve la regolarità di $f$: **senza la bicontinuità non si potrebbe dire che $f(Y)$ stia nell'intorno di $f(X)$**. È il principio di continuità, «punti vicini restano vicini», che rende lecito lo studio locale.
+Qui tornano i requisiti di plausibilità (§2.2). La dispensa sottolinea che serve la regolarità di $f$: **senza la bicontinuità non si potrebbe dire che $f(Y)$ stia nell'intorno di $f(X)$**. È il principio di continuità, «punti vicini restano vicini», che rende lecito lo studio locale.
 
 Ricorda anche il prezzo dell'approssimazione: la (2.1) vale solo in un intorno sufficientemente piccolo, perché abbiamo trascurato $o(|Y-X|)$. Per una fibra lunga, che dopo la deformazione può diventare curva, bisogna mettere insieme tanti intorni piccoli, come faremo con le misure globali.`,
       },
@@ -560,7 +559,7 @@ Ricorda anche il prezzo dell'approssimazione: la (2.1) vale solo in un intorno s
         id: 'l23-10',
         kind: 'prova',
         title: 'Ruota la fibra e guarda come cambia',
-        md: `Le frecce rossa e verde sono le fibre $\\hat n$ e $\\hat m$ dopo essere state trasformate da $\\tens F$: è la (2.1) applicata a due direzioni. Sotto il modello trovi i parametri di misura, che studieremo nella prossima lezione.`,
+        md: `Le frecce rossa e verde sono le fibre $\\hat n$ e $\\hat m$ dopo essere state trasformate da $\\tens F$: è la (2.1) applicata a due direzioni. Sotto il modello trovi i parametri di misura, che studieremo nella lezione «Quanto si deforma: i parametri di misura».`,
         tasks: [
           `Con il taglio, ruota la fibra $\\hat n$ con il comando dell'angolo: per certi angoli la fibra si allunga, per altri si accorcia. Lo stesso $\\tens F$ tratta direzioni diverse in modo diverso.`,
           `Cerca l'angolo per cui la fibra non cambia lunghezza: il parametro $\\varepsilon_n$ passa per zero. Vuol dire che la fibra ruota senza allungarsi.`,
@@ -599,7 +598,7 @@ Ricorda anche il prezzo dell'approssimazione: la (2.1) vale solo in un intorno s
         id: 'l24-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo trovato che, vicino a un punto, ogni fibra si trasforma con lo stesso tensore: $d\\vet x=\\tens F\\,d\\vet X$. Questo dice **come** si trasforma l'intorno, ma all'ingegnere non basta: vuole sapere **quanto** è cambiato. Una fibra si è allungata? Due fibre che erano ad angolo retto lo sono ancora? Un volume è cresciuto o diminuito?
+        md: `Nella lezione precedente, «Lo studio locale», abbiamo trovato che, vicino a un punto, ogni fibra si trasforma con lo stesso tensore: $d\\vet x=\\tens F\\,d\\vet X$. Questo dice **come** si trasforma l'intorno, ma all'ingegnere non basta: vuole sapere **quanto** è cambiato. Una fibra si è allungata? Due fibre che erano ad angolo retto lo sono ancora? Un volume è cresciuto o diminuito?
 
 I **parametri di misura** sono numeri che rispondono a queste domande, sempre in un punto, cioè nell'intorno di $X$ (§2.5). Ne vediamo quattro: la dilatazione lineare $\\varepsilon_n$ (allungamento di una fibra), lo scorrimento angolare $\\gamma_{n,m}$ (perdita di ortogonalità), la dilatazione superficiale $\\Delta S$ (variazione d'area) e la dilatazione volumica $\\Theta$ (variazione di volume).
 
@@ -623,7 +622,7 @@ Ai fini della **sollecitazione** del materiale conta proprio quello specifico: i
 
 Con $dL$ lunghezza iniziale e $dl$ lunghezza finale, il **coefficiente di dilatazione lineare** è (Def 2.5.1)
 $$\\varepsilon_n(X):=\\frac{dl-dL}{dL}=\\frac{dl}{dL}-1.$$
-Per esempio, se una fibra lunga $dL=1$ mm diventa lunga $1{,}02$ mm, $\\varepsilon_n=0{,}02$: si è allungata del 2%. Se diventa lunga $0{,}99$ mm, $\\varepsilon_n=-0{,}01$: si è accorciata dell'1%.
+Per esempio, se una fibra lunga $dL=1$ mm diventa lunga $1{,}02$ mm, $\\varepsilon_n=0{,}02$: si è allungata del 2%. Se diventa lunga $0{,}99$ mm, $\\varepsilon_n=-0{,}01$: si è accorciata dell'1% (esempio aggiunto).
 
 La definizione usa le lunghezze, ma noi conosciamo il tensore $\\tens F$. Il prossimo passo esprime $\\varepsilon_n$ in funzione di $\\tens F$ e della direzione $\\hat n$.`,
       },
@@ -640,7 +639,6 @@ La definizione usa le lunghezze, ma noi conosciamo il tensore $\\tens F$. Il pro
             {
               tex: '=\\tens F d\\vet X\\cdot\\tens F d\\vet X',
               why: `Sostituiamo $d\\vet x$ con $\\tens F\\,d\\vet X$, in tutti e due i fattori: è la deformazione omogenea tangente, eq. (2.1).`,
-              aggiunto: true,
               val: (v) => { const dx = T.apply(mat(v, 'F'), T.scalev(vec(v, 'n'), v.dL)); return T.dotv(dx, dx); },
             },
             {
@@ -651,11 +649,10 @@ La definizione usa le lunghezze, ma noi conosciamo il tensore $\\tens F$. Il pro
             },
             { tex: '=(\\tens F^T\\tens F\\hat n\\cdot\\hat n)\\,dL^2', why: `Scriviamo $d\\vet X=dL\\,\\hat n$ in entrambi i fattori: il numero $dL$ esce una volta da ciascuno, quindi in tutto esce $dL^2$.`, val: (v) => { const F = mat(v, 'F'); const n = vec(v, 'n'); return T.dotv(T.apply(T.mul(T.transpose(F), F), n), n) * v.dL * v.dL; } },
             {
-              tex: '\\Rightarrow\\ dl=\\sqrt{\\tens F^T\\tens F\\hat n\\cdot\\hat n}\\;dL',
-              why: `Estraiamo la radice quadrata dei due membri: le lunghezze sono positive, quindi prendiamo la radice positiva.`,
-              aggiunto: true,
+              tex: '\\Rightarrow\\ \\dfrac{dl}{dL}=\\sqrt{\\tens F^T\\tens F\\hat n\\cdot\\hat n}',
+              why: `Dividiamo i due membri per $dL^2$ ed estraiamo la radice quadrata: le lunghezze sono positive, quindi prendiamo la radice positiva.`,
             },
-            { tex: '\\Rightarrow\\ \\varepsilon_n=\\dfrac{dl}{dL}-1=\\sqrt{\\tens F^T\\tens F\\hat n\\cdot\\hat n}-1', why: `Dividiamo per $dL$ e sostituiamo nella definizione $\\varepsilon_n=dl/dL-1$.`, eq: 'Prop 2.5.2' },
+            { tex: '\\Rightarrow\\ \\varepsilon_n=\\dfrac{dl}{dL}-1=\\sqrt{\\tens F^T\\tens F\\hat n\\cdot\\hat n}-1', why: `Sostituiamo il rapporto appena trovato nella definizione $\\varepsilon_n=dl/dL-1$.`, eq: 'Prop 2.5.2' },
           ],
           checks: [
             { what: 'ε_n dal motore = |F n̂| − 1', f: (v) => [finiteMeasures(mat(v, 'F'), vec(v, 'n'), vec(v, 'm')).epsN, T.norm(T.apply(mat(v, 'F'), vec(v, 'n'))) - 1] },
@@ -671,7 +668,7 @@ La definizione usa le lunghezze, ma noi conosciamo il tensore $\\tens F$. Il pro
 
 Controllo sul caso più semplice: se non c'è deformazione, $\\tens F=\\tens I$, quindi $\\tens F^T\\tens F=\\tens I$, il prodotto vale $\\hat n\\cdot\\hat n=1$, la radice vale 1 e $\\varepsilon_n=0$. Lo stesso accade per una rotazione rigida, perché per un tensore ortogonale $\\tens R^T\\tens R=\\tens I$ (deduzione): una rotazione non allunga le fibre, come deve essere.
 
-La formula **non è lineare** in $\\tens F$: c'è una radice, e $\\tens F$ compare moltiplicato per sé stesso, come un $x^2$. Raddoppiare $\\tens H$ non raddoppia $\\varepsilon_n$.
+La formula **non è lineare** in $\\tens F$: c'è una radice, e $\\tens F$ compare moltiplicato per sé stesso, come un $x^2$. Per questo raddoppiare il gradiente di spostamento $\\tens H=\\tens F-\\tens I$, cioè la parte di $\\tens F$ che contiene la deformazione, non raddoppia $\\varepsilon_n$ (deduzione).
 
 Il **campo di variazione**: se la fibra si allunga, $\\varepsilon_n>0$, e al limite di un allungamento infinito $\\varepsilon_n\\to+\\infty$. Se si accorcia, $\\varepsilon_n<0$, e al limite di una fibra che degenera in un punto $\\varepsilon_n\\to-1$. Gli estremi sono **esclusi**, perché niente annichilimento della materia ($\\det\\tens F>0$): $\\varepsilon_n\\in\\,]-1,+\\infty[$.`,
       },
@@ -685,7 +682,8 @@ Il **campo di variazione**: se la fibra si allunga, $\\varepsilon_n>0$, e al lim
         kind: 'spiega',
         title: 'Il tensore di deformazione finita D',
         md: `Nella formula di $\\varepsilon_n$ il protagonista è $\\tens F^T\\tens F$. Ha un difetto pratico: quando non c'è deformazione non vale zero ma $\\tens I$. La dispensa preferisce allora un tensore che si annulli in assenza di deformazione, il **tensore di deformazione finita** di Green–Saint-Venant (Def 2.5.3):
-$$\\tens D:=\\tfrac12(\\tens F^T\\tens F-\\tens I)\\in\\mathrm{Sym}.$$
+$$\\tens D:=\\tfrac12(\\tens F^T\\tens F-\\tens I)\\in\\mathrm{Sym},$$
+dove $\\mathrm{Sym}$ è l'insieme dei tensori simmetrici.
 
 Due proprietà. È **simmetrico**: infatti $(\\tens F^T\\tens F)^T=\\tens F^T\\tens F$, perché trasporre un prodotto inverte l'ordine e trasporre due volte riporta al tensore di partenza (passaggio aggiunto). Ed è **nullo** quando $\\tens F=\\tens I$.
 
@@ -720,13 +718,11 @@ Come per $\\varepsilon_n$, vogliamo esprimere $\\gamma$ con il tensore $\\tens D
             {
               tex: '=\\dfrac{\\tens F^T\\tens F\\hat m\\cdot\\hat n}{|\\tens F\\hat n|\\,|\\tens F\\hat m|}',
               why: `Al numeratore spostiamo il primo $\\tens F$ dall'altra parte del prodotto scalare con la definizione di trasposto, come nella derivazione di $\\varepsilon_n$. Il denominatore resta com'è.`,
-              aggiunto: true,
               val: (v) => { const F = mat(v, 'F'); const n = vec(v, 'n'); const m = vec(v, 'm'); return T.dotv(T.apply(T.mul(T.transpose(F), F), m), n) / (T.norm(T.apply(F, n)) * T.norm(T.apply(F, m))); },
             },
             {
               tex: '=\\dfrac{(2\\tens D+\\tens I)\\hat m\\cdot\\hat n}{|\\tens F\\hat n|\\,|\\tens F\\hat m|}',
               why: `Al numeratore sostituiamo $\\tens F^T\\tens F=2\\tens D+\\tens I$, cioè la definizione di $\\tens D$ letta al contrario.`,
-              aggiunto: true,
               val: (v) => { const F = mat(v, 'F'); const D2 = finiteD(F); const n = vec(v, 'n'); const m = vec(v, 'm'); const num = T.dotv(T.apply(T.add(T.scale(D2, 2), T.I3), m), n); return num / (T.norm(T.apply(F, n)) * T.norm(T.apply(F, m))); },
             },
             {
@@ -751,7 +747,7 @@ Come per $\\varepsilon_n$, vogliamo esprimere $\\gamma$ con il tensore $\\tens D
         md: `La Prop 2.5.5 dice che la perdita di ortogonalità tra $\\hat n$ e $\\hat m$ dipende dal termine «misto» $\\tens D\\hat m\\cdot\\hat n$, diviso per le lunghezze finali delle due fibre. La dispensa la scrive anche con le radici, sostituendo $\\varepsilon_n+1=\\sqrt{2\\tens D\\hat n\\cdot\\hat n+1}$:
 $$\\sin\\gamma_{n,m}=\\frac{2\\tens D\\hat m\\cdot\\hat n}{\\sqrt{2\\tens D\\hat n\\cdot\\hat n+1}\\,\\sqrt{2\\tens D\\hat m\\cdot\\hat m+1}}.$$
 
-Controllo: senza deformazione $\\tens D=\\tens O$, il numeratore è zero e $\\gamma=0$, l'angolo resta retto. Anche qui la formula non è lineare: c'è un seno e ci sono le radici al denominatore.
+Controllo: senza deformazione $\\tens D=\\tens O$, il numeratore è zero e $\\gamma=0$, l'angolo resta retto. Anche qui la formula non è lineare: c'è un seno e ci sono le radici al denominatore (deduzione).
 
 Ricorda il segno: numeratore positivo vuol dire $\\gamma>0$ e angolo che si chiude.`,
       },
@@ -764,12 +760,12 @@ Ricorda il segno: numeratore positivo vuol dire $\\gamma>0$ e angolo che si chiu
         id: 'l24-12',
         kind: 'spiega',
         title: 'La dilatazione superficiale: quanto cambia un\'area',
-        md: `Il terzo parametro riguarda l'area. Due fibre ortogonali $\\hat n$ e $\\hat m$ individuano un piccolo quadrato di area $dS$; dopo la deformazione diventa un parallelogramma di area $ds$. Il **coefficiente di dilatazione superficiale** è (Def 2.5.6)
+        md: `Il terzo parametro riguarda l'area. Due fibre ortogonali $\\hat n$ e $\\hat m$ individuano un elemento d'area $dS$, un rettangolino; dopo la deformazione diventa un parallelogramma di area $ds$. Il **coefficiente di dilatazione superficiale** è (Def 2.5.6)
 $$\\Delta S_{n,m}:=\\frac{ds-dS}{dS}.$$
 
 Il ragionamento della dispensa (Prop 2.5.7) è simile ai precedenti. L'area di un parallelogramma è la lunghezza del prodotto vettoriale dei lati, quindi $ds/dS=|\\tens F\\hat n\\wedge\\tens F\\hat m|$. Per far comparire i prodotti scalari si usa l'**identità di Lagrange**, $|\\vet a\\wedge\\vet b|^2=|\\vet a|^2|\\vet b|^2-(\\vet a\\cdot\\vet b)^2$, e poi ancora $\\tens F^T\\tens F=2\\tens D+\\tens I$. Il risultato è
 $$\\Delta S_{n,m}=\\sqrt{(2\\tens D\\hat n\\cdot\\hat n+1)(2\\tens D\\hat m\\cdot\\hat m+1)-4(\\tens D\\hat m\\cdot\\hat n)^2}-1.$$
-Leggilo così: i primi due fattori sono i quadrati degli allungamenti dei due lati; il termine sottratto tiene conto che, se l'angolo si chiude, il parallelogramma si «schiaccia» e perde area. Anche $\\Delta S$ varia in $]-1,+\\infty[$. La dispensa nota che, per fibre non ortogonali, sotto radice si divide per $1-(\\hat n\\cdot\\hat m)^2$ e $2\\tens D\\hat m\\cdot\\hat n$ diventa $2\\tens D\\hat m\\cdot\\hat n+\\hat n\\cdot\\hat m$.`,
+Leggilo così: i primi due fattori sono i quadrati dei **rapporti** $dl/dL=\\varepsilon+1$ dei due lati, cioè dei fattori per cui si è moltiplicata la lunghezza di ciascun lato (non degli allungamenti $\\varepsilon$). Il termine sottratto viene dal prodotto scalare dei lati deformati, $\\tens F\\hat n\\cdot\\tens F\\hat m=2\\tens D\\hat m\\cdot\\hat n$, che misura la perdita di ortogonalità; siccome compare al quadrato, toglie area sia quando l'angolo retto si chiude sia quando si apre: in entrambi i casi il parallelogramma si «schiaccia» (deduzione). Anche $\\Delta S$ varia in $]-1,+\\infty[$. La dispensa nota che, per fibre non ortogonali, sotto radice si divide per $1-(\\hat n\\cdot\\hat m)^2$ e $2\\tens D\\hat m\\cdot\\hat n$ diventa $2\\tens D\\hat m\\cdot\\hat n+\\hat n\\cdot\\hat m$.`,
       },
       {
         id: 'l24-13',
@@ -784,12 +780,11 @@ Leggilo così: i primi due fattori sono i quadrati degli allungamenti dei due la
             {
               tex: '=\\dfrac{\\tens Fd\\vet X\\wedge\\tens Fd\\vet Y\\cdot\\tens Fd\\vet Z}{d\\vet X\\wedge d\\vet Y\\cdot d\\vet Z}',
               why: `Ogni spigolo deformato si ottiene dalla (2.1): $d\\vet x=\\tens F\\,d\\vet X$, $d\\vet y=\\tens F\\,d\\vet Y$, $d\\vet z=\\tens F\\,d\\vet Z$. Lo sostituiamo al numeratore.`,
-              aggiunto: true,
               val: (v) => { const F = mat(v, 'F'); const [a, b, c] = [vec(v, 'p'), vec(v, 'q'), vec(v, 's')]; return T.dotv(T.cross(T.apply(F, a), T.apply(F, b)), T.apply(F, c)) / T.dotv(T.cross(a, b), c); },
             },
             {
               tex: '=\\det\\tens F',
-              why: `Il rapporto tra il prodotto misto di tre vettori trasformati da $\\tens F$ e il prodotto misto dei vettori di partenza è, per definizione, il determinante di $\\tens F$ (Def 1.4.1). Non serve alcun conto: è la definizione.`,
+              why: `Il rapporto tra il prodotto misto di tre vettori trasformati da $\\tens F$ e il prodotto misto dei vettori di partenza è, per definizione, il determinante di $\\tens F$ (Def 1.4.1). La Def 1.4.1 scrive il prodotto misto come $\\vet u\\cdot\\vet v\\wedge\\vet w$, qui compare come $d\\vet X\\wedge d\\vet Y\\cdot d\\vet Z$: le due forme coincidono, perché il prodotto misto non cambia se si scambiano di posto il prodotto scalare e quello vettoriale (deduzione). Non serve alcun conto: è la definizione.`,
               ask: { q: `Quale definizione chiude la dimostrazione?`, options: [`Quella di determinante (rapporto di prodotti misti)`, `Quella di traccia`, `Il teorema della divergenza`, `L'identità di Lagrange`], correct: 0, why: `Def 1.4.1: $\\det\\tens A$ è il rapporto tra il prodotto misto dei vettori trasformati e quello dei vettori di partenza. La traccia comparirà nella teoria infinitesima, non qui; la divergenza riguarda campi, non un singolo tensore; l'identità di Lagrange serviva per l'area.` },
               val: (v) => T.det(mat(v, 'F')),
             },
@@ -873,9 +868,9 @@ $$\\Delta V_{\\mathcal B}=\\int_{\\mathcal B}\\Theta(X)\\,dV.$$
         id: 'l25-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo ricavato i parametri di misura della teoria finita: formule esatte, ma con radici, seni e prodotti di $\\tens F$ per sé stesso. Sono **non lineari** e non portano a calcoli semplici.
+        md: `Nella lezione precedente, «Quanto si deforma: i parametri di misura», abbiamo ricavato i parametri di misura della teoria finita: formule esatte, ma con radici, seni e prodotti di $\\tens F$ per sé stesso. Sono **non lineari** e non portano a calcoli semplici.
 
-Questa lezione apre la **teoria delle deformazioni infinitesime** (§2.6). L'idea è approfittare di un fatto concreto: i materiali da costruzione ordinari, come acciaio e calcestruzzo, si deformano pochissimo, tanto che le deformazioni si percepiscono solo con gli strumenti. Si possono quindi sviluppare teorie approssimate.
+Questa lezione apre la **teoria delle deformazioni infinitesime** (§2.6). L'idea è approfittare di un fatto concreto: i materiali da costruzione ordinari si deformano pochissimo, tanto che le deformazioni si percepiscono solo con gli strumenti. Si possono quindi sviluppare teorie approssimate.
 
 Introdurremo due ipotesi di «piccolezza» che sembrano simili ma sono diverse: **piccole deformazioni** e **piccoli spostamenti**. Vedremo che cosa dice ciascuna, perché non vanno confuse e quale conseguenza ha ciascuna: la prima semplifica la descrizione della deformazione, la seconda semplifica l'equilibrio.`,
       },
@@ -889,7 +884,7 @@ La norma di un tensore, dal Modulo 1, è la radice del prodotto scalare del tens
 
 Perché confrontarla proprio con 1? Perché $\\tens H$ è **adimensionale**: le sue componenti sono derivate di lunghezze (gli spostamenti) rispetto a lunghezze (le coordinate), quindi sono numeri puri. Ha senso dire che sono piccole rispetto a 1.
 
-Ricorda l'identità cinematica: $\\tens F=\\tens I+\\tens H$. Se $\\tens H$ è piccolo, $\\tens F\\simeq\\tens I$: la deformazione è vicina all'assenza di deformazione. È questa ipotesi che permette di **linearizzare le deformazioni**, come faremo nella prossima lezione.`,
+Ricorda l'identità cinematica: $\\tens F=\\tens I+\\tens H$. Se $\\tens H$ è piccolo, $\\tens F\\simeq\\tens I$: la deformazione è vicina all'assenza di deformazione. È questa ipotesi che permette di **linearizzare le deformazioni**, come faremo nella lezione «Il tensore di deformazione infinitesima».`,
       },
       {
         id: 'l25-3',
@@ -897,11 +892,11 @@ Ricorda l'identità cinematica: $\\tens F=\\tens I+\\tens H$. Se $\\tens H$ è p
         title: 'Piccoli spostamenti: u piccolo',
         md: `La seconda ipotesi riguarda lo spostamento stesso, non il suo gradiente. Si parla di **piccoli spostamenti** quando (Def 2.6.2)
 $$|\\vet u|\\ll1,$$
-dove «piccoli» vuol dire piccoli rispetto alle dimensioni caratteristiche del corpo: una trave lunga 5 m che si abbassa di un centimetro ha spostamenti piccoli.
+dove «piccoli» vuol dire piccoli rispetto alle dimensioni caratteristiche del corpo: una trave lunga 5 m che si abbassa di un centimetro ha spostamenti piccoli (esempio aggiunto).
 
-Nota la differenza tra le due ipotesi. Le piccole deformazioni dicono che **punti vicini si spostano quasi allo stesso modo**: lo spostamento varia poco da un punto all'altro. I piccoli spostamenti dicono che **ogni punto si muove poco** rispetto alla sua posizione iniziale.
+Nota la differenza tra le due ipotesi. Le piccole deformazioni dicono che **punti vicini si spostano quasi allo stesso modo**: lo spostamento varia poco da un punto all'altro (deduzione: $\\tens H$ è proprio la variazione di $\\vet u$ da punto a punto). I piccoli spostamenti dicono che **ogni punto si muove poco** rispetto alla sua posizione iniziale.
 
-Spesso le due ipotesi si adottano insieme, e per questo si confondono. Ma sono indipendenti in quasi tutti i casi, e il prossimo passo lo mostra con esempi.`,
+Spesso le due ipotesi si adottano insieme, e per questo si confondono. Ma non sono la stessa cosa, e il prossimo passo lo mostra con esempi.`,
       },
       {
         id: 'l25-4',
@@ -950,7 +945,7 @@ Il prossimo passo mostra questo circolo con un esempio concreto e mostra come l'
         id: 'l25-9',
         kind: 'spiega',
         title: 'Il palo portafari',
-        md: `Un palo verticale incastrato alla base porta in cima un faro, il cui peso $P$ agisce con un'**eccentricità** $e$, cioè a distanza $e$ dall'asse del palo.
+        md: `Un palo porta in cima un faro: il carico $P$ è applicato con un'**eccentricità** $e$, cioè a distanza $e$ dall'asse del palo.
 
 Se trascuriamo la deformazione, il momento alla base è semplicemente
 $$M=Pe.$$
@@ -1010,7 +1005,7 @@ Nel resto del corso le useremo entrambe, ma all'orale bisogna saper dire quale s
         id: 'l26-1',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo introdotto l'ipotesi di piccole deformazioni, $\\|\\tens H\\|\\ll1$, promettendo che avrebbe permesso di linearizzare le deformazioni. In questa lezione manteniamo la promessa.
+        md: `Nella lezione precedente, «Piccole deformazioni e piccoli spostamenti», abbiamo introdotto l'ipotesi di piccole deformazioni, $\\|\\tens H\\|\\ll1$, promettendo che avrebbe permesso di linearizzare le deformazioni. In questa lezione manteniamo la promessa.
 
 Le tappe sono quattro. Prima vediamo **come** si trascurano i termini piccoli quando si lavora con tensori, con un procedimento formale. Poi lo applichiamo al tensore di deformazione finita $\\tens D$ e otteniamo il **tensore di deformazione infinitesima** $\\tens E$. Quindi scopriamo che cosa resta fuori da $\\tens E$: una rotazione rigida, descritta dal tensore $\\tens W$. Infine riscriviamo tutti i parametri di misura della lezione sui parametri finiti, che diventano **lineari** in $\\tens E$, e leggiamo il significato delle componenti di $\\tens E$.
 
@@ -1021,7 +1016,7 @@ Questa è la lezione che userai di più nel resto del corso: da qui in avanti la
         kind: 'spiega',
         title: 'Come si trascura un termine piccolo in un tensore',
         md: `Con i numeri trascurare gli infinitesimi di ordine superiore è facile: se $h$ è piccolo, $h^2$ è molto più piccolo e lo si butta. Con un tensore è meno chiaro che cosa voglia dire «$\\tens H^2$ è piccolo rispetto a $\\tens H$». La dispensa usa allora un **procedimento formale** in quattro mosse (§2.6.3):
-1. si scrive $\\tens F=\\tens I+\\epsilon\\tens H$, dove $\\epsilon$ è un numero, il **parametro di piccolezza**;
+1. si scrive $\\tens F=\\tens I+\\epsilon\\tens H$, dove $\\epsilon$ è un numero, il **parametro di piccolezza** (attenzione: è una lettera diversa da $\\varepsilon_n$, la dilatazione lineare, anche se le due si somigliano);
 2. si calcola la grandezza che interessa;
 3. si trascurano i termini con $\\epsilon^2$, $\\epsilon^3$ e così via;
 4. si pone $\\epsilon=1$, perché $\\epsilon$ era stato introdotto apposta e non ha significato fisico.
@@ -1080,7 +1075,7 @@ Un fatto importante della dispensa: nella teoria finita esistono molte misure te
         id: 'l26-5',
         kind: 'spiega',
         title: 'L\'equazione di congruenza',
-        md: `Siccome $\\tens H$ è il gradiente dello spostamento, $\\tens H=\\nabla\\vet u$, possiamo scrivere $\\tens E$ direttamente con lo spostamento. È l'**equazione di congruenza**, o di compatibilità (Teo 2.6.5):
+        md: `Siccome $\\tens H$, il gradiente di spostamento, è il gradiente di $\\vet u$, $\\tens H=\\nabla\\vet u$, possiamo scrivere $\\tens E$ direttamente con lo spostamento. È l'**equazione di congruenza**, o di compatibilità (Teo 2.6.5):
 $$\\tens E=\\tfrac12(\\nabla\\vet u+\\nabla\\vet u^T),$$
 che si scrive anche $\\tens E=\\operatorname{sym}\\nabla\\vet u$. È il legame tra spostamenti e deformazioni.
 
@@ -1098,10 +1093,12 @@ Nota che sulla diagonale i due termini coincidono, quindi il $\\tfrac12$ si semp
         kind: 'spiega',
         title: 'Che cosa resta fuori: la rotazione W',
         md: `Abbiamo visto che $\\tens E$ è solo la parte simmetrica di $\\tens H$. Il **primo teorema di decomposizione** del Modulo 1 dice che ogni tensore si scrive in modo unico come somma di una parte simmetrica e una antisimmetrica (§2.6.4):
-$$\\underset{(9)}{\\tens H}=\\underset{(6)}{\\tens E}+\\underset{(3)}{\\tens W},\\qquad\\tens W:=\\tfrac12(\\tens H-\\tens H^T)\\in\\mathrm{Skw}.$$
-I numeri tra parentesi contano le componenti indipendenti: le 9 di $\\tens H$ si dividono in 6 di $\\tens E$ e 3 di $\\tens W$. Il tensore $\\tens W$ si chiama **tensore di rotazione rigida infinitesima**.
+$$\\underset{(9)}{\\tens H}=\\underset{(6)}{\\tens E}+\\underset{(3)}{\\tens W},\\qquad\\tens W:=\\tfrac12(\\tens H-\\tens H^T)\\in\\mathrm{Skw},$$
+dove $\\mathrm{Skw}$ è l'insieme dei tensori antisimmetrici. I numeri tra parentesi contano le componenti indipendenti: le 9 di $\\tens H$ si dividono in 6 di $\\tens E$ e 3 di $\\tens W$. Il tensore $\\tens W$ si chiama **tensore di rotazione rigida infinitesima**.
 
-Perché questo nome? Guardiamo i casi. Per una **traslazione** $\\tens H=\\tens O$, quindi $\\tens E=\\tens W=\\tens O$. Per una **rotazione rigida** la formula di Eulero dà $\\tens F=\\tens R=\\tens I+\\sin\\varphi\\,\\tens W+(1-\\cos\\varphi)\\tens W^2$. Se la rotazione è **infinitesima**, $\\tens F\\simeq\\tens I+\\varphi\\tens W$, quindi $\\tens H=\\varphi\\tens W$, che è antisimmetrico; per l'unicità della decomposizione la sua parte simmetrica è nulla: $\\tens E=\\tens O$. In generale si chiama **spostamento rigido infinitesimo** quello con $\\tens H=\\tens W$ e $\\tens E=\\tens O$.`,
+Perché questo nome? Guardiamo i casi. Per una **traslazione** $\\tens H=\\tens O$, quindi $\\tens E=\\tens W=\\tens O$. Per una **rotazione rigida** la formula di Eulero dà $\\tens F=\\tens R=\\tens I+\\sin\\varphi\\,\\tens W+(1-\\cos\\varphi)\\tens W^2$. Se la rotazione è **infinitesima**, $\\tens F\\simeq\\tens I+\\varphi\\tens W$, quindi $\\tens H=\\varphi\\tens W$, che è antisimmetrico; per l'unicità della decomposizione la sua parte simmetrica è nulla: $\\tens E=\\tens O$. In generale si chiama **spostamento rigido infinitesimo** quello con $\\tens H=\\tens W$ e $\\tens E=\\tens O$.
+
+Attenzione al simbolo: nella formula di Eulero $\\tens W$ è il tensore antisimmetrico associato al versore dell'asse $\\hat e$ (§2.3.1), mentre la definizione sopra chiama $\\tens W$ la parte antisimmetrica di $\\tens H$. Nella rotazione infinitesima la seconda vale $\\varphi$ volte la prima; la dispensa usa la stessa lettera per entrambe (deduzione).`,
       },
       {
         id: 'l26-8',
@@ -1111,7 +1108,7 @@ Perché questo nome? Guardiamo i casi. Per una **traslazione** $\\tens H=\\tens 
 
 Il riquadro «Per l'orale» di p. 26 lo dice così: $\\tens E$ misura la **deformazione pura**, cioè ciò che resta una volta tolto lo spostamento rigido infinitesimo, descritto da $\\tens W$.
 
-La conseguenza fisica è importante per i capitoli successivi: gli spostamenti rigidi infinitesimi **non producono deformazioni**, cioè non cambiano lunghezze, angoli, aree e volumi, e quindi **non producono nemmeno tensioni**. Quando nel capitolo 4 legheremo le tensioni alle deformazioni, sarà $\\tens E$, e non $\\tens H$, a entrare nel legame.`,
+La conseguenza fisica è importante per i capitoli successivi: gli spostamenti rigidi infinitesimi **non producono deformazioni**, cioè non cambiano lunghezze, angoli, aree e volumi, e quindi **non producono nemmeno tensioni**. Quando nel capitolo 4 legheremo le tensioni alle deformazioni, sarà $\\tens E$, e non $\\tens H$, a entrare nel legame (deduzione).`,
       },
       {
         id: 'l26-9',
@@ -1156,7 +1153,6 @@ La radice è sparita: la formula è lineare in $\\tens E$. Nel prossimo passo la
             {
               tex: '=\\textstyle\\sum_{i,j}E_{ij}n_in_j',
               why: `La componente $i$ di $\\tens E\\hat n$ è $\\sum_jE_{ij}n_j$ (prodotto righe per colonna); il prodotto scalare con $\\hat n$ la moltiplica per $n_i$ e somma su $i$. Sono nove termini.`,
-              aggiunto: true,
               val: (v) => { const E = T.sym(mat(v, 'H')); const n = vec(v, 'n'); let s = 0; for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) s += E[3 * i + j] * n[i] * n[j]; return s; },
             },
             {
@@ -1229,7 +1225,7 @@ Teoria infinitesima: $\\varepsilon_x=${f(LIN_T.epsN)}$, $\\gamma_{xy}=2E_{12}=${
 
 Teoria finita: $\\varepsilon_x=${f(FIN_T.epsN)}$, $\\varepsilon_y=${f(FIN_T.epsM, 4)}$, $\\gamma_{xy}=${f(FIN_T.gamma, 4)}$ rad, $\\Theta=${f(FIN_T.Theta)}$.
 
-Le due teorie quasi coincidono. La differenza più visibile è che nella teoria finita la fibra y si allunga di circa $H_{12}^2/2$: è un effetto del secondo ordine, proprio il tipo di termine che la linearizzazione trascura. La dispensa (§2.10) lo dice così: le espressioni linearizzate differiscono da quelle esatte (per esempio la tangente di un angolo si confonde con l'angolo), ma ne sono il limite quando l'ampiezza della deformazione tende a zero.`,
+Le due teorie quasi coincidono. La differenza più visibile è che nella teoria finita la fibra y si allunga di circa $H_{12}^2/2$ (deduzione): è un effetto del secondo ordine, proprio il tipo di termine che la linearizzazione trascura. La dispensa (§2.10) lo dice così: le espressioni linearizzate differiscono da quelle esatte (per esempio la tangente di un angolo si confonde con l'angolo), ma ne sono il limite quando l'ampiezza della deformazione tende a zero.`,
         values: { epsLin: LIN_T.epsN, gammaLin: LIN_T.gamma, epsFinY: FIN_T.epsM, gammaFin: FIN_T.gamma },
         visual: DEF({ mode: 'intorno', preset: 'taglio', presets: ['taglio'], controls: ['amp', 'alpha'] }),
       },
@@ -1269,7 +1265,7 @@ Le due teorie quasi coincidono. La differenza più visibile è che nella teoria 
         id: 'l27-0',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo diviso il gradiente di spostamento in due parti: $\\tens H=\\tens E+\\tens W$, la deformazione pura più la rotazione rigida infinitesima. Questa lezione usa quella divisione in due direzioni.
+        md: `Nella lezione precedente, «Il tensore di deformazione infinitesima», abbiamo diviso il gradiente di spostamento in due parti: $\\tens H=\\tens E+\\tens W$, la deformazione pura più la rotazione rigida infinitesima. Questa lezione usa quella divisione in due direzioni.
 
 La prima è la **formula di rappresentazione** (§2.7): se conosco lo spostamento di un punto $X$, quanto vale lo spostamento di un punto vicino $Y$? Vedremo che si scompone in tre pezzi con un significato fisico preciso, e capiremo quale pezzo è responsabile della deformazione e quindi, alla fine, della rottura.
 
@@ -1279,7 +1275,7 @@ La seconda è il **problema della compatibilità** (§2.8): finora siamo andati 
         id: 'l27-1',
         kind: 'derivazione',
         title: 'Lo spostamento di un punto vicino in tre pezzi',
-        md: `**Dove vogliamo arrivare:** lo spostamento $\\vet u(Y)$ di un punto $Y$ vicino a $X$, scritto con lo spostamento di $X$ e con i tensori $\\tens E$ e $\\tens W$. **L'idea:** partiamo dallo sviluppo di Taylor della deformazione (quello della lezione sullo studio locale, senza il resto), togliamo $Y$ a sinistra e a destra per far comparire gli spostamenti, e poi usiamo l'identità cinematica e la decomposizione. Ipotesi: piccole deformazioni e piccoli spostamenti, $\\|\\tens H\\|\\ll1$ e $|\\vet u|\\ll1$. Nel campione di controllo $f$ è affine, quindi Taylor è esatto. Guardiamo la componente $k$.`,
+        md: `**Dove vogliamo arrivare:** lo spostamento $\\vet u(Y)$ di un punto $Y$ vicino a $X$, scritto con lo spostamento di $X$ e con i tensori $\\tens E$ e $\\tens W$. **L'idea:** partiamo dallo sviluppo di Taylor della deformazione (quello della lezione «Lo studio locale», senza il resto), togliamo $Y$ a sinistra e a destra per far comparire gli spostamenti, e poi usiamo l'identità cinematica e la decomposizione. Ipotesi: piccole deformazioni e piccoli spostamenti, $\\|\\tens H\\|\\ll1$ e $|\\vet u|\\ll1$. Nel campione di controllo $f$ è affine, quindi Taylor è esatto. Guardiamo la componente $k$.`,
         source: D(2, '2.7', 'Teo 2.7.1', 27),
         der: {
           sample: (r) => { const o: R = { k: idx(r) }; putMat(o, 'H', T.scale(T.randMat(r), 0.1)); putVec(o, 'c', T.randVec(r)); putVec(o, 'X', T.randVec(r)); putVec(o, 'Y', T.randVec(r)); return o; },
@@ -1305,12 +1301,11 @@ La seconda è il **problema della compatibilità** (§2.8): finora siamo andati 
             {
               tex: '=\\vet u(X)+\\tens H(Y-X)',
               why: `Riconosciamo due oggetti noti: $f(X)-X$ è lo spostamento $\\vet u(X)$, e $\\tens F-\\tens I$ è il gradiente di spostamento $\\tens H$, per l'identità cinematica fondamentale.`,
-              aggiunto: true,
               val: (v) => { const H = mat(v, 'H'); const X = vec(v, 'X'); const uX = T.addv(vec(v, 'c'), T.apply(H, X)); return T.addv(uX, T.apply(H, T.subv(vec(v, 'Y'), X)))[v.k]; },
             },
             {
               tex: '=\\vet u(X)+(\\tens E+\\tens W)(Y-X)',
-              why: `Dividiamo $\\tens H$ nella sua parte simmetrica e antisimmetrica, $\\tens H=\\tens E+\\tens W$: è il primo teorema di decomposizione, usato nella lezione precedente.`,
+              why: `Dividiamo $\\tens H$ nella sua parte simmetrica e antisimmetrica, $\\tens H=\\tens E+\\tens W$: è il primo teorema di decomposizione, usato nella lezione «Il tensore di deformazione infinitesima» (§2.6.4).`,
               ask: { q: `Che cosa diventa $\\tens H$?`, options: [`$\\tens E+\\tens W$`, `$\\tens E$ soltanto`, `$\\tens W$ soltanto`, `$\\tens D$`], correct: 0, why: `Ogni tensore è somma unica della sua parte simmetrica $\\tens E$ e antisimmetrica $\\tens W$. Tenere solo $\\tens E$ butterebbe via la rotazione, tenere solo $\\tens W$ la deformazione; $\\tens D$ è il tensore della teoria finita, non una parte di $\\tens H$.` },
               val: (v) => { const H = mat(v, 'H'); const X = vec(v, 'X'); const uX = T.addv(vec(v, 'c'), T.apply(H, X)); return T.addv(uX, T.apply(T.add(T.sym(H), T.skw(H)), T.subv(vec(v, 'Y'), X)))[v.k]; },
             },
@@ -1366,14 +1361,14 @@ Da qui la conclusione della dispensa: **un corpo si può rompere solo per effett
         id: 'l27-4',
         kind: 'spiega',
         title: 'Il problema diretto e il problema inverso',
-        md: `Passiamo alla seconda parte. L'equazione di congruenza della lezione precedente lega spostamenti e deformazioni:
+        md: `Passiamo alla seconda parte. L'equazione di congruenza (Teo 2.6.5) lega spostamenti e deformazioni:
 $$\\tens E(X)=\\tfrac12\\big(\\nabla\\vet u(X)+\\nabla\\vet u^T(X)\\big)\\qquad(2.2)$$
 
 Si può leggere in due versi.
 - **Problema diretto**: dato lo spostamento $\\vet u$, trovare $\\tens E$. Basta derivare, cioè calcolare il gradiente e prenderne la parte simmetrica: si può sempre fare.
 - **Problema inverso**, o **di compatibilità**: dato un campo $\\tens E$ simmetrico e regolare, esiste uno spostamento $\\vet u$ che lo produce? **Non sempre.**
 
-Perché il verso inverso è più difficile? Scritta in componenti, la (2.2) dà 6 equazioni alle derivate parziali (una per ogni componente indipendente di $\\tens E$, come $\\partial u_1/\\partial X_1=E_{11}$) in sole 3 incognite, le componenti di $\\vet u$. Ci sono più equazioni che incognite: la soluzione può non esistere e, se esiste, può non essere unica.`,
+Perché il verso inverso è più difficile? Scritta in componenti, la (2.2) dà 6 equazioni alle derivate parziali (una per ogni componente indipendente di $\\tens E$, come $\\partial u_1/\\partial X_1=E_{11}$) in sole 3 incognite, le componenti di $\\vet u$. Per un sistema del genere, dice la dispensa, non è detto che la soluzione esista e, se esiste, non è detto che sia unica.`,
       },
       {
         id: 'l27-4b',
@@ -1391,7 +1386,7 @@ I teoremi di esistenza e unicità sono la garanzia che il numero calcolato descr
         title: 'Unicità: a meno di un moto rigido',
         md: `Il Teo 2.8.1 (unicità) dice: dato $\\tens E$, la soluzione $\\vet u$, se esiste, è **unica a meno di uno spostamento rigido infinitesimo**. In formula, due soluzioni differiscono per uno spostamento rigido: $\\vet u_1=\\vet u_2+\\vet u^\\infty$.
 
-Il motivo si capisce con la formula di rappresentazione: la differenza di due soluzioni ha deformazione nulla, perché entrambe producono lo stesso $\\tens E$; e uno spostamento con $\\tens E=\\tens O$ è fatto solo di traslazione e rotazione rigida.
+Il motivo si capisce con la formula di rappresentazione: la differenza di due soluzioni ha deformazione nulla, perché entrambe producono lo stesso $\\tens E$; e uno spostamento con $\\tens E=\\tens O$ è fatto solo di traslazione e rotazione rigida (deduzione dal Teo 2.7.1).
 
 Fisicamente: conoscere come è deformato un corpo non dice **dove** si trova. L'esempio della dispensa è un aereo in volo: si può sapere come è deformato, ma non la sua posizione. Se invece il corpo è vincolato in modo da impedire i moti rigidi, come un edificio fondato al suolo, l'unicità diventa incondizionata.
 
@@ -1432,7 +1427,7 @@ Le equazioni di Saint-Venant sono la traduzione matematica di «le tessere comba
         title: 'Le tessere (figura di p. 29)',
         md: `Il corpo è diviso in tessere, ciascuna deformata in modo omogeneo secondo $\\tens E$ nel suo punto. Il campo è compatibile se le tessere deformate si ricompongono senza vuoti né sovrapposizioni.`,
         tasks: [
-          `Nel campo compatibile ($E_{11}=c\\,y$, come in una flessione) le tessere ruotano e si richiudono: il residuo dell'equazione di Saint-Venant è 0.`,
+          `Nel campo compatibile ($E_{11}=c\\,y$) le tessere ruotano e si richiudono: il residuo dell'equazione di Saint-Venant è 0.`,
           `Nel campo non compatibile ($E_{11}=c\\,y^2$) le righe di tessere hanno lunghezze che nessun moto rigido riesce a riconciliare: il residuo vale $2c$, perché $\\partial^2E_{11}/\\partial y^2=2c$ non è bilanciato da altri termini.`,
         ],
         visual: { kind: 'svg', id: 'compatibilita' },
@@ -1478,11 +1473,11 @@ Le equazioni di Saint-Venant sono la traduzione matematica di «le tessere comba
         id: 'l28-0',
         kind: 'spiega',
         title: 'Dove siamo e dove andiamo',
-        md: `Nella lezione precedente abbiamo isolato lo spostamento di deformazione pura, $\\vet u^{dp}=\\tens E(Y-X)$, l'unico pezzo che cambia davvero la forma. Ora lo studiamo più da vicino, con una domanda geometrica: **esistono direzioni in cui la deformazione pura allunga o accorcia le fibre senza farle inclinare?**
+        md: `Nella lezione precedente, «Formula di rappresentazione e compatibilità», abbiamo isolato lo spostamento di deformazione pura, $\\vet u^{dp}=\\tens E(Y-X)$, l'unico pezzo che cambia davvero la forma. Ora lo studiamo più da vicino, con una domanda geometrica: **esistono direzioni in cui la deformazione pura allunga o accorcia le fibre senza farle inclinare?**
 
 La risposta è sì, e quelle direzioni, le **direzioni principali**, sono il riferimento più naturale per descrivere la deformazione in un punto. Le tappe: tradurre la domanda in un problema di autovalori; il teorema spettrale, che garantisce che le direzioni esistano e siano ortogonali; l'equazione secolare per trovarle; i tre casi possibili, con l'immagine di una sfera che diventa un ellissoide; la proprietà di estremo; infine i casi con dilatazioni principali nulle.
 
-Molti di questi strumenti torneranno identici nel capitolo 3 per le tensioni principali.`,
+Strumenti analoghi torneranno nel capitolo 3 per le tensioni principali: la dispensa lo nota per la proprietà di estremo.`,
       },
       {
         id: 'l28-1',
@@ -1509,7 +1504,7 @@ Dal Modulo 1 riconosci il **problema degli autovalori**: $\\lambda$ è un autova
 - a) esistono **almeno tre autocoppie reali**;
 - b) ad autovalori **distinti** corrispondono autovettori **ortogonali**.
 
-L'unica ipotesi è la **simmetria**, e $\\tens E$ è simmetrico per costruzione (è la parte simmetrica di $\\tens H$). Per un tensore non simmetrico gli autovalori possono essere complessi, e allora non ci sarebbero direzioni reali da cercare.
+L'unica ipotesi è la **simmetria**, e $\\tens E$ è simmetrico per costruzione (è la parte simmetrica di $\\tens H$). Per un tensore non simmetrico le autocoppie si possono comunque cercare, ma gli autovalori possono essere complessi, e allora le direzioni reali potrebbero mancare.
 
 Le tre direzioni principali, ortogonali tra loro, formano il **sistema di riferimento principale di deformazione**. La parte b) è quella che la dispensa dimostra, e la vediamo nel prossimo passo.`,
       },
@@ -1527,7 +1522,6 @@ Le tre direzioni principali, ortogonali tra loro, formano il **sistema di riferi
             {
               tex: '=\\hat n_1\\cdot\\tens E\\hat n_2',
               why: `Qui usiamo l'unica ipotesi del teorema: $\\tens E$ è simmetrico, cioè uguale al suo trasposto, $\\tens E^T=\\tens E$.`,
-              aggiunto: true,
               ask: { q: `Quale ipotesi si usa in questo passaggio?`, options: [`$\\tens E$ è simmetrico`, `$\\lambda_1\\ne\\lambda_2$`, `$\\det\\tens E\\ne0$`, `$\\tens E$ è definito positivo`], correct: 0, why: `Per togliere il trasposto serve $\\tens E^T=\\tens E$, la simmetria, unica ipotesi del teorema spettrale. L'ipotesi $\\lambda_1\\ne\\lambda_2$ servirà solo all'ultima riga; determinante e definita positività non sono richiesti.` },
               val: (v) => T.dotv(vec(v, 'a'), T.apply(mat(v, 'E'), vec(v, 'b'))),
             },
@@ -1539,7 +1533,6 @@ Le tre direzioni principali, ortogonali tra loro, formano il **sistema di riferi
             {
               tex: '\\Rightarrow\\ (\\lambda_1-\\lambda_2)\\,\\hat n_1\\cdot\\hat n_2=0',
               why: `Il primo membro e l'ultimo sono uguali: sottraendoli e raccogliendo $\\hat n_1\\cdot\\hat n_2$ si ottiene zero.`,
-              aggiunto: true,
             },
             { tex: '\\Rightarrow\\ \\hat n_1\\cdot\\hat n_2=0\\ \\text{ se }\\lambda_1\\ne\\lambda_2', why: `Un prodotto di due numeri è nullo solo se uno dei due è nullo. Se gli autovalori sono distinti, il primo fattore non è zero, quindi deve esserlo il prodotto scalare: gli autovettori sono ortogonali.`, eq: 'Teo 2.9.2' },
           ],
@@ -1550,7 +1543,7 @@ Le tre direzioni principali, ortogonali tra loro, formano il **sistema di riferi
         id: 'l28-2b',
         kind: 'spiega',
         title: 'Che cosa ci dà il teorema spettrale',
-        md: `La dimostrazione mostra dove serve la simmetria: senza, non potremmo far «saltare» $\\tens E$ da $\\hat n_1$ a $\\hat n_2$ senza cambiarlo nel suo trasposto, e l'argomento crollerebbe.
+        md: `La dimostrazione mostra dove serve la simmetria: senza, non potremmo far «saltare» $\\tens E$ da $\\hat n_1$ a $\\hat n_2$ senza cambiarlo nel suo trasposto, e l'argomento crollerebbe (deduzione).
 
 Il risultato ha una conseguenza pratica. In ogni punto del corpo esistono tre direzioni mutuamente ortogonali, quelle principali, lungo cui le fibre si allungano o si accorciano **senza inclinarsi**. Sono un sistema di riferimento privilegiato, scelto dalla deformazione stessa e non da noi.
 
